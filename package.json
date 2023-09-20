@@ -1,0 +1,37 @@
+{
+    "private": true,
+    "scripts": {
+        "development": "vite --host",
+        "production": "NODE_ENV=production vite build",
+        "watch": "vite build --watch",
+        "build": "vite build"
+    },
+    "dependencies": {
+        "@hotwired/stimulus": "^3.2.1",
+        "@hotwired/turbo": "^7.2.5",
+        "@tabler/core": "^1.0.0-beta19",
+        "apexcharts": "^3.40.0",
+        "autosize": "^6.0.1",
+        "choices.js": "^10.2.0",
+        "countup.js": "^2.6.2",
+        "del": "^6.1.1",
+        "flatpickr": "^4.6.13",
+        "imask": "^6.6.1",
+        "jquery": "^3.7.0",
+        "jsvectormap": "^1.5.3",
+        "laravel-vite-plugin": "^0.7.7",
+        "litepicker": "^2.0.12",
+        "nouislider": "^15.7.0",
+        "sass": "^1.57.1",
+        "select2": "^4.1.0-rc.0",
+        "sweetalert2": "^11.7.27",
+        "tom-select": "^2.2.2",
+        "vite": "^4.0",
+        "vite-plugin-manifest-sri": "^0.1.0"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.18.9",
+        "@babel/eslint-parser": "^7.18.9",
+        "eslint": "^8.20.0"
+    }
+}

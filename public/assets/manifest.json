@@ -1,0 +1,34 @@
+{
+  "resources/assets/images/logo-120.jpg": {
+    "file": "images/logo-120.470120e9.jpg",
+    "src": "resources/assets/images/logo-120.jpg",
+    "integrity": "sha384-1mKoGQaEs/TcFpCDCKQ7MGCEF0cbSxoYu5hBEADHnn5TCMJuihwuNfjm0gvWIyvq"
+  },
+  "resources/assets/images/logo-small-white.svg": {
+    "file": "images/logo-small-white.119ca031.svg",
+    "src": "resources/assets/images/logo-small-white.svg",
+    "integrity": "sha384-stlzZzUVYWKmxPXmLLAZIzOMNnwz/udfzIHPc2ULIAXolFlfIm/zpVoQnNiiVvdG"
+  },
+  "resources/assets/images/logo-small.svg": {
+    "file": "images/logo-small.36cb5c31.svg",
+    "src": "resources/assets/images/logo-small.svg",
+    "integrity": "sha384-Ey6PIgz1B6gn//eTkKNT2VGJAHFsBBZSVXfv8tEv/FLg26fPjAnByGWjVABOQwuF"
+  },
+  "resources/assets/images/logo.svg": {
+    "file": "images/logo.19eb4dbd.svg",
+    "src": "resources/assets/images/logo.svg",
+    "integrity": "sha384-g8wB/z5LEfb9w0X4hkBdOsJ9wUwVGjg33AWTylFT0J+tktePuREnWc73mvQC1vRv"
+  },
+  "resources/assets/javascripts/application.js": {
+    "file": "javascripts/application.b48dd9f5.js",
+    "isEntry": true,
+    "src": "resources/assets/javascripts/application.js",
+    "integrity": "sha384-2kQgCTJ2ha0gXv9Up7Yut86F7ZYcDTQQjMRY/GUJNd4boyGwK2jnZ16F5rhkB+0u"
+  },
+  "resources/assets/stylesheets/application.scss": {
+    "file": "stylesheets/application.29cd770d.css",
+    "isEntry": true,
+    "src": "resources/assets/stylesheets/application.scss",
+    "integrity": "sha384-O6dI0tTVeZ4GDvVO8omCHRc2MaVx44TH8kkZCllIMdL/kMHP/JdoLtKdtZisSGrv"
+  }
+}
