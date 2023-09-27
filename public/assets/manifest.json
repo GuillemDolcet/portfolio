@@ -20,10 +20,10 @@
     "integrity": "sha384-g8wB/z5LEfb9w0X4hkBdOsJ9wUwVGjg33AWTylFT0J+tktePuREnWc73mvQC1vRv"
   },
   "resources/assets/javascripts/application.js": {
-    "file": "javascripts/application.b48dd9f5.js",
+    "file": "javascripts/application.64f88f8a.js",
     "isEntry": true,
     "src": "resources/assets/javascripts/application.js",
-    "integrity": "sha384-2kQgCTJ2ha0gXv9Up7Yut86F7ZYcDTQQjMRY/GUJNd4boyGwK2jnZ16F5rhkB+0u"
+    "integrity": "sha384-SJRVo89rDxGggNw35DB8gcKyAW/XRg2EqazlR6UjPUUx2IO/y5CWR5EWs+d/TewD"
   },
   "resources/assets/stylesheets/application.scss": {
     "file": "stylesheets/application.29cd770d.css",

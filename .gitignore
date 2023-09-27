@@ -17,3 +17,7 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+/public/assets/javascripts/
+/public/assets/stylesheets/
+/public/assets/manifest.json
+

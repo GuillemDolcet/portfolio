@@ -14,44 +14,44 @@ class StatusMessage extends Component
     /**
      * Status type.
      *
-     * @var string
+     * @var string|null
      */
-    public string $type;
+    public ?string $type;
 
     /**
      * Status message.
      *
-     * @var string
+     * @var string|null
      */
-    public string $message;
+    public ?string $message;
 
     /**
      * Message title.
      *
-     * @var string
+     * @var string|null
      */
-    public string $title;
+    public ?string $title;
 
     /**
      * Alert component class.
      *
-     * @var string
+     * @var string|null
      */
-    public string $alertClass;
+    public ?string $alertClass;
 
     /**
      * Icon class.
      *
-     * @var string
+     * @var string|null
      */
-    public string $iconClass;
+    public ?string $iconClass;
 
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($type = null, $message = null, $title = null, $icon = null)
+    public function __construct($type = null, $message = null, $title = null, $icon = null, $alertClass = null)
     {
         $this->type = $type;
 
@@ -60,6 +60,8 @@ class StatusMessage extends Component
         $this->title = $title;
 
         $this->iconClass = $icon;
+
+        $this->alertClass = $alertClass;
     }
 
     /**
