@@ -23,9 +23,16 @@ Route::prefix('auth')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/', [UserController::class, 'index'])->name('home');
-    Route::get('users/create', [UserController::class, 'create'])->name('users.create');
-    Route::get('users/{user}/view', [UserController::class, 'view'])->name('users.view');
-    Route::post('feeds', [UserController::class, 'store'])->name('users.store');
-    Route::match(['put', 'patch'], 'users/{user}', [UserController::class, 'update'])->name('users.update');
-    Route::delete('users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+
+    Route::prefix('admin')->group(function () {
+        //Users
+        Route::group(['middleware' => ['role:admin']], function () {
+            Route::get('/users', [UserController::class, 'index'])->name('admin.users');
+            Route::post('/users', [UserController::class, 'store'])->name('admin.users.store');
+            Route::get('/users/create', [UserController::class, 'create'])->name('admin.users.create');
+            Route::match(['put', 'patch'], '/users/{user}', [UserController::class, 'update'])->name('admin.users.update');
+            Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('admin.users.destroy');
+            Route::get('/users/{user}/view', [UserController::class, 'view'])->name('admin.users.view');
+        });
+    });
 });

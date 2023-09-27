@@ -14,9 +14,7 @@
 
         @section('page-body')
             <div class="page-body">
-                <div class="container-xl">
-                    @yield('content')
-                </div>
+                @yield('content')
             </div>
         @show
 
