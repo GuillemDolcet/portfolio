@@ -1,4 +1,4 @@
-<div class="modal-dialog modal-dialog-centered modal-xl modal-fullscreen-sm-down modal-dialog-scrollable">
+<div class="modal-dialog modal-dialog-centered modal-lg modal-fullscreen-sm-down modal-dialog-scrollable">
     <div class="modal-content">
         <div class="modal-header">
             @unless ($user->exists)
@@ -15,6 +15,6 @@
             @endif
             <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
-        @include('users.form._form')
+        @include('admin.users.form._form')
     </div>
 </div>

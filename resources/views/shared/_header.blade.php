@@ -18,13 +18,16 @@
         </h1>
 
         <div class="navbar-nav flex-row order-lg-last">
-            <li class="nav-item {{ request()->is('home*') ? 'active' : '' }}">
-                <a class="nav-link" href="{{ route('home') }}">
-                    <span class="nav-link-icon d-md-none d-lg-inline-block"><x-icon icon="bag" /> </span>
-                    <span class="nav-link-title">Home</span>
-                </a>
-            </li>
+            @if(current_user()->hasRole('admin'))
+                <li class="nav-item {{ request()->is('*users*') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('admin.users') }}">
+                        <span class="nav-link-icon d-md-none d-lg-inline-block"><x-icon icon="users" /></span>
+                        <span class="nav-link-title">Users</span>
+                    </a>
+                </li>
+            @endif
         </div>
+
         <div class="collapse navbar-collapse" id="navbar-menu">
             @include('shared/_navbar_menu')
         </div>

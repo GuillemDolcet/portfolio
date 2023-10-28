@@ -95,7 +95,14 @@ class Users extends Repository
     {
         $instance->fill($attributes);
 
-        $instance->password = Hash::make($attributes['password'] ?? Str::random());
+        if (isset($attributes['password']) && $attributes['password'] != ''){
+            $instance->password = Hash::make($attributes['password']);
+        } else {
+            $instance->offsetUnset('password');
+        }
+
+        $instance->roles()->detach();
+        $instance->assignRole($attributes['role']);
 
         if (is_null($instance->getRememberToken())) {
             $instance->setRememberToken(Str::random(60));

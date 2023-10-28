@@ -2,18 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserStoreRequest;
+use App\Http\Requests\UserUpdateRequest;
 use App\Models\User;
 use App\Repositories\Users;
 use Illuminate\Contracts\Console\Application as ConsoleApplication;
 use Illuminate\Contracts\Container\BindingResolutionException;
-use Illuminate\Foundation\Application as FoundationApplication;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Foundation\Application as FoundationApplication;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\ResponseFactory;
-
+use Spatie\Permission\Models\Role;
 
 class UserController extends AdminController
 {
@@ -37,18 +39,19 @@ class UserController extends AdminController
     }
 
     /**
-     * /auth/login
+     * [GET] /admin/users
+     * admin.users
      *
      * @return ConsoleApplication|FoundationApplication|View|Factory
      */
     public function index(): ConsoleApplication|FoundationApplication|View|Factory
     {
         $users = $this->users->listing($this->users->newQuery());
-        return view('users.index', compact('users'));
+        return view('admin.users.index', compact('users'));
     }
 
     /**
-     * [GET] /users/create
+     * [GET] /admin/users/create
      * users.create
      *
      * @return RedirectResponse|Response|ResponseFactory
@@ -58,30 +61,99 @@ class UserController extends AdminController
     {
         if ($this->wantsTurboStream($this->request)) {
             $user = $this->users->build();
+            $roles = Role::all();
             if (($sess = $this->request->session()) && $sess->hasOldInput()) {
-                return $this->renderTurboStream('users.form.form_fields_stream', compact('user'));
+                return $this->renderTurboStream('admin.users.form.modal_stream', compact('user', 'roles'));
             }
-            return $this->renderTurboStream('users.form.modal_stream', compact('user'));
+            return $this->renderTurboStream('admin.users.form.modal_stream', compact('user', 'roles'));
         }
-        return redirect()->route('home');
+        return redirect()->route('admin.users');
     }
 
     /**
-     * [GET] /users/{user}/view
-     * users.view
+     * [GET] /admin/users/{user}/edit
+     * admin.users.edit
      *
      * @param User $user
      * @return RedirectResponse|Response|ResponseFactory
      * @throws BindingResolutionException
      */
-    public function view(User $user): RedirectResponse|Response|ResponseFactory
+    public function edit(User $user): RedirectResponse|Response|ResponseFactory
     {
         if ($this->wantsTurboStream($this->request)) {
+            $roles = Role::all();
             if (($sess = $this->request->session()) && $sess->hasOldInput()) {
-                return $this->renderTurboStream('users.form.form_fields_stream', compact('user'));
+                return $this->renderTurboStream('admin.users.form.modal_stream', compact('user', 'roles'));
             }
-            return $this->renderTurboStream('feeds.form.modal_stream', compact('user'));
+            return $this->renderTurboStream('admin.users.form.modal_stream', compact('user', 'roles'));
         }
-        return redirect()->route('feeds.index');
+        return redirect()->route('admin.users');
+    }
+
+    /**
+     * [POST] /admin/users
+     * admin.users
+     *
+     * @param UserStoreRequest $request
+     * @return RedirectResponse
+     */
+    public function store(UserStoreRequest $request): RedirectResponse
+    {
+        if ($this->users->create($request->validated())) {
+            return redirect()
+                ->route('admin.users')
+                ->with([
+                    'status' => ['type' => 'success', 'message' => 'User created <b class="text-green">correctly</b>.']
+                ]);
+        }
+        return redirect()
+            ->route('admin.users')
+            ->with([
+                'status' => ['type' => 'error', 'message' => 'Error on create user']
+            ]);
+    }
+
+    /**
+     * [PUT|PATCH] /admin/users/{user}
+     * admin.users.update
+     *
+     * @param UserUpdateRequest $request
+     * @param User $user
+     * @return RedirectResponse
+     */
+    public function update(UserUpdateRequest $request, User $user): RedirectResponse
+    {
+        if ($this->users->update($user, $request->validated())) {
+            return redirect()
+                ->route('admin.users')
+                ->with([
+                    'status' => ['type' => 'success', 'message' => 'Usuario actualizado <b class="text-green">correctamente</b>.']
+                ]);
+        }
+        return redirect()
+            ->route('admin.users')
+            ->with([
+                'status' => ['type' => 'error', 'message' => 'No se pudo actualizar los datos del usuario.']
+            ]);
+    }
+
+    /**
+     * [DELETE] /admin/users/{user}
+     * admin.users.destroy
+     *
+     * @param User $user
+     * @return RedirectResponse
+     */
+    public function destroy(User $user): RedirectResponse
+    {
+        $user->delete();
+        return redirect()
+            ->route('admin.users')
+            ->with([
+                'status' => [
+                    'type' => 'success',
+                    'message' => 'Usuario eliminado <b class="text-green">correctamente</b>.'
+                ]
+            ]);
     }
 }
