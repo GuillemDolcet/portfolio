@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Requests;
+namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rules\Password;
@@ -33,7 +33,7 @@ class UserStoreRequest extends FormRequest
     {
         return [
             'name' => ['required', 'max: 255'],
-            'email' => ['required', 'email|unique:users,email'],
+            'email' => ['required', 'email', 'unique:users,email'],
             'password' =>  ['required', 'confirmed', Password::defaults()],
             'role' => ['required', 'exists:roles,id'],
         ];

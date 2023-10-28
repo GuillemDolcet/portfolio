@@ -16,7 +16,7 @@
                            data-controller="remote-modal"
                            data-action="remote-modal#toggle"
                            data-remote-modal-url-value="{{ route('admin.users.create') }}"
-                           data-remote-modal-target-value="#users-form-modal">
+                           data-remote-modal-target-value="#user-form-modal">
                             <x-icon icon="plus"/>
                             Add user
                         </a>
@@ -39,6 +39,7 @@
                             <th>ID</th>
                             <th>Name</th>
                             <th>Email</th>
+                            <th></th>
                         </tr>
                         </thead>
                         <tbody>

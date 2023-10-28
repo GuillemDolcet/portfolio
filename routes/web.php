@@ -30,9 +30,9 @@ Route::middleware('auth')->group(function () {
             Route::get('/users', [UserController::class, 'index'])->name('admin.users');
             Route::post('/users', [UserController::class, 'store'])->name('admin.users.store');
             Route::get('/users/create', [UserController::class, 'create'])->name('admin.users.create');
+            Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('admin.users.edit');
             Route::match(['put', 'patch'], '/users/{user}', [UserController::class, 'update'])->name('admin.users.update');
             Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('admin.users.destroy');
-            Route::get('/users/{user}/view', [UserController::class, 'view'])->name('admin.users.view');
         });
     });
 });

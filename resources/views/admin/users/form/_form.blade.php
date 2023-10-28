@@ -13,8 +13,7 @@
         <div class="d-flex justify-content-between">
             <a href="#" class="btn btn-link link-secondary" data-bs-dismiss="modal">Cancel</a>
             <button type="submit" id="send-form" name="action" class="btn btn-primary ms-auto me-2">
-                <x-icon icon="plus"/>
-                Add user
+                {{$user->exists ? 'Edit user' : 'Add user'}}
             </button>
         </div>
     </div>

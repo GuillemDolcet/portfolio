@@ -1,4 +1,4 @@
-<turbo-stream action="update" target="users-form-modal">
+<turbo-stream action="update" target="user-form-modal">
     <template>
         @include('admin.users.form._fields')
     </template>
