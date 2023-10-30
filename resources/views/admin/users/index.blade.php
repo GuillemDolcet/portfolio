@@ -8,7 +8,7 @@
                     <div>
                         <h2 class="page-title">
                             <x-icon icon="users" class="me-2"/>
-                            Users
+                            @lang('admin.users')
                         </h2>
                     </div>
                     <div class="btn-list">
@@ -18,7 +18,7 @@
                            data-remote-modal-url-value="{{ route('admin.users.create') }}"
                            data-remote-modal-target-value="#user-form-modal">
                             <x-icon icon="user-plus"/>
-                            Add user
+                            @lang('admin.add') @lang('admin.user')
                         </a>
                     </div>
                 </div>
@@ -37,8 +37,9 @@
                         <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Name</th>
+                            <th>@lang('admin.name')</th>
                             <th>Email</th>
+                            <th>@lang('admin.role')</th>
                             <th></th>
                         </tr>
                         </thead>

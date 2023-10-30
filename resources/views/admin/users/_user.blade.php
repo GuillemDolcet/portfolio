@@ -1,7 +1,8 @@
 <tr>
     <td class="w-1 text-muted">{{ $user->getKey() }}</td>
-    <td nowrap>{{ $user->name }}</td>
+    <td nowrap>{{ ucfirst($user->name) }}</td>
     <td nowrap>{{ $user->email }}</td>
+    <td nowrap>{{ ucfirst($user->roles()->first()->name) }}</td>
     <td class="text-end cursor-pointer">
         <a href="#" class="me-1" title="Edit"
            data-controller="remote-modal"
@@ -13,7 +14,7 @@
         @can('delete', $user)
             <a href="{{ route('admin.users.destroy', $user) }}" class="text-danger"
                title="Delete" data-turbo-method="delete"
-               data-turbo-confirm="¿Realmente desea eliminar a este usuario? Esta acción no se puede deshacer.">
+               data-turbo-confirm="@lang('admin.confirms.delete-user')">
                 <x-icon icon="trash" />
             </a>
         @else

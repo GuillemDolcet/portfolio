@@ -23,7 +23,7 @@
                 <div class="nav-item {{ request()->is('*users*') ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('admin.users.index') }}">
                         <span class="nav-link-icon d-md-none d-lg-inline-block"><x-icon icon="users"/></span>
-                        <span class="nav-link-title">Usuarios</span>
+                        <span class="nav-link-title">@lang('admin.users')</span>
                     </a>
                 </div>
             @endcan
@@ -35,9 +35,9 @@
                         <div>{{ ucfirst(current_user()->name) }}</div>
                     </div>
                 </a>
-                <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <a href="{{ route('auth.logout') }}" data-turbo-method="delete">
-                        Salir
+                <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow text-end">
+                    <a href="{{ route('auth.logout') }}" data-turbo-method="delete" class="text-red p-3">
+                        <x-icon icon="logout" />  @lang('admin.logout')
                     </a>
                 </div>
             </div>

@@ -1,5 +1,5 @@
 <form id="orders-form" action="{{ $user->exists ? route('admin.users.update', $user) : route('admin.users.store') }}"
-      method="post" accept-charset="utf-8">
+      method="post" accept-charset="utf-8" data-controller="form">
     @csrf
     @if ($user->exists)
         @method('put')

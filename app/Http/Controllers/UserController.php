@@ -151,7 +151,7 @@ class UserController extends AdminController
     public function destroy(User $user): Renderable|RedirectResponse
     {
         $user->delete();
-        return redirect()
+         return redirect()
             ->route('admin.users.index')
             ->with([
                 'status' => [
