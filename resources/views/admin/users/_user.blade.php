@@ -10,10 +10,14 @@
            data-remote-modal-target-value="#user-form-modal">
             <x-icon icon="edit" />
         </a>
-        <a href="{{ route('admin.users.destroy', $user) }}" class="text-danger"
-           title="Delete" data-turbo-method="delete"
-           data-turbo-confirm="Are you sure ?">
-            <x-icon icon="trash" />
-        </a>
+        @can('delete', $user)
+            <a href="{{ route('admin.users.destroy', $user) }}" class="text-danger"
+               title="Delete" data-turbo-method="delete"
+               data-turbo-confirm="¿Realmente desea eliminar a este usuario? Esta acción no se puede deshacer.">
+                <x-icon icon="trash" />
+            </a>
+        @else
+            <span class="text-muted"><x-icon icon="trash" /></span>
+        @endcan
     </td>
 </tr>

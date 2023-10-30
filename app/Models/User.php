@@ -2,15 +2,26 @@
 
 namespace App\Models;
 
+use App\Concerns\MemoizesAttributes;
+use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\Access\Authorizable;
+use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 
-class User extends Authenticatable
+class User extends Model implements AuthenticatableContract, AuthorizableContract
 {
-    use HasApiTokens, HasFactory, Notifiable, HasRoles;
+    use Authenticatable;
+    use Authorizable;
+    use HasApiTokens;
+    use HasFactory;
+    use MemoizesAttributes;
+    use Notifiable;
+    use HasRoles;
 
     /**
      * The attributes that are mass assignable.
