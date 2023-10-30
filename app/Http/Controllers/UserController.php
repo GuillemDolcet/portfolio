@@ -36,7 +36,10 @@ class UserController extends AdminController
     public function __construct(Request $request, Users $users)
     {
         parent::__construct($request);
+
         $this->users = $users;
+
+        $this->middleware('can:manage,App\Models\User');
     }
 
     /**
