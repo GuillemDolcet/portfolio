@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Repositories\Users;
 use Illuminate\Contracts\Console\Application as ConsoleApplication;
 use Illuminate\Contracts\Container\BindingResolutionException;
+use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application as FoundationApplication;
@@ -67,7 +68,7 @@ class UserController extends AdminController
             }
             return $this->renderTurboStream('admin.users.form.modal_stream', compact('user', 'roles'));
         }
-        return redirect()->route('admin.users');
+        return redirect()->route('admin.users.index');
     }
 
     /**
@@ -87,7 +88,7 @@ class UserController extends AdminController
             }
             return $this->renderTurboStream('admin.users.form.modal_stream', compact('user', 'roles'));
         }
-        return redirect()->route('admin.users');
+        return redirect()->route('admin.users.index');
     }
 
     /**
@@ -101,13 +102,13 @@ class UserController extends AdminController
     {
         if ($this->users->create($request->validated())) {
             return redirect()
-                ->route('admin.users')
+                ->route('admin.users.index')
                 ->with([
                     'status' => ['type' => 'success', 'message' => 'User created <b class="text-green">correctly</b>.']
                 ]);
         }
         return redirect()
-            ->route('admin.users')
+            ->route('admin.users.index')
             ->with([
                 'status' => ['type' => 'error', 'message' => 'Error on create user']
             ]);
@@ -125,13 +126,13 @@ class UserController extends AdminController
     {
         if ($this->users->update($user, $request->validated())) {
             return redirect()
-                ->route('admin.users')
+                ->route('admin.users.index')
                 ->with([
                     'status' => ['type' => 'success', 'message' => 'Usuario actualizado <b class="text-green">correctamente</b>.']
                 ]);
         }
         return redirect()
-            ->route('admin.users')
+            ->route('admin.users.index')
             ->with([
                 'status' => ['type' => 'error', 'message' => 'No se pudo actualizar los datos del usuario.']
             ]);
@@ -142,13 +143,13 @@ class UserController extends AdminController
      * admin.users.destroy
      *
      * @param User $user
-     * @return RedirectResponse
+     * @return Renderable|RedirectResponse
      */
-    public function destroy(User $user): RedirectResponse
+    public function destroy(User $user): Renderable|RedirectResponse
     {
         $user->delete();
         return redirect()
-            ->route('admin.users')
+            ->route('admin.users.index')
             ->with([
                 'status' => [
                     'type' => 'success',

@@ -17,7 +17,7 @@
                            data-action="remote-modal#toggle"
                            data-remote-modal-url-value="{{ route('admin.users.create') }}"
                            data-remote-modal-target-value="#user-form-modal">
-                            <x-icon icon="plus"/>
+                            <x-icon icon="user-plus"/>
                             Add user
                         </a>
                     </div>

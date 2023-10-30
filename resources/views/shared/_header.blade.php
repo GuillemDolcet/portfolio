@@ -18,16 +18,30 @@
         </h1>
 
         <div class="navbar-nav flex-row order-lg-last">
-            @if(current_user()->hasRole('admin'))
-                <li class="nav-item {{ request()->is('*users*') ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ route('admin.users') }}">
-                        <span class="nav-link-icon d-md-none d-lg-inline-block"><x-icon icon="users" /></span>
-                        <span class="nav-link-title">Users</span>
-                    </a>
-                </li>
-            @endif
-        </div>
 
+            @can('manage', \App\Models\User::class)
+                <div class="nav-item {{ request()->is('*users*') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('admin.users.index') }}">
+                        <span class="nav-link-icon d-md-none d-lg-inline-block"><x-icon icon="users"/></span>
+                        <span class="nav-link-title">Usuarios</span>
+                    </a>
+                </div>
+            @endcan
+
+            <div class="nav-item dropdown ms-3">
+                <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" aria-label="Open user menu">
+                    <span class="avatar avatar-sm" style="background-image: url('data:image/jpg;base64,{{ current_user()->avatar }}')"></span>
+                    <div class="d-none d-xl-block ps-2">
+                        <div>{{ ucfirst(current_user()->name) }}</div>
+                    </div>
+                </a>
+                <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                    <a href="{{ route('auth.logout') }}" data-turbo-method="delete">
+                        Salir
+                    </a>
+                </div>
+            </div>
+        </div>
         <div class="collapse navbar-collapse" id="navbar-menu">
             @include('shared/_navbar_menu')
         </div>

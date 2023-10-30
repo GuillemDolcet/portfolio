@@ -13,7 +13,11 @@
         <div class="d-flex justify-content-between">
             <a href="#" class="btn btn-link link-secondary" data-bs-dismiss="modal">Cancel</a>
             <button type="submit" id="send-form" name="action" class="btn btn-primary ms-auto me-2">
-                {{$user->exists ? 'Edit user' : 'Add user'}}
+                @if($user->exists)
+                    <x-icon icon="edit"/> Edit user
+                @else
+                    <x-icon icon="user-plus"/> Add user
+                @endif
             </button>
         </div>
     </div>
