@@ -36,9 +36,13 @@
                     </div>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow text-end">
-                    <a href="{{ route('auth.logout') }}" data-turbo-method="delete" class="text-red p-3">
-                        <x-icon icon="logout" />  @lang('admin.logout')
-                    </a>
+                    <form method="post" action="{{ route('auth.logout') }}" data-controller="form">
+                        @csrf
+                        @method('delete')
+                        <a href="#" class="text-danger" title="Eliminar" data-action="form#submit">
+                            <x-icon icon="logout" />  @lang('admin.logout')
+                        </a>
+                    </form>
                 </div>
             </div>
         </div>
