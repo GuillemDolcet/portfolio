@@ -156,7 +156,7 @@ class StatusMessage extends Component
         }
 
         return match ($this->type) {
-            'info', 'information' => 'info-circle',
+            'info', 'information' => 'info-circle.blade.php',
             'warn', 'warning' => 'alert-triangle',
             'danger', 'error', 'critical', 'failure', 'fail' => 'alert-circle',
             'success', 'ok' => 'circle-check',

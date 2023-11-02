@@ -16,6 +16,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\ResponseFactory;
+use Illuminate\Support\Facades\Lang;
 use Spatie\Permission\Models\Role;
 
 class UserController extends AdminController
@@ -107,13 +108,13 @@ class UserController extends AdminController
             return redirect()
                 ->route('admin.users.index')
                 ->with([
-                    'status' => ['type' => 'success', 'message' => 'User created <b class="text-green">correctly</b>.']
+                    'status' => ['type' => 'success', 'message' => Lang::get('admin.responses.success-create-user')]
                 ]);
         }
         return redirect()
             ->route('admin.users.index')
             ->with([
-                'status' => ['type' => 'error', 'message' => 'Error on create user']
+                'status' => ['type' => 'error', 'message' => Lang::get('admin.responses.error-create-user')]
             ]);
     }
 
@@ -131,13 +132,13 @@ class UserController extends AdminController
             return redirect()
                 ->route('admin.users.index')
                 ->with([
-                    'status' => ['type' => 'success', 'message' => 'Usuario actualizado <b class="text-green">correctamente</b>.']
+                    'status' => ['type' => 'success', 'message' => Lang::get('admin.responses.success-update-user')]
                 ]);
         }
         return redirect()
             ->route('admin.users.index')
             ->with([
-                'status' => ['type' => 'error', 'message' => 'No se pudo actualizar los datos del usuario.']
+                'status' => ['type' => 'error', 'message' => Lang::get('admin.responses.error-update-user')]
             ]);
     }
 
@@ -156,7 +157,7 @@ class UserController extends AdminController
             ->with([
                 'status' => [
                     'type' => 'success',
-                    'message' => 'Usuario eliminado <b class="text-green">correctamente</b>.'
+                    'message' => Lang::get('admin.responses.delete-user')
                 ]
             ]);
     }

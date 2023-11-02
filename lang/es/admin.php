@@ -15,6 +15,7 @@ return [
 
     'add' => 'Añadir',
     'edit' => 'Editar',
+    'delete' => 'Eliminar',
     'user' => 'Usuario',
     'users' => 'Usuarios',
     'name' => 'Nombre',
@@ -31,6 +32,13 @@ return [
     ],
     'confirms' => [
         'delete-user' => '¿Realmente desea eliminar a este usuario? Esta acción no se puede deshacer'
+    ],
+    'responses' => [
+        'success-create-user' => 'Usuario creado',
+        'error-create-user' => 'No se pudo crear el usuario',
+        'success-update-user' => 'Usuario actualizado',
+        'error-update-user' => 'No se pudo actualizar los datos del usuario',
+        'delete-user' => 'Usuario eliminado'
     ],
     'created' => 'Created',
     'confirm' => 'Confirmar'

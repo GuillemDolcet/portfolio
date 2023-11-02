@@ -1,4 +1,4 @@
-<div class="modal-dialog modal-dialog-centered modal-lg modal-fullscreen-sm-down modal-dialog-scrollable">
+<div class="modal-dialog modal-dialog-centered modal-xl modal-fullscreen-sm-down modal-dialog-scrollable">
     <div class="modal-content">
         <div class="modal-header">
             @unless ($user->exists)

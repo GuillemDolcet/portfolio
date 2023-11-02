@@ -15,6 +15,7 @@ return [
 
     'add' => 'Add',
     'edit' => 'Edit',
+    'delete' => 'Eliminar',
     'user' => 'User',
     'users' => 'Users',
     'name' => 'Name',
@@ -31,6 +32,13 @@ return [
     ],
     'confirms' => [
         'delete-user' => 'Do you really want to delete this user? This action cannot be undone'
+    ],
+    'responses' => [
+        'success-create-user' => 'User created',
+        'error-create-user' => 'Error on create user',
+        'success-update-user' => 'User updated',
+        'error-update-user' => 'Error on update user',
+        'delete-user' => 'User deleted'
     ],
     'created' => 'Created',
     'confirm' => 'Confirm'
