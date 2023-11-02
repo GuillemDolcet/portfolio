@@ -30,9 +30,11 @@ import { Application } from "@hotwired/stimulus"
 // Bootstrap wrappers
 import ToastController from "./controllers/toast_controller"
 import RemoteModalController from "./controllers/remote_modal_controller"
+import FormController from "./controllers/form_controller"
 
 const app = Application.start()
 app.register("toast", ToastController)
+app.register("form", FormController)
 app.register("remote-modal", RemoteModalController)
 
 

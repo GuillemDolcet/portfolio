@@ -21,7 +21,7 @@ class UserStoreRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return current_user()->hasRole('admin');
+        return current_user()->hasRole(['superadmin','admin']);
     }
 
     /**

@@ -8,7 +8,7 @@ if ($type === 'error') {
     $borderClass = "border-{$type}";
 }
 
-$iconName = 'info-circle';
+$iconName = 'info-circle.blade.php';
 if ($type === 'success') {
     $iconName = 'check';
 } elseif ($type === 'error') {

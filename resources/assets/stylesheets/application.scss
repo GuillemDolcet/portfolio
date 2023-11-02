@@ -4,3 +4,12 @@
 .container-lg{
     width: 80%;
 }
+
+a {
+    text-decoration: none !important;
+}
+.language-dropdown{
+    .dropdown-menu {
+        min-width: 0 !important;
+    }
+}

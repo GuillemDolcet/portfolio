@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Repositories\Users;
 use Illuminate\Contracts\Console\Application as ConsoleApplication;
 use Illuminate\Contracts\Container\BindingResolutionException;
+use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application as FoundationApplication;
@@ -15,6 +16,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\ResponseFactory;
+use Illuminate\Support\Facades\Lang;
 use Spatie\Permission\Models\Role;
 
 class UserController extends AdminController
@@ -35,7 +37,10 @@ class UserController extends AdminController
     public function __construct(Request $request, Users $users)
     {
         parent::__construct($request);
+
         $this->users = $users;
+
+        $this->middleware('can:manage,App\Models\User');
     }
 
     /**
@@ -67,7 +72,7 @@ class UserController extends AdminController
             }
             return $this->renderTurboStream('admin.users.form.modal_stream', compact('user', 'roles'));
         }
-        return redirect()->route('admin.users');
+        return redirect()->route('admin.users.index');
     }
 
     /**
@@ -87,7 +92,7 @@ class UserController extends AdminController
             }
             return $this->renderTurboStream('admin.users.form.modal_stream', compact('user', 'roles'));
         }
-        return redirect()->route('admin.users');
+        return redirect()->route('admin.users.index');
     }
 
     /**
@@ -101,15 +106,15 @@ class UserController extends AdminController
     {
         if ($this->users->create($request->validated())) {
             return redirect()
-                ->route('admin.users')
+                ->route('admin.users.index')
                 ->with([
-                    'status' => ['type' => 'success', 'message' => 'User created <b class="text-green">correctly</b>.']
+                    'status' => ['type' => 'success', 'message' => Lang::get('admin.responses.success-create-user')]
                 ]);
         }
         return redirect()
-            ->route('admin.users')
+            ->route('admin.users.index')
             ->with([
-                'status' => ['type' => 'error', 'message' => 'Error on create user']
+                'status' => ['type' => 'error', 'message' => Lang::get('admin.responses.error-create-user')]
             ]);
     }
 
@@ -125,15 +130,15 @@ class UserController extends AdminController
     {
         if ($this->users->update($user, $request->validated())) {
             return redirect()
-                ->route('admin.users')
+                ->route('admin.users.index')
                 ->with([
-                    'status' => ['type' => 'success', 'message' => 'Usuario actualizado <b class="text-green">correctamente</b>.']
+                    'status' => ['type' => 'success', 'message' => Lang::get('admin.responses.success-update-user')]
                 ]);
         }
         return redirect()
-            ->route('admin.users')
+            ->route('admin.users.index')
             ->with([
-                'status' => ['type' => 'error', 'message' => 'No se pudo actualizar los datos del usuario.']
+                'status' => ['type' => 'error', 'message' => Lang::get('admin.responses.error-update-user')]
             ]);
     }
 
@@ -142,17 +147,17 @@ class UserController extends AdminController
      * admin.users.destroy
      *
      * @param User $user
-     * @return RedirectResponse
+     * @return Renderable|RedirectResponse
      */
-    public function destroy(User $user): RedirectResponse
+    public function destroy(User $user): Renderable|RedirectResponse
     {
         $user->delete();
-        return redirect()
-            ->route('admin.users')
+         return redirect()
+            ->route('admin.users.index')
             ->with([
                 'status' => [
                     'type' => 'success',
-                    'message' => 'Usuario eliminado <b class="text-green">correctamente</b>.'
+                    'message' => Lang::get('admin.responses.delete-user')
                 ]
             ]);
     }
