@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\SessionsController;
+use App\Http\Controllers\SkillController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,8 +26,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/', [UserController::class, 'index'])->name('home');
 
     Route::prefix('admin')->group(function () {
-        //Users
         Route::group(['middleware' => ['role:superadmin|admin']], function () {
+            //Users
             Route::get('/', [UserController::class, 'index'])->name('admin.home');
             Route::get('/users', [UserController::class, 'index'])->name('admin.users.index');
             Route::post('/users', [UserController::class, 'store'])->name('admin.users.store');
@@ -35,5 +36,12 @@ Route::middleware('auth')->group(function () {
             Route::match(['put', 'patch'], '/users/{user}', [UserController::class, 'update'])->name('admin.users.update');
             Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('admin.users.destroy');
         });
+        //Skills
+        Route::get('/skills', [SkillController::class, 'index'])->name('admin.skills.index');
+        Route::post('/skills', [SkillController::class, 'store'])->name('admin.skills.store');
+        Route::get('/skills/create', [SkillController::class, 'create'])->name('admin.skills.create');
+        Route::get('/skills/{skill}/edit', [SkillController::class, 'edit'])->name('admin.skills.edit');
+        Route::match(['put', 'patch'], '/skills/{skill}', [SkillController::class, 'update'])->name('admin.skills.update');
+        Route::delete('/skills/{skill}', [SkillController::class, 'destroy'])->name('admin.skills.destroy');
     });
 });

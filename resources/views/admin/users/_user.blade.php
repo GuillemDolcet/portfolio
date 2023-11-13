@@ -4,7 +4,7 @@
     <td nowrap>{{ $user->email }}</td>
     <td nowrap>{{ ucfirst($user->roles()->first()->name) }}</td>
     <td class="text-end cursor-pointer ali">
-        <div class="d-flex text-end">
+        <div class="d-flex text-end justify-content-end">
             <a href="#" class="me-1" title="@lang('admin.edit')"
                data-controller="remote-modal"
                data-action="remote-modal#toggle"
@@ -17,7 +17,7 @@
                       data-confirm="@lang('admin.confirms.delete-user')">
                     @csrf
                     @method('delete')
-                    <a href="#" class="text-danger" title="@lang('admin.delete')" data-action="form#submit" data-confirm="hola">
+                    <a href="#" class="text-danger" title="@lang('admin.delete')" data-action="form#submit">
                         <x-icon icon="trash"/>
                     </a>
                 </form>

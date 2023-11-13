@@ -45,7 +45,7 @@ class UserController extends AdminController
 
     /**
      * [GET] /admin/users
-     * admin.users
+     * admin.users.index
      *
      * @return ConsoleApplication|FoundationApplication|View|Factory
      */
@@ -57,7 +57,7 @@ class UserController extends AdminController
 
     /**
      * [GET] /admin/users/create
-     * users.create
+     * admin.users.create
      *
      * @return RedirectResponse|Response|ResponseFactory
      * @throws BindingResolutionException
@@ -97,7 +97,7 @@ class UserController extends AdminController
 
     /**
      * [POST] /admin/users
-     * admin.users
+     * admin.users.store
      *
      * @param UserStoreRequest $request
      * @return RedirectResponse

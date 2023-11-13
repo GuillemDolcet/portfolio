@@ -85,7 +85,7 @@ class Users extends Repository
     }
 
     /**
-     * Updates a customer instance.
+     * Updates a user instance.
      *
      * @param User $instance
      * @param array $attributes
