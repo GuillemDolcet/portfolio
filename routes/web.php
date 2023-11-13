@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\SessionsController;
+use App\Http\Controllers\LocalizationController;
 use App\Http\Controllers\SkillController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -21,6 +22,8 @@ Route::prefix('auth')->group(function () {
     Route::post('login', [SessionsController::class, 'authenticate'])->name('auth.authenticate');
     Route::delete('logout', [SessionsController::class, 'destroy'])->name('auth.logout');
 });
+
+Route::post('/change-language/{language}', [LocalizationController::class, 'changeLanguage'])->name('change-language');
 
 Route::middleware('auth')->group(function () {
     Route::get('/', [UserController::class, 'index'])->name('home');

@@ -38,22 +38,28 @@
                         <div>{{ ucfirst(current_user()->name) }}</div>
                     </div>
                 </a>
-                <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow text-end p-3">
-                    <form method="post" action="{{ route('auth.logout') }}" data-controller="form">
-                        @csrf
-                        @method('delete')
-                        <a href="#" class="text-danger" title="@lang('admin.delete')" data-action="form#submit">
-                            <x-icon icon="logout"/> @lang('admin.logout')
-                        </a>
-                    </form>
-                </div>
-            </div>
-            <div class="nav-item dropdown ms-3 language-dropdown">
-                <img class="cursor-pointer" src="{{image_url(\App\Models\Language::name(app()->getLocale())->first()->image)}}" alt="{{app()->getLocale()}}" data-bs-toggle="dropdown">
-                <div class="dropdown-menu">
-                    @foreach(\App\Models\Language::notName(app()->getLocale())->get() as $language)
-                        <img src="{{image_url($language->image)}}" alt="{{$language->name}}">
-                    @endforeach
+                <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow text-end">
+                    <div class="p-2 d-flex justify-content-around">
+                        @foreach(\App\Models\Language::all() as $language)
+                            <div class="cursor-pointer">
+                                <form method="post" action="{{ route('change-language',$language) }}" data-controller="form">
+                                    @csrf
+                                    <a href="#" data-action="form#submit">
+                                        <img src="{{image_url($language->image)}}" alt="{{$language->name}}" data-action="form#submit">
+                                    </a>
+                                </form>
+                            </div>
+                        @endforeach
+                    </div>
+                    <div class="p-2">
+                        <form method="post" action="{{ route('auth.logout') }}" data-controller="form">
+                            @csrf
+                            @method('delete')
+                            <a href="#" class="text-danger" title="@lang('admin.delete')" data-action="form#submit">
+                                <x-icon icon="logout"/> @lang('admin.logout')
+                            </a>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
