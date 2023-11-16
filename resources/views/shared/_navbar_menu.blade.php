@@ -7,4 +7,12 @@
             </a>
         </li>
     </ul>
+    <ul class="navbar-nav">
+        <li class="nav-item {{ request()->is('*experiences*') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('admin.experiences.index') }}">
+                <span class="nav-link-icon d-md-none d-lg-inline-block"><x-icon icon="bag" /></span>
+                <span class="nav-link-title">@lang('admin.experiences')</span>
+            </a>
+        </li>
+    </ul>
 </div>

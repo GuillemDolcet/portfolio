@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Session;
 class Localization
 {
     /**
-     * Get the path the user should be redirected to when they are not authenticated.
+     * Set the default language
      */
     public function handle($request, Closure $next): Response|RedirectResponse
     {

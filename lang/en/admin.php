@@ -19,6 +19,7 @@ return [
     'user' => 'User',
     'users' => 'Users',
     'name' => 'Name',
+    'description' => 'Description',
     'role' => 'Role',
     'image' => 'Image',
     'actual' => 'Actual',
@@ -30,8 +31,11 @@ return [
     'order' => 'Order',
     'skill' => 'Skill',
     'skills' => 'Skills',
+    'currently' => 'Currently',
     'created_at' => 'Created At',
     'updated_at' => 'Updated At',
+    'start_at' => 'Start At',
+    'finish_at' => 'Finish At',
     'login' => 'Login',
     'level' => 'Level',
     'placeholders' => [
@@ -55,6 +59,8 @@ return [
         'delete-skill' => 'Skill deleted'
     ],
     'created' => 'Created',
-    'confirm' => 'Confirm'
+    'confirm' => 'Confirm',
+    'experiences' => 'Experiences',
+    'experience' => 'Experience',
 
 ];
