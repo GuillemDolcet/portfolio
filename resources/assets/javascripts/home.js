@@ -6,7 +6,7 @@ import "tiny-slider";
 import "shuffle";
 import Gumshoe from "gumshoejs";
 
-import "./home/plugins.init";
+import "./plugins.init";
 
 // Preloader
 window.onload = function loader() {
