@@ -61,17 +61,7 @@ export default defineConfig({
             buildDirectory: 'assets',
             input: [
                 'resources/assets/stylesheets/application.scss',
-                'resources/assets/css/bootstrap.min.css',
-                'resources/assets/css/default.css',
-                'resources/assets/css/materialdesignicons.min.css',
-                'resources/assets/css/style.min.css',
-                'resources/assets/css/tobii.min.css',
-                'resources/assets/fonts/ajax-loader.gif',
-                'resources/assets/fonts/materialdesignicons-webfont.eot',
-                'resources/assets/fonts/materialdesignicons-webfont.svg',
-                'resources/assets/fonts/materialdesignicons-webfont.ttf',
-                'resources/assets/fonts/materialdesignicons-webfont.woff',
-                'resources/assets/fonts/materialdesignicons-webfont.woff2',
+                'resources/assets/stylesheets/home/style.scss',
                 'resources/assets/javascripts/application.js',
                 'resources/assets/javascripts/home.js',
             ],
@@ -100,17 +90,16 @@ export default defineConfig({
                 // Add some folder structure to bundled assets.
                 // TODO: Try to respect original folder structure...
                 assetFileNames: ({ name }) => {
-                    if (name.includes('materialdesignicons') || name.includes('ajax-loader')) {
-                        console.log(name);
-                        return 'fonts/[name].[hash][extname]'
-                    }
-
                     if (/\.(gif|jpe?g|png|svg)$/.test(name ?? '')) {
                         return 'images/[name].[hash][extname]'
                     }
 
                     if (/\.css$/.test(name ?? '')) {
                         return 'stylesheets/[name].[hash][extname]'
+                    }
+
+                    if (/\.(ttf|woff|woff2|eot)$/.test(name ?? '')) {
+                        return 'fonts/[name].[hash][extname]'
                     }
                     return '[name].[hash][extname]'
                 },
