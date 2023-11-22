@@ -70,7 +70,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Europe/Madrid',
 
     /*
     |--------------------------------------------------------------------------
@@ -83,7 +83,7 @@ return [
     |
     */
 
-    'locale' => in_array(substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2), ['es', 'en']) ? substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2) : 'en',
+    'locale' => 'en',
 
     /*
     |--------------------------------------------------------------------------
