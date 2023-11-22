@@ -61,7 +61,9 @@ export default defineConfig({
             buildDirectory: 'assets',
             input: [
                 'resources/assets/stylesheets/application.scss',
+                'resources/assets/stylesheets/home/style.scss',
                 'resources/assets/javascripts/application.js',
+                'resources/assets/javascripts/home.js',
             ],
             refresh: true,
         }),
@@ -99,7 +101,6 @@ export default defineConfig({
                     if (/\.(ttf|woff|woff2|eot)$/.test(name ?? '')) {
                         return 'fonts/[name].[hash][extname]'
                     }
-
                     return '[name].[hash][extname]'
                 },
             }
