@@ -1,5 +1,6 @@
 @import '~@tabler/core/src/scss/tabler';
 @import '~@tabler/core/src/scss/tabler-vendors';
+@import 'select2/src/scss/core';
 
 .container-lg{
     width: 80%;
@@ -12,4 +13,8 @@ a {
     .dropdown-menu {
         min-width: 0 !important;
     }
+}
+
+.select2-container{
+    width: 100% !important;
 }

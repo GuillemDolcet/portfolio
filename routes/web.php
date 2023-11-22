@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\SessionsController;
+use App\Http\Controllers\ExperienceController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LocalizationController;
 use App\Http\Controllers\SkillController;
@@ -48,5 +49,12 @@ Route::middleware('auth')->group(function () {
         Route::get('/skills/{skill}/edit', [SkillController::class, 'edit'])->name('admin.skills.edit');
         Route::match(['put', 'patch'], '/skills/{skill}', [SkillController::class, 'update'])->name('admin.skills.update');
         Route::delete('/skills/{skill}', [SkillController::class, 'destroy'])->name('admin.skills.destroy');
+        //Experiences
+        Route::get('/experiences', [ExperienceController::class, 'index'])->name('admin.experiences.index');
+        Route::post('/experiences', [ExperienceController::class, 'store'])->name('admin.experiences.store');
+        Route::get('/experiences/create', [ExperienceController::class, 'create'])->name('admin.experiences.create');
+        Route::get('/experiences/{experience}/edit', [ExperienceController::class, 'edit'])->name('admin.experiences.edit');
+        Route::match(['put', 'patch'], '/experiences/{experience}', [ExperienceController::class, 'update'])->name('admin.experiences.update');
+        Route::delete('/experiences/{experience}', [ExperienceController::class, 'destroy'])->name('admin.experiences.destroy');
     });
 });

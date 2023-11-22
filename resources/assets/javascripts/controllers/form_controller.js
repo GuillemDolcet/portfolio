@@ -6,6 +6,8 @@ import SimpleToast from "../simple_toast";
 import { xr } from "../xr";
 
 export default class extends Controller {
+
+    static targets = [ "select2" ];
     submit(e) {
         e.preventDefault();
 
@@ -55,5 +57,13 @@ export default class extends Controller {
         }
 
         return true
+    }
+
+    select2TargetConnected(){
+        this.select2Targets.forEach( function(select) {
+            $(select).select2({
+                dropdownParent: $(select).closest('.modal')
+            });
+        });
     }
 }
