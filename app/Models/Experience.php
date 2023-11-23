@@ -26,6 +26,16 @@ class Experience extends Model
     ];
 
     /**
+     * The attributes that should be cast.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'start_date' => 'datetime',
+        'finish_date' => 'datetime'
+    ];
+
+    /**
      * Indicates if the model should be timestamped.
      *
      * @var bool
