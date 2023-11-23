@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Skill extends Model
 {
@@ -34,13 +35,23 @@ class Skill extends Model
     ///// Relations //////////////////////////////////////////////////////////////////////////////////////////////////
 
     /**
-     * Skills relation.
+     * User relation.
      *
      * @return BelongsTo
      */
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    /**
+     * Experiences relation.
+     *
+     * @return BelongsToMany
+     */
+    public function experiences(): BelongsToMany
+    {
+        return $this->belongsToMany(Experience::class, 'experience_skills', 'skill_id', 'experience_id');
     }
 
     ///// Scopes //////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Experience extends Model
 {
@@ -21,7 +22,7 @@ class Experience extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'name', 'description', 'start_at', 'finish_at', 'currently'
+        'name', 'description', 'start_date', 'finish_date', 'currently'
     ];
 
     /**
@@ -34,13 +35,23 @@ class Experience extends Model
     ///// Relations //////////////////////////////////////////////////////////////////////////////////////////////////
 
     /**
-     * Skills relation.
+     * User relation.
      *
      * @return BelongsTo
      */
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    /**
+     * Skills relation.
+     *
+     * @return BelongsToMany
+     */
+    public function skills(): BelongsToMany
+    {
+        return $this->belongsToMany(Skill::class, 'experience_skills', 'experience_id','skill_id');
     }
 
     ///// Scopes //////////////////////////////////////////////////////////////////////////////////////////////////////

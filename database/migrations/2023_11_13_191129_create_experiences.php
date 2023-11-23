@@ -17,9 +17,9 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('name');
             $table->string('description');
-            $table->timestamp('start_at');
-            $table->timestamp('finish_at');
-            $table->boolean('currently');
+            $table->timestamp('start_date');
+            $table->timestamp('finish_date');
+            $table->boolean('currently')->default(false);
             $table->timestamps();
         });
     }

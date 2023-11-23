@@ -18,20 +18,20 @@
     </div>
     <div class="col-12 row mb-3">
         <div class="col-5">
-            <label class="form-label fw-bold" for="start_at">@lang('admin.start_at') <sup class="text-danger fs-xs">*</sup></label>
-            <input id="start_at" name="start_at" type="date" class="form-control @error('start_at') is-invalid @enderror"
+            <label class="form-label fw-bold" for="start_date">@lang('admin.start_date') <sup class="text-danger fs-xs">*</sup></label>
+            <input id="start_date" name="start_date" type="date" class="form-control @error('start_date') is-invalid @enderror"
                    autocomplete="off"
-                   required value="{{ old('start_at', $experience->start_at) }}">
-            @error('start_at')
+                   required value="{{ old('start_date', $experience->start_date) }}">
+            @error('start_date')
             <div class="invalid-feedback">{{ $message }}</div>
             @endif
         </div>
         <div class="col-5">
-            <label class="form-label fw-bold" for="finish_at">@lang('admin.finish_at') <sup class="text-danger fs-xs">*</sup></label>
-            <input id="finish_at" name="finish_at" type="date" class="form-control @error('finish_at') is-invalid @enderror"
+            <label class="form-label fw-bold" for="finish_date">@lang('admin.finish_date') <sup class="text-danger fs-xs">*</sup></label>
+            <input id="finish_date" name="finish_date" type="date" class="form-control @error('finish_date') is-invalid @enderror"
                    autocomplete="off"
-                   required value="{{ old('finish_at', $experience->finish_at) }}">
-            @error('finish_at')
+                   required value="{{ old('finish_date', $experience->finish_date) }}">
+            @error('finish_date')
             <div class="invalid-feedback">{{ $message }}</div>
             @endif
         </div>
@@ -45,8 +45,10 @@
         </div>
     </div>
     <div class="col-12">
-        <label for="skills">@lang('admin.skills')</label>
-        <select id="skills" name="skills" class="select2-container" multiple="multiple" data-form-target="select2">
+        <div class="d-flex justify-content-between">
+            <label class="form-label fw-bold" for="skills">@lang('admin.skills')</label>
+        </div>
+        <select id="skills" name="skills[]" class="select2-container" multiple="multiple" data-form-target="select2">
             @foreach($skills as $skill)
                 <option value="{{$skill->id}}">{{$skill->name}}</option>
             @endforeach
