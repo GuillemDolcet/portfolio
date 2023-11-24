@@ -22,7 +22,7 @@ class Experience extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'name', 'description', 'start_date', 'finish_date', 'currently'
+        'position', 'company', 'location', 'description', 'start_date', 'finish_date'
     ];
 
     /**
@@ -31,8 +31,8 @@ class Experience extends Model
      * @var array
      */
     protected $casts = [
-        'start_date' => 'datetime',
-        'finish_date' => 'datetime'
+        'start_date' => 'date',
+        'finish_date' => 'date'
     ];
 
     /**
