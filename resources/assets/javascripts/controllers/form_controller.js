@@ -59,6 +59,10 @@ export default class extends Controller {
         return true
     }
 
+    showLanguage(e){
+        
+    }
+
     select2TargetConnected(){
         this.select2Targets.forEach( function(select) {
             $(select).select2({

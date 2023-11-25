@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->string('position');
-            $table->string('company');
-            $table->string('location');
-            $table->text('description');
+            $table->json('position');
+            $table->json('company');
+            $table->json('location');
+            $table->json('description');
             $table->date('start_date');
             $table->date('finish_date')->nullable();
             $table->timestamps();

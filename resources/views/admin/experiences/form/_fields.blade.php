@@ -1,47 +1,51 @@
 <div class="col-12">
-    <div class="col-12 mb-3">
-        <label class="form-label fw-bold" for="position">@lang('admin.position') <sup class="text-danger fs-xs">*</sup></label>
-        <input id="position" name="position" type="text" class="form-control @error('position') is-invalid @enderror"
-               autocomplete="off"
-               required value="{{ old('position', $experience->position) }}">
-        @error('position')
-        <div class="invalid-feedback">{{ $message }}</div>
-        @endif
-    </div>
-    <div class="col-12 mb-3">
-        <label class="form-label fw-bold" for="company">@lang('admin.company') <sup class="text-danger fs-xs">*</sup></label>
-        <input id="company" name="company" type="text" class="form-control @error('company') is-invalid @enderror"
-               autocomplete="off"
-               required value="{{ old('company', $experience->company) }}">
-        @error('company')
-        <div class="invalid-feedback">{{ $message }}</div>
-        @endif
-    </div>
-    <div class="col-12 mb-3">
-        <label class="form-label fw-bold" for="location">@lang('admin.location') <sup class="text-danger fs-xs">*</sup></label>
-        <input id="location" name="location" type="text" class="form-control @error('location') is-invalid @enderror"
-               autocomplete="off"
-               required value="{{ old('location', $experience->location) }}">
-        @error('location')
-        <div class="invalid-feedback">{{ $message }}</div>
-        @endif
-    </div>
-    <div class="col-12 mb-3">
-        <label class="form-label fw-bold" for="name">@lang('admin.name') <sup class="text-danger fs-xs">*</sup></label>
-        <input id="name" name="name" type="text" class="form-control @error('name') is-invalid @enderror"
-               autocomplete="off"
-               required value="{{ old('name', $experience->name) }}">
-        @error('name')
-        <div class="invalid-feedback">{{ $message }}</div>
-        @endif
-    </div>
-    <div class="col-12 mb-3">
-        <label class="form-label fw-bold" for="description">@lang('admin.description') <sup class="text-danger fs-xs">*</sup></label>
-        <textarea id="description" name="description" type="text" class="form-control @error('description') is-invalid @enderror"
-               autocomplete="off">{{ old('description', $experience->description) }}</textarea>
-        @error('description')
-        <div class="invalid-feedback">{{ $message }}</div>
-        @endif
+    <div class="small mb-3"><i><b>@lang('admin.advice-translations')</b></i></div>
+    <div class="languages">
+        <div class="d-flex">
+            @foreach(\App\Models\Language::all() as $language)
+                <div class="mr-3"><img src="{{image_url($language->image)}}" alt="{{$language->name}}"/> </div>
+            @endforeach
+
+        </div>
+        @foreach(\App\Models\Language::all() as $key => $language)
+            <div data-language="{{$language->name}}" class="{{$key <= 0 ? '' : 'd-none'}}">
+                <div class="col-12 mb-3">
+                    <label class="form-label fw-bold" for="position[{{$language->name}}]">@lang('admin.position') <sup class="text-danger fs-xs">*</sup></label>
+                    <input id="position[{{$language->name}}]" name="position[{{$language->name}}]" type="text" class="form-control @error('position.'.$language->name) is-invalid @enderror"
+                           autocomplete="off"
+                           required value="{{ old('position', $experience->getTranslation('position',$language->name)) }}">
+                    @error('position.'.$language->name)
+                    <div class="invalid-feedback">{{ $message }}</div>
+                    @endif
+                </div>
+                <div class="col-12 mb-3">
+                    <label class="form-label fw-bold" for="company[{{$language->name}}]">@lang('admin.company') <sup class="text-danger fs-xs">*</sup></label>
+                    <input id="company[{{$language->name}}]" name="company[{{$language->name}}]" type="text" class="form-control @error('company.'.$language->name) is-invalid @enderror"
+                           autocomplete="off"
+                           required value="{{ old('company', $experience->getTranslation('company',$language->name)) }}">
+                    @error('company.'.$language->name)
+                    <div class="invalid-feedback">{{ $message }}</div>
+                    @endif
+                </div>
+                <div class="col-12 mb-3">
+                    <label class="form-label fw-bold" for="location[{{$language->name}}]">@lang('admin.location') <sup class="text-danger fs-xs">*</sup></label>
+                    <input id="location[{{$language->name}}]" name="location[{{$language->name}}]" type="text" class="form-control @error('location.'.$language->name) is-invalid @enderror"
+                           autocomplete="off"
+                           required value="{{ old('location', $experience->getTranslation('location',$language->name)) }}">
+                    @error('location.'.$language->name)
+                    <div class="invalid-feedback">{{ $message }}</div>
+                    @endif
+                </div>
+                <div class="col-12 mb-3">
+                    <label class="form-label fw-bold" for="description[{{$language->name}}]">@lang('admin.description') <sup class="text-danger fs-xs">*</sup></label>
+                    <textarea id="description[{{$language->name}}]" name="description[{{$language->name}}]" type="text" class="form-control @error('description.'.$language->name) is-invalid @enderror"
+                              autocomplete="off">{{ old('description', $experience->getTranslation('description',$language->name)) }}</textarea>
+                    @error('description.'.$language->name)
+                    <div class="invalid-feedback">{{ $message }}</div>
+                    @endif
+                </div>
+            </div>
+        @endforeach
     </div>
     <div class="col-12 row mb-3">
         <div class="col-6">

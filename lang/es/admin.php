@@ -32,6 +32,7 @@ return [
     'skills' => 'Habilidades',
     'location' => 'Localizacion',
     'company' => 'Empresa',
+    'advice-translations' => 'Es necesario rellenar todos los campos 1 vez independientemente del idioma, los campos no traducidos se traducirán automáticamente !!!',
     'position' => 'Cargo',
     'currently' => 'Actualmente tengo este cargo',
     'created_at' => 'Creado en',

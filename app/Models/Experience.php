@@ -6,9 +6,12 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Spatie\Translatable\HasTranslations;
 
 class Experience extends Model
 {
+    use HasTranslations;
+
     /**
      * The table associated with the model.
      *
@@ -33,6 +36,15 @@ class Experience extends Model
     protected $casts = [
         'start_date' => 'date',
         'finish_date' => 'date'
+    ];
+
+    /**
+     * The attributes that are translated
+     *
+     * @var array
+     */
+    protected array $translatable = [
+        'position', 'company', 'location', 'description'
     ];
 
     /**
