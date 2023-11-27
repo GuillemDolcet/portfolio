@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use App\Models\Skill;
 use App\Rules\Ownership;
+use App\Rules\Language;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -34,11 +35,13 @@ class ExperienceRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'max: 255'],
-            'description' => ['required'],
+            'position' => ['required', 'array', new Language()],
+            'company' => ['required', 'array', new Language()],
+            'location' => ['required', 'array', new Language()],
+            'description' => ['required', 'array', new Language()],
             'start_date' =>  ['required', 'date'],
             'finish_date' => ['required_without:currently', 'date', 'after:start_date'],
-            'currently' => ['required_without:finish_date', 'date', 'after:start_date'],
+            'currently' => ['required_without:finish_date'],
             'skills' => ['nullable', 'array'],
             'skills.*' => ['required','exists:skills,id', new Ownership(Skill::class)]
         ];

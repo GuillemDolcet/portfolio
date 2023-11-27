@@ -59,8 +59,15 @@ export default class extends Controller {
         return true
     }
 
-    showLanguage(e){
-        
+    changeLanguage(e){
+        $("input[name='language']").each(function() {
+            let language = $(this);
+            if (language.is(':checked')){
+                $("div[data-language='" + language.val() + "']").removeClass('d-none');
+            } else {
+                $("div[data-language='" + language.val() + "']").addClass('d-none');
+            }
+        });
     }
 
     select2TargetConnected(){

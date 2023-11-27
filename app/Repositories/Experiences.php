@@ -91,8 +91,6 @@ class Experiences extends Repository
     {
         $instance->fill($attributes);
 
-        $instance->setTranslation();
-
         $instance->user()->associate($user);
 
         $result = $instance->save();

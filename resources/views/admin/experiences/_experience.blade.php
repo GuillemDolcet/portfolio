@@ -3,8 +3,8 @@
     <td>{{ ucfirst($experience->company) }}</td>
     <td>{{ ucfirst($experience->location) }}</td>
     <td>{{ ucfirst($experience->description) }}</td>
-    <td>{{ $experience?->start_date->format('d/m/y') ?? '-' }}</td>
-    <td>{{ $experience?->finish_date->format('d/m/y') ?? Lang::get('admin.currently') }}</td>
+    <td>{{ $experience->start_date->format('d/m/y') }}</td>
+    <td>{{ !is_null($experience->finish_date) ? $experience->finish_date->format('d/m/y') : Lang::get('admin.currently') }}</td>
     <td>
         <div class="d-flex">
             @foreach($experience->skills as $skill)
