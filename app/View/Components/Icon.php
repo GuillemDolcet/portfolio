@@ -46,7 +46,7 @@ class Icon extends Component
     public string $fill;
 
     /**
-     * Stroke color
+     * Stroke color.
      *
      * @var string
      */

@@ -39,7 +39,7 @@ class Experience extends Model
     ];
 
     /**
-     * The attributes that are translated
+     * The attributes that are translated.
      *
      * @var array
      */
@@ -79,8 +79,11 @@ class Experience extends Model
     ///// Scopes //////////////////////////////////////////////////////////////////////////////////////////////////////
 
     /**
-     * Scope by language name
+     * Scope by language name.
      *
+     * @param Builder $query
+     * @param User $user
+     * @return void
      */
     public function scopeUser(Builder $query, User $user): void
     {

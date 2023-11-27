@@ -33,7 +33,7 @@ class Language extends Model
     ///// Scopes //////////////////////////////////////////////////////////////////////////////////////////////////////
 
     /**
-     * Scope by language name
+     * Scope by language name.
      *
      */
     public function scopeName(Builder $query, string $name): void
@@ -42,7 +42,7 @@ class Language extends Model
     }
 
     /**
-     * Scope by not language name
+     * Scope by not language name.
      *
      */
     public function scopeNotName(Builder $query, string $name): void
@@ -51,7 +51,7 @@ class Language extends Model
     }
 
     /**
-     * Order by locale language
+     * Order by locale language.
      *
      */
     public function scopeOrderByLocale(Builder $query): void

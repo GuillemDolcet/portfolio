@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 
-
 class SessionsController extends Controller
 {
     /**
@@ -27,7 +26,10 @@ class SessionsController extends Controller
     }
 
     /**
-     * /auth/login
+     * [GET] /auth/login
+     * auth.login
+     *
+     * Returns the login view.
      *
      * @return ConsoleApplication|FoundationApplication|View|Factory
      */
@@ -37,7 +39,13 @@ class SessionsController extends Controller
     }
 
     /**
+     * [POST] /auth/login
+     * auth.authenticate
+     *
      * Handle an authentication attempt.
+     *
+     * @param Request $request
+     * @return RedirectResponse
      */
     public function authenticate(Request $request): RedirectResponse
     {
@@ -60,6 +68,9 @@ class SessionsController extends Controller
     }
 
     /**
+     * [DELETE] /auth/logout
+     * auth.logout
+     *
      * Logs the customer out.
      *
      * @param Request $request

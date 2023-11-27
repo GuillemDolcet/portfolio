@@ -10,6 +10,9 @@ class LocalizationController extends AdminController
 {
     /**
      * [POST] /change-language
+     * change-language
+     *
+     * Changes the local language, then redirect to the last page.
      *
      * @param Language $language
      * @return RedirectResponse

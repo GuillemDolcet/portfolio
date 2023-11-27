@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Lang;
 class SkillController extends AdminController
 {
     /**
-     * Skills repository instance
+     * Skills repository instance.
      *
      * @param Skills $skills
      */
@@ -43,6 +43,8 @@ class SkillController extends AdminController
      * [GET] /admin/skills
      * admin.skills.index
      *
+     * Returns the skills view.
+     *
      * @return ConsoleApplication|FoundationApplication|View|Factory
      */
     public function index(): ConsoleApplication|FoundationApplication|View|Factory
@@ -55,6 +57,8 @@ class SkillController extends AdminController
     /**
      * [GET] /admin/skills/create
      * admin.skills.create
+     *
+     * Returns the skill modal stream view for create.
      *
      * @return RedirectResponse|Response|ResponseFactory
      * @throws BindingResolutionException
@@ -75,6 +79,8 @@ class SkillController extends AdminController
      * [GET] /admin/skills/{skill}/edit
      * admin.skills.edit
      *
+     * Returns the skill modal stream view for update.
+     *
      * @param Skill $skill
      * @return RedirectResponse|Response|ResponseFactory
      * @throws BindingResolutionException
@@ -93,6 +99,8 @@ class SkillController extends AdminController
     /**
      * [POST] /admin/skills
      * admin.skills.store
+     *
+     * Validate skill form and create skill, then redirect to skills index.
      *
      * @param SkillStoreRequest $request
      * @return RedirectResponse
@@ -117,6 +125,8 @@ class SkillController extends AdminController
      * [PUT|PATCH] /admin/skills/{skill}
      * admin.skills.update
      *
+     * Validate skill form and update skill, then redirect to skills index.
+     *
      * @param SkillUpdateRequest $request
      * @param Skill $skill
      * @return RedirectResponse
@@ -140,6 +150,8 @@ class SkillController extends AdminController
     /**
      * [DELETE] /admin/skills/{skill}
      * admin.skills.destroy
+     *
+     * Delete skill, then redirect to skills index.
      *
      * @param Skill $skill
      * @return Renderable|RedirectResponse

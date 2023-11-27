@@ -9,9 +9,10 @@ class UserPolicy
     /**
      * Determine whether the user can view any models.
      *
+     * @param User $logged
      * @return bool
      */
-    public function manage(User $logged): mixed
+    public function manage(User $logged): bool
     {
         return $logged->hasRole(['superadmin','admin']) ;
     }

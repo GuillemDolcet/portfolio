@@ -57,8 +57,7 @@ class Skill extends Model
     ///// Scopes //////////////////////////////////////////////////////////////////////////////////////////////////////
 
     /**
-     * Scope by language name
-     *
+     * Scope by language name.
      */
     public function scopeUser(Builder $query, User $user): void
     {

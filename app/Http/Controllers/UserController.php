@@ -21,9 +21,8 @@ use Spatie\Permission\Models\Role;
 
 class UserController extends AdminController
 {
-
     /**
-     * Users repository instance
+     * Users repository instance.
      *
      * @param Users $users
      */
@@ -47,6 +46,8 @@ class UserController extends AdminController
      * [GET] /admin/users
      * admin.users.index
      *
+     * Returns the users view.
+     *
      * @return ConsoleApplication|FoundationApplication|View|Factory
      */
     public function index(): ConsoleApplication|FoundationApplication|View|Factory
@@ -58,6 +59,8 @@ class UserController extends AdminController
     /**
      * [GET] /admin/users/create
      * admin.users.create
+     *
+     * Returns the user modal stream view for create.
      *
      * @return RedirectResponse|Response|ResponseFactory
      * @throws BindingResolutionException
@@ -79,6 +82,8 @@ class UserController extends AdminController
      * [GET] /admin/users/{user}/edit
      * admin.users.edit
      *
+     * Returns the user modal stream view for update.
+     *
      * @param User $user
      * @return RedirectResponse|Response|ResponseFactory
      * @throws BindingResolutionException
@@ -98,6 +103,8 @@ class UserController extends AdminController
     /**
      * [POST] /admin/users
      * admin.users.store
+     *
+     * Validate user form and create user, then redirect to users index.
      *
      * @param UserStoreRequest $request
      * @return RedirectResponse
@@ -122,6 +129,8 @@ class UserController extends AdminController
      * [PUT|PATCH] /admin/users/{user}
      * admin.users.update
      *
+     * Validate user form and update user, then redirect to users index.
+     *
      * @param UserUpdateRequest $request
      * @param User $user
      * @return RedirectResponse
@@ -145,6 +154,8 @@ class UserController extends AdminController
     /**
      * [DELETE] /admin/users/{user}
      * admin.users.destroy
+     *
+     * Delete user, then redirect to users index.
      *
      * @param User $user
      * @return Renderable|RedirectResponse

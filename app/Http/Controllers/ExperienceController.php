@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ExperienceRequest;
-use App\Http\Requests\SkillStoreRequest;
-use App\Http\Requests\SkillUpdateRequest;
 use App\Models\Experience;
 use App\Repositories\Experiences;
 use App\Repositories\Skills;
@@ -23,14 +21,14 @@ use Illuminate\Support\Facades\Lang;
 class ExperienceController extends AdminController
 {
     /**
-     * Experiences repository instance
+     * Experiences repository instance.
      *
      * @param Experiences $experiences
      */
     protected Experiences $experiences;
 
     /**
-     * Skills repository instance
+     * Skills repository instance.
      *
      * @param Skills $experiences
      */
@@ -54,6 +52,8 @@ class ExperienceController extends AdminController
      * [GET] /admin/experiences
      * admin.experiences.index
      *
+     * Returns the experiences view.
+     *
      * @return ConsoleApplication|FoundationApplication|View|Factory
      */
     public function index(): ConsoleApplication|FoundationApplication|View|Factory
@@ -66,6 +66,8 @@ class ExperienceController extends AdminController
     /**
      * [GET] /admin/experiences/create
      * admin.experiences.create
+     *
+     * Returns the experience modal stream view for create.
      *
      * @return RedirectResponse|Response|ResponseFactory
      * @throws BindingResolutionException
@@ -87,6 +89,8 @@ class ExperienceController extends AdminController
      * [GET] /admin/experiences/{experience}/edit
      * admin.experiences.edit
      *
+     * Returns the experience modal stream view for update.
+     *
      * @param Experience $experience
      * @return RedirectResponse|Response|ResponseFactory
      * @throws BindingResolutionException
@@ -106,6 +110,8 @@ class ExperienceController extends AdminController
     /**
      * [POST] /admin/experiences
      * admin.experiences.store
+     *
+     * Validate experience form and create experience, then redirect to experiences index.
      *
      * @param ExperienceRequest $request
      * @return RedirectResponse
@@ -130,6 +136,8 @@ class ExperienceController extends AdminController
      * [PUT|PATCH] /admin/experiences/{experience}
      * admin.experiences.update
      *
+     * Validate experience form and update experience, then redirect to experiences index.
+     *
      * @param ExperienceRequest $request
      * @param Experience $experience
      * @return RedirectResponse
@@ -153,6 +161,8 @@ class ExperienceController extends AdminController
     /**
      * [DELETE] /admin/experiences/{experience}
      * admin.skills.destroy
+     *
+     * Delete experience, then redirect to experiences index.
      *
      * @param Experience $experience
      * @return Renderable|RedirectResponse

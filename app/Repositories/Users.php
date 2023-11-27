@@ -134,16 +134,4 @@ class Users extends Repository
 
         return $this->create($attributes);
     }
-
-    /**
-     * Finds a user by its email attribute.
-     *
-     * @param string $email
-     * @param array $options
-     * @return User|null
-     */
-    public function findByEmail(string $email, array $options = []): ?User
-    {
-        return $this->findBy(['email' => $email], $options);
-    }
 }

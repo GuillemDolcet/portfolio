@@ -15,6 +15,11 @@ class Ownership implements ValidationRule
      */
     protected string $model;
 
+    /**
+     * Class constructor.
+     *
+     * @return void
+     */
     public function __construct($model)
     {
         $this->model = $model;
@@ -23,7 +28,10 @@ class Ownership implements ValidationRule
     /**
      * Run the validation rule.
      *
+     * @param string $attribute
+     * @param mixed $value
      * @param Closure(string): PotentiallyTranslatedString $fail
+     * @return void
      */
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {

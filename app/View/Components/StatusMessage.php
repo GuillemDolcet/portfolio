@@ -113,7 +113,7 @@ class StatusMessage extends Component
     }
 
     /**
-     * Extracts message from session (if available)
+     * Extracts message from session (if available).
      *
      * @return string|null
      */

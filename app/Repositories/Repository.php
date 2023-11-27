@@ -22,9 +22,9 @@ abstract class Repository implements
     /**
      * Error messages.
      *
-     * @var MessageBag
+     * @var MessageBag|null
      */
-    protected MessageBag $messages;
+    protected MessageBag|null $messages;
 
     /**
      * The actual model class supporting the business logic.
@@ -120,7 +120,7 @@ abstract class Repository implements
      */
     public function addError(string $key, string $message): MessageBag
     {
-        if (! $this->messages) {
+        if (!$this->messages) {
             $this->messages = new MessageBag();
         }
 
