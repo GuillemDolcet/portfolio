@@ -14,7 +14,7 @@ return new class extends Migration
     {
         Schema::create('languages', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name', 2)->unique();
             $table->string('image');
         });
         Artisan::call('db:seed', array('--class' => 'LanguagesSeeder'));

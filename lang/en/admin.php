@@ -31,11 +31,15 @@ return [
     'order' => 'Order',
     'skill' => 'Skill',
     'skills' => 'Skills',
-    'currently' => 'Currently',
+    'advice-translations' => 'All fields must be filled in once regardless of language, untranslated fields will be translated automatically !!!',
+    'location' => 'Location',
+    'company' => 'Company',
+    'position' => 'Position',
+    'currently' => 'Still working here',
     'created_at' => 'Created At',
     'updated_at' => 'Updated At',
-    'start_at' => 'Start At',
-    'finish_at' => 'Finish At',
+    'start_date' => 'Start date',
+    'finish_date' => 'Finish date',
     'login' => 'Login',
     'level' => 'Level',
     'placeholders' => [
@@ -44,7 +48,8 @@ return [
     ],
     'confirms' => [
         'delete-user' => 'Do you really want to delete this user? This action cannot be undone',
-        'delete-skill' => 'Do you really want to delete this skill? This action cannot be undone'
+        'delete-skill' => 'Do you really want to delete this skill? This action cannot be undone',
+        'delete-experience' => 'Do you really want to delete this experience? This action cannot be undone'
     ],
     'responses' => [
         'success-create-user' => 'User created',
@@ -56,7 +61,12 @@ return [
         'error-create-skill' => 'Error on create skill',
         'success-update-skill' => 'Skill updated',
         'error-update-skill' => 'Error on update skill',
-        'delete-skill' => 'Skill deleted'
+        'delete-skill' => 'Skill deleted',
+        'success-create-experience' => 'Experience created',
+        'error-create-experience' => 'Error on create experience',
+        'success-update-experience' => 'Experience updated',
+        'error-update-experience' => 'Error on update experience',
+        'delete-experience' => 'Experience deleted'
     ],
     'created' => 'Created',
     'confirm' => 'Confirm',

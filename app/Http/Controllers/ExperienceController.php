@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ExperienceRequest;
 use App\Http\Requests\SkillStoreRequest;
 use App\Http\Requests\SkillUpdateRequest;
 use App\Models\Experience;
@@ -57,7 +58,7 @@ class ExperienceController extends AdminController
      */
     public function index(): ConsoleApplication|FoundationApplication|View|Factory
     {
-        $experiences = $this->experiences->listing($this->experiences->newQuery()->user(current_user())->orderBy('order'));
+        $experiences = $this->experiences->listing($this->experiences->newQuery()->user(current_user())->orderBy('start_date'));
 
         return view('admin.experiences.index', compact('experiences'));
     }
@@ -106,22 +107,22 @@ class ExperienceController extends AdminController
      * [POST] /admin/experiences
      * admin.experiences.store
      *
-     * @param SkillStoreRequest $request
+     * @param ExperienceRequest $request
      * @return RedirectResponse
      */
-    public function store(SkillStoreRequest $request): RedirectResponse
+    public function store(ExperienceRequest $request): RedirectResponse
     {
         if ($this->experiences->create($request->validated(), current_user())) {
             return redirect()
                 ->route('admin.experiences.index')
                 ->with([
-                    'status' => ['type' => 'success', 'message' => Lang::get('admin.responses.success-create-skill')]
+                    'status' => ['type' => 'success', 'message' => Lang::get('admin.responses.success-create-experience')]
                 ]);
         }
         return redirect()
             ->route('admin.experiences.index')
             ->with([
-                'status' => ['type' => 'error', 'message' => Lang::get('admin.responses.error-create-skill')]
+                'status' => ['type' => 'error', 'message' => Lang::get('admin.responses.error-create-experience')]
             ]);
     }
 
@@ -129,23 +130,23 @@ class ExperienceController extends AdminController
      * [PUT|PATCH] /admin/experiences/{experience}
      * admin.experiences.update
      *
-     * @param SkillUpdateRequest $request
+     * @param ExperienceRequest $request
      * @param Experience $experience
      * @return RedirectResponse
      */
-    public function update(SkillUpdateRequest $request, Experience $experience): RedirectResponse
+    public function update(ExperienceRequest $request, Experience $experience): RedirectResponse
     {
         if ($this->experiences->update($experience, $request->validated(), current_user())) {
             return redirect()
                 ->route('admin.experiences.index')
                 ->with([
-                    'status' => ['type' => 'success', 'message' => Lang::get('admin.responses.success-update-skill')]
+                    'status' => ['type' => 'success', 'message' => Lang::get('admin.responses.success-update-experience')]
                 ]);
         }
         return redirect()
             ->route('admin.experiences.index')
             ->with([
-                'status' => ['type' => 'error', 'message' => Lang::get('admin.responses.error-update-skill')]
+                'status' => ['type' => 'error', 'message' => Lang::get('admin.responses.error-update-experience')]
             ]);
     }
 
@@ -164,7 +165,7 @@ class ExperienceController extends AdminController
             ->with([
                 'status' => [
                     'type' => 'success',
-                    'message' => Lang::get('admin.responses.delete-skill')
+                    'message' => Lang::get('admin.responses.delete-experience')
                 ]
             ]);
     }

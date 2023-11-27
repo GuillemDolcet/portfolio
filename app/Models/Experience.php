@@ -5,9 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Spatie\Translatable\HasTranslations;
 
 class Experience extends Model
 {
+    use HasTranslations;
+
     /**
      * The table associated with the model.
      *
@@ -21,7 +25,26 @@ class Experience extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'name', 'description', 'start_at', 'finish_at', 'currently'
+        'position', 'company', 'location', 'description', 'start_date', 'finish_date'
+    ];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'start_date' => 'date',
+        'finish_date' => 'date'
+    ];
+
+    /**
+     * The attributes that are translated
+     *
+     * @var array
+     */
+    protected array $translatable = [
+        'position', 'company', 'location', 'description'
     ];
 
     /**
@@ -34,13 +57,23 @@ class Experience extends Model
     ///// Relations //////////////////////////////////////////////////////////////////////////////////////////////////
 
     /**
-     * Skills relation.
+     * User relation.
      *
      * @return BelongsTo
      */
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    /**
+     * Skills relation.
+     *
+     * @return BelongsToMany
+     */
+    public function skills(): BelongsToMany
+    {
+        return $this->belongsToMany(Skill::class, 'experience_skills', 'experience_id','skill_id');
     }
 
     ///// Scopes //////////////////////////////////////////////////////////////////////////////////////////////////////

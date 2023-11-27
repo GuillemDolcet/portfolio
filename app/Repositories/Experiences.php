@@ -95,6 +95,12 @@ class Experiences extends Repository
 
         $result = $instance->save();
 
+        $instance->skills()->detach();
+
+        if (isset($attributes['skills'])){
+            $instance->skills()->attach($attributes['skills']);
+        }
+
         if (! $result) {
             return null;
         }

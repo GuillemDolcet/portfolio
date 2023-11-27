@@ -49,4 +49,14 @@ class Language extends Model
     {
         $query->where('name', '!=', $name);
     }
+
+    /**
+     * Order by locale language
+     *
+     */
+    public function scopeOrderByLocale(Builder $query): void
+    {
+        $lang = app()->getLocale();
+        $query->orderByRaw("FIELD(name, '$lang') DESC");
+    }
 }
