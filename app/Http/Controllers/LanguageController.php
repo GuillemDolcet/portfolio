@@ -6,7 +6,7 @@ use App\Models\Language;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\App;
 
-class LocalizationController extends AdminController
+class LanguageController extends AdminController
 {
     /**
      * [POST] /change-language
@@ -23,4 +23,6 @@ class LocalizationController extends AdminController
         session()->put('locale', $language->name);
         return redirect()->back();
     }
+
+
 }
