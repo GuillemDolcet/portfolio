@@ -27,12 +27,6 @@
                         <span class="input-group-text"><x-icon icon="eye" class="cursor-pointer"/></span>
                     </div>
                 </div>
-                <div class="mb-2">
-                    <label class="form-check">
-                        <input type="checkbox" class="form-check-input"/>
-                        <span class="form-check-label">@lang('admin.remember-me')</span>
-                    </label>
-                </div>
                 <div class="form-footer">
                     <button type="submit" class="btn btn-primary w-100">@lang('admin.sign-in')</button>
                 </div>
