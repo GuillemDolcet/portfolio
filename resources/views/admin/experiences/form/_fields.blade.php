@@ -65,7 +65,7 @@
             <input id="start_date" name="start_date" type="date"
                    class="form-control @error('start_date') is-invalid @enderror"
                    autocomplete="off"
-                   required value="{{ old('start_date', $experience->start_date) }}">
+                   required value="{{ old('start_date', !is_null($experience->start_date) ? $experience->start_date->format('Y-m-d') : '') }}">
             @error('start_date')
             <div class="invalid-feedback">{{ $message }}</div>
             @endif
@@ -76,7 +76,7 @@
             <input id="finish_date" name="finish_date" type="date"
                    class="form-control @error('finish_date') is-invalid @enderror"
                    autocomplete="off"
-                   required value="{{ old('finish_date', $experience->finish_date) }}">
+                   required @if(is_null($experience->finish_date)) disabled @else value="{{ old('finish_date', $experience->finish_date->format('Y-m-d')) }}" @endif>
             @error('finish_date')
             <div class="invalid-feedback">{{ $message }}</div>
             @endif
@@ -87,7 +87,7 @@
             <input type="checkbox" id="currently" name="currently" value="1"
                    class="form-check-input @error('currently') is-invalid @enderror"
                    data-controller="experience" data-action="input->experience#ableDisableFinishDate"
-                {{ !!old('active', $experience->currently) ? 'checked="checked"' : '' }}>
+                    @if(is_null($experience->finish_date)) checked @endif>
             <span class="form-check-label">@lang('admin.currently')</span>
         </label>
         @error('currently')
