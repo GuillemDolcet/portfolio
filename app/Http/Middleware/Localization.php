@@ -25,7 +25,7 @@ class Localization
             foreach ($availableLanguages as $language) {
                 if(in_array($language, $userLanguages)) {
                     App::setLocale($language);
-                    Session::push('locale', $language);
+                    Session::put('locale', $language);
                     break;
                 }
             }
