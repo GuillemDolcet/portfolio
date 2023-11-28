@@ -11,7 +11,7 @@
                 @endforeach
             </div>
         </div>
-        @foreach(\App\Models\Language::all() as $key => $language)
+        @foreach(\App\Models\Language::orderByLocale()->get() as $key => $language)
             <div data-language="{{$language->name}}" class="{{$key <= 0 ? '' : 'd-none'}}">
                 <div class="col-12 mb-3">
                     <label class="form-label fw-bold" for="position[{{$language->name}}]">@lang('admin.position') <sup

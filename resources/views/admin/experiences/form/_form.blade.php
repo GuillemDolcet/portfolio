@@ -14,9 +14,9 @@
             <a href="#" class="btn btn-link link-secondary" data-bs-dismiss="modal">Cancel</a>
             <button type="submit" id="send-form" name="action" class="btn btn-primary ms-auto me-2">
                 @if($experience->exists)
-                    <x-icon icon="edit"/> @lang('admin.edit') @lang('admin.skill')
+                    <x-icon icon="edit"/> @lang('admin.edit') @lang('admin.experience')
                 @else
-                    <x-icon icon="plus"/> @lang('admin.add') @lang('admin.skill')
+                    <x-icon icon="plus"/> @lang('admin.add') @lang('admin.experience')
                 @endif
             </button>
         </div>

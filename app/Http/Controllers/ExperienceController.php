@@ -6,6 +6,8 @@ use App\Http\Requests\ExperienceRequest;
 use App\Models\Experience;
 use App\Repositories\Experiences;
 use App\Repositories\Skills;
+use App\Services\Translator;
+use DeepL\DeepLException;
 use Illuminate\Contracts\Console\Application as ConsoleApplication;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Contracts\Support\Renderable;
@@ -35,17 +37,26 @@ class ExperienceController extends AdminController
     protected Skills $skills;
 
     /**
+     * Translator service instance.
+     *
+     * @param Translator $translator
+     */
+    protected Translator $translator;
+
+    /**
      * Class constructor.
      *
      * @return void
      */
-    public function __construct(Request $request, Experiences $experiences, Skills $skills)
+    public function __construct(Request $request, Experiences $experiences, Skills $skills, Translator $translator)
     {
         parent::__construct($request);
 
         $this->experiences = $experiences;
 
         $this->skills = $skills;
+
+        $this->translator = $translator;
     }
 
     /**
@@ -115,10 +126,13 @@ class ExperienceController extends AdminController
      *
      * @param ExperienceRequest $request
      * @return RedirectResponse
+     * @throws DeepLException
      */
     public function store(ExperienceRequest $request): RedirectResponse
     {
-        if ($this->experiences->create($request->validated(), current_user())) {
+        if ($attributes = $request->validated()) {
+            $attributes = $this->translator->translate($attributes, $this->experiences->build()->getTranslatableAttributes());
+            $this->experiences->create($attributes, current_user());
             return redirect()
                 ->route('admin.experiences.index')
                 ->with([
@@ -141,10 +155,13 @@ class ExperienceController extends AdminController
      * @param ExperienceRequest $request
      * @param Experience $experience
      * @return RedirectResponse
+     * @throws DeepLException
      */
     public function update(ExperienceRequest $request, Experience $experience): RedirectResponse
     {
-        if ($this->experiences->update($experience, $request->validated(), current_user())) {
+        if ($attributes = $request->validated()) {
+            $attributes = $this->translator->translate($attributes, $this->experiences->build()->getTranslatableAttributes());
+            $this->experiences->update($experience, $attributes, current_user());
             return redirect()
                 ->route('admin.experiences.index')
                 ->with([

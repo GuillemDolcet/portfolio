@@ -28,6 +28,21 @@ class ExperienceRequest extends FormRequest
     }
 
     /**
+     * Prepare the data for validation.
+     *
+     * @return void
+     */
+    protected function prepareForValidation(): void
+    {
+        $this->merge([
+            'position' => array_filter($this->get('position')),
+            'company' => array_filter($this->get('company')),
+            'location' => array_filter($this->get('location')),
+            'description' => array_filter($this->get('description')),
+        ]);
+    }
+
+    /**
      * Get the validation rules that apply to the request.
      *
      * @return array<string, mixed>
@@ -36,9 +51,13 @@ class ExperienceRequest extends FormRequest
     {
         return [
             'position' => ['required', 'array', new Language()],
+            'position.*' => ['required', 'string'],
             'company' => ['required', 'array', new Language()],
+            'company.*' => ['required', 'string'],
             'location' => ['required', 'array', new Language()],
+            'location.*' => ['required', 'string'],
             'description' => ['required', 'array', new Language()],
+            'description.*' => ['required', 'string'],
             'start_date' =>  ['required', 'date'],
             'finish_date' => ['required_without:currently', 'date', 'after:start_date'],
             'currently' => ['required_without:finish_date'],

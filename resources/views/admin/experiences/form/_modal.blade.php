@@ -5,7 +5,7 @@
                 <h5 class="modal-title">@lang('admin.add') @lang('admin.experience')</h5>
             @else
                 <h5 class="modal-title">
-                    @lang('admin.skill') - {{ $experience->name }}
+                    @lang('admin.experience') - {{ $experience->position }} {{ $experience->company }}
                     <div class="fs-5 text-muted fw-normal">
                        <small>
                            @lang('admin.created') - {{ $experience->created_at->format('d/m/Y H:i') }}
