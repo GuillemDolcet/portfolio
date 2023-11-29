@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Spatie\Translatable\HasTranslations;
 
-class Experience extends Model
+class Project extends Model
 {
     use HasTranslations;
 
@@ -17,7 +17,7 @@ class Experience extends Model
      *
      * @var string
      */
-    protected $table = 'experiences';
+    protected $table = 'projects';
 
     /**
      * The attributes that are mass assignable.
@@ -25,7 +25,7 @@ class Experience extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'position', 'company', 'location', 'description', 'start_date', 'finish_date'
+        'name', 'description', 'url', 'image', 'start_date', 'finish_date'
     ];
 
     /**
@@ -44,7 +44,7 @@ class Experience extends Model
      * @var array
      */
     protected array $translatable = [
-        'position', 'company', 'location', 'description'
+        'name', 'description'
     ];
 
     /**

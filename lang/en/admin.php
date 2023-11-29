@@ -31,6 +31,9 @@ return [
     'order' => 'Order',
     'skill' => 'Skill',
     'skills' => 'Skills',
+    'project' => 'Project',
+    'projects' => 'Projects',
+    'url' => 'Url',
     'advice-translations' => 'All fields must be filled in once regardless of language, untranslated fields will be translated automatically !!!',
     'location' => 'Location',
     'company' => 'Company',
@@ -49,7 +52,8 @@ return [
     'confirms' => [
         'delete-user' => 'Do you really want to delete this user? This action cannot be undone',
         'delete-skill' => 'Do you really want to delete this skill? This action cannot be undone',
-        'delete-experience' => 'Do you really want to delete this experience? This action cannot be undone'
+        'delete-experience' => 'Do you really want to delete this experience? This action cannot be undone',
+        'delete-project' => 'Do you really want to delete this project? This action cannot be undone'
     ],
     'responses' => [
         'success-create-user' => 'User created',
@@ -66,7 +70,12 @@ return [
         'error-create-experience' => 'Error on create experience',
         'success-update-experience' => 'Experience updated',
         'error-update-experience' => 'Error on update experience',
-        'delete-experience' => 'Experience deleted'
+        'delete-experience' => 'Experience deleted',
+        'success-create-project' => 'Project created',
+        'error-create-project' => 'Error on create project',
+        'success-update-project' => 'Project updated',
+        'error-update-project' => 'Error on update project',
+        'delete-project' => 'Project deleted'
     ],
     'created' => 'Created',
     'confirm' => 'Confirm',

@@ -32,7 +32,7 @@ class ExperienceController extends AdminController
     /**
      * Skills repository instance.
      *
-     * @param Skills $experiences
+     * @param Skills $skills
      */
     protected Skills $skills;
 

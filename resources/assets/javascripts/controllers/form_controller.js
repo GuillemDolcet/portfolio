@@ -77,4 +77,12 @@ export default class extends Controller {
             });
         });
     }
+
+    ableDisableFinishDate(event){
+        if ($(event.target).prop('checked') === true){
+            $('#finish_date').attr('disabled',true);
+        } else {
+            $('#finish_date').attr('disabled',false);
+        }
+    }
 }

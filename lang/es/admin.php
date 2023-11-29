@@ -30,6 +30,9 @@ return [
     'sign-in' => 'Iniciar sesion',
     'skill' => 'Habilidad',
     'skills' => 'Habilidades',
+    'project' => 'Proyecto',
+    'projects' => 'Proyectos',
+    'url' => 'Url',
     'location' => 'Localizacion',
     'company' => 'Empresa',
     'advice-translations' => 'Es necesario rellenar todos los campos 1 vez independientemente del idioma, los campos no traducidos se traducirán automáticamente !!!',
@@ -49,7 +52,8 @@ return [
     'confirms' => [
         'delete-user' => '¿Realmente desea eliminar a este usuario? Esta acción no se puede deshacer',
         'delete-skill' => '¿Realmente desea eliminar esta habilidad? Esta acción no se puede deshacer',
-        'delete-experience' => '¿Realmente desea eliminar esta experiencia? Esta acción no se puede deshacer'
+        'delete-experience' => '¿Realmente desea eliminar esta experiencia? Esta acción no se puede deshacer',
+        'delete-project' => '¿Realmente desea eliminar este proyecto? Esta acción no se puede deshacer'
     ],
     'responses' => [
         'success-create-user' => 'Usuario creado',
@@ -61,12 +65,17 @@ return [
         'error-create-skill' => 'No se pudo crear la habilidad',
         'success-update-skill' => 'Habilidad actualizada',
         'error-update-skill' => 'No se pudo actualizar la habilidad',
-        'delete-skill' => 'Habilidad eliminado',
+        'delete-skill' => 'Habilidad eliminada',
         'success-create-experience' => 'Experiencia creada',
         'error-create-experience' => 'No se pudo crear la experiencia',
         'success-update-experience' => 'Experiencia actualizada',
         'error-update-experience' => 'No se pudo actualizar la experiencia',
-        'delete-experience' => 'Experiencia eliminado'
+        'delete-experience' => 'Experiencia eliminado',
+        'success-create-project' => 'Proyecto creado',
+        'error-create-project' => 'No se pudo crear el proyecto',
+        'success-update-project' => 'Proyecto actualizado',
+        'error-update-project' => 'No se pudo actualizar el proyecto',
+        'delete-project' => 'Proyecto eliminado'
     ],
     'created' => 'Created',
     'confirm' => 'Confirmar',
