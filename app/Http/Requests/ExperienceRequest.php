@@ -51,11 +51,11 @@ class ExperienceRequest extends FormRequest
     {
         return [
             'position' => ['required', 'array', new Language()],
-            'position.*' => ['required', 'string'],
+            'position.*' => ['required', 'string', 'max:100'],
             'company' => ['required', 'array', new Language()],
-            'company.*' => ['required', 'string'],
+            'company.*' => ['required', 'string', 'max:100'],
             'location' => ['required', 'array', new Language()],
-            'location.*' => ['required', 'string'],
+            'location.*' => ['required', 'string', 'max:100'],
             'description' => ['required', 'array', new Language()],
             'description.*' => ['required', 'string'],
             'start_date' =>  ['required', 'date'],

@@ -31,7 +31,7 @@ class SkillStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'max: 255'],
+            'name' => ['required', 'max: 50'],
             'level' => ['required', 'integer', 'min:1', 'max:100'],
             'image' =>  ['required', 'image', 'max:10000'],
             'order' => ['nullable', 'integer']

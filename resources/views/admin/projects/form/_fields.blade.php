@@ -19,7 +19,7 @@
                     <input id="name[{{$language->name}}]" name="name[{{$language->name}}]" type="text"
                            class="form-control @error('name.'.$language->name) is-invalid @enderror"
                            autocomplete="off"
-                           value="{{ old('name.'.$language->name, $project->getTranslation('name',$language->name)) }}">
+                           value="{{ old('name.'.$language->name, $project->getTranslation('name',$language->name)) }}" maxlength="100">
                     @error('name.'.$language->name)
                     <div class="invalid-feedback">{{ $message }}</div>
                     @endif

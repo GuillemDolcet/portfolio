@@ -49,7 +49,7 @@ class ProjectUpdateRequest extends FormRequest
     {
         return [
             'name' => ['required', 'array', new Language()],
-            'name.*' => ['required', 'string'],
+            'name.*' => ['required', 'string', 'max:100'],
             'description' => ['required', 'array', new Language()],
             'description.*' => ['required', 'string'],
             'image' =>  ['nullable', 'image', 'max:10000'],

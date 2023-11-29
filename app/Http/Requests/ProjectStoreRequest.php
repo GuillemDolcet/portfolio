@@ -49,7 +49,7 @@ class ProjectStoreRequest extends FormRequest
     {
         return [
             'name' => ['required', 'array', new Language()],
-            'name.*' => ['required', 'string'],
+            'name.*' => ['required', 'string', 'max:100'],
             'description' => ['required', 'array', new Language()],
             'description.*' => ['required'],
             'image' =>  ['required', 'image', 'max:10000'],

@@ -33,7 +33,7 @@
             <label class="form-label fw-bold" for="name">@lang('admin.name') <sup class="text-danger fs-xs">*</sup></label>
             <input id="name" name="name" type="text" class="form-control @error('name') is-invalid @enderror"
                    autocomplete="off"
-                   required value="{{ old('name', $user->name) }}">
+                   required value="{{ old('name', $user->name) }}" minlength="3" maxlength="50">
             @error('name')
             <div class="invalid-feedback">{{ $message }}</div>
             @endif

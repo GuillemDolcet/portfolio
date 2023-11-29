@@ -32,7 +32,7 @@ class UserUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'max: 255'],
+            'name' => ['required', 'min: 3', 'max: 50'],
             'password' =>  ['nullable', 'confirmed', Password::defaults()],
             'role' => ['required', 'exists:roles,id'],
         ];

@@ -18,7 +18,7 @@
                             class="text-danger fs-xs">*</sup></label>
                     <input id="position[{{$language->name}}]" name="position[{{$language->name}}]" type="text"
                            class="form-control @error('position.'.$language->name) is-invalid @enderror"
-                           autocomplete="off"
+                           autocomplete="off" maxlength="100"
                            value="{{ old('position.'.$language->name, $experience->getTranslation('position',$language->name)) }}">
                     @error('position.'.$language->name)
                     <div class="invalid-feedback">{{ $message }}</div>
@@ -29,7 +29,7 @@
                             class="text-danger fs-xs">*</sup></label>
                     <input id="company[{{$language->name}}]" name="company[{{$language->name}}]" type="text"
                            class="form-control @error('company.'.$language->name) is-invalid @enderror"
-                           autocomplete="off"
+                           autocomplete="off" maxlength="100"
                            value="{{ old('company.'.$language->name, $experience->getTranslation('company',$language->name)) }}">
                     @error('company.'.$language->name)
                     <div class="invalid-feedback">{{ $message }}</div>
@@ -40,7 +40,7 @@
                             class="text-danger fs-xs">*</sup></label>
                     <input id="location[{{$language->name}}]" name="location[{{$language->name}}]" type="text"
                            class="form-control @error('location.'.$language->name) is-invalid @enderror"
-                           autocomplete="off"
+                           autocomplete="off" maxlength="100"
                            value="{{ old('location.'.$language->name, $experience->getTranslation('location',$language->name)) }}">
                     @error('location.'.$language->name)
                     <div class="invalid-feedback">{{ $message }}</div>
