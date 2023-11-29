@@ -15,4 +15,12 @@
             </a>
         </li>
     </ul>
+    <ul class="navbar-nav">
+        <li class="nav-item {{ request()->is('*projects*') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('admin.projects.index') }}">
+                <span class="nav-link-icon d-md-none d-lg-inline-block"><x-icon icon="laptop" /></span>
+                <span class="nav-link-title">@lang('admin.projects')</span>
+            </a>
+        </li>
+    </ul>
 </div>
