@@ -14,7 +14,7 @@ class UserPolicy
      */
     public function manage(User $logged): bool
     {
-        return $logged->hasRole(['superadmin','admin']) ;
+        return $logged->hasRole(['admin']) ;
     }
 
     /**
@@ -26,7 +26,7 @@ class UserPolicy
      */
     public function delete(User $logged, User $other): bool
     {
-        return $logged->hasRole(['superadmin','admin']) && $logged->getKey() != $other->getKey() && !$other->hasRole('superadmin');
+        return $logged->hasRole(['admin']) && $logged->getKey() != $other->getKey() && !$other->hasRole('admin');
     }
 
     /**
@@ -38,6 +38,6 @@ class UserPolicy
      */
     public function deactivate(User $logged, User $other): bool
     {
-        return $logged->hasRole(['superadmin','admin']) && $logged->getKey() != $other->getKey() && !$other->hasRole('superadmin');
+        return $logged->hasRole(['admin']) && $logged->getKey() != $other->getKey() && !$other->hasRole('admin');
     }
 }

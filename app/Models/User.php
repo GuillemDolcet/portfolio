@@ -75,4 +75,17 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     {
         return $this->hasMany(Skill::class, 'user_id', 'id');
     }
+
+    ///// Functions //////////////////////////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * Return whether this user instance is active.
+     *
+     * @return bool
+     */
+    public function isActive(): bool
+    {
+        return !!$this->getAttribute('active');
+    }
+
 }
