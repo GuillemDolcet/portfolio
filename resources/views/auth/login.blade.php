@@ -16,6 +16,13 @@
             <x-status-message class="fs-5" />
             <h2 class="h2 text-center mb-4">@lang('admin.login')</h2>
             <form action="{{route('auth.login')}}" method="post" autocomplete="off">
+                <div class="card-body">
+                    <a href="{{ route('auth.google') }}" class="btn btn-primary w-100 d-block">
+                        <x-icon icon="drive" />
+                        <span class="d-inline-block d-sm-none">Acceder</span>
+                        <span class="d-none d-sm-inline-block">Acceda con su cuenta de INSON, S.A.</span>
+                    </a>
+                </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
                     <input id="email" type="email" name="email" class="form-control" placeholder="@lang('admin.placeholders.email')" required>

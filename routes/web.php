@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\Auth\SessionsController;
 use App\Http\Controllers\ExperienceController;
 use App\Http\Controllers\HomeController;
@@ -26,6 +27,8 @@ Route::prefix('auth')->group(function () {
     Route::get('login', [SessionsController::class, 'create'])->name('auth.login');
     Route::post('login', [SessionsController::class, 'authenticate'])->name('auth.authenticate');
     Route::delete('logout', [SessionsController::class, 'destroy'])->name('auth.logout');
+    Route::get('google', [GoogleController::class, 'redirectToGoogle'])->name('auth.google');
+    Route::get('google/callback', [GoogleController::class, 'handleGoogleCallback']);
 });
 
 Route::post('/change-language/{language}', [LanguageController::class, 'changeLanguage'])->name('change-language');
@@ -33,7 +36,7 @@ Route::post('/change-language/{language}', [LanguageController::class, 'changeLa
 Route::middleware('auth')->group(function () {
 
     Route::prefix('admin')->group(function () {
-        Route::group(['middleware' => ['role:superadmin|admin']], function () {
+        Route::group(['middleware' => ['role:admin']], function () {
             //Users
             Route::get('/', [UserController::class, 'index'])->name('admin.home');
             Route::get('/users', [UserController::class, 'index'])->name('admin.users.index');
