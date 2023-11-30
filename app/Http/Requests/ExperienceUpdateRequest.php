@@ -6,16 +6,15 @@ use App\Models\Skill;
 use App\Rules\Ownership;
 use App\Rules\Language;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
-class ExperienceRequest extends FormRequest
+class ExperienceUpdateRequest extends FormRequest
 {
     /**
      * The route to redirect to if validation fails.
      *
      * @var string
      */
-    protected $redirectRoute = 'admin.experiences.create';
+    protected $redirectRoute = 'admin.experiences.edit';
 
     /**
      * Determine if the user is authorized to make this request.
@@ -64,5 +63,19 @@ class ExperienceRequest extends FormRequest
             'skills' => ['nullable', 'array'],
             'skills.*' => ['required','exists:skills,id', new Ownership(Skill::class)]
         ];
+    }
+
+    /**
+     * Get the URL to redirect to on a validation error.
+     *
+     * @return string
+     */
+    protected function getRedirectUrl(): string
+    {
+        if ($this->experience) {
+            return $this->redirector->getUrlGenerator()->route($this->redirectRoute, $this->experience);
+        }
+
+        return parent::getRedirectUrl();
     }
 }

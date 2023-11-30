@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ExperienceRequest;
+use App\Http\Requests\ExperienceStoreRequest;
+use App\Http\Requests\ExperienceUpdateRequest;
 use App\Models\Experience;
 use App\Repositories\Experiences;
 use App\Repositories\Skills;
@@ -124,11 +125,11 @@ class ExperienceController extends AdminController
      *
      * Validate experience form and create experience, then redirect to experiences index.
      *
-     * @param ExperienceRequest $request
+     * @param ExperienceStoreRequest $request
      * @return RedirectResponse
      * @throws DeepLException
      */
-    public function store(ExperienceRequest $request): RedirectResponse
+    public function store(ExperienceStoreRequest $request): RedirectResponse
     {
         if ($attributes = $request->validated()) {
             $attributes = $this->translator->translate($attributes, $this->experiences->build()->getTranslatableAttributes());
@@ -152,12 +153,12 @@ class ExperienceController extends AdminController
      *
      * Validate experience form and update experience, then redirect to experiences index.
      *
-     * @param ExperienceRequest $request
+     * @param ExperienceUpdateRequest $request
      * @param Experience $experience
      * @return RedirectResponse
      * @throws DeepLException
      */
-    public function update(ExperienceRequest $request, Experience $experience): RedirectResponse
+    public function update(ExperienceUpdateRequest $request, Experience $experience): RedirectResponse
     {
         if ($attributes = $request->validated()) {
             $attributes = $this->translator->translate($attributes, $this->experiences->build()->getTranslatableAttributes());
