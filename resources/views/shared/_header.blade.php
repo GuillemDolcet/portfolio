@@ -40,15 +40,14 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow text-end">
                     <div class="p-2 d-flex justify-content-around">
-                        @foreach(\App\Models\Language::all() as $language)
-                            <div class="cursor-pointer">
-                                <form method="post" action="{{ route('change-language',$language) }}" data-controller="form">
-                                    @csrf
-                                    <a href="#" data-action="form#submit">
-                                        <img src="{{image_url($language->image)}}" alt="{{$language->name}}" data-action="form#submit">
-                                    </a>
-                                </form>
-                            </div>
+                        @foreach(\App\Models\Language::orderByLocale()->get() as $language)
+                            <form method="post" action="{{ route('change-language',$language) }}" data-controller="form">
+                                @csrf
+                                <label class="form-selectgroup-item">
+                                    <input type="radio" name="language" value="{{$language->name}}" class="form-selectgroup-input" {{app()->getLocale() == $language->name ? 'checked' : ''}}/>
+                                    <button type="submit" class="form-selectgroup-label"><img src="{{image_url($language->image)}}" alt="{{$language->name}}" width="24" height="24"/></button>
+                                </label>
+                            </form>
                         @endforeach
                     </div>
                     <div class="p-2">
