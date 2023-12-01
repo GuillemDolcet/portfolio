@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Log;
 use Laravel\Socialite\Facades\Socialite;
 use App\Http\Controllers\Controller;
@@ -12,7 +13,6 @@ use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use App\Repositories\Users;
 use App\Support\Arr;
-use App\Support\Str;
 
 class GoogleController extends Controller
 {
@@ -58,16 +58,16 @@ class GoogleController extends Controller
             if ($user = $this->users->findByEmail($oauth->getEmail())) {
                 return $user->isActive()
                     ? $this->success($user, $oauth)
-                    : $this->failure('Su cuenta de usuario ha sido <b class="fw-bold">suspendida</b>.');
+                    : $this->failure(Lang::get('admin.errors.account-suspended'));
             } else {
-                $this->users->create([
+                $user = $this->users->create([
                     'name' => $oauth->getName(),
                     'google_auth_id' => $oauth->getId(),
                     'avatar' => $oauth->getAvatar()
                 ]);
+                $user->assignRole('user');
+                return $this->success($user, $oauth);
             }
-
-            return $this->failure('<b class="fw-bold">No se reconoce</b> su cuenta de usuario.');
         } catch (Exception $e) {
             Log::error('Error authenticating customer via google', ['message' => $e->getMessage(), 'exception' => $e]);
             return $this->failure();
@@ -106,7 +106,7 @@ class GoogleController extends Controller
      */
     public function failure(string $message = null): RedirectResponse
     {
-        $message = $message ?: 'Ocurrió un error con la <b class="fw-bold">comprobación de su cuenta</b> de usuario. Reintente en unos minutos.';
+        $message = $message ?: Lang::get('admin.errors.login');
 
         return redirect()->route('auth.login')->with('status', ['type' => 'error', 'message' => $message]);
     }

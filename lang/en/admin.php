@@ -30,6 +30,10 @@ return [
     'delete' => 'Eliminar',
     'description' => 'Description',
     'edit' => 'Edit',
+    'errors' => [
+        'login' => 'An error occurred with the verification of your user account. Please try again in a few minutes.',
+        'account-suspended' => 'Su cuenta de usuario ha sido suspendida.'
+    ],
     'experience' => 'Experience',
     'experiences' => 'Experiences',
     'finish_date' => 'Finish date',
@@ -37,9 +41,11 @@ return [
     'level' => 'Level',
     'location' => 'Location',
     'login' => 'Login',
+    'login-title' => 'Login to your account',
     'logout' => 'Logout',
     'name' => 'Name',
     'no-results' => 'No results',
+    'or' => 'OR',
     'order' => 'Order',
     'password' => 'Password',
     'placeholders' => [
@@ -83,6 +89,7 @@ return [
     'updated_at' => 'Updated At',
     'url' => 'Url',
     'user' => 'User',
-    'users' => 'Users'
+    'users' => 'Users',
+    'with' => 'with'
 
 ];
