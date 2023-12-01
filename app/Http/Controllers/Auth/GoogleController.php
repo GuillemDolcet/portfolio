@@ -87,7 +87,7 @@ class GoogleController extends Controller
             $attrs = Arr::compact([
                 'name' => $oauth->getName(),
                 'google_auth_id' => $oauth->getId(),
-                'avatar' => $oauth->getAvatar()
+                'avatar' => base64_encode(file_get_contents($oauth->getAvatar()))
             ]);
 
             $this->users->update($user, $attrs);
