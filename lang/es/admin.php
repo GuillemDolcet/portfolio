@@ -30,6 +30,10 @@ return [
     'delete' => 'Eliminar',
     'description' => 'Descripcion',
     'edit' => 'Editar',
+    'errors' => [
+        'login' => 'Ocurrió un error con la comprobación de su cuenta de usuario. Reintente en unos minutos.',
+        'account-suspended' => 'Your user account has been suspended.'
+    ],
     'experience' => 'Experiencia',
     'experiences' => 'Experiencias',
     'finish_date' => 'Fecha de finalizacion',
@@ -37,9 +41,11 @@ return [
     'level' => 'Nivel',
     'location' => 'Localizacion',
     'login' => 'Iniciar sesion',
+    'login-title' => 'Acceda a su cuenta',
     'logout' => 'Salir',
     'name' => 'Nombre',
     'no-results' => 'Sin resultados para mostrar',
+    'or' => 'O',
     'order' => 'Orden',
     'password' => 'Contraseña',
     'placeholders' => [
@@ -83,6 +89,7 @@ return [
     'updated_at' => 'Editado en',
     'url' => 'Url',
     'user' => 'Usuario',
-    'users' => 'Usuarios'
+    'users' => 'Usuarios',
+    'with' => 'con'
 
 ];

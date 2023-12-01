@@ -13,7 +13,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->text('avatar')->nullable()->after('remember_token');
+            $table->text('google_auth_id')->nullable()->after('password');
+            $table->text('avatar')->nullable()->after('google_auth_id');
             $table->boolean('active')->default(true)->after('avatar');
         });
         Artisan::call('db:seed', array('--class' => 'DatabaseSeeder'));
@@ -27,6 +28,7 @@ return new class extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('active');
             $table->dropColumn('avatar');
+            $table->dropColumn('google_auth_id');
         });
     }
 };
