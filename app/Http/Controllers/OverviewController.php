@@ -55,7 +55,7 @@ class OverviewController extends AdminController
     public function index(): ConsoleApplication|FoundationApplication|View|Factory
     {
         $user = current_user();
-        $skills = $this->skills->newQuery()->user(current_user())->orderBy('order')->get();
+        $skills = $this->skills->listing($this->skills->newQuery()->user(current_user())->orderBy('order'), ['per_page' => 5]);
         return view('admin.index', compact('user','skills'));
     }
 }
