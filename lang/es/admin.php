@@ -16,6 +16,7 @@ return [
     'actual' => 'Actual',
     'add' => 'Añadir',
     'advice-translations' => 'Es necesario rellenar todos los campos 1 vez independientemente del idioma, los campos no traducidos se traducirán automáticamente !!!',
+    'all' => 'todas',
     'company' => 'Empresa',
     'confirm' => 'Confirmar',
     'confirms' => [
@@ -82,6 +83,9 @@ return [
         'delete-project' => 'Proyecto eliminado'
     ],
     'role' => 'Rol',
+    'show' => [
+        'skills' => 'Mostrar todas las habilidades'
+    ],
     'sign-in' => 'Iniciar sesion',
     'skill' => 'Habilidad',
     'skills' => 'Habilidades',

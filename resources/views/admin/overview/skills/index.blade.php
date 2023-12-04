@@ -11,15 +11,13 @@
                 </a></div>
         </div>
         @each('admin.overview.skills._skill', $skills, 'skill', 'admin.overview.skills._empty')
+        @if ($skills->hasMorePages())
+            <div class="mt-2 mb-2 justify-content-center d-flex" id="products-pagination">
+                <a href="{{route('admin.skills.index')}}">
+                    @lang('admin.show.skills') ({{$skills->total()}}) <x-icon icon="share" />
+                </a>
+            </div>
+        @endif
     </div>
 </div>
-@if ($skills->hasMorePages())
-    <div class="mt-2 mb-2 justify-content-center d-flex" id="products-pagination">
-        <button type="button" class="btn btn-primary d-none d-sm-inline-block w-100" data-pagination-per_page-value="5"
-                data-controller="pagination" data-action="pagination#next" data-pagination-url-value="{{route('admin.skills.index')}}"
-                data-pagination-auto-value="false" data-pagination-page-value="{{ $skills->currentPage() }}">
-            Cargar más
-        </button>
-    </div>
-@endif
 
