@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\SessionsController;
 use App\Http\Controllers\ExperienceController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LanguageController;
+use App\Http\Controllers\OverviewController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\SkillController;
 use App\Http\Controllers\UserController;
@@ -38,7 +39,7 @@ Route::middleware('auth')->group(function () {
     Route::prefix('admin')->group(function () {
         Route::group(['middleware' => ['role:admin']], function () {
             //Users
-            Route::get('/', [UserController::class, 'index'])->name('admin.home');
+            Route::get('/', [OverviewController::class, 'index'])->name('admin.index');
             Route::get('/users', [UserController::class, 'index'])->name('admin.users.index');
             Route::post('/users', [UserController::class, 'store'])->name('admin.users.store');
             Route::get('/users/create', [UserController::class, 'create'])->name('admin.users.create');

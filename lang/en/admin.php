@@ -16,6 +16,7 @@ return [
     'actual' => 'Actual',
     'add' => 'Add',
     'advice-translations' => 'All fields must be filled in once regardless of language, untranslated fields will be translated automatically !!!',
+    'all' => 'all',
     'company' => 'Company',
     'confirm' => 'Confirm',
     'confirms' => [
@@ -82,6 +83,11 @@ return [
         'delete-project' => 'Project deleted'
     ],
     'role' => 'Role',
+    'show' => [
+        'skills' => 'Show all skills',
+        'experiences' => 'Show all experience',
+        'projects' => 'Show all projects'
+    ],
     'sign-in' => 'Sign in',
     'skill' => 'Skill',
     'skills' => 'Skills',
