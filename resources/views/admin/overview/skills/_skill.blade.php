@@ -1,5 +1,5 @@
 <div class="d-flex align-items-center justify-content-between border-bottom p-3">
-    <div class="col-2"><img src="{{\Storage::url($skill->image)}}" alt="{{$skill->name}}" width="32" height="32"/></div>
+    <div class="col-1"><img src="{{\Storage::url($skill->image)}}" alt="{{$skill->name}}" width="32" height="32"/></div>
     <div class="d-flex flex-column col-8">
         <div class="mb-2"><b>{{$skill->name}}</b></div>
         <div class="progress">
@@ -10,7 +10,7 @@
             </div>
         </div>
     </div>
-    <div class="col-2 d-flex text-end justify-content-end">
+    <div class="col-3 d-flex text-end justify-content-end">
         <a href="#" class="me-1" title="@lang('admin.edit')"
            data-controller="remote-modal"
            data-action="remote-modal#toggle"

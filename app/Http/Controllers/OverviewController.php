@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\Experiences;
+use App\Repositories\Projects;
 use App\Repositories\Skills;
 use Illuminate\Contracts\Console\Application as ConsoleApplication;
 use Illuminate\Contracts\View\Factory;
@@ -31,17 +33,36 @@ class OverviewController extends AdminController
     protected Skills $skills;
 
     /**
+     * Experiences repository instance.
+     *
+     * @param Experiences $experiences
+     */
+    protected Experiences $experiences;
+
+    /**
+     * Projects repository instance.
+     *
+     * @param Projects $projects
+     */
+    protected Projects $projects;
+
+    /**
      * Class constructor.
      *
      * @param Request $request
      * @param Skills $skills
+     * @param Experiences $experiences
+     * @param Projects $projects
      */
-    public function __construct(Request $request, Skills $skills)
+    public function __construct(Request $request, Skills $skills, Experiences $experiences, Projects $projects)
     {
         parent::__construct($request);
 
-
         $this->skills = $skills;
+
+        $this->experiences = $experiences;
+
+        $this->projects = $projects;
     }
 
     /**
@@ -56,6 +77,8 @@ class OverviewController extends AdminController
     {
         $user = current_user();
         $skills = $this->skills->listing($this->skills->newQuery()->user(current_user())->orderBy('order'), ['per_page' => 5]);
-        return view('admin.index', compact('user','skills'));
+        $experiences = $this->experiences->listing($this->experiences->newQuery()->user(current_user())->orderBy('start_date'), ['per_page' => 5]);
+        $projects = $this->projects->listing($this->projects->newQuery()->user(current_user())->orderBy('start_date'));
+        return view('admin.overview.index', compact('user','skills','experiences', 'projects'));
     }
 }

@@ -84,7 +84,9 @@ return [
     ],
     'role' => 'Rol',
     'show' => [
-        'skills' => 'Mostrar todas las habilidades'
+        'skills' => 'Mostrar todas las habilidades',
+        'experiences' => 'Mostrar todas las experiencias',
+        'projects' => 'Mostrar todos los proyectos'
     ],
     'sign-in' => 'Iniciar sesion',
     'skill' => 'Habilidad',
