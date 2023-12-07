@@ -23,4 +23,12 @@
             </a>
         </li>
     </ul>
+    <ul class="navbar-nav">
+        <li class="nav-item {{ request()->is('*education*') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('admin.education.index') }}">
+                <span class="nav-link-icon d-md-none d-lg-inline-block"><x-icon icon="education" /></span>
+                <span class="nav-link-title">@lang('admin.education')</span>
+            </a>
+        </li>
+    </ul>
 </div>

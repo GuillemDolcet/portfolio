@@ -23,14 +23,18 @@ return [
         'delete-user' => '¿Realmente desea eliminar a este usuario? Esta acción no se puede deshacer',
         'delete-skill' => '¿Realmente desea eliminar esta habilidad? Esta acción no se puede deshacer',
         'delete-experience' => '¿Realmente desea eliminar esta experiencia? Esta acción no se puede deshacer',
-        'delete-project' => '¿Realmente desea eliminar este proyecto? Esta acción no se puede deshacer'
+        'delete-project' => '¿Realmente desea eliminar este proyecto? Esta acción no se puede deshacer',
+        'delete-education' => '¿Realmente desea eliminar esta educación? Esta acción no se puede deshacer'
     ],
     'created' => 'Creado',
     'created_at' => 'Creado en',
     'currently' => 'Actualmente tengo este cargo',
+    'degree' => 'Título',
     'delete' => 'Eliminar',
     'description' => 'Descripcion',
+    'discipline' => 'Disciplina académica',
     'edit' => 'Editar',
+    'education' => 'Educación',
     'errors' => [
         'login' => 'Ocurrió un error con la comprobación de su cuenta de usuario. Reintente en unos minutos.',
         'account-suspended' => 'Your user account has been suspended.'
@@ -80,9 +84,16 @@ return [
         'error-create-project' => 'No se pudo crear el proyecto',
         'success-update-project' => 'Proyecto actualizado',
         'error-update-project' => 'No se pudo actualizar el proyecto',
-        'delete-project' => 'Proyecto eliminado'
+        'delete-project' => 'Proyecto eliminado',
+
+        'success-create-education' => 'Educación creada',
+        'error-create-education' => 'No se pudo crear la educación',
+        'success-update-education' => 'Educación actualizada',
+        'error-update-education' => 'No se pudo actualizar la educación',
+        'delete-education' => 'Educación eliminada'
     ],
     'role' => 'Rol',
+    'school' => 'Escuela',
     'show' => [
         'skills' => 'Mostrar todas las habilidades',
         'experiences' => 'Mostrar todas las experiencias',

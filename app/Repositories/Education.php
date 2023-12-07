@@ -2,13 +2,13 @@
 
 namespace App\Repositories;
 
-use App\Models\Experience;
+use App\Models\Education as EducationModel;
 use App\Models\User;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 
-class Experiences extends Repository
+class Education extends Repository
 {
     /**
      * The actual model class supporting the business logic.
@@ -17,11 +17,11 @@ class Experiences extends Repository
      */
     public function getModelClass(): string
     {
-        return Experience::class;
+        return EducationModel::class;
     }
 
     /**
-     * *All* experiences query context.
+     * *All* education query context.
      *
      * @param array $options
      * @return Builder
@@ -32,10 +32,10 @@ class Experiences extends Repository
     }
 
     /**
-     * Get *all* experiences from the database.
+     * Get *all* education from the database.
      *
      * @param array $options
-     * @return Collection<int,Experience>
+     * @return Collection<int,EducationModel>
      */
     public function all(array $options = []): Collection
     {
@@ -43,24 +43,24 @@ class Experiences extends Repository
     }
 
     /**
-     * Instantiates a new Experience object.
+     * Instantiates a new EducationModel object.
      *
      * @param  array $attributes
-     * @return Experience
+     * @return EducationModel
      */
-    public function build(array $attributes = []): Experience
+    public function build(array $attributes = []): EducationModel
     {
         return $this->make($attributes);
     }
 
     /**
-     * Creates a Experience instance.
+     * Creates a EducationModel instance.
      *
      * @param array $attributes
      * @param User $user
-     * @return Experience|null
+     * @return EducationModel|null
      */
-    public function create(array $attributes, User $user): ?Experience
+    public function create(array $attributes, User $user): ?EducationModel
     {
         return $this->update($this->build(), $attributes, $user);
     }
@@ -80,14 +80,14 @@ class Experiences extends Repository
     }
 
     /**
-     * Updates a Experience instance.
+     * Updates a EducationModel instance.
      *
-     * @param Experience $instance
+     * @param EducationModel $instance
      * @param array $attributes
      * @param User $user
-     * @return Experience|null
+     * @return EducationModel|null
      */
-    public function update(Experience $instance, array $attributes, User $user): ?Experience
+    public function update(EducationModel $instance, array $attributes, User $user): ?EducationModel
     {
         $instance->fill($attributes);
 

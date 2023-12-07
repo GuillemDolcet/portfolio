@@ -4,7 +4,6 @@ namespace App\Repositories;
 
 use App\Models\Project;
 use App\Models\User;
-use App\Services\Deepl;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
