@@ -76,6 +76,36 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         return $this->hasMany(Skill::class, 'user_id', 'id');
     }
 
+    /**
+     * Projects relation.
+     *
+     * @return HasMany
+     */
+    public function projects(): HasMany
+    {
+        return $this->hasMany(Project::class, 'user_id', 'id');
+    }
+
+    /**
+     * Education relation.
+     *
+     * @return HasMany
+     */
+    public function education(): HasMany
+    {
+        return $this->hasMany(Education::class, 'user_id', 'id');
+    }
+
+    /**
+     * Experiences relation.
+     *
+     * @return HasMany
+     */
+    public function experiences(): HasMany
+    {
+        return $this->hasMany(Experience::class, 'user_id', 'id');
+    }
+
     ///// Functions //////////////////////////////////////////////////////////////////////////////////////////////////
 
     /**

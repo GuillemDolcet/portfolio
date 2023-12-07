@@ -23,14 +23,18 @@ return [
         'delete-user' => 'Do you really want to delete this user? This action cannot be undone',
         'delete-skill' => 'Do you really want to delete this skill? This action cannot be undone',
         'delete-experience' => 'Do you really want to delete this experience? This action cannot be undone',
-        'delete-project' => 'Do you really want to delete this project? This action cannot be undone'
+        'delete-project' => 'Do you really want to delete this project? This action cannot be undone',
+        'delete-education' => 'Do you really want to delete this education? This action cannot be undone'
     ],
     'created' => 'Created',
     'created_at' => 'Created At',
     'currently' => 'Still working here',
-    'delete' => 'Eliminar',
+    'degree' => 'Degree',
+    'delete' => 'Delete',
     'description' => 'Description',
+    'discipline' => 'Discipline',
     'edit' => 'Edit',
+    'education' => 'Education',
     'errors' => [
         'login' => 'An error occurred with the verification of your user account. Please try again in a few minutes.',
         'account-suspended' => 'Su cuenta de usuario ha sido suspendida.'
@@ -80,9 +84,16 @@ return [
         'error-create-project' => 'Error on create project',
         'success-update-project' => 'Project updated',
         'error-update-project' => 'Error on update project',
-        'delete-project' => 'Project deleted'
+        'delete-project' => 'Project deleted',
+
+        'success-create-education' => 'Education created',
+        'error-create-education' => 'Error on create education',
+        'success-update-education' => 'Education updated',
+        'error-update-education' => 'Error on update education',
+        'delete-education' => 'Education deleted'
     ],
     'role' => 'Role',
+    'school' => 'School',
     'show' => [
         'skills' => 'Show all skills',
         'experiences' => 'Show all experience',

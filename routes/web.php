@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\Auth\SessionsController;
+use App\Http\Controllers\EducationController;
 use App\Http\Controllers\ExperienceController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LanguageController;
@@ -61,6 +62,13 @@ Route::middleware('auth')->group(function () {
         Route::get('/experiences/{experience}/edit', [ExperienceController::class, 'edit'])->name('admin.experiences.edit');
         Route::match(['put', 'patch'], '/experiences/{experience}', [ExperienceController::class, 'update'])->name('admin.experiences.update');
         Route::delete('/experiences/{experience}', [ExperienceController::class, 'destroy'])->name('admin.experiences.destroy');
+        //Education
+        Route::get('/education', [EducationController::class, 'index'])->name('admin.education.index');
+        Route::post('/education', [EducationController::class, 'store'])->name('admin.education.store');
+        Route::get('/education/create', [EducationController::class, 'create'])->name('admin.education.create');
+        Route::get('/education/{education}/edit', [EducationController::class, 'edit'])->name('admin.education.edit');
+        Route::match(['put', 'patch'], '/education/{education}', [EducationController::class, 'update'])->name('admin.education.update');
+        Route::delete('/education/{education}', [EducationController::class, 'destroy'])->name('admin.education.destroy');
         //Projects
         Route::get('/projects', [ProjectController::class, 'index'])->name('admin.projects.index');
         Route::post('/projects', [ProjectController::class, 'store'])->name('admin.projects.store');
