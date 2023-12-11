@@ -24,7 +24,8 @@ return [
         'delete-skill' => '¿Realmente desea eliminar esta habilidad? Esta acción no se puede deshacer',
         'delete-experience' => '¿Realmente desea eliminar esta experiencia? Esta acción no se puede deshacer',
         'delete-project' => '¿Realmente desea eliminar este proyecto? Esta acción no se puede deshacer',
-        'delete-education' => '¿Realmente desea eliminar esta educación? Esta acción no se puede deshacer'
+        'delete-education' => '¿Realmente desea eliminar esta educación? Esta acción no se puede deshacer',
+        'delete-hobby' => '¿Realmente desea eliminar este hobby? Esta acción no se puede deshacer'
     ],
     'created' => 'Creado',
     'created_at' => 'Creado en',
@@ -42,6 +43,8 @@ return [
     'experience' => 'Experiencia',
     'experiences' => 'Experiencias',
     'finish_date' => 'Fecha de finalizacion',
+    'hobbies' => 'Hobbies',
+    'hobby' => 'Hobby',
     'image' => 'Imagen',
     'level' => 'Nivel',
     'location' => 'Localizacion',
@@ -90,7 +93,13 @@ return [
         'error-create-education' => 'No se pudo crear la educación',
         'success-update-education' => 'Educación actualizada',
         'error-update-education' => 'No se pudo actualizar la educación',
-        'delete-education' => 'Educación eliminada'
+        'delete-education' => 'Educación eliminada',
+
+        'success-create-hobby' => 'Hobby creado',
+        'error-create-hobby' => 'No se pudo crear el hobby',
+        'success-update-hobby' => 'Hobby actualizado',
+        'error-update-hobby' => 'No se pudo actualizar el hobby',
+        'delete-hobby' => 'Hobby eliminado'
     ],
     'role' => 'Rol',
     'school' => 'Escuela',

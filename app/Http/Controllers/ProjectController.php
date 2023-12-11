@@ -187,7 +187,7 @@ class ProjectController extends AdminController
      */
     public function destroy(Project $project): Renderable|RedirectResponse
     {
-        $project->delete();
+        $this->projects->delete($project);
         return redirect()
             ->route('admin.projects.index')
             ->with([

@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Models\Skill;
 use App\Models\User;
+use App\Support\Arr;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
@@ -90,15 +91,14 @@ class Skills extends Repository
      */
     public function update(Skill $instance, array $attributes, User $user): ?Skill
     {
-        if ($instance->exists && isset($attributes['image'])){
-            Storage::disk('public')->delete($instance->image);
-        }
-
-        $instance->fill($attributes);
+        $instance->fill(Arr::except($attributes, ['image']));
 
         $instance->user()->associate($user);
 
         if (isset($attributes['image'])){
+            if ($instance->exists){
+                Storage::disk('public')->delete($instance->image);
+            }
             Storage::disk('public')->put($user->getKey().'/skills/'.$attributes['image']->getClientOriginalName(),$attributes['image']->get());
             $instance->image = $user->getKey().'/skills/'.$attributes['image']->getClientOriginalName();
         }

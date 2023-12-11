@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\Auth\SessionsController;
 use App\Http\Controllers\EducationController;
 use App\Http\Controllers\ExperienceController;
+use App\Http\Controllers\HobbyController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\OverviewController;
@@ -76,5 +77,12 @@ Route::middleware('auth')->group(function () {
         Route::get('/projects/{project}/edit', [ProjectController::class, 'edit'])->name('admin.projects.edit');
         Route::match(['put', 'patch'], '/projects/{project}', [ProjectController::class, 'update'])->name('admin.projects.update');
         Route::delete('/projects/{project}', [ProjectController::class, 'destroy'])->name('admin.projects.destroy');
+        //Hobbies
+        Route::get('/hobbies', [HobbyController::class, 'index'])->name('admin.hobbies.index');
+        Route::post('/hobbies', [HobbyController::class, 'store'])->name('admin.hobbies.store');
+        Route::get('/hobbies/create', [HobbyController::class, 'create'])->name('admin.hobbies.create');
+        Route::get('/hobbies/{hobby}/edit', [HobbyController::class, 'edit'])->name('admin.hobbies.edit');
+        Route::match(['put', 'patch'], '/hobbies/{hobby}', [HobbyController::class, 'update'])->name('admin.hobbies.update');
+        Route::delete('/hobbies/{hobby}', [HobbyController::class, 'destroy'])->name('admin.hobbies.destroy');
     });
 });
