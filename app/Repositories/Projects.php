@@ -5,10 +5,11 @@ namespace App\Repositories;
 use App\Models\Project;
 use App\Models\User;
 use App\Support\Arr;
+use App\Support\Str;
+use App\Support\Storage;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Support\Facades\Storage;
 
 class Projects extends Repository
 {
@@ -99,8 +100,10 @@ class Projects extends Repository
             if ($instance->exists){
                 Storage::disk('public')->delete($instance->image);
             }
-            Storage::disk('public')->put($user->getKey().'/projects/'.$attributes['image']->getClientOriginalName(),$attributes['image']->get());
-            $instance->image = $user->getKey().'/projects/'.$attributes['image']->getClientOriginalName();
+
+            $path = Storage::randomFileName($user->getKey().'/projects/', $attributes['image']->extension());
+            Storage::disk('public')->put($path, $attributes['image']->get());
+            $instance->image = $path;
         }
 
         $result = $instance->save();
@@ -111,7 +114,7 @@ class Projects extends Repository
             $instance->skills()->attach($attributes['skills']);
         }
 
-        if (! $result) {
+        if (!$result) {
             return null;
         }
 

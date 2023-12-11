@@ -5,10 +5,10 @@ namespace App\Repositories;
 use App\Models\Skill;
 use App\Models\User;
 use App\Support\Arr;
+use App\Support\Storage;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Support\Facades\Storage;
 
 class Skills extends Repository
 {
@@ -99,8 +99,10 @@ class Skills extends Repository
             if ($instance->exists){
                 Storage::disk('public')->delete($instance->image);
             }
-            Storage::disk('public')->put($user->getKey().'/skills/'.$attributes['image']->getClientOriginalName(),$attributes['image']->get());
-            $instance->image = $user->getKey().'/skills/'.$attributes['image']->getClientOriginalName();
+
+            $path = Storage::randomFileName($user->getKey().'/skills/', $attributes['image']->extension());
+            Storage::disk('public')->put($path, $attributes['image']->get());
+            $instance->image = $path;
         }
 
         $result = $instance->save();

@@ -5,10 +5,10 @@ namespace App\Repositories;
 use App\Models\Hobby;
 use App\Models\User;
 use App\Support\Arr;
+use App\Support\Storage;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Support\Facades\Storage;
 
 class Hobbies extends Repository
 {
@@ -99,8 +99,10 @@ class Hobbies extends Repository
             if ($instance->exists){
                 Storage::disk('public')->delete($instance->image);
             }
-            Storage::disk('public')->put($user->getKey().'/hobbies/'.$attributes['image']->getClientOriginalName(),$attributes['image']->get());
-            $instance->image = $user->getKey().'/hobbies/'.$attributes['image']->getClientOriginalName();
+
+            $path = Storage::randomFileName($user->getKey().'/hobbies/', $attributes['image']->extension());
+            Storage::disk('public')->put($path, $attributes['image']->get());
+            $instance->image = $path;
         }
 
         $result = $instance->save();

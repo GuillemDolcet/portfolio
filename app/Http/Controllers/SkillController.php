@@ -50,11 +50,6 @@ class SkillController extends AdminController
      */
     public function index(): ConsoleApplication|FoundationApplication|View|Factory|Response|ResponseFactory
     {
-        if ($this->wantsTurboStream($this->request)) {
-            $skills = $this->skills->listing($this->skills->newQuery()->user(current_user())->orderBy('order'),['per_page' => 5]);
-            return $this->makeTurboStream(view('admin.overview.skills.index_stream', compact('skills')));
-        }
-
         $skills = $this->skills->listing($this->skills->newQuery()->user(current_user())->orderBy('order'));
         return view('admin.skills.index', compact('skills'));
     }
