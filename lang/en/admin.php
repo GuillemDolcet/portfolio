@@ -24,7 +24,8 @@ return [
         'delete-skill' => 'Do you really want to delete this skill? This action cannot be undone',
         'delete-experience' => 'Do you really want to delete this experience? This action cannot be undone',
         'delete-project' => 'Do you really want to delete this project? This action cannot be undone',
-        'delete-education' => 'Do you really want to delete this education? This action cannot be undone'
+        'delete-education' => 'Do you really want to delete this education? This action cannot be undone',
+        'delete-hobby' => 'Do you really want to delete this hobby? This action cannot be undone'
     ],
     'created' => 'Created',
     'created_at' => 'Created At',
@@ -42,6 +43,8 @@ return [
     'experience' => 'Experience',
     'experiences' => 'Experiences',
     'finish_date' => 'Finish date',
+    'hobbies' => 'Hobbies',
+    'hobby' => 'Hobby',
     'image' => 'Image',
     'level' => 'Level',
     'location' => 'Location',
@@ -90,7 +93,13 @@ return [
         'error-create-education' => 'Error on create education',
         'success-update-education' => 'Education updated',
         'error-update-education' => 'Error on update education',
-        'delete-education' => 'Education deleted'
+        'delete-education' => 'Education deleted',
+
+        'success-create-hobby' => 'Hobby created',
+        'error-create-hobby' => 'Error on create hobby',
+        'success-update-hobby' => 'Hobby updated',
+        'error-update-hobby' => 'Error on update hobby',
+        'delete-hobby' => 'Hobby deleted'
     ],
     'role' => 'Role',
     'school' => 'School',

@@ -31,4 +31,12 @@
             </a>
         </li>
     </ul>
+    <ul class="navbar-nav">
+        <li class="nav-item {{ request()->is('*hobbies*') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('admin.hobbies.index') }}">
+                <span class="nav-link-icon d-md-none d-lg-inline-block"><x-icon icon="hobby" /></span>
+                <span class="nav-link-title">@lang('admin.hobbies')</span>
+            </a>
+        </li>
+    </ul>
 </div>

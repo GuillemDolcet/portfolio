@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Models\Project;
+use App\Models\Hobby;
 use App\Models\User;
 use App\Support\Arr;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Storage;
 
-class Projects extends Repository
+class Hobbies extends Repository
 {
     /**
      * The actual model class supporting the business logic.
@@ -19,11 +19,11 @@ class Projects extends Repository
      */
     public function getModelClass(): string
     {
-        return Project::class;
+        return Hobby::class;
     }
 
     /**
-     * *All* projects query context.
+     * *All* hobbies query context.
      *
      * @param array $options
      * @return Builder
@@ -34,10 +34,10 @@ class Projects extends Repository
     }
 
     /**
-     * Get *all* projects from the database.
+     * Get *all* hobbies from the database.
      *
      * @param array $options
-     * @return Collection<int,Project>
+     * @return Collection<int,Hobby>
      */
     public function all(array $options = []): Collection
     {
@@ -45,24 +45,24 @@ class Projects extends Repository
     }
 
     /**
-     * Instantiates a new Project object.
+     * Instantiates a new Hobby object.
      *
      * @param  array $attributes
-     * @return Project
+     * @return Hobby
      */
-    public function build(array $attributes = []): Project
+    public function build(array $attributes = []): Hobby
     {
         return $this->make($attributes);
     }
 
     /**
-     * Creates a Project instance.
+     * Creates a Hobby instance.
      *
      * @param array $attributes
      * @param User $user
-     * @return Project|null
+     * @return Hobby|null
      */
-    public function create(array $attributes, User $user): ?Project
+    public function create(array $attributes, User $user): ?Hobby
     {
         return $this->update($this->build(), $attributes, $user);
     }
@@ -82,14 +82,14 @@ class Projects extends Repository
     }
 
     /**
-     * Updates a Project instance.
+     * Updates a Hobby instance.
      *
-     * @param Project $instance
+     * @param Hobby $instance
      * @param array $attributes
      * @param User $user
-     * @return Project|null
+     * @return Hobby|null
      */
-    public function update(Project $instance, array $attributes, User $user): ?Project
+    public function update(Hobby $instance, array $attributes, User $user): ?Hobby
     {
         $instance->fill(Arr::except($attributes, ['image']));
 
@@ -99,17 +99,11 @@ class Projects extends Repository
             if ($instance->exists){
                 Storage::disk('public')->delete($instance->image);
             }
-            Storage::disk('public')->put($user->getKey().'/projects/'.$attributes['image']->getClientOriginalName(),$attributes['image']->get());
-            $instance->image = $user->getKey().'/projects/'.$attributes['image']->getClientOriginalName();
+            Storage::disk('public')->put($user->getKey().'/hobbies/'.$attributes['image']->getClientOriginalName(),$attributes['image']->get());
+            $instance->image = $user->getKey().'/hobbies/'.$attributes['image']->getClientOriginalName();
         }
 
         $result = $instance->save();
-
-        $instance->skills()->detach();
-
-        if (isset($attributes['skills'])){
-            $instance->skills()->attach($attributes['skills']);
-        }
 
         if (! $result) {
             return null;
@@ -119,12 +113,12 @@ class Projects extends Repository
     }
 
     /**
-     * Delete a project instance.
+     * Delete a hobby instance.
      *
-     * @param Project $instance
+     * @param Hobby $instance
      * @return void
      */
-    public function delete(Project $instance): void
+    public function delete(Hobby $instance): void
     {
         Storage::disk('public')->delete($instance->image);
 
