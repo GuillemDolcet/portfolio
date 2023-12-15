@@ -17,7 +17,6 @@ return new class extends Migration
             $table->text('avatar')->nullable()->after('google_auth_id');
             $table->boolean('active')->default(true)->after('avatar');
         });
-        Artisan::call('db:seed', array('--class' => 'DatabaseSeeder'));
     }
 
     /**

@@ -6,9 +6,11 @@ use App\Models\Skill;
 use App\Models\User;
 use App\Support\Arr;
 use App\Support\Storage;
+use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Http\UploadedFile;
 
 class Skills extends Repository
 {
@@ -88,6 +90,7 @@ class Skills extends Repository
      * @param array $attributes
      * @param User $user
      * @return Skill|null
+     * @throws FileNotFoundException
      */
     public function update(Skill $instance, array $attributes, User $user): ?Skill
     {
@@ -101,7 +104,7 @@ class Skills extends Repository
             }
 
             $path = Storage::randomFileName($user->getKey().'/skills/', $attributes['image']->extension());
-            Storage::disk('public')->put($path, $attributes['image']->get());
+            Storage::disk('public')->put($path, $attributes['image'] instanceof UploadedFile ? $attributes['image']->get() : $attributes['image']->getContent());
             $instance->image = $path;
         }
 
