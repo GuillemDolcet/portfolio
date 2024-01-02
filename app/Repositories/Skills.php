@@ -90,7 +90,6 @@ class Skills extends Repository
      * @param array $attributes
      * @param User $user
      * @return Skill|null
-     * @throws FileNotFoundException
      */
     public function update(Skill $instance, array $attributes, User $user): ?Skill
     {
@@ -103,8 +102,7 @@ class Skills extends Repository
                 Storage::disk('public')->delete($instance->image);
             }
 
-            $path = Storage::randomFileName($user->getKey().'/skills/', $attributes['image']->extension());
-            Storage::disk('public')->put($path, $attributes['image'] instanceof UploadedFile ? $attributes['image']->get() : $attributes['image']->getContent());
+            $path = Storage::disk('public')->putFile($user->getKey().'/skills', $attributes['image']);
             $instance->image = $path;
         }
 
