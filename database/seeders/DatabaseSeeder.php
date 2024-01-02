@@ -17,7 +17,6 @@ class DatabaseSeeder extends Seeder
             'name' => 'guillem',
             'email' => 'g.dolcet.jove@gmail.com',
             'active' => true,
-            'password' => Hash::make('1234'),
         ]);
         $user->assignRole('admin');
         $this->call(SkillsSeeder::class, false, ['user' => $user]);
