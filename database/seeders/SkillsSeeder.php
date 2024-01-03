@@ -16,7 +16,6 @@ class SkillsSeeder extends Seeder
      */
     protected Skills $skills;
 
-
     /**
      * Class constructor.
      *

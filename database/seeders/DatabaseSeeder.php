@@ -20,6 +20,6 @@ class DatabaseSeeder extends Seeder
         ]);
         $user->assignRole('admin');
         $this->call(SkillsSeeder::class, false, ['user' => $user]);
-        //$this->call(ExperiencesSeeder::class, false, ['user' => $user]);
+        $this->call(ExperiencesSeeder::class, false, ['user' => $user]);
     }
 }
