@@ -29,6 +29,9 @@ class SkillsSeeder extends Seeder
 
     /**
      * Seed the application's database.
+     *
+     * @param User $user
+     * @return void
      */
     public function run(User $user): void
     {

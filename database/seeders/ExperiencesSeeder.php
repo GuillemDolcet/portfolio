@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Skill;
 use App\Models\User;
 use App\Repositories\Skills;
 use Carbon\Carbon;
@@ -29,6 +28,9 @@ class ExperiencesSeeder extends Seeder
 
     /**
      * Seed the application's database.
+     *
+     * @param User $user
+     * @return void
      */
     public function run(User $user): void
     {
@@ -46,8 +48,8 @@ class ExperiencesSeeder extends Seeder
                 'es' => 'Alcoletge, Lleida, España',
             ],
             'description' => [
-                'en' => 'Desarrollo web de aplicaciones Backend con integración de APIs con PHP y Laravel. Algunas páginas: www.ielectro.es, www.mayor2010.com',
-                'es' => 'Backend web application development with API integration with PHP and Laravel. Some pages: www.ielectro.es, www.mayor2010.com',
+                'en' => 'Desarrollo en PHP y Laravel, destacando en el diseño e implementación de soluciones eficientes. Especializado en la integración fluida de APIs para optimizar procesos.',
+                'es' => 'Developer in PHP and Laravel, excelling in the design and implementation of efficient solutions. Specialized in seamless API integration to streamline processes.',
             ],
             'start_date' => Carbon::parse('21-02-2023'),
             'finish_date' => null
@@ -74,8 +76,8 @@ class ExperiencesSeeder extends Seeder
                 'es' => 'Balaguer, Lleida, España',
             ],
             'description' => [
-                'en' => '',
-                'es' => '',
+                'en' => 'Desarrollo en PHP y Laravel, destacando en el diseño e implementación de soluciones eficientes. Especializado en la integración fluida de APIs para optimizar procesos.',
+                'es' => 'Developer in PHP and Laravel, excelling in the design and implementation of efficient solutions. Specialized in seamless API integration to streamline processes.',
             ],
             'start_date' => Carbon::parse('01-06-2020'),
             'finish_date' => Carbon::parse('21-02-2023')

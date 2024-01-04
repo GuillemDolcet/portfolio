@@ -4,12 +4,13 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
     /**
      * Seed the application's database.
+     *
+     * @return void
      */
     public function run(): void
     {
@@ -19,7 +20,9 @@ class DatabaseSeeder extends Seeder
             'active' => true,
         ]);
         $user->assignRole('admin');
+
         $this->call(SkillsSeeder::class, false, ['user' => $user]);
         $this->call(ExperiencesSeeder::class, false, ['user' => $user]);
+        $this->call(ProjectsSeeder::class, false, ['user' => $user]);
     }
 }
