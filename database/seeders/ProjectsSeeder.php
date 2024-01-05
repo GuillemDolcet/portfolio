@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Repositories\Skills;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
+use Illuminate\Http\File;
 
 class ProjectsSeeder extends Seeder
 {
@@ -40,12 +41,11 @@ class ProjectsSeeder extends Seeder
                 'es' => 'Ielectro',
             ],
             'description' => [
-                'en' => 'Developing web application using PHP/Laravel, integrating APIs like: Amazon, Miravia, and Sequra. Additionally, I oversaw ongoing website maintenance.',
-                'es' => 'Desarrollando aplicacion con PHP/Laravel, integrando APIs como por ejemplo: Amazon, Miravia y Sequra. Además, gestioné el mantenimiento continuo del sitio web.',
+                'en' => 'Developing web application using PHP/Laravel, integrating APIs like Amazon or Miravia. Additionally, I oversaw ongoing website maintenance.',
+                'es' => 'Desarrollando aplicacion con PHP/Laravel, integrando APIs como Amazon y Miravia. Además, gestioné el mantenimiento continuo del sitio web.',
             ],
             'url' => 'https://www.ielectro.es/',
-            'start_date' => Carbon::parse('21-02-2023'),
-            'finish_date' => null
+            'image' => new File('resources/assets/images/projects/ielectro.png')
         ]);
 
         $project->skills()->attach($this->skills->newQuery()->user($user)->name('Laravel')->first());
@@ -65,8 +65,7 @@ class ProjectsSeeder extends Seeder
                 'es' => 'Desarrollando aplicacion y manteniendo web con PHP/Laravel.',
             ],
             'url' => 'https://www.mayor2010.com/',
-            'start_date' => Carbon::parse('21-02-2023'),
-            'finish_date' => null
+            'image' => new File('resources/assets/images/projects/mayor2010.png')
         ]);
 
         $project->skills()->attach($this->skills->newQuery()->user($user)->name('Laravel')->first());
@@ -86,8 +85,7 @@ class ProjectsSeeder extends Seeder
                 'es' => 'Desarrollando aplicacion y manteniendo web con PHP/Laravel.',
             ],
             'url' => 'https://turismeager.cat/',
-            'start_date' => Carbon::parse('21-02-2023'),
-            'finish_date' => null
+            'image' => new File('resources/assets/images/projects/turismeager.png')
         ]);
 
         $project->skills()->attach($this->skills->newQuery()->user($user)->name('Laravel')->first());
@@ -107,8 +105,7 @@ class ProjectsSeeder extends Seeder
                 'es' => 'Desarrollando aplicacion y manteniendo web con PHP/Laravel.',
             ],
             'url' => 'https://runedia.mundodeportivo.com/',
-            'start_date' => Carbon::parse('21-02-2023'),
-            'finish_date' => null
+            'image' => new File('resources/assets/images/projects/runedia.png')
         ]);
 
         $project->skills()->attach($this->skills->newQuery()->user($user)->name('Laravel')->first());
