@@ -40,7 +40,7 @@ class EducationSeeder extends Seeder
                 'es' => 'Institut Almatà',
             ],
             'degree' => [
-                'en' => 'INSON S.A.',
+                'en' => 'Vocational Education and Training',
                 'es' => 'Formación Profesional de Grado Medio',
             ],
             'discipline' => [
@@ -48,46 +48,44 @@ class EducationSeeder extends Seeder
                 'es' => 'Técnico en Sistemas Microinformáticos y Redes',
             ],
             'description' => [
-                'en' => 'Desarrollo en PHP y Laravel, destacando en el diseño e implementación de soluciones eficientes. Especializado en la integración fluida de APIs para optimizar procesos.',
-                'es' => 'Developer in PHP and Laravel, excelling in the design and implementation of efficient solutions. Specialized in seamless API integration to streamline processes.',
+                'en' => 'Graduated as a Technician in Microcomputer Systems and Networks with strong skills in maintenance, configuration, and problem-solving in computer environments. Prepared to face challenges in the technology world.',
+                'es' => 'Graduado en Técnico en Sistemas Microinformáticos y Redes con habilidades sólidas en mantenimiento, configuración y resolución de problemas en entornos informáticos, preparado para afrontar desafíos en el mundo de la tecnología.',
             ],
             'start_date' => Carbon::parse('01-09-2017'),
             'finish_date' => Carbon::parse('01-07-2019')
         ]);
 
-        $education->skills()->attach($this->skills->newQuery()->user($user)->name('Laravel')->first());
-        $education->skills()->attach($this->skills->newQuery()->user($user)->name('JS')->first());
-        $education->skills()->attach($this->skills->newQuery()->user($user)->name('Mysql')->first());
-        $education->skills()->attach($this->skills->newQuery()->user($user)->name('Postgres')->first());
         $education->skills()->attach($this->skills->newQuery()->user($user)->name('Html')->first());
         $education->skills()->attach($this->skills->newQuery()->user($user)->name('Css')->first());
+        $education->skills()->attach($this->skills->newQuery()->user($user)->name('Linux')->first());
+        $education->skills()->attach($this->skills->newQuery()->user($user)->name('Wordpress')->first());
 
         $education = $user->experiences()->create([
-            'position' => [
-                'en' => 'Junior Fullstack Developer',
-                'es' => 'Junior Fullstack Developer',
+            'school' => [
+                'en' => 'Institut Almatà',
+                'es' => 'Institut Almatà',
             ],
-            'company' => [
-                'en' => 'CompsaOnline S.L.',
-                'es' => 'CompsaOnline S.L.',
+            'degree' => [
+                'en' => 'Certificate of Higher Education',
+                'es' => 'Formación Profesional de Grado Superior',
             ],
-            'location' => [
-                'en' => 'Balaguer, Lleida, Spain',
-                'es' => 'Balaguer, Lleida, España',
+            'discipline' => [
+                'en' => 'Web Application Development',
+                'es' => 'Desarrollo de Aplicaciones Web',
             ],
             'description' => [
-                'en' => 'Desarrollo en PHP y Laravel, destacando en el diseño e implementación de soluciones eficientes. Especializado en la integración fluida de APIs para optimizar procesos.',
-                'es' => 'Developer in PHP and Laravel, excelling in the design and implementation of efficient solutions. Specialized in seamless API integration to streamline processes.',
+                'en' => 'Graduado con un Grado Superior en Desarrollo de Aplicaciones Web, con habilidades avanzadas en el diseño, construcción y resolución de problemas en aplicaciones web. Listo para destacar en el dinámico campo del desarrollo web.',
+                'es' => 'Graduated with a Higher Degree in Web Application Development, equipped with advanced skills in designing, building, and troubleshooting web applications. Ready to excel in the dynamic field of web development.',
             ],
-            'start_date' => Carbon::parse('01-06-2020'),
-            'finish_date' => Carbon::parse('21-02-2023')
+            'start_date' => Carbon::parse('01-09-2019'),
+            'finish_date' => Carbon::parse('01-07-2021')
         ]);
 
-        $education->skills()->attach($this->skills->newQuery()->user($user)->name('Laravel')->first());
-        $education->skills()->attach($this->skills->newQuery()->user($user)->name('JS')->first());
-        $education->skills()->attach($this->skills->newQuery()->user($user)->name('Mysql')->first());
-        $education->skills()->attach($this->skills->newQuery()->user($user)->name('Postgres')->first());
+        $education->skills()->attach($this->skills->newQuery()->user($user)->name('PHP')->first());
+        $education->skills()->attach($this->skills->newQuery()->user($user)->name('Docker')->first());
         $education->skills()->attach($this->skills->newQuery()->user($user)->name('Html')->first());
+        $education->skills()->attach($this->skills->newQuery()->user($user)->name('CSS')->first());
+        $education->skills()->attach($this->skills->newQuery()->user($user)->name('Mysql')->first());
         $education->skills()->attach($this->skills->newQuery()->user($user)->name('Css')->first());
     }
 }

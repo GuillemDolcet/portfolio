@@ -43,38 +43,73 @@ class SkillsSeeder extends Seeder
         ], $user);
 
         $this->skills->create([
-            'name' => 'JS',
+            'name' => 'PHP',
+            'order' => 2,
+            'level' => '99',
+            'image' => new File('resources/assets/images/skills/php.png')
+        ], $user);
+
+        $this->skills->create([
+            'name' => 'APIs',
             'order' => 3,
+            'level' => '99',
+            'image' => new File('resources/assets/images/skills/apis.png')
+        ], $user);
+
+        $this->skills->create([
+            'name' => 'JS',
+            'order' => 4,
             'level' => '99',
             'image' => new File('resources/assets/images/skills/js.png')
         ], $user);
 
         $this->skills->create([
             'name' => 'Mysql',
-            'order' => 4,
+            'order' => 5,
             'level' => '99',
             'image' => new File('resources/assets/images/skills/mysql.png')
         ], $user);
 
         $this->skills->create([
             'name' => 'Postgres',
-            'order' => 5,
+            'order' => 6,
             'level' => '99',
             'image' => new File('resources/assets/images/skills/postgres.png')
         ], $user);
 
         $this->skills->create([
             'name' => 'Html',
-            'order' => 6,
+            'order' => 7,
             'level' => '99',
             'image' => new File('resources/assets/images/skills/html.png')
         ], $user);
 
         $this->skills->create([
             'name' => 'Css',
-            'order' => 7,
+            'order' => 8,
             'level' => '99',
             'image' => new File('resources/assets/images/skills/css.png')
+        ], $user);
+
+        $this->skills->create([
+            'name' => 'Docker',
+            'order' => 9,
+            'level' => '30',
+            'image' => new File('resources/assets/images/skills/docker.png')
+        ], $user);
+
+        $this->skills->create([
+            'name' => 'Wordpress',
+            'order' => 10,
+            'level' => '30',
+            'image' => new File('resources/assets/images/skills/wordpress.png')
+        ], $user);
+
+        $this->skills->create([
+            'name' => 'Linux',
+            'order' => 11,
+            'level' => '30',
+            'image' => new File('resources/assets/images/skills/linux.png')
         ], $user);
     }
 }

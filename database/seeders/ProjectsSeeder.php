@@ -49,8 +49,9 @@ class ProjectsSeeder extends Seeder
         ]);
 
         $project->skills()->attach($this->skills->newQuery()->user($user)->name('Laravel')->first());
+        $project->skills()->attach($this->skills->newQuery()->user($user)->name('PHP')->first());
+        $project->skills()->attach($this->skills->newQuery()->user($user)->name('APIs')->first());
         $project->skills()->attach($this->skills->newQuery()->user($user)->name('JS')->first());
-        $project->skills()->attach($this->skills->newQuery()->user($user)->name('Mysql')->first());
         $project->skills()->attach($this->skills->newQuery()->user($user)->name('Postgres')->first());
         $project->skills()->attach($this->skills->newQuery()->user($user)->name('Html')->first());
         $project->skills()->attach($this->skills->newQuery()->user($user)->name('Css')->first());
@@ -69,8 +70,8 @@ class ProjectsSeeder extends Seeder
         ]);
 
         $project->skills()->attach($this->skills->newQuery()->user($user)->name('Laravel')->first());
+        $project->skills()->attach($this->skills->newQuery()->user($user)->name('PHP')->first());
         $project->skills()->attach($this->skills->newQuery()->user($user)->name('JS')->first());
-        $project->skills()->attach($this->skills->newQuery()->user($user)->name('Mysql')->first());
         $project->skills()->attach($this->skills->newQuery()->user($user)->name('Postgres')->first());
         $project->skills()->attach($this->skills->newQuery()->user($user)->name('Html')->first());
         $project->skills()->attach($this->skills->newQuery()->user($user)->name('Css')->first());
@@ -88,10 +89,9 @@ class ProjectsSeeder extends Seeder
             'image' => new File('resources/assets/images/projects/turismeager.png')
         ]);
 
-        $project->skills()->attach($this->skills->newQuery()->user($user)->name('Laravel')->first());
+        $project->skills()->attach($this->skills->newQuery()->user($user)->name('Wordpress')->first());
+        $project->skills()->attach($this->skills->newQuery()->user($user)->name('PHP')->first());
         $project->skills()->attach($this->skills->newQuery()->user($user)->name('JS')->first());
-        $project->skills()->attach($this->skills->newQuery()->user($user)->name('Mysql')->first());
-        $project->skills()->attach($this->skills->newQuery()->user($user)->name('Postgres')->first());
         $project->skills()->attach($this->skills->newQuery()->user($user)->name('Html')->first());
         $project->skills()->attach($this->skills->newQuery()->user($user)->name('Css')->first());
 
@@ -108,10 +108,9 @@ class ProjectsSeeder extends Seeder
             'image' => new File('resources/assets/images/projects/runedia.png')
         ]);
 
-        $project->skills()->attach($this->skills->newQuery()->user($user)->name('Laravel')->first());
+        $project->skills()->attach($this->skills->newQuery()->user($user)->name('PHP')->first());
         $project->skills()->attach($this->skills->newQuery()->user($user)->name('JS')->first());
         $project->skills()->attach($this->skills->newQuery()->user($user)->name('Mysql')->first());
-        $project->skills()->attach($this->skills->newQuery()->user($user)->name('Postgres')->first());
         $project->skills()->attach($this->skills->newQuery()->user($user)->name('Html')->first());
         $project->skills()->attach($this->skills->newQuery()->user($user)->name('Css')->first());
     }
