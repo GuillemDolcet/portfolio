@@ -106,6 +106,16 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         return $this->hasMany(Experience::class, 'user_id', 'id');
     }
 
+    /**
+     * Hobbies relation.
+     *
+     * @return HasMany
+     */
+    public function hobbies(): HasMany
+    {
+        return $this->hasMany(Hobby::class, 'user_id', 'id');
+    }
+
     ///// Functions //////////////////////////////////////////////////////////////////////////////////////////////////
 
     /**

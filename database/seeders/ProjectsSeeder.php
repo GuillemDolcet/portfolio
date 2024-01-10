@@ -42,7 +42,7 @@ class ProjectsSeeder extends Seeder
             ],
             'description' => [
                 'en' => 'Developing web application using PHP/Laravel, integrating APIs like Amazon or Miravia. Additionally, I oversaw ongoing website maintenance.',
-                'es' => 'Desarrollando aplicacion con PHP/Laravel, integrando APIs como Amazon y Miravia. Además, gestioné el mantenimiento continuo del sitio web.',
+                'es' => 'Desarrollando aplicación con PHP/Laravel, integrando APIs como Amazon y Miravia. Además, gestioné el mantenimiento continuo del sitio web.',
             ],
             'url' => 'https://www.ielectro.es/',
             'image' => new File('resources/assets/images/projects/ielectro.png')
@@ -55,6 +55,7 @@ class ProjectsSeeder extends Seeder
         $project->skills()->attach($this->skills->newQuery()->user($user)->name('Postgres')->first());
         $project->skills()->attach($this->skills->newQuery()->user($user)->name('Html')->first());
         $project->skills()->attach($this->skills->newQuery()->user($user)->name('Css')->first());
+        $project->skills()->attach($this->skills->newQuery()->user($user)->name('Docker')->first());
 
         $project = $user->projects()->create([
             'name' => [
@@ -62,8 +63,8 @@ class ProjectsSeeder extends Seeder
                 'es' => 'MAYOR2010',
             ],
             'description' => [
-                'en' => 'Web application development and web maintenance with PHP/Laravel.',
-                'es' => 'Desarrollando aplicacion y manteniendo web con PHP/Laravel.',
+                'en' => 'Web development and maintenance with PHP/Laravel.',
+                'es' => 'Desarrollando y manteniendo web con PHP/Laravel.',
             ],
             'url' => 'https://www.mayor2010.com/',
             'image' => new File('resources/assets/images/projects/mayor2010.png')
@@ -71,19 +72,21 @@ class ProjectsSeeder extends Seeder
 
         $project->skills()->attach($this->skills->newQuery()->user($user)->name('Laravel')->first());
         $project->skills()->attach($this->skills->newQuery()->user($user)->name('PHP')->first());
+        $project->skills()->attach($this->skills->newQuery()->user($user)->name('APIs')->first());
         $project->skills()->attach($this->skills->newQuery()->user($user)->name('JS')->first());
         $project->skills()->attach($this->skills->newQuery()->user($user)->name('Postgres')->first());
         $project->skills()->attach($this->skills->newQuery()->user($user)->name('Html')->first());
         $project->skills()->attach($this->skills->newQuery()->user($user)->name('Css')->first());
+        $project->skills()->attach($this->skills->newQuery()->user($user)->name('Docker')->first());
 
         $project = $user->projects()->create([
             'name' => [
-                'en' => 'Tourism ager',
-                'es' => 'Turismo ager',
+                'en' => 'Tourism Àger',
+                'es' => 'Turismo Àger',
             ],
             'description' => [
-                'en' => 'Web application development and web maintenance with PHP/Laravel.',
-                'es' => 'Desarrollando aplicacion y manteniendo web con PHP/Laravel.',
+                'en' => 'New website made in HTML and CSS with WordPress.',
+                'es' => 'Nueva página web echa en HTML y CSS junto a WordPress.',
             ],
             'url' => 'https://turismeager.cat/',
             'image' => new File('resources/assets/images/projects/turismeager.png')
@@ -91,7 +94,6 @@ class ProjectsSeeder extends Seeder
 
         $project->skills()->attach($this->skills->newQuery()->user($user)->name('Wordpress')->first());
         $project->skills()->attach($this->skills->newQuery()->user($user)->name('PHP')->first());
-        $project->skills()->attach($this->skills->newQuery()->user($user)->name('JS')->first());
         $project->skills()->attach($this->skills->newQuery()->user($user)->name('Html')->first());
         $project->skills()->attach($this->skills->newQuery()->user($user)->name('Css')->first());
 
@@ -101,14 +103,34 @@ class ProjectsSeeder extends Seeder
                 'es' => 'Runedia',
             ],
             'description' => [
-                'en' => 'Web application development and web maintenance with PHP/Laravel.',
-                'es' => 'Desarrollando aplicacion y manteniendo web con PHP/Laravel.',
+                'en' => 'Modifications and new page functions in PHP and JS.',
+                'es' => 'Modificaciones y nuevas funciones de la página en PHP y JS.',
             ],
             'url' => 'https://runedia.mundodeportivo.com/',
             'image' => new File('resources/assets/images/projects/runedia.png')
         ]);
 
         $project->skills()->attach($this->skills->newQuery()->user($user)->name('PHP')->first());
+        $project->skills()->attach($this->skills->newQuery()->user($user)->name('JS')->first());
+        $project->skills()->attach($this->skills->newQuery()->user($user)->name('Mysql')->first());
+        $project->skills()->attach($this->skills->newQuery()->user($user)->name('Html')->first());
+        $project->skills()->attach($this->skills->newQuery()->user($user)->name('Css')->first());
+
+        $project = $user->projects()->create([
+            'name' => [
+                'en' => 'Ferreteria.es',
+                'es' => 'Ferreteria.es',
+            ],
+            'description' => [
+                'en' => 'Assistant for the development of an application for stock and order management for both the website and Amazon.',
+                'es' => 'Ayudante de desarrollo de una aplicación para la gestión de stock y pedidos tanto de la página web como de Amazon.',
+            ],
+            'url' => 'https://ferreteria.es/',
+            'image' => new File('resources/assets/images/projects/ferreteriaes.png')
+        ]);
+
+        $project->skills()->attach($this->skills->newQuery()->user($user)->name('PHP')->first());
+        $project->skills()->attach($this->skills->newQuery()->user($user)->name('Laravel')->first());
         $project->skills()->attach($this->skills->newQuery()->user($user)->name('JS')->first());
         $project->skills()->attach($this->skills->newQuery()->user($user)->name('Mysql')->first());
         $project->skills()->attach($this->skills->newQuery()->user($user)->name('Html')->first());

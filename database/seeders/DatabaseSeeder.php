@@ -24,5 +24,7 @@ class DatabaseSeeder extends Seeder
         $this->call(SkillsSeeder::class, false, ['user' => $user]);
         $this->call(ExperiencesSeeder::class, false, ['user' => $user]);
         $this->call(ProjectsSeeder::class, false, ['user' => $user]);
+        $this->call(EducationSeeder::class, false, ['user' => $user]);
+        $this->call(HobbiesSeeder::class, false, ['user' => $user]);
     }
 }

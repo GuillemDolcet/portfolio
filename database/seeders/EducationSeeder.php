@@ -60,7 +60,7 @@ class EducationSeeder extends Seeder
         $education->skills()->attach($this->skills->newQuery()->user($user)->name('Linux')->first());
         $education->skills()->attach($this->skills->newQuery()->user($user)->name('Wordpress')->first());
 
-        $education = $user->experiences()->create([
+        $education = $user->education()->create([
             'school' => [
                 'en' => 'Institut Almatà',
                 'es' => 'Institut Almatà',
@@ -74,8 +74,8 @@ class EducationSeeder extends Seeder
                 'es' => 'Desarrollo de Aplicaciones Web',
             ],
             'description' => [
-                'en' => 'Graduado con un Grado Superior en Desarrollo de Aplicaciones Web, con habilidades avanzadas en el diseño, construcción y resolución de problemas en aplicaciones web. Listo para destacar en el dinámico campo del desarrollo web.',
-                'es' => 'Graduated with a Higher Degree in Web Application Development, equipped with advanced skills in designing, building, and troubleshooting web applications. Ready to excel in the dynamic field of web development.',
+                'en' => 'Graduated with a Higher Degree in Web Application Development, equipped with advanced skills in designing, building, and troubleshooting web applications. Ready to excel in the dynamic field of web development.',
+                'es' => 'Graduado con un Grado Superior en Desarrollo de Aplicaciones Web, con habilidades avanzadas en el diseño, construcción y resolución de problemas en aplicaciones web. Listo para destacar en el dinámico campo del desarrollo web.'
             ],
             'start_date' => Carbon::parse('01-09-2019'),
             'finish_date' => Carbon::parse('01-07-2021')
@@ -84,7 +84,6 @@ class EducationSeeder extends Seeder
         $education->skills()->attach($this->skills->newQuery()->user($user)->name('PHP')->first());
         $education->skills()->attach($this->skills->newQuery()->user($user)->name('Docker')->first());
         $education->skills()->attach($this->skills->newQuery()->user($user)->name('Html')->first());
-        $education->skills()->attach($this->skills->newQuery()->user($user)->name('CSS')->first());
         $education->skills()->attach($this->skills->newQuery()->user($user)->name('Mysql')->first());
         $education->skills()->attach($this->skills->newQuery()->user($user)->name('Css')->first());
     }
