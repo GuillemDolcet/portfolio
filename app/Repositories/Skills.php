@@ -6,9 +6,11 @@ use App\Models\Skill;
 use App\Models\User;
 use App\Support\Arr;
 use App\Support\Storage;
+use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Http\UploadedFile;
 
 class Skills extends Repository
 {
@@ -100,8 +102,7 @@ class Skills extends Repository
                 Storage::disk('public')->delete($instance->image);
             }
 
-            $path = Storage::randomFileName($user->getKey().'/skills/', $attributes['image']->extension());
-            Storage::disk('public')->put($path, $attributes['image']->get());
+            $path = Storage::disk('public')->putFile($user->getKey().'/skills', $attributes['image']);
             $instance->image = $path;
         }
 

@@ -63,41 +63,6 @@
         <div class="invalid-feedback">{{ $message }}</div>
         @endif
     </div>
-    <div class="col-12 row mb-3">
-        <div class="col-6">
-            <label class="form-label fw-bold" for="start_date">@lang('admin.start_date') <sup class="text-danger fs-xs">*</sup></label>
-            <input id="start_date" name="start_date" type="date"
-                   class="form-control @error('start_date') is-invalid @enderror"
-                   autocomplete="off"
-                   required value="{{ old('start_date', !is_null($project->start_date) ? $project->start_date->format('Y-m-d') : '') }}">
-            @error('start_date')
-            <div class="invalid-feedback">{{ $message }}</div>
-            @endif
-        </div>
-        <div class="col-6">
-            <label class="form-label fw-bold" for="finish_date">@lang('admin.finish_date') <sup
-                    class="text-danger fs-xs">*</sup></label>
-            <input id="finish_date" name="finish_date" type="date"
-                   class="form-control @error('finish_date') is-invalid @enderror"
-                   autocomplete="off"
-                   required @if(is_null($project->finish_date)) disabled @else value="{{ old('finish_date', $project->finish_date->format('Y-m-d')) }}" @endif>
-            @error('finish_date')
-            <div class="invalid-feedback">{{ $message }}</div>
-            @endif
-        </div>
-    </div>
-    <div class="col-12">
-        <label class="form-check form-switch">
-            <input type="checkbox" id="currently" name="currently" value="1"
-                   class="form-check-input @error('currently') is-invalid @enderror"
-                   data-action="input->form#ableDisableFinishDate"
-                    @if(is_null($project->finish_date)) checked @endif>
-            <span class="form-check-label">@lang('admin.currently')</span>
-        </label>
-        @error('currently')
-        <div class="invalid-feedback">{{ $message }}</div>
-        @endif
-    </div>
     <div class="col-12">
         <div class="d-flex justify-content-between">
             <label class="form-label fw-bold" for="skills">@lang('admin.skills')</label>

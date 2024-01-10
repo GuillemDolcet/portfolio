@@ -63,4 +63,12 @@ class Skill extends Model
     {
         $query->where('user_id', '=', $user->getKey());
     }
+
+    /**
+     * Scope by name.
+     */
+    public function scopeName(Builder $query, string $name): void
+    {
+        $query->where('name', '=', $name);
+    }
 }

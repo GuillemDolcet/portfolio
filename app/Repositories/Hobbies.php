@@ -100,8 +100,7 @@ class Hobbies extends Repository
                 Storage::disk('public')->delete($instance->image);
             }
 
-            $path = Storage::randomFileName($user->getKey().'/hobbies/', $attributes['image']->extension());
-            Storage::disk('public')->put($path, $attributes['image']->get());
+            $path = Storage::disk('public')->putFile($user->getKey().'/hobbies', $attributes['image']);
             $instance->image = $path;
         }
 
