@@ -45,7 +45,9 @@ class ProjectsSeeder extends Seeder
                 'es' => 'Desarrollando aplicación con PHP/Laravel, integrando APIs como Amazon y Miravia. Además, gestioné el mantenimiento continuo del sitio web.',
             ],
             'url' => 'https://www.ielectro.es/',
-            'image' => new File('resources/assets/images/projects/ielectro.png')
+            'image' => new File('resources/assets/images/projects/ielectro.png'),
+            'start_date' => Carbon::parse('21-02-2023'),
+            'finish_date' => null
         ]);
 
         $project->skills()->attach($this->skills->newQuery()->user($user)->name('Laravel')->first());
@@ -67,7 +69,9 @@ class ProjectsSeeder extends Seeder
                 'es' => 'Desarrollando y manteniendo web con PHP/Laravel.',
             ],
             'url' => 'https://www.mayor2010.com/',
-            'image' => new File('resources/assets/images/projects/mayor2010.png')
+            'image' => new File('resources/assets/images/projects/mayor2010.png'),
+            'start_date' => Carbon::parse('21-02-2023'),
+            'finish_date' => null
         ]);
 
         $project->skills()->attach($this->skills->newQuery()->user($user)->name('Laravel')->first());
@@ -89,7 +93,9 @@ class ProjectsSeeder extends Seeder
                 'es' => 'Nueva página web echa en HTML y CSS junto a WordPress.',
             ],
             'url' => 'https://turismeager.cat/',
-            'image' => new File('resources/assets/images/projects/turismeager.png')
+            'image' => new File('resources/assets/images/projects/turismeager.png'),
+            'start_date' => Carbon::parse('21-06-2022'),
+            'finish_date' => Carbon::parse('15-07-2022')
         ]);
 
         $project->skills()->attach($this->skills->newQuery()->user($user)->name('Wordpress')->first());
@@ -107,7 +113,9 @@ class ProjectsSeeder extends Seeder
                 'es' => 'Modificaciones y nuevas funciones de la página en PHP y JS.',
             ],
             'url' => 'https://runedia.mundodeportivo.com/',
-            'image' => new File('resources/assets/images/projects/runedia.png')
+            'image' => new File('resources/assets/images/projects/runedia.png'),
+            'start_date' => Carbon::parse('01-01-2022'),
+            'finish_date' => Carbon::parse('01-01-2023')
         ]);
 
         $project->skills()->attach($this->skills->newQuery()->user($user)->name('PHP')->first());
@@ -126,7 +134,9 @@ class ProjectsSeeder extends Seeder
                 'es' => 'Ayudante de desarrollo de una aplicación para la gestión de stock y pedidos tanto de la página web como de Amazon.',
             ],
             'url' => 'https://ferreteria.es/',
-            'image' => new File('resources/assets/images/projects/ferreteriaes.png')
+            'image' => new File('resources/assets/images/projects/ferreteriaes.png'),
+            'start_date' => Carbon::parse('01-06-2022'),
+            'finish_date' => Carbon::parse('01-09-2022')
         ]);
 
         $project->skills()->attach($this->skills->newQuery()->user($user)->name('PHP')->first());
