@@ -19,6 +19,35 @@ a {
     width: 100% !important;
 }
 
+.select2-selection{
+    border: 1px solid grey !important;
+    min-height: 36px !important;
+    .select2-selection__choice{
+        border: none !important;
+        height: 24px;
+        .select2-selection__choice__remove{
+            font-size: 18px;
+            border-right: none !important;
+            width: 18px !important;
+            &:hover{
+                background-color: unset !important;
+                color: blue;
+            }
+        }
+        button{
+            height: 100%;
+        }
+        span{
+            font-weight: 600;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            margin-right: 5px;
+            margin-left: 2px;
+        }
+    }
+}
+
 .modal-body{
     max-height: 70vh;
 }

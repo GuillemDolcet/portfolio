@@ -14,6 +14,7 @@ return [
     */
 
     'actual' => 'Actual',
+    'actual-image' => 'Actual image',
     'add' => 'Add',
     'advice-translations' => 'All fields must be filled in once regardless of language, untranslated fields will be translated automatically !!!',
     'all' => 'all',

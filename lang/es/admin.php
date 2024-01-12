@@ -14,6 +14,7 @@ return [
     */
 
     'actual' => 'Actual',
+    'actual-image' => 'Imagen actual',
     'add' => 'Añadir',
     'advice-translations' => 'Es necesario rellenar todos los campos 1 vez independientemente del idioma, los campos no traducidos se traducirán automáticamente !!!',
     'all' => 'todas',

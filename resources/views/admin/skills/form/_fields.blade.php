@@ -38,7 +38,7 @@
         @endif
         @if($skill->exists)
             <div class="d-flex align-items-center mt-5">
-                <b class="me-7">@lang('admin.actual') @lang('admin.image'): </b><img src="{{\Storage::url($skill->image)}}" width="40" height="40" alt="{{$skill->name}}">
+                <b class="me-3">@lang('admin.actual-image') : </b><img src="{{\Storage::url($skill->image)}}" width="100" alt="{{$skill->name}}">
             </div>
         @endif
     </div>

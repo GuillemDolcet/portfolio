@@ -1,6 +1,6 @@
 <div class="d-flex align-items-center justify-content-between border-bottom p-3">
     <div class="d-flex flex-column col-8">
-        <div class="mb-2"><b>{{$project->name}}</b></div>
+        <div><b>{{$project->name}}</b></div>
     </div>
     <div class="col-3 d-flex text-end justify-content-end">
         <a href="#" class="me-1" title="@lang('admin.edit')"
