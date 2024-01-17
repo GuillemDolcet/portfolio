@@ -1,7 +1,7 @@
 <div class="d-flex align-items-center justify-content-between border-bottom p-3">
     <div class="col-2"><img src="{{\Storage::url($hobby->image)}}" alt="{{$hobby->name}}" width="50"/></div>
-    <div class="col-2"><b>{{$hobby->name}}</b></div>
-    <div class="col-1 d-flex text-end justify-content-end">
+    <div class="col-8"><b>{{$hobby->name}}</b></div>
+    <div class="col-2 d-flex text-end justify-content-end">
         <a href="#" class="me-1" title="@lang('admin.edit')"
            data-controller="remote-modal"
            data-action="remote-modal#toggle"

@@ -6,6 +6,12 @@
     width: 80%;
 }
 
+textarea{
+    &.form-control{
+        min-height: 150px !important;
+    }
+}
+
 a {
     text-decoration: none !important;
 }

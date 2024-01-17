@@ -13,6 +13,7 @@ use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
+use Spatie\Translatable\HasTranslations;
 
 class User extends Model implements AuthenticatableContract, AuthorizableContract
 {
@@ -23,6 +24,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     use MemoizesAttributes;
     use Notifiable;
     use HasRoles;
+    use HasTranslations;
 
     /**
      * The table associated with the model.
@@ -40,6 +42,9 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         'name',
         'email',
         'password',
+        'date_of_birth',
+        'phone',
+        'location',
         'active',
         'avatar'
     ];
@@ -60,8 +65,19 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      * @var array<string, string>
      */
     protected $casts = [
+        'date_of_birth' => 'datetime',
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
+    ];
+
+
+    /**
+     * The attributes that are translated.
+     *
+     * @var array
+     */
+    protected array $translatable = [
+        'location'
     ];
 
     ///// Relations //////////////////////////////////////////////////////////////////////////////////////////////////
@@ -114,6 +130,16 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     public function hobbies(): HasMany
     {
         return $this->hasMany(Hobby::class, 'user_id', 'id');
+    }
+
+    /**
+     * Languages relation.
+     *
+     * @return HasMany
+     */
+    public function languages(): HasMany
+    {
+        return $this->hasMany(UserLanguage::class, 'user_id', 'id');
     }
 
     ///// Functions //////////////////////////////////////////////////////////////////////////////////////////////////

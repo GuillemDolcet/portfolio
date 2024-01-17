@@ -83,7 +83,7 @@ class HobbyController extends AdminController
             }
             return $this->renderTurboStream('admin.hobbies.form.modal_stream', compact('hobby'));
         }
-        return redirect()->route('admin.hobbies.index');
+        return redirect()->back();
     }
 
     /**
@@ -104,7 +104,7 @@ class HobbyController extends AdminController
             }
             return $this->renderTurboStream('admin.hobbies.form.modal_stream', compact('hobby'));
         }
-        return redirect()->route('admin.hobbies.index');
+        return redirect()->back();
     }
 
     /**
@@ -123,13 +123,13 @@ class HobbyController extends AdminController
             $attributes = $this->translator->translate($attributes, $this->hobbies->build()->getTranslatableAttributes());
             $this->hobbies->create($attributes, current_user());
             return redirect()
-                ->route('admin.hobbies.index')
+                ->back()
                 ->with([
                     'status' => ['type' => 'success', 'message' => Lang::get('admin.responses.success-create-hobby')]
                 ]);
         }
         return redirect()
-            ->route('admin.hobbies.index')
+            ->back()
             ->with([
                 'status' => ['type' => 'error', 'message' => Lang::get('admin.responses.error-create-hobby')]
             ]);
@@ -152,13 +152,13 @@ class HobbyController extends AdminController
             $attributes = $this->translator->translate($attributes, $this->hobbies->build()->getTranslatableAttributes());
             $this->hobbies->update($hobby, $attributes, current_user());
             return redirect()
-                ->route('admin.hobbies.index')
+                ->back()
                 ->with([
                     'status' => ['type' => 'success', 'message' => Lang::get('admin.responses.success-update-hobby')]
                 ]);
         }
         return redirect()
-            ->route('admin.hobbies.index')
+            ->back()
             ->with([
                 'status' => ['type' => 'error', 'message' => Lang::get('admin.responses.error-update-hobby')]
             ]);
@@ -177,7 +177,7 @@ class HobbyController extends AdminController
     {
         $this->hobbies->delete($hobby);
         return redirect()
-            ->route('admin.hobbies.index')
+            ->back()
             ->with([
                 'status' => [
                     'type' => 'success',

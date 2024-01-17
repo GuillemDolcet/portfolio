@@ -94,7 +94,7 @@ class ExperienceController extends AdminController
             }
             return $this->renderTurboStream('admin.experiences.form.modal_stream', compact('experience','skills'));
         }
-        return redirect()->route('admin.experiences.index');
+        return redirect()->back();
     }
 
     /**
@@ -116,7 +116,7 @@ class ExperienceController extends AdminController
             }
             return $this->renderTurboStream('admin.experiences.form.modal_stream', compact('experience','skills'));
         }
-        return redirect()->route('admin.experiences.index');
+        return redirect()->back();
     }
 
     /**
@@ -135,13 +135,13 @@ class ExperienceController extends AdminController
             $attributes = $this->translator->translate($attributes, $this->experiences->build()->getTranslatableAttributes());
             $this->experiences->create($attributes, current_user());
             return redirect()
-                ->route('admin.experiences.index')
+                ->back()
                 ->with([
                     'status' => ['type' => 'success', 'message' => Lang::get('admin.responses.success-create-experience')]
                 ]);
         }
         return redirect()
-            ->route('admin.experiences.index')
+            ->back()
             ->with([
                 'status' => ['type' => 'error', 'message' => Lang::get('admin.responses.error-create-experience')]
             ]);
@@ -164,13 +164,13 @@ class ExperienceController extends AdminController
             $attributes = $this->translator->translate($attributes, $this->experiences->build()->getTranslatableAttributes());
             $this->experiences->update($experience, $attributes, current_user());
             return redirect()
-                ->route('admin.experiences.index')
+                ->back()
                 ->with([
                     'status' => ['type' => 'success', 'message' => Lang::get('admin.responses.success-update-experience')]
                 ]);
         }
         return redirect()
-            ->route('admin.experiences.index')
+            ->back()
             ->with([
                 'status' => ['type' => 'error', 'message' => Lang::get('admin.responses.error-update-experience')]
             ]);
@@ -189,7 +189,7 @@ class ExperienceController extends AdminController
     {
         $experience->delete();
         return redirect()
-            ->route('admin.experiences.index')
+            ->back()
             ->with([
                 'status' => [
                     'type' => 'success',

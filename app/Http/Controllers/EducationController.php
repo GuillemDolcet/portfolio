@@ -94,7 +94,7 @@ class EducationController extends AdminController
             }
             return $this->renderTurboStream('admin.education.form.modal_stream', compact('education','skills'));
         }
-        return redirect()->route('admin.education.index');
+        return redirect()->back();
     }
 
     /**
@@ -116,7 +116,7 @@ class EducationController extends AdminController
             }
             return $this->renderTurboStream('admin.education.form.modal_stream', compact('education','skills'));
         }
-        return redirect()->route('admin.education.index');
+        return redirect()->back();
     }
 
     /**
@@ -135,13 +135,13 @@ class EducationController extends AdminController
             $attributes = $this->translator->translate($attributes, $this->education->build()->getTranslatableAttributes());
             $this->education->create($attributes, current_user());
             return redirect()
-                ->route('admin.education.index')
+                ->back()
                 ->with([
                     'status' => ['type' => 'success', 'message' => Lang::get('admin.responses.success-create-education')]
                 ]);
         }
         return redirect()
-            ->route('admin.education.index')
+            ->back()
             ->with([
                 'status' => ['type' => 'error', 'message' => Lang::get('admin.responses.error-create-education')]
             ]);
@@ -164,13 +164,13 @@ class EducationController extends AdminController
             $attributes = $this->translator->translate($attributes, $this->education->build()->getTranslatableAttributes());
             $this->education->update($education, $attributes, current_user());
             return redirect()
-                ->route('admin.education.index')
+                ->back()
                 ->with([
                     'status' => ['type' => 'success', 'message' => Lang::get('admin.responses.success-update-education')]
                 ]);
         }
         return redirect()
-            ->route('admin.education.index')
+            ->back()
             ->with([
                 'status' => ['type' => 'error', 'message' => Lang::get('admin.responses.error-update-education')]
             ]);
@@ -189,7 +189,7 @@ class EducationController extends AdminController
     {
         $education->delete();
         return redirect()
-            ->route('admin.education.index')
+            ->back()
             ->with([
                 'status' => [
                     'type' => 'success',

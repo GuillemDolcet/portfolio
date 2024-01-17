@@ -2,13 +2,12 @@
     <td>{{ ucfirst($experience->position) }}</td>
     <td>{{ ucfirst($experience->company) }}</td>
     <td>{{ ucfirst($experience->location) }}</td>
-    <td>{{ ucfirst($experience->description) }}</td>
     <td>{{ $experience->start_date->format('d/m/y') }}</td>
     <td>{{ !is_null($experience->finish_date) ? $experience->finish_date->format('d/m/y') : Lang::get('admin.currently') }}</td>
     <td>
-        <div class="d-flex">
+        <div class="d-flex flex-wrap gap-1">
             @foreach($experience->skills as $skill)
-                <div><img src="{{\Storage::url($skill->image)}}" alt="{{$skill->name}}" width="40" height="40"/></div>
+                <div class="me-2"><img src="{{\Storage::url($skill->image)}}" alt="{{$skill->name}}" height="40"/></div>
             @endforeach
         </div>
     </td>

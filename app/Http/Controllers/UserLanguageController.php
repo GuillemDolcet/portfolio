@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\SkillStoreRequest;
 use App\Http\Requests\SkillUpdateRequest;
-use App\Models\Skill;
-use App\Repositories\Skills;
+use App\Models\UserLanguage;
+use App\Repositories\UsersLanguages;
 use Illuminate\Contracts\Console\Application as ConsoleApplication;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Contracts\Support\Renderable;
@@ -18,47 +18,47 @@ use Illuminate\Http\Response;
 use Illuminate\Routing\ResponseFactory;
 use Illuminate\Support\Facades\Lang;
 
-class SkillController extends AdminController
+class UserLanguageController extends AdminController
 {
     /**
-     * Skills repository instance.
+     * UsersLanguages repository instance.
      *
-     * @param Skills $skills
+     * @param UsersLanguages $usersLanguages
      */
-    protected Skills $skills;
+    protected UsersLanguages $usersLanguages;
 
     /**
      * Class constructor.
      *
      * @return void
      */
-    public function __construct(Request $request, Skills $skills)
+    public function __construct(Request $request, UsersLanguages $usersLanguages)
     {
         parent::__construct($request);
 
-        $this->skills = $skills;
+        $this->usersLanguages = $usersLanguages;
     }
 
     /**
-     * [GET] /admin/skills
-     * admin.skills.index
+     * [GET] /admin/users/languages
+     * admin.users.languages.index
      *
-     * Returns the skills view.
+     * Returns the user languages view.
      *
      * @return ConsoleApplication|FoundationApplication|View|Factory|Response|ResponseFactory
      * @throws BindingResolutionException
      */
     public function index(): ConsoleApplication|FoundationApplication|View|Factory|Response|ResponseFactory
     {
-        $skills = $this->skills->listing($this->skills->newQuery()->user(current_user())->orderBy('order'));
-        return view('admin.skills.index', compact('skills'));
+        $userLanguages = $this->usersLanguages->listing($this->usersLanguages->newQuery()->user(current_user())->orderBy('level'));
+        return view('admin.users.languages.index', compact('userLanguages'));
     }
 
     /**
-     * [GET] /admin/skills/create
-     * admin.skills.create
+     * [GET] /admin/users/languages/create
+     * admin.users.languages.create
      *
-     * Returns the skill modal stream view for create.
+     * Returns the user language modal stream view for create.
      *
      * @return RedirectResponse|Response|ResponseFactory
      * @throws BindingResolutionException
@@ -66,48 +66,48 @@ class SkillController extends AdminController
     public function create(): RedirectResponse|Response|ResponseFactory
     {
         if ($this->wantsTurboStream($this->request)) {
-            $skill = $this->skills->build();
+            $skill = $this->usersLanguages->build();
             if (($sess = $this->request->session()) && $sess->hasOldInput()) {
-                return $this->renderTurboStream('admin.skills.form.modal_stream', compact('skill'));
+                return $this->renderTurboStream('admin.users.languages.form.modal_stream', compact('skill'));
             }
-            return $this->renderTurboStream('admin.skills.form.modal_stream', compact('skill'));
+            return $this->renderTurboStream('admin.users.languages.form.modal_stream', compact('skill'));
         }
         return redirect()->back();
     }
 
     /**
-     * [GET] /admin/skills/{skill}/edit
-     * admin.skills.edit
+     * [GET] /admin/users/languages/{userLanguage}/edit
+     * admin.users.languages.edit
      *
-     * Returns the skill modal stream view for update.
+     * Returns the user language modal stream view for update.
      *
-     * @param Skill $skill
+     * @param UserLanguage $userLanguage
      * @return RedirectResponse|Response|ResponseFactory
      * @throws BindingResolutionException
      */
-    public function edit(Skill $skill): RedirectResponse|Response|ResponseFactory
+    public function edit(UserLanguage $userLanguage): RedirectResponse|Response|ResponseFactory
     {
         if ($this->wantsTurboStream($this->request)) {
             if (($sess = $this->request->session()) && $sess->hasOldInput()) {
-                return $this->renderTurboStream('admin.skills.form.modal_stream', compact('skill'));
+                return $this->renderTurboStream('admin.users.languages.form.modal_stream', compact('userLanguage'));
             }
-            return $this->renderTurboStream('admin.skills.form.modal_stream', compact('skill'));
+            return $this->renderTurboStream('admin.users.languages.form.modal_stream', compact('userLanguage'));
         }
         return redirect()->back();
     }
 
     /**
-     * [POST] /admin/skills
-     * admin.skills.store
+     * [POST] /admin/users/languages
+     * admin.users.languages.store
      *
-     * Validate skill form and create skill, then redirect to skills index.
+     * Validate user language form and create user language, then redirect back.
      *
      * @param SkillStoreRequest $request
      * @return RedirectResponse
      */
     public function store(SkillStoreRequest $request): RedirectResponse
     {
-        if ($this->skills->create($request->validated(), current_user())) {
+        if ($this->usersLanguages->create($request->validated(), current_user())) {
             return redirect()
                 ->back()
                 ->with([
@@ -122,18 +122,18 @@ class SkillController extends AdminController
     }
 
     /**
-     * [PUT|PATCH] /admin/skills/{skill}
-     * admin.skills.update
+     * [PUT|PATCH] /admin/users/languages/{userLanguage}
+     * admin.users.languages.update
      *
-     * Validate skill form and update skill, then redirect to skills index.
+     * Validate user language form and update user language
      *
      * @param SkillUpdateRequest $request
-     * @param Skill $skill
+     * @param UserLanguage $userLanguage
      * @return RedirectResponse
      */
-    public function update(SkillUpdateRequest $request, Skill $skill): RedirectResponse
+    public function update(SkillUpdateRequest $request, UserLanguage $userLanguage): RedirectResponse
     {
-        if ($this->skills->update($skill, $request->validated(), current_user())) {
+        if ($this->usersLanguages->update($userLanguage, $request->validated(), current_user())) {
             return redirect()
                 ->back()
                 ->with([
@@ -148,17 +148,17 @@ class SkillController extends AdminController
     }
 
     /**
-     * [DELETE] /admin/skills/{skill}
-     * admin.skills.destroy
+     * [DELETE] /admin/users/languages/{userLanguage}
+     * admin.users.languages.destroy
      *
-     * Delete skill, then redirect to skills index.
+     * Delete user language, then redirect to skills index.
      *
-     * @param Skill $skill
+     * @param UserLanguage $userLanguage
      * @return Renderable|RedirectResponse
      */
-    public function destroy(Skill $skill): Renderable|RedirectResponse
+    public function destroy(UserLanguage $userLanguage): Renderable|RedirectResponse
     {
-        $this->skills->delete($skill);
+        $this->usersLanguages->delete($userLanguage);
         return redirect()
             ->back()
             ->with([

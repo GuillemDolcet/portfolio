@@ -41,7 +41,6 @@ Route::middleware('auth')->group(function () {
     Route::prefix('admin')->group(function () {
         Route::group(['middleware' => ['role:admin']], function () {
             //Users
-            Route::get('/', [OverviewController::class, 'index'])->name('admin.index');
             Route::get('/users', [UserController::class, 'index'])->name('admin.users.index');
             Route::post('/users', [UserController::class, 'store'])->name('admin.users.store');
             Route::get('/users/create', [UserController::class, 'create'])->name('admin.users.create');
@@ -49,6 +48,14 @@ Route::middleware('auth')->group(function () {
             Route::match(['put', 'patch'], '/users/{user}', [UserController::class, 'update'])->name('admin.users.update');
             Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('admin.users.destroy');
         });
+        Route::get('/', [OverviewController::class, 'index'])->name('admin.index');
+        //Users Languages
+        Route::get('/users/languages', [UserController::class, 'index'])->name('admin.users.languages.index');
+        Route::post('/users/languages', [UserController::class, 'store'])->name('admin.users.languages.store');
+        Route::get('/users/languages/create', [UserController::class, 'create'])->name('admin.users.languages.create');
+        Route::get('/users/languages/{userLanguage}/edit', [UserController::class, 'edit'])->name('admin.users.languages.edit');
+        Route::match(['put', 'patch'], '/users/languages/{userLanguage}', [UserController::class, 'update'])->name('admin.users.languages.update');
+        Route::delete('/users/languages/{userLanguage}', [UserController::class, 'destroy'])->name('admin.users.languages.destroy');
         //Skills
         Route::get('/skills', [SkillController::class, 'index'])->name('admin.skills.index');
         Route::post('/skills', [SkillController::class, 'store'])->name('admin.skills.store');

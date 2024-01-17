@@ -31,6 +31,8 @@ return [
     'created' => 'Creado',
     'created_at' => 'Creado en',
     'currently' => 'Actualmente tengo este cargo',
+    'currently-project' => 'Trabajando',
+    'date_of_birth' => 'Cumpleaños',
     'degree' => 'Título',
     'delete' => 'Eliminar',
     'description' => 'Descripcion',
@@ -46,6 +48,7 @@ return [
     'finish_date' => 'Fecha de finalizacion',
     'hobbies' => 'Hobbies',
     'hobby' => 'Hobby',
+    'home' => 'Inicio',
     'image' => 'Imagen',
     'level' => 'Nivel',
     'location' => 'Localizacion',
@@ -57,6 +60,7 @@ return [
     'or' => 'O',
     'order' => 'Orden',
     'password' => 'Contraseña',
+    'phone' => 'Telefono',
     'placeholders' => [
         'email' => 'tu@email.com',
         'password' => 'Tu contraseña'
