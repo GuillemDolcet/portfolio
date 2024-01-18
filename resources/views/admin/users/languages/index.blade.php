@@ -7,8 +7,8 @@
                 <div class="d-flex justify-content-between align-items-center">
                     <div>
                         <h2 class="page-title">
-                            <x-icon icon="users" class="me-2"/>
-                            @lang('admin.language')
+                            <x-icon icon="book" class="me-2"/>
+                            @lang('admin.languages')
                         </h2>
                     </div>
                     <div class="btn-list">
@@ -17,7 +17,7 @@
                            data-action="remote-modal#toggle"
                            data-remote-modal-url-value="{{ route('admin.users.languages.create') }}"
                            data-remote-modal-target-value="#language-form-modal">
-                            <x-icon icon="user-plus"/>
+                            <x-icon icon="plus"/>
                             @lang('admin.add') @lang('admin.language')
                         </a>
                     </div>
@@ -36,10 +36,8 @@
                     <table class="table table-vcenter card-table">
                         <thead>
                         <tr>
-                            <th>ID</th>
                             <th>@lang('admin.name')</th>
-                            <th>Email</th>
-                            <th>@lang('admin.role')</th>
+                            <th>@lang('admin.level')</th>
                             <th></th>
                         </tr>
                         </thead>

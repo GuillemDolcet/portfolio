@@ -46,7 +46,7 @@ class HobbyStoreRequest extends FormRequest
         return [
             'name' => ['required', 'array', new Language()],
             'name.*' => ['required', 'string', 'max:100'],
-            'order' => ['nullable', 'integer'],
+            'order' => ['nullable', 'integer', 'max:9999999999'],
             'image' =>  ['required', 'image', 'max:10000']
         ];
     }

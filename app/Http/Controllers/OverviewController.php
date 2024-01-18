@@ -7,6 +7,7 @@ use App\Repositories\Experiences;
 use App\Repositories\Hobbies;
 use App\Repositories\Projects;
 use App\Repositories\Skills;
+use App\Repositories\UsersLanguages;
 use Illuminate\Contracts\Console\Application as ConsoleApplication;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -63,6 +64,13 @@ class OverviewController extends AdminController
     protected Hobbies $hobbies;
 
     /**
+     * UsersLanguages repository instance.
+     *
+     * @param UsersLanguages $usersLanguages
+     */
+    protected UsersLanguages $usersLanguages;
+
+    /**
      * Class constructor.
      *
      * @param Request $request
@@ -71,8 +79,10 @@ class OverviewController extends AdminController
      * @param Projects $projects
      * @param Hobbies $hobbies
      * @param Education $education
+     * @param UsersLanguages $usersLanguages
      */
-    public function __construct(Request $request, Skills $skills, Experiences $experiences, Projects $projects, Hobbies $hobbies, Education $education)
+    public function __construct(Request $request, Skills $skills, Experiences $experiences, Projects $projects, Hobbies $hobbies,
+                                    Education $education, UsersLanguages $usersLanguages)
     {
         parent::__construct($request);
 
@@ -85,6 +95,8 @@ class OverviewController extends AdminController
         $this->projects = $projects;
 
         $this->hobbies = $hobbies;
+
+        $this->usersLanguages = $usersLanguages;
     }
 
     /**
@@ -103,6 +115,7 @@ class OverviewController extends AdminController
         $projects = $this->projects->listing($this->projects->newQuery()->user(current_user())->orderBy('start_date'));
         $hobbies = $this->hobbies->listing($this->hobbies->newQuery()->user(current_user())->orderBy('order'));
         $education = $this->education->listing($this->education->newQuery()->user(current_user())->orderBy('start_date'));
-        return view('admin.overview.index', compact('user','skills','experiences', 'projects','hobbies','education'));
+        $userLanguages = $this->usersLanguages->listing($this->usersLanguages->newQuery()->user(current_user())->orderByDesc('level'));
+        return view('admin.overview.index', compact('user','skills','experiences','projects','hobbies','education','userLanguages'));
     }
 }

@@ -21,7 +21,7 @@ class UserStoreRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return current_user()->hasRole(['superadmin','admin']);
+        return current_user()->hasRole(['admin']);
     }
 
     /**
@@ -36,6 +36,12 @@ class UserStoreRequest extends FormRequest
             'email' => ['required', 'email', 'unique:users,email'],
             'password' =>  ['required', 'confirmed', Password::defaults()],
             'role' => ['required', 'exists:roles,id'],
+            'date_of_birth' => ['nullable', 'date'],
+            'phone' => ['nullable', 'string'],
+            'location' => ['nullable', 'string'],
+            'linkedin' => ['nullable', 'string'],
+            'x' => ['nullable', 'string'],
+            'instagram' => ['nullable', 'string']
         ];
     }
 }

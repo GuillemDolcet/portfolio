@@ -23,7 +23,7 @@ class EducationUpdateRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return !is_null(current_user());
+        return current_user()->hasRole(['admin']) || $this->education->user->getKey() == current_user()->getKey();
     }
 
     /**

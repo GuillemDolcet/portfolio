@@ -22,7 +22,7 @@
         <label class="form-label fw-bold" for="order">@lang('admin.order')</label>
         <input id="level" name="order" type="number" class="form-control @error('order') is-invalid @enderror"
                autocomplete="off"
-               value="{{ old('order', $skill->order) }}">
+               value="{{ old('order', $skill->order) }}" max="9999999999">
         @error('order')
         <div class="invalid-feedback">{{ $message }}</div>
         @endif

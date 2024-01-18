@@ -53,7 +53,7 @@ class ProjectStoreRequest extends FormRequest
             'description' => ['required', 'array', new Language()],
             'description.*' => ['required'],
             'image' =>  ['required', 'image', 'max:10000'],
-            'url' =>  ['required', 'string'],
+            'url' =>  ['nullable', 'string', 'max:254'],
             'start_date' =>  ['required', 'date'],
             'finish_date' => ['required_without:currently', 'date', 'after:start_date'],
             'currently' => ['required_without:finish_date'],

@@ -14,7 +14,7 @@ return [
     */
 
     'actual' => 'Actual',
-    'actual-image' => 'Actual image',
+    'actual-image' => 'Current image',
     'add' => 'Add',
     'advice-translations' => 'All fields must be filled in once regardless of language, untranslated fields will be translated automatically !!!',
     'all' => 'all',
@@ -26,7 +26,8 @@ return [
         'delete-experience' => 'Do you really want to delete this experience? This action cannot be undone',
         'delete-project' => 'Do you really want to delete this project? This action cannot be undone',
         'delete-education' => 'Do you really want to delete this education? This action cannot be undone',
-        'delete-hobby' => 'Do you really want to delete this hobby? This action cannot be undone'
+        'delete-hobby' => 'Do you really want to delete this hobby? This action cannot be undone',
+        'delete-user-language' => 'Do you really want to delete this language? This action cannot be undone'
     ],
     'created' => 'Created',
     'created_at' => 'Created At',
@@ -41,7 +42,7 @@ return [
     'education' => 'Education',
     'errors' => [
         'login' => 'An error occurred with the verification of your user account. Please try again in a few minutes.',
-        'account-suspended' => 'Su cuenta de usuario ha sido suspendida.'
+        'account-suspended' => 'Your user account has been suspended.'
     ],
     'experience' => 'Experience',
     'experiences' => 'Experiences',
@@ -50,6 +51,8 @@ return [
     'hobby' => 'Hobby',
     'home' => 'Home',
     'image' => 'Image',
+    'language' => 'Language',
+    'languages' => 'Languages',
     'level' => 'Level',
     'location' => 'Location',
     'login' => 'Login',
@@ -104,7 +107,13 @@ return [
         'error-create-hobby' => 'Error on create hobby',
         'success-update-hobby' => 'Hobby updated',
         'error-update-hobby' => 'Error on update hobby',
-        'delete-hobby' => 'Hobby deleted'
+        'delete-hobby' => 'Hobby deleted',
+
+        'success-create-user-language' => 'Language created',
+        'error-create-user-language' => 'Error on create language',
+        'success-update-user-language' => 'Language updated',
+        'error-update-user-language' => 'Error on update language',
+        'delete-user-language' => 'Language deleted'
     ],
     'role' => 'Role',
     'school' => 'School',

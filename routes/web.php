@@ -11,6 +11,7 @@ use App\Http\Controllers\OverviewController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\SkillController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserLanguageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -50,12 +51,12 @@ Route::middleware('auth')->group(function () {
         });
         Route::get('/', [OverviewController::class, 'index'])->name('admin.index');
         //Users Languages
-        Route::get('/users/languages', [UserController::class, 'index'])->name('admin.users.languages.index');
-        Route::post('/users/languages', [UserController::class, 'store'])->name('admin.users.languages.store');
-        Route::get('/users/languages/create', [UserController::class, 'create'])->name('admin.users.languages.create');
-        Route::get('/users/languages/{userLanguage}/edit', [UserController::class, 'edit'])->name('admin.users.languages.edit');
-        Route::match(['put', 'patch'], '/users/languages/{userLanguage}', [UserController::class, 'update'])->name('admin.users.languages.update');
-        Route::delete('/users/languages/{userLanguage}', [UserController::class, 'destroy'])->name('admin.users.languages.destroy');
+        Route::get('/users/languages', [UserLanguageController::class, 'index'])->name('admin.users.languages.index');
+        Route::post('/users/languages', [UserLanguageController::class, 'store'])->name('admin.users.languages.store');
+        Route::get('/users/languages/create', [UserLanguageController::class, 'create'])->name('admin.users.languages.create');
+        Route::get('/users/languages/{userLanguage}/edit', [UserLanguageController::class, 'edit'])->name('admin.users.languages.edit');
+        Route::match(['put', 'patch'], '/users/languages/{userLanguage}', [UserLanguageController::class, 'update'])->name('admin.users.languages.update');
+        Route::delete('/users/languages/{userLanguage}', [UserLanguageController::class, 'destroy'])->name('admin.users.languages.destroy');
         //Skills
         Route::get('/skills', [SkillController::class, 'index'])->name('admin.skills.index');
         Route::post('/skills', [SkillController::class, 'store'])->name('admin.skills.store');

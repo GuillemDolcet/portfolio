@@ -11,6 +11,8 @@
 
             @include('admin.overview.experiences.index')
 
+            @include('admin.overview.users.languages.index')
+
             @include('admin.overview.projects.index')
 
             @include('admin.overview.skills.index')

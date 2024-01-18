@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Spatie\Translatable\HasTranslations;
@@ -52,5 +53,19 @@ class UserLanguage extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    ///// Scopes //////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * Scope by language name.
+     *
+     * @param Builder $query
+     * @param User $user
+     * @return void
+     */
+    public function scopeUser(Builder $query, User $user): void
+    {
+        $query->where('user_id', '=', $user->getKey());
     }
 }

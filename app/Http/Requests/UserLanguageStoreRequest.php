@@ -2,19 +2,18 @@
 
 namespace App\Http\Requests;
 
-use App\Models\Skill;
-use App\Rules\Ownership;
 use App\Rules\Language;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rules\Password;
 
-class HobbyUpdateRequest extends FormRequest
+class UserLanguageStoreRequest extends FormRequest
 {
     /**
      * The route to redirect to if validation fails.
      *
      * @var string
      */
-    protected $redirectRoute = 'admin.hobbies.edit';
+    protected $redirectRoute = 'admin.users.languages.create';
 
     /**
      * Determine if the user is authorized to make this request.
@@ -23,7 +22,7 @@ class HobbyUpdateRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return current_user()->hasRole(['admin']) || $this->hobby->user->getKey() == current_user()->getKey();
+        return !is_null(current_user());
     }
 
     /**
@@ -48,22 +47,7 @@ class HobbyUpdateRequest extends FormRequest
         return [
             'name' => ['required', 'array', new Language()],
             'name.*' => ['required', 'string', 'max:100'],
-            'order' => ['nullable', 'integer', 'max:9999999999'],
-            'image' =>  ['nullable', 'image', 'max:10000']
+            'level' => ['required', 'integer', 'min:1', 'max:100']
         ];
-    }
-
-    /**
-     * Get the URL to redirect to on a validation error.
-     *
-     * @return string
-     */
-    protected function getRedirectUrl(): string
-    {
-        if ($this->hobby) {
-            return $this->redirector->getUrlGenerator()->route($this->redirectRoute, $this->hobby);
-        }
-
-        return parent::getRedirectUrl();
     }
 }

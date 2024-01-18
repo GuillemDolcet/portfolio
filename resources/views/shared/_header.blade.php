@@ -13,7 +13,7 @@
         <!-- Logo -->
         <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal">
             <a href="{{ route('admin.index') }}" title="{{ config('app.name') }}">
-                <img src="{{ image_url('logo-small.svg') }}" width="32" height="32" alt="{{ config('app.name') }}"
+                <img src="{{ image_url('logo.svg') }}" width="32" height="32" alt="{{ config('app.name') }}"
                      class="navbar-brand-image">
             </a>
         </h1>

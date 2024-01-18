@@ -53,12 +53,11 @@
         @endif
     </div>
     <div class="col-12 mb-3">
-        <label class="form-label fw-bold" for="url">@lang('admin.url') <sup
-                class="text-danger fs-xs">*</sup></label>
+        <label class="form-label fw-bold" for="url">@lang('admin.url')</label>
         <input id="url" name="url" type="text"
                class="form-control @error('url') is-invalid @enderror"
                autocomplete="off"
-               value="{{ old('url', $project->url) }}">
+               value="{{ old('url', $project->url) }}" maxlength="254">
         @error('url')
         <div class="invalid-feedback">{{ $message }}</div>
         @endif

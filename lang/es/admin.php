@@ -26,7 +26,8 @@ return [
         'delete-experience' => '¿Realmente desea eliminar esta experiencia? Esta acción no se puede deshacer',
         'delete-project' => '¿Realmente desea eliminar este proyecto? Esta acción no se puede deshacer',
         'delete-education' => '¿Realmente desea eliminar esta educación? Esta acción no se puede deshacer',
-        'delete-hobby' => '¿Realmente desea eliminar este hobby? Esta acción no se puede deshacer'
+        'delete-hobby' => '¿Realmente desea eliminar este hobby? Esta acción no se puede deshacer',
+        'delete-user-language' => '¿Realmente desea eliminar este idioma? Esta acción no se puede deshacer'
     ],
     'created' => 'Creado',
     'created_at' => 'Creado en',
@@ -35,24 +36,26 @@ return [
     'date_of_birth' => 'Cumpleaños',
     'degree' => 'Título',
     'delete' => 'Eliminar',
-    'description' => 'Descripcion',
+    'description' => 'Descripción',
     'discipline' => 'Disciplina académica',
     'edit' => 'Editar',
     'education' => 'Educación',
     'errors' => [
         'login' => 'Ocurrió un error con la comprobación de su cuenta de usuario. Reintente en unos minutos.',
-        'account-suspended' => 'Your user account has been suspended.'
+        'account-suspended' => 'Tu cuenta de usuario ha sido suspendida.'
     ],
     'experience' => 'Experiencia',
     'experiences' => 'Experiencias',
-    'finish_date' => 'Fecha de finalizacion',
+    'finish_date' => 'Fecha de finalización',
     'hobbies' => 'Hobbies',
     'hobby' => 'Hobby',
     'home' => 'Inicio',
     'image' => 'Imagen',
+    'language' => 'Idioma',
+    'languages' => 'Idiomas',
     'level' => 'Nivel',
-    'location' => 'Localizacion',
-    'login' => 'Iniciar sesion',
+    'location' => 'Localización',
+    'login' => 'Iniciar sesión',
     'login-title' => 'Acceda a su cuenta',
     'logout' => 'Salir',
     'name' => 'Nombre',
@@ -60,7 +63,7 @@ return [
     'or' => 'O',
     'order' => 'Orden',
     'password' => 'Contraseña',
-    'phone' => 'Telefono',
+    'phone' => 'Teléfono',
     'placeholders' => [
         'email' => 'tu@email.com',
         'password' => 'Tu contraseña'
@@ -68,7 +71,7 @@ return [
     'position' => 'Cargo',
     'project' => 'Proyecto',
     'projects' => 'Proyectos',
-    'remember-me' => 'Recuerdame',
+    'remember-me' => 'Recuérdame',
     'responses' => [
         'success-create-user' => 'Usuario creado',
         'error-create-user' => 'No se pudo crear el usuario',
@@ -86,7 +89,7 @@ return [
         'error-create-experience' => 'No se pudo crear la experiencia',
         'success-update-experience' => 'Experiencia actualizada',
         'error-update-experience' => 'No se pudo actualizar la experiencia',
-        'delete-experience' => 'Experiencia eliminado',
+        'delete-experience' => 'Experiencia eliminada',
 
         'success-create-project' => 'Proyecto creado',
         'error-create-project' => 'No se pudo crear el proyecto',
@@ -104,7 +107,13 @@ return [
         'error-create-hobby' => 'No se pudo crear el hobby',
         'success-update-hobby' => 'Hobby actualizado',
         'error-update-hobby' => 'No se pudo actualizar el hobby',
-        'delete-hobby' => 'Hobby eliminado'
+        'delete-hobby' => 'Hobby eliminado',
+
+        'success-create-user-language' => 'Idioma creado',
+        'error-create-user-language' => 'No se pudo crear el idioma',
+        'success-update-user-language' => 'Idioma actualizado',
+        'error-update-user-language' => 'No se pudo actualizar el idioma',
+        'delete-user-language' => 'Idioma eliminado'
     ],
     'role' => 'Rol',
     'school' => 'Escuela',
@@ -113,7 +122,7 @@ return [
         'experiences' => 'Mostrar todas las experiencias',
         'projects' => 'Mostrar todos los proyectos'
     ],
-    'sign-in' => 'Iniciar sesion',
+    'sign-in' => 'Iniciar sesión',
     'skill' => 'Habilidad',
     'skills' => 'Habilidades',
     'start_date' => 'Fecha de inicio',
