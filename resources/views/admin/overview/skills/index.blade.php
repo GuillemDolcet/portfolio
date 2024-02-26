@@ -1,6 +1,6 @@
-<div class="row bg-white border rounded">
+<div class="row bg-white border rounded mt-4">
     <div class="card-body">
-        <div class="d-flex justify-content-between p-3">
+        <div class="d-flex justify-content-between p-3 border-bottom">
             <div><h2 class="page-title">@lang('admin.skills')</h2></div>
             <div><a href="#"
                     data-controller="remote-modal"

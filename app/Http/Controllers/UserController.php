@@ -38,8 +38,6 @@ class UserController extends AdminController
         parent::__construct($request);
 
         $this->users = $users;
-
-        $this->middleware('can:manage,App\Models\User');
     }
 
     /**
@@ -75,7 +73,7 @@ class UserController extends AdminController
             }
             return $this->renderTurboStream('admin.users.form.modal_stream', compact('user', 'roles'));
         }
-        return redirect()->route('admin.users.index');
+        return redirect()->back();
     }
 
     /**
@@ -97,7 +95,7 @@ class UserController extends AdminController
             }
             return $this->renderTurboStream('admin.users.form.modal_stream', compact('user', 'roles'));
         }
-        return redirect()->route('admin.users.index');
+        return redirect()->back();
     }
 
     /**
@@ -113,13 +111,13 @@ class UserController extends AdminController
     {
         if ($this->users->create($request->validated())) {
             return redirect()
-                ->route('admin.users.index')
+                ->back()
                 ->with([
                     'status' => ['type' => 'success', 'message' => Lang::get('admin.responses.success-create-user')]
                 ]);
         }
         return redirect()
-            ->route('admin.users.index')
+            ->back()
             ->with([
                 'status' => ['type' => 'error', 'message' => Lang::get('admin.responses.error-create-user')]
             ]);
@@ -139,13 +137,13 @@ class UserController extends AdminController
     {
         if ($this->users->update($user, $request->validated())) {
             return redirect()
-                ->route('admin.users.index')
+                ->back()
                 ->with([
                     'status' => ['type' => 'success', 'message' => Lang::get('admin.responses.success-update-user')]
                 ]);
         }
         return redirect()
-            ->route('admin.users.index')
+            ->back()
             ->with([
                 'status' => ['type' => 'error', 'message' => Lang::get('admin.responses.error-update-user')]
             ]);
@@ -163,8 +161,8 @@ class UserController extends AdminController
     public function destroy(User $user): Renderable|RedirectResponse
     {
         $user->delete();
-         return redirect()
-            ->route('admin.users.index')
+        return redirect()
+            ->back()
             ->with([
                 'status' => [
                     'type' => 'success',

@@ -1,12 +1,11 @@
 <tr>
-    <td>a</td>
-    <td>a</td>
-    <td>a</td>
-    <td>{{ ucfirst($educationModel->description) }}</td>
+    <td>{{ ucfirst($educationModel->school) }}</td>
+    <td>{{ ucfirst($educationModel->degree) }}</td>
+    <td>{{ ucfirst($educationModel->discipline) }}</td>
     <td>{{ $educationModel->start_date->format('d/m/y') }}</td>
     <td>{{ $educationModel->finish_date->format('d/m/y') }}</td>
     <td>
-        <div class="d-flex">
+        <div class="d-flex flex-wrap gap-1">
             @foreach($educationModel->skills as $skill)
                 <div><img src="{{\Storage::url($skill->image)}}" alt="{{$skill->name}}" width="40" height="40"/></div>
             @endforeach

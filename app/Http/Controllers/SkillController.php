@@ -72,7 +72,7 @@ class SkillController extends AdminController
             }
             return $this->renderTurboStream('admin.skills.form.modal_stream', compact('skill'));
         }
-        return redirect()->route('admin.skills.index');
+        return redirect()->back();
     }
 
     /**
@@ -93,7 +93,7 @@ class SkillController extends AdminController
             }
             return $this->renderTurboStream('admin.skills.form.modal_stream', compact('skill'));
         }
-        return redirect()->route('admin.skills.index');
+        return redirect()->back();
     }
 
     /**
@@ -109,13 +109,13 @@ class SkillController extends AdminController
     {
         if ($this->skills->create($request->validated(), current_user())) {
             return redirect()
-                ->route('admin.skills.index')
+                ->back()
                 ->with([
                     'status' => ['type' => 'success', 'message' => Lang::get('admin.responses.success-create-skill')]
                 ]);
         }
         return redirect()
-            ->route('admin.skills.index')
+            ->back()
             ->with([
                 'status' => ['type' => 'error', 'message' => Lang::get('admin.responses.error-create-skill')]
             ]);
@@ -135,13 +135,13 @@ class SkillController extends AdminController
     {
         if ($this->skills->update($skill, $request->validated(), current_user())) {
             return redirect()
-                ->route('admin.skills.index')
+                ->back()
                 ->with([
                     'status' => ['type' => 'success', 'message' => Lang::get('admin.responses.success-update-skill')]
                 ]);
         }
         return redirect()
-            ->route('admin.skills.index')
+            ->back()
             ->with([
                 'status' => ['type' => 'error', 'message' => Lang::get('admin.responses.error-update-skill')]
             ]);
@@ -160,7 +160,7 @@ class SkillController extends AdminController
     {
         $this->skills->delete($skill);
         return redirect()
-            ->route('admin.skills.index')
+            ->back()
             ->with([
                 'status' => [
                     'type' => 'success',

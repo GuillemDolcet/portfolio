@@ -21,7 +21,7 @@ class UserUpdateRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return current_user()->hasRole(['superadmin','admin']);
+        return current_user()->hasRole(['admin']) || $this->user->getKey() == current_user()->getKey();
     }
 
     /**
@@ -31,11 +31,20 @@ class UserUpdateRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
+        $rules = [];
+        if (current_user()->hasRole(['admin'])){
+            $rules['role'] = ['required', 'exists:roles,id'];
+        }
+        return array_merge([
             'name' => ['required', 'min: 3', 'max: 50'],
             'password' =>  ['nullable', 'confirmed', Password::defaults()],
-            'role' => ['required', 'exists:roles,id'],
-        ];
+            'date_of_birth' => ['nullable', 'date'],
+            'phone' => ['nullable', 'string'],
+            'location' => ['nullable', 'string'],
+            'linkedin' => ['nullable', 'string'],
+            'x' => ['nullable', 'string'],
+            'instagram' => ['nullable', 'string']
+        ], $rules);
     }
 
     /**

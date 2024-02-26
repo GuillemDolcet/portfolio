@@ -39,7 +39,6 @@
                             <th>@lang('admin.school')</th>
                             <th>@lang('admin.degree')</th>
                             <th>@lang('admin.discipline')</th>
-                            <th>@lang('admin.description')</th>
                             <th>@lang('admin.start_date')</th>
                             <th>@lang('admin.finish_date')</th>
                             <th>@lang('admin.skills')</th>

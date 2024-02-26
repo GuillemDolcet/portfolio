@@ -18,7 +18,9 @@ return new class extends Migration
             $table->json('name');
             $table->json('description');
             $table->string('image');
-            $table->string('url');
+            $table->string('url')->nullable();
+            $table->date('start_date');
+            $table->date('finish_date')->nullable();
             $table->timestamps();
         });
     }

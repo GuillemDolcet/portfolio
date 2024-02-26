@@ -100,7 +100,7 @@
         </div>
         <select id="skills" name="skills[]" class="select2-container" multiple="multiple" data-form-target="select2">
             @foreach($skills as $skill)
-                <option value="{{$skill->id}}">{{$skill->name}}</option>
+                <option value="{{$skill->id}}" @if($experience->skills()->where('skill_id','=',$skill->id)->exists()) selected @endif>{{$skill->name}}</option>
             @endforeach
         </select>
     </div>

@@ -20,7 +20,7 @@ class SkillUpdateRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return !is_null(current_user());
+        return current_user()->hasRole(['admin']) || $this->skill->user->getKey() == current_user()->getKey();
     }
 
     /**
@@ -34,7 +34,7 @@ class SkillUpdateRequest extends FormRequest
             'name' => ['required', 'max: 50'],
             'level' => ['required', 'integer', 'min:1', 'max:100'],
             'image' =>  ['nullable', 'image', 'max:10000'],
-            'order' => ['nullable', 'integer']
+            'order' => ['nullable', 'integer', 'max:9999999999']
         ];
     }
 

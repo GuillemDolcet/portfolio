@@ -1,8 +1,16 @@
 <div class="d-flex align-items-center justify-content-between border-bottom p-3">
-    <div class="d-flex flex-column col-8">
-        <div class="mb-2"><b>{{$experience->company}}</b></div>
+    <div class="d-flex flex-column col-10">
+        <div><b>{{$experience->position}}</b></div>
+        <div>{{$experience->company}}</div>
+        <div class="text-muted">{{ ucfirst($experience->start_date->translatedFormat('F Y')) }} - {{ !is_null($experience->finish_date) ? ucfirst($experience->finish_date->translatedFormat('F Y')) : Lang::get('admin.currently') }}</div>
+        <div class="mt-3">
+            @lang('admin.skills'):
+            @foreach($experience->skills as $skill)
+                <img class="ms-3" src="{{\Storage::url($skill->image)}}" alt="{{$skill->name}}" height="30">
+            @endforeach
+        </div>
     </div>
-    <div class="col-3 d-flex text-end justify-content-end">
+    <div class="col-2 d-flex text-end justify-content-end">
         <a href="#" class="me-1" title="@lang('admin.edit')"
            data-controller="remote-modal"
            data-action="remote-modal#toggle"

@@ -1,6 +1,8 @@
 <div class="d-flex align-items-center justify-content-between border-bottom p-3">
-    <div class="col-1"><img src="{{\Storage::url($skill->image)}}" alt="{{$skill->name}}" width="32" height="32"/></div>
-    <div class="d-flex flex-column col-10">
+    <div class="col justify-content-center d-flex">
+        <div><img src="{{\Storage::url($skill->image)}}" alt="{{$skill->name}}" width="75"/></div>
+    </div>
+    <div class="d-flex flex-column col-9">
         <div class="mb-2"><b>{{$skill->name}}</b></div>
         <div class="progress">
             <div class="progress-bar" style="width: {{$skill->level}}%" role="progressbar"

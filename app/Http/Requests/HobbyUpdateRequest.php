@@ -23,7 +23,7 @@ class HobbyUpdateRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return !is_null(current_user());
+        return current_user()->hasRole(['admin']) || $this->hobby->user->getKey() == current_user()->getKey();
     }
 
     /**
@@ -48,7 +48,7 @@ class HobbyUpdateRequest extends FormRequest
         return [
             'name' => ['required', 'array', new Language()],
             'name.*' => ['required', 'string', 'max:100'],
-            'order' => ['nullable', 'integer'],
+            'order' => ['nullable', 'integer', 'max:9999999999'],
             'image' =>  ['nullable', 'image', 'max:10000']
         ];
     }

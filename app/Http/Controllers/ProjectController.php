@@ -94,7 +94,7 @@ class ProjectController extends AdminController
             }
             return $this->renderTurboStream('admin.projects.form.modal_stream', compact('project','skills'));
         }
-        return redirect()->route('admin.projects.index');
+        return redirect()->back();
     }
 
     /**
@@ -116,7 +116,7 @@ class ProjectController extends AdminController
             }
             return $this->renderTurboStream('admin.projects.form.modal_stream', compact('project','skills'));
         }
-        return redirect()->route('admin.projects.index');
+        return redirect()->back();
     }
 
     /**
@@ -135,13 +135,13 @@ class ProjectController extends AdminController
             $attributes = $this->translator->translate($attributes, $this->projects->build()->getTranslatableAttributes());
             $this->projects->create($attributes, current_user());
             return redirect()
-                ->route('admin.projects.index')
+                ->back()
                 ->with([
                     'status' => ['type' => 'success', 'message' => Lang::get('admin.responses.success-create-project')]
                 ]);
         }
         return redirect()
-            ->route('admin.projects.index')
+            ->back()
             ->with([
                 'status' => ['type' => 'error', 'message' => Lang::get('admin.responses.error-create-project')]
             ]);
@@ -164,13 +164,13 @@ class ProjectController extends AdminController
             $attributes = $this->translator->translate($attributes, $this->projects->build()->getTranslatableAttributes());
             $this->projects->update($project, $attributes, current_user());
             return redirect()
-                ->route('admin.projects.index')
+                ->back()
                 ->with([
                     'status' => ['type' => 'success', 'message' => Lang::get('admin.responses.success-update-project')]
                 ]);
         }
         return redirect()
-            ->route('admin.projects.index')
+            ->back()
             ->with([
                 'status' => ['type' => 'error', 'message' => Lang::get('admin.responses.error-update-project')]
             ]);
@@ -189,7 +189,7 @@ class ProjectController extends AdminController
     {
         $this->projects->delete($project);
         return redirect()
-            ->route('admin.projects.index')
+            ->back()
             ->with([
                 'status' => [
                     'type' => 'success',
