@@ -61,9 +61,9 @@ export default defineConfig({
             buildDirectory: 'assets',
             input: [
                 'resources/assets/stylesheets/application.scss',
-                //'resources/assets/stylesheets/home/style.scss',
+                'resources/assets/stylesheets/home/style.scss',
                 'resources/assets/javascripts/application.js',
-                //'resources/assets/javascripts/home.js',
+                'resources/assets/javascripts/home.js',
             ],
             refresh: true,
         }),
