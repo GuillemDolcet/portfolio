@@ -7,6 +7,8 @@
         "build": "vite build"
     },
     "dependencies": {
+        "@fortawesome/fontawesome-free": "^6.5.1",
+        "@fortawesome/free-solid-svg-icons": "^6.5.1",
         "@hotwired/stimulus": "^3.2.1",
         "@hotwired/turbo": "^7.2.5",
         "@mdi/font": "^7.3.67",
@@ -25,7 +27,6 @@
         "jquery": "^3.7.0",
         "jquery-bridget": "^3.0.1",
         "jquery-ui": "^1.13.2",
-        "jquery-ui-bundle": "^1.12.1-migrate",
         "jsvectormap": "^1.5.3",
         "laravel-vite-plugin": "^0.7.7",
         "litepicker": "^2.0.12",

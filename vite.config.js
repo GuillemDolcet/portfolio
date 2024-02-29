@@ -75,7 +75,10 @@ export default defineConfig({
     resolve: {
         alias: {
             '~@tabler': path.resolve(__dirname, 'node_modules/@tabler'),
-            '~bootstrap': path.resolve(__dirname, 'node_modules/bootstrap')
+            '~bootstrap': path.resolve(__dirname, 'node_modules/bootstrap'),
+            '~owl.carousel': path.resolve(__dirname, 'node_modules/owl.carousel'),
+            '~@fortawesome': path.resolve(__dirname, 'node_modules/@fortawesome'),
+            '~magnific-popup': path.resolve(__dirname, 'node_modules/magnific-popup')
         }
     },
     build: {

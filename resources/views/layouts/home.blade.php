@@ -7,8 +7,6 @@
     <meta name="description" content="Callum is responsive bootstrap 5 one page personal portfolio html template.">
     <meta name="author" content="harnishdesign.net">
 
-    <!-- Web Fonts -->
-    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900' type='text/css'>
 
     <title>@yield('title', config('app.name'))</title>
 
@@ -26,7 +24,18 @@
 
     @stack('top-scripts')
 </head>
-<body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="70">
+<body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="70" class="text-black">
+
+    <div class="preloader">
+        <div class="lds-ellipsis">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+    @include('shared.home._header')
 
     @yield('main-content')
 
