@@ -37,7 +37,7 @@ const app = Application.start()
 app.register("toast", ToastController)
 app.register("form", FormController)
 app.register("remote-modal", RemoteModalController)
-//app.register("pagination", PaginationController)
+app.register("pagination", PaginationController)
 
 
 window.Stimulus = app
