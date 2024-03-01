@@ -48,8 +48,8 @@ class EducationSeeder extends Seeder
                 'es' => 'Técnico en Sistemas Microinformáticos y Redes',
             ],
             'description' => [
-                'en' => 'Graduated as a Technician in Microcomputer Systems and Networks with strong skills in maintenance, configuration, and problem-solving in computer environments. Prepared to face challenges in the technology world.',
-                'es' => 'Graduado en Técnico en Sistemas Microinformáticos y Redes con habilidades sólidas en mantenimiento, configuración y resolución de problemas en entornos informáticos, preparado para afrontar desafíos en el mundo de la tecnología.',
+                'en' => 'Graduated as a Technician in Microcomputer Systems and Networks with strong skills in maintenance, configuration, and problem-solving in computer environments.',
+                'es' => 'Graduado en Técnico en Sistemas Microinformáticos y Redes con habilidades sólidas en mantenimiento, configuración y resolución de problemas en entornos informáticos.',
             ],
             'start_date' => Carbon::parse('01-09-2017'),
             'finish_date' => Carbon::parse('01-07-2019')
@@ -57,7 +57,6 @@ class EducationSeeder extends Seeder
 
         $education->skills()->attach($this->skills->newQuery()->user($user)->name('Html')->first());
         $education->skills()->attach($this->skills->newQuery()->user($user)->name('Css')->first());
-        $education->skills()->attach($this->skills->newQuery()->user($user)->name('Linux')->first());
         $education->skills()->attach($this->skills->newQuery()->user($user)->name('Wordpress')->first());
 
         $education = $user->education()->create([
@@ -74,8 +73,8 @@ class EducationSeeder extends Seeder
                 'es' => 'Desarrollo de Aplicaciones Web',
             ],
             'description' => [
-                'en' => 'Graduated with a Higher Degree in Web Application Development, equipped with advanced skills in designing, building, and troubleshooting web applications. Ready to excel in the dynamic field of web development.',
-                'es' => 'Graduado con un Grado Superior en Desarrollo de Aplicaciones Web, con habilidades avanzadas en el diseño, construcción y resolución de problemas en aplicaciones web. Listo para destacar en el dinámico campo del desarrollo web.'
+                'en' => 'Graduated with a Higher Degree in Web Application Development, equipped with advanced skills in designing, building, and troubleshooting web applications.',
+                'es' => 'Graduado con un Grado Superior en Desarrollo de Aplicaciones Web, con habilidades avanzadas en el diseño, construcción y resolución de problemas en aplicaciones web.'
             ],
             'start_date' => Carbon::parse('01-09-2019'),
             'finish_date' => Carbon::parse('01-07-2021')

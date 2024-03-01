@@ -10,6 +10,9 @@ import Typed from "typed.js";
 import Isotope from "isotope-layout";
 import jQueryBridget from "jquery-bridget";
 jQueryBridget('isotope', Isotope, $);
+import "jquery-ui";
+import "jquery.appear";
+import "jquery.easing";
 
 /*
 ================================================================
@@ -251,7 +254,7 @@ jQueryBridget('isotope', Isotope, $);
                     mobile: false,
                     live: true
                 });
-                new wow.init();
+                wow.init();
             }
         });
     });
