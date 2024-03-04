@@ -10,13 +10,29 @@
                     Los Angeles, USA.
                 </address>
                 <h3 class="text-5 fw-600">Call:</h3>
-                <p class="text-4">(+060) 444 434 444</p>
+                <p class="text-4">{{ $user->phone }}</p>
                 <ul class="social-icons social-icons-lg justify-content-center justify-content-lg-start mt-5">
-                    <li class="social-icons-twitter"><a data-bs-toggle="tooltip" href="https://twitter.com/harnishdesign/" target="_blank" title="" data-bs-original-title="Twitter"><i class="fab fa-twitter"></i></a></li>
-                    <li class="social-icons-facebook"><a data-bs-toggle="tooltip" href="http://www.facebook.com/harnishdesign/" target="_blank" title="" data-bs-original-title="Facebook"><i class="fab fa-facebook"></i></a></li>
-                    <li class="social-icons-instagram"><a data-bs-toggle="tooltip" href="http://www.instagram.com/" target="_blank" title="" data-bs-original-title="Instagram"><i class="fab fa-instagram"></i></a></li>
-                    <li class="social-icons-github"><a data-bs-toggle="tooltip" href="http://www.github.com/" target="_blank" title="" data-bs-original-title="GitHub"><i class="fab fa-github"></i></a></li>
-                    <li class="social-icons-dribbble"><a data-bs-toggle="tooltip" href="http://www.dribbble.com/harnishdesign/" target="_blank" title="" data-bs-original-title="Dribbble"><i class="fab fa-dribbble"></i></a></li>
+                    @if(isset($user->linkedin))
+                        <li class="social-icons-linkedin">
+                            <a data-bs-toggle="tooltip" href="http://www.linkedin.com/{{ $user->linkedin }}" target="_blank" title="" data-bs-original-title="Twitter">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                        </li>
+                    @endif
+                    @if(isset($user->x))
+                        <li class="social-icons-twitter">
+                            <a data-bs-toggle="tooltip" href="https://twitter.com/{{ $user->x }}" target="_blank" title="" data-bs-original-title="Twitter">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </li>
+                    @endif
+                    @if(isset($user->instagram))
+                        <li class="social-icons-instagram">
+                            <a data-bs-toggle="tooltip" href="http://www.instagram.com/{{ $user->instagram }}" target="_blank" title="" data-bs-original-title="Twitter">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </li>
+                    @endif
                 </ul>
             </div>
             <div class="col-lg-6 ms-auto mt-5 mt-lg-0 wow fadeInUp" data-wow-delay="0.3s">
