@@ -14,21 +14,32 @@
                 <ul class="social-icons social-icons-lg justify-content-center justify-content-lg-start mt-5">
                     @if(isset($user->linkedin))
                         <li class="social-icons-linkedin">
-                            <a data-bs-toggle="tooltip" href="http://www.linkedin.com/{{ $user->linkedin }}" target="_blank" title="" data-bs-original-title="Twitter">
+                            <a data-bs-toggle="tooltip" href="https://linkedin.com//{{ $user->linkedin }}"
+                               target="_blank" title="" data-bs-original-title="Linkedin">
                                 <i class="fab fa-linkedin"></i>
+                            </a>
+                        </li>
+                    @endif
+                    @if(isset($user->github))
+                        <li class="social-icons-github">
+                            <a data-bs-toggle="tooltip" href="https://www.github.com/{{ $user->github }}"
+                               target="_blank" title="" data-bs-original-title="Github">
+                                <i class="fab fa-github"></i>
                             </a>
                         </li>
                     @endif
                     @if(isset($user->x))
                         <li class="social-icons-twitter">
-                            <a data-bs-toggle="tooltip" href="https://twitter.com/{{ $user->x }}" target="_blank" title="" data-bs-original-title="Twitter">
+                            <a data-bs-toggle="tooltip" href="https://twitter.com/{{ $user->x }}" target="_blank"
+                               title="" data-bs-original-title="Twitter">
                                 <i class="fab fa-twitter"></i>
                             </a>
                         </li>
                     @endif
                     @if(isset($user->instagram))
                         <li class="social-icons-instagram">
-                            <a data-bs-toggle="tooltip" href="http://www.instagram.com/{{ $user->instagram }}" target="_blank" title="" data-bs-original-title="Twitter">
+                            <a data-bs-toggle="tooltip" href="https://www.instagram.com/{{ $user->instagram }}"
+                               target="_blank" title="" data-bs-original-title="Instagram">
                                 <i class="fab fa-instagram"></i>
                             </a>
                         </li>

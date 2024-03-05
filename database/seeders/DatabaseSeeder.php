@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
                 'es' => 'Os de Balaguer, Cataluña, España',
             ],
             'linkedin' => 'guillem-dolcet',
-            'x' => 'Gr1f0_',
+            'github' => 'GuillemDolcet',
             'active' => true
         ]);
         $user->languages()->create([
