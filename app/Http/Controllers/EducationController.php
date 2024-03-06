@@ -70,7 +70,7 @@ class EducationController extends AdminController
      */
     public function index(): ConsoleApplication|FoundationApplication|View|Factory
     {
-        $education = $this->education->listing($this->education->newQuery()->user(current_user())->orderBy('start_date'));
+        $education = $this->education->listing($this->education->newQuery()->orderBy('start_date'));
 
         return view('admin.education.index', compact('education'));
     }
@@ -88,7 +88,7 @@ class EducationController extends AdminController
     {
         if ($this->wantsTurboStream($this->request)) {
             $education = $this->education->build();
-            $skills = $this->skills->newQuery()->user(current_user())->orderBy('order')->get();
+            $skills = $this->skills->newQuery()->orderBy('order')->get();
             if (($sess = $this->request->session()) && $sess->hasOldInput()) {
                 return $this->renderTurboStream('admin.education.form.modal_stream', compact('education','skills'));
             }
@@ -110,7 +110,7 @@ class EducationController extends AdminController
     public function edit(EducationModel $education): RedirectResponse|Response|ResponseFactory
     {
         if ($this->wantsTurboStream($this->request)) {
-            $skills = $this->skills->newQuery()->user(current_user())->orderBy('order')->get();
+            $skills = $this->skills->newQuery()->orderBy('order')->get();
             if (($sess = $this->request->session()) && $sess->hasOldInput()) {
                 return $this->renderTurboStream('admin.education.form.modal_stream', compact('education','skills'));
             }

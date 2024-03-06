@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\Language;
 use Illuminate\Database\Seeder;
-use Spatie\Permission\Models\Role;
 
 class LanguagesSeeder extends Seeder
 {

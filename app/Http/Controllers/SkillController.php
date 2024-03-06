@@ -50,7 +50,7 @@ class SkillController extends AdminController
      */
     public function index(): ConsoleApplication|FoundationApplication|View|Factory|Response|ResponseFactory
     {
-        $skills = $this->skills->listing($this->skills->newQuery()->user(current_user())->orderBy('order'));
+        $skills = $this->skills->listing($this->skills->newQuery()->orderBy('order'));
         return view('admin.skills.index', compact('skills'));
     }
 

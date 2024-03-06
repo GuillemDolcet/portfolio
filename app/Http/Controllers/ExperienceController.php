@@ -70,7 +70,7 @@ class ExperienceController extends AdminController
      */
     public function index(): ConsoleApplication|FoundationApplication|View|Factory
     {
-        $experiences = $this->experiences->listing($this->experiences->newQuery()->user(current_user())->orderBy('start_date'));
+        $experiences = $this->experiences->listing($this->experiences->newQuery()->orderBy('start_date'));
 
         return view('admin.experiences.index', compact('experiences'));
     }
@@ -88,7 +88,7 @@ class ExperienceController extends AdminController
     {
         if ($this->wantsTurboStream($this->request)) {
             $experience = $this->experiences->build();
-            $skills = $this->skills->newQuery()->user(current_user())->orderBy('order')->get();
+            $skills = $this->skills->newQuery()->orderBy('order')->get();
             if (($sess = $this->request->session()) && $sess->hasOldInput()) {
                 return $this->renderTurboStream('admin.experiences.form.modal_stream', compact('experience','skills'));
             }
@@ -110,7 +110,7 @@ class ExperienceController extends AdminController
     public function edit(Experience $experience): RedirectResponse|Response|ResponseFactory
     {
         if ($this->wantsTurboStream($this->request)) {
-            $skills = $this->skills->newQuery()->user(current_user())->orderBy('order')->get();
+            $skills = $this->skills->newQuery()->orderBy('order')->get();
             if (($sess = $this->request->session()) && $sess->hasOldInput()) {
                 return $this->renderTurboStream('admin.experiences.form.modal_stream', compact('experience','skills'));
             }

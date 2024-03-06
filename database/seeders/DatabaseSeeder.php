@@ -5,7 +5,6 @@ namespace Database\Seeders;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
-
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -28,33 +27,11 @@ class DatabaseSeeder extends Seeder
             'github' => 'GuillemDolcet',
             'active' => true
         ]);
-        $user->languages()->create([
-            'name' => [
-                'en' => 'English',
-                'es' => 'Ingles',
-            ],
-            'level' => 60
-        ]);
-        $user->languages()->create([
-            'name' => [
-                'en' => 'Spanish',
-                'es' => 'Español',
-            ],
-            'level' => 100
-        ]);
-        $user->languages()->create([
-            'name' => [
-                'en' => 'Catalan',
-                'es' => 'Catalan',
-            ],
-            'level' => 100
-        ]);
         $user->assignRole('admin');
 
         $this->call(SkillsSeeder::class, false, ['user' => $user]);
         $this->call(ExperiencesSeeder::class, false, ['user' => $user]);
         $this->call(ProjectsSeeder::class, false, ['user' => $user]);
         $this->call(EducationSeeder::class, false, ['user' => $user]);
-        $this->call(HobbiesSeeder::class, false, ['user' => $user]);
     }
 }

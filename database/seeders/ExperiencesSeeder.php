@@ -55,14 +55,14 @@ class ExperiencesSeeder extends Seeder
             'finish_date' => null
         ]);
 
-        $experience->skills()->attach($this->skills->newQuery()->user($user)->name('Laravel')->first());
-        $experience->skills()->attach($this->skills->newQuery()->user($user)->name('PHP')->first());
-        $experience->skills()->attach($this->skills->newQuery()->user($user)->name('APIs')->first());
-        $experience->skills()->attach($this->skills->newQuery()->user($user)->name('Docker')->first());
-        $experience->skills()->attach($this->skills->newQuery()->user($user)->name('JS')->first());
-        $experience->skills()->attach($this->skills->newQuery()->user($user)->name('Postgres')->first());
-        $experience->skills()->attach($this->skills->newQuery()->user($user)->name('Html')->first());
-        $experience->skills()->attach($this->skills->newQuery()->user($user)->name('Css')->first());
+        $experience->skills()->attach($this->skills->newQuery()->name('Laravel')->first());
+        $experience->skills()->attach($this->skills->newQuery()->name('PHP')->first());
+        $experience->skills()->attach($this->skills->newQuery()->name('APIs')->first());
+        $experience->skills()->attach($this->skills->newQuery()->name('Docker')->first());
+        $experience->skills()->attach($this->skills->newQuery()->name('JS')->first());
+        $experience->skills()->attach($this->skills->newQuery()->name('Postgres')->first());
+        $experience->skills()->attach($this->skills->newQuery()->name('Html')->first());
+        $experience->skills()->attach($this->skills->newQuery()->name('Css')->first());
 
         $experience = $user->experiences()->create([
             'position' => [
@@ -85,13 +85,13 @@ class ExperiencesSeeder extends Seeder
             'finish_date' => Carbon::parse('21-02-2023')
         ]);
 
-        $experience->skills()->attach($this->skills->newQuery()->user($user)->name('Laravel')->first());
-        $experience->skills()->attach($this->skills->newQuery()->user($user)->name('PHP')->first());
-        $experience->skills()->attach($this->skills->newQuery()->user($user)->name('APIs')->first());
-        $experience->skills()->attach($this->skills->newQuery()->user($user)->name('JS')->first());
-        $experience->skills()->attach($this->skills->newQuery()->user($user)->name('Mysql')->first());
-        $experience->skills()->attach($this->skills->newQuery()->user($user)->name('Html')->first());
-        $experience->skills()->attach($this->skills->newQuery()->user($user)->name('Css')->first());
-        $experience->skills()->attach($this->skills->newQuery()->user($user)->name('Wordpress')->first());
+        $experience->skills()->attach($this->skills->newQuery()->name('Laravel')->first());
+        $experience->skills()->attach($this->skills->newQuery()->name('PHP')->first());
+        $experience->skills()->attach($this->skills->newQuery()->name('APIs')->first());
+        $experience->skills()->attach($this->skills->newQuery()->name('JS')->first());
+        $experience->skills()->attach($this->skills->newQuery()->name('Mysql')->first());
+        $experience->skills()->attach($this->skills->newQuery()->name('Html')->first());
+        $experience->skills()->attach($this->skills->newQuery()->name('Css')->first());
+        $experience->skills()->attach($this->skills->newQuery()->name('Wordpress')->first());
     }
 }

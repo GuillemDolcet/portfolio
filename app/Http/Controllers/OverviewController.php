@@ -4,10 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Repositories\Education;
 use App\Repositories\Experiences;
-use App\Repositories\Hobbies;
 use App\Repositories\Projects;
 use App\Repositories\Skills;
-use App\Repositories\UsersLanguages;
 use Illuminate\Contracts\Console\Application as ConsoleApplication;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -57,32 +55,16 @@ class OverviewController extends AdminController
     protected Projects $projects;
 
     /**
-     * Hobbies repository instance.
-     *
-     * @param Hobbies $hobbies
-     */
-    protected Hobbies $hobbies;
-
-    /**
-     * UsersLanguages repository instance.
-     *
-     * @param UsersLanguages $usersLanguages
-     */
-    protected UsersLanguages $usersLanguages;
-
-    /**
      * Class constructor.
      *
      * @param Request $request
      * @param Skills $skills
      * @param Experiences $experiences
      * @param Projects $projects
-     * @param Hobbies $hobbies
      * @param Education $education
-     * @param UsersLanguages $usersLanguages
      */
-    public function __construct(Request $request, Skills $skills, Experiences $experiences, Projects $projects, Hobbies $hobbies,
-                                    Education $education, UsersLanguages $usersLanguages)
+    public function __construct(Request $request, Skills $skills, Experiences $experiences, Projects $projects,
+                                Education $education)
     {
         parent::__construct($request);
 
@@ -94,9 +76,6 @@ class OverviewController extends AdminController
 
         $this->projects = $projects;
 
-        $this->hobbies = $hobbies;
-
-        $this->usersLanguages = $usersLanguages;
     }
 
     /**
@@ -110,12 +89,10 @@ class OverviewController extends AdminController
     public function index(): ConsoleApplication|FoundationApplication|View|Factory
     {
         $user = current_user();
-        $skills = $this->skills->listing($this->skills->newQuery()->user(current_user())->orderBy('order'), ['per_page' => 5]);
-        $experiences = $this->experiences->listing($this->experiences->newQuery()->user(current_user())->orderBy('start_date'), ['per_page' => 5]);
-        $projects = $this->projects->listing($this->projects->newQuery()->user(current_user())->orderBy('start_date'));
-        $hobbies = $this->hobbies->listing($this->hobbies->newQuery()->user(current_user())->orderBy('order'));
-        $education = $this->education->listing($this->education->newQuery()->user(current_user())->orderBy('start_date'));
-        $userLanguages = $this->usersLanguages->listing($this->usersLanguages->newQuery()->user(current_user())->orderByDesc('level'));
-        return view('admin.overview.index', compact('user','skills','experiences','projects','hobbies','education','userLanguages'));
+        $skills = $this->skills->listing($this->skills->newQuery()->orderBy('order'), ['per_page' => 5]);
+        $experiences = $this->experiences->listing($this->experiences->newQuery()->orderBy('start_date'), ['per_page' => 5]);
+        $projects = $this->projects->listing($this->projects->newQuery()->orderBy('start_date'));
+        $education = $this->education->listing($this->education->newQuery()->orderBy('start_date'));
+        return view('admin.overview.index', compact('user','skills','experiences','projects','education'));
     }
 }

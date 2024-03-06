@@ -70,7 +70,7 @@ class ProjectController extends AdminController
      */
     public function index(): ConsoleApplication|FoundationApplication|View|Factory
     {
-        $projects = $this->projects->listing($this->projects->newQuery()->user(current_user())->orderBy('start_date'));
+        $projects = $this->projects->listing($this->projects->newQuery()->orderBy('start_date'));
 
         return view('admin.projects.index', compact('projects'));
     }
@@ -88,7 +88,7 @@ class ProjectController extends AdminController
     {
         if ($this->wantsTurboStream($this->request)) {
             $project = $this->projects->build();
-            $skills = $this->skills->newQuery()->user(current_user())->orderBy('order')->get();
+            $skills = $this->skills->newQuery()->orderBy('order')->get();
             if (($sess = $this->request->session()) && $sess->hasOldInput()) {
                 return $this->renderTurboStream('admin.projects.form.modal_stream', compact('project','skills'));
             }
@@ -110,7 +110,7 @@ class ProjectController extends AdminController
     public function edit(Project $project): RedirectResponse|Response|ResponseFactory
     {
         if ($this->wantsTurboStream($this->request)) {
-            $skills = $this->skills->newQuery()->user(current_user())->orderBy('order')->get();
+            $skills = $this->skills->newQuery()->orderBy('order')->get();
             if (($sess = $this->request->session()) && $sess->hasOldInput()) {
                 return $this->renderTurboStream('admin.projects.form.modal_stream', compact('project','skills'));
             }

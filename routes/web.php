@@ -4,14 +4,12 @@ use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\Auth\SessionsController;
 use App\Http\Controllers\EducationController;
 use App\Http\Controllers\ExperienceController;
-use App\Http\Controllers\HobbyController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\OverviewController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\SkillController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\UserLanguageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -50,13 +48,6 @@ Route::middleware('auth')->group(function () {
             Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('admin.users.destroy');
         });
         Route::get('/', [OverviewController::class, 'index'])->name('admin.index');
-        //Users Languages
-        Route::get('/users/languages', [UserLanguageController::class, 'index'])->name('admin.users.languages.index');
-        Route::post('/users/languages', [UserLanguageController::class, 'store'])->name('admin.users.languages.store');
-        Route::get('/users/languages/create', [UserLanguageController::class, 'create'])->name('admin.users.languages.create');
-        Route::get('/users/languages/{userLanguage}/edit', [UserLanguageController::class, 'edit'])->name('admin.users.languages.edit');
-        Route::match(['put', 'patch'], '/users/languages/{userLanguage}', [UserLanguageController::class, 'update'])->name('admin.users.languages.update');
-        Route::delete('/users/languages/{userLanguage}', [UserLanguageController::class, 'destroy'])->name('admin.users.languages.destroy');
         //Skills
         Route::get('/skills', [SkillController::class, 'index'])->name('admin.skills.index');
         Route::post('/skills', [SkillController::class, 'store'])->name('admin.skills.store');
@@ -85,12 +76,5 @@ Route::middleware('auth')->group(function () {
         Route::get('/projects/{project}/edit', [ProjectController::class, 'edit'])->name('admin.projects.edit');
         Route::match(['put', 'patch'], '/projects/{project}', [ProjectController::class, 'update'])->name('admin.projects.update');
         Route::delete('/projects/{project}', [ProjectController::class, 'destroy'])->name('admin.projects.destroy');
-        //Hobbies
-        Route::get('/hobbies', [HobbyController::class, 'index'])->name('admin.hobbies.index');
-        Route::post('/hobbies', [HobbyController::class, 'store'])->name('admin.hobbies.store');
-        Route::get('/hobbies/create', [HobbyController::class, 'create'])->name('admin.hobbies.create');
-        Route::get('/hobbies/{hobby}/edit', [HobbyController::class, 'edit'])->name('admin.hobbies.edit');
-        Route::match(['put', 'patch'], '/hobbies/{hobby}', [HobbyController::class, 'update'])->name('admin.hobbies.update');
-        Route::delete('/hobbies/{hobby}', [HobbyController::class, 'destroy'])->name('admin.hobbies.destroy');
     });
 });

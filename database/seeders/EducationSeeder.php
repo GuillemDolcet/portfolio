@@ -55,9 +55,9 @@ class EducationSeeder extends Seeder
             'finish_date' => Carbon::parse('01-07-2019')
         ]);
 
-        $education->skills()->attach($this->skills->newQuery()->user($user)->name('Html')->first());
-        $education->skills()->attach($this->skills->newQuery()->user($user)->name('Css')->first());
-        $education->skills()->attach($this->skills->newQuery()->user($user)->name('Wordpress')->first());
+        $education->skills()->attach($this->skills->newQuery()->name('Html')->first());
+        $education->skills()->attach($this->skills->newQuery()->name('Css')->first());
+        $education->skills()->attach($this->skills->newQuery()->name('Wordpress')->first());
 
         $education = $user->education()->create([
             'school' => [
@@ -80,10 +80,10 @@ class EducationSeeder extends Seeder
             'finish_date' => Carbon::parse('01-07-2021')
         ]);
 
-        $education->skills()->attach($this->skills->newQuery()->user($user)->name('PHP')->first());
-        $education->skills()->attach($this->skills->newQuery()->user($user)->name('Docker')->first());
-        $education->skills()->attach($this->skills->newQuery()->user($user)->name('Html')->first());
-        $education->skills()->attach($this->skills->newQuery()->user($user)->name('Mysql')->first());
-        $education->skills()->attach($this->skills->newQuery()->user($user)->name('Css')->first());
+        $education->skills()->attach($this->skills->newQuery()->name('PHP')->first());
+        $education->skills()->attach($this->skills->newQuery()->name('Docker')->first());
+        $education->skills()->attach($this->skills->newQuery()->name('Html')->first());
+        $education->skills()->attach($this->skills->newQuery()->name('Mysql')->first());
+        $education->skills()->attach($this->skills->newQuery()->name('Css')->first());
     }
 }

@@ -60,14 +60,14 @@ class ProjectsSeeder extends Seeder
             'finish_date' => null
         ], $user);
 
-        $project->skills()->attach($this->skills->newQuery()->user($user)->name('Laravel')->first());
-        $project->skills()->attach($this->skills->newQuery()->user($user)->name('PHP')->first());
-        $project->skills()->attach($this->skills->newQuery()->user($user)->name('APIs')->first());
-        $project->skills()->attach($this->skills->newQuery()->user($user)->name('JS')->first());
-        $project->skills()->attach($this->skills->newQuery()->user($user)->name('Postgres')->first());
-        $project->skills()->attach($this->skills->newQuery()->user($user)->name('Html')->first());
-        $project->skills()->attach($this->skills->newQuery()->user($user)->name('Css')->first());
-        $project->skills()->attach($this->skills->newQuery()->user($user)->name('Docker')->first());
+        $project->skills()->attach($this->skills->newQuery()->name('Laravel')->first());
+        $project->skills()->attach($this->skills->newQuery()->name('PHP')->first());
+        $project->skills()->attach($this->skills->newQuery()->name('APIs')->first());
+        $project->skills()->attach($this->skills->newQuery()->name('JS')->first());
+        $project->skills()->attach($this->skills->newQuery()->name('Postgres')->first());
+        $project->skills()->attach($this->skills->newQuery()->name('Html')->first());
+        $project->skills()->attach($this->skills->newQuery()->name('Css')->first());
+        $project->skills()->attach($this->skills->newQuery()->name('Docker')->first());
 
         $project = $this->projects->create([
             'name' => [
@@ -84,14 +84,14 @@ class ProjectsSeeder extends Seeder
             'finish_date' => null
         ], $user);
 
-        $project->skills()->attach($this->skills->newQuery()->user($user)->name('Laravel')->first());
-        $project->skills()->attach($this->skills->newQuery()->user($user)->name('PHP')->first());
-        $project->skills()->attach($this->skills->newQuery()->user($user)->name('APIs')->first());
-        $project->skills()->attach($this->skills->newQuery()->user($user)->name('JS')->first());
-        $project->skills()->attach($this->skills->newQuery()->user($user)->name('Postgres')->first());
-        $project->skills()->attach($this->skills->newQuery()->user($user)->name('Html')->first());
-        $project->skills()->attach($this->skills->newQuery()->user($user)->name('Css')->first());
-        $project->skills()->attach($this->skills->newQuery()->user($user)->name('Docker')->first());
+        $project->skills()->attach($this->skills->newQuery()->name('Laravel')->first());
+        $project->skills()->attach($this->skills->newQuery()->name('PHP')->first());
+        $project->skills()->attach($this->skills->newQuery()->name('APIs')->first());
+        $project->skills()->attach($this->skills->newQuery()->name('JS')->first());
+        $project->skills()->attach($this->skills->newQuery()->name('Postgres')->first());
+        $project->skills()->attach($this->skills->newQuery()->name('Html')->first());
+        $project->skills()->attach($this->skills->newQuery()->name('Css')->first());
+        $project->skills()->attach($this->skills->newQuery()->name('Docker')->first());
 
         $project = $this->projects->create([
             'name' => [
@@ -108,10 +108,10 @@ class ProjectsSeeder extends Seeder
             'finish_date' => Carbon::parse('15-07-2022')
         ], $user);
 
-        $project->skills()->attach($this->skills->newQuery()->user($user)->name('Wordpress')->first());
-        $project->skills()->attach($this->skills->newQuery()->user($user)->name('PHP')->first());
-        $project->skills()->attach($this->skills->newQuery()->user($user)->name('Html')->first());
-        $project->skills()->attach($this->skills->newQuery()->user($user)->name('Css')->first());
+        $project->skills()->attach($this->skills->newQuery()->name('Wordpress')->first());
+        $project->skills()->attach($this->skills->newQuery()->name('PHP')->first());
+        $project->skills()->attach($this->skills->newQuery()->name('Html')->first());
+        $project->skills()->attach($this->skills->newQuery()->name('Css')->first());
 
         $project = $this->projects->create([
             'name' => [
@@ -128,11 +128,11 @@ class ProjectsSeeder extends Seeder
             'finish_date' => Carbon::parse('01-01-2023')
         ], $user);
 
-        $project->skills()->attach($this->skills->newQuery()->user($user)->name('PHP')->first());
-        $project->skills()->attach($this->skills->newQuery()->user($user)->name('JS')->first());
-        $project->skills()->attach($this->skills->newQuery()->user($user)->name('Mysql')->first());
-        $project->skills()->attach($this->skills->newQuery()->user($user)->name('Html')->first());
-        $project->skills()->attach($this->skills->newQuery()->user($user)->name('Css')->first());
+        $project->skills()->attach($this->skills->newQuery()->name('PHP')->first());
+        $project->skills()->attach($this->skills->newQuery()->name('JS')->first());
+        $project->skills()->attach($this->skills->newQuery()->name('Mysql')->first());
+        $project->skills()->attach($this->skills->newQuery()->name('Html')->first());
+        $project->skills()->attach($this->skills->newQuery()->name('Css')->first());
 
         $project = $this->projects->create([
             'name' => [
@@ -149,11 +149,11 @@ class ProjectsSeeder extends Seeder
             'finish_date' => Carbon::parse('01-09-2022')
         ], $user);
 
-        $project->skills()->attach($this->skills->newQuery()->user($user)->name('PHP')->first());
-        $project->skills()->attach($this->skills->newQuery()->user($user)->name('Laravel')->first());
-        $project->skills()->attach($this->skills->newQuery()->user($user)->name('JS')->first());
-        $project->skills()->attach($this->skills->newQuery()->user($user)->name('Mysql')->first());
-        $project->skills()->attach($this->skills->newQuery()->user($user)->name('Html')->first());
-        $project->skills()->attach($this->skills->newQuery()->user($user)->name('Css')->first());
+        $project->skills()->attach($this->skills->newQuery()->name('PHP')->first());
+        $project->skills()->attach($this->skills->newQuery()->name('Laravel')->first());
+        $project->skills()->attach($this->skills->newQuery()->name('JS')->first());
+        $project->skills()->attach($this->skills->newQuery()->name('Mysql')->first());
+        $project->skills()->attach($this->skills->newQuery()->name('Html')->first());
+        $project->skills()->attach($this->skills->newQuery()->name('Css')->first());
     }
 }

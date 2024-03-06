@@ -6,10 +6,8 @@ use App\Concerns\InteractsWithTurbo;
 use App\Models\User;
 use App\Repositories\Education;
 use App\Repositories\Experiences;
-use App\Repositories\Hobbies;
 use App\Repositories\Projects;
 use App\Repositories\Skills;
-use App\Repositories\UsersLanguages;
 use Illuminate\Contracts\Console\Application as ConsoleApplication;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -58,31 +56,14 @@ class HomeController
     protected Projects $projects;
 
     /**
-     * Hobbies repository instance.
-     *
-     * @param Hobbies $hobbies
-     */
-    protected Hobbies $hobbies;
-
-    /**
-     * UsersLanguages repository instance.
-     *
-     * @param UsersLanguages $usersLanguages
-     */
-    protected UsersLanguages $usersLanguages;
-
-    /**
      * Class constructor.
      *
      * @param Skills $skills
      * @param Experiences $experiences
      * @param Projects $projects
-     * @param Hobbies $hobbies
      * @param Education $education
-     * @param UsersLanguages $usersLanguages
      */
-    public function __construct(Skills $skills, Experiences $experiences, Projects $projects, Hobbies $hobbies,
-                                Education $education, UsersLanguages $usersLanguages)
+    public function __construct(Skills $skills, Experiences $experiences, Projects $projects, Education $education)
     {
         $this->skills = $skills;
 
@@ -91,10 +72,6 @@ class HomeController
         $this->education = $education;
 
         $this->projects = $projects;
-
-        $this->hobbies = $hobbies;
-
-        $this->usersLanguages = $usersLanguages;
     }
 
     /**
@@ -107,18 +84,14 @@ class HomeController
     {
         $user = User::query()->first();
 
-        $skills = $this->skills->newQuery()->user($user)->orderBy('order')->get();
+        $skills = $this->skills->newQuery()->orderBy('order')->get();
 
-        $experiences = $this->experiences->newQuery()->user($user)->orderBy('start_date', 'DESC')->get();
+        $experiences = $this->experiences->newQuery()->orderBy('start_date', 'DESC')->get();
 
-        $projects = $this->projects->listing($this->projects->newQuery()->user($user)->orderBy('start_date'));
+        $projects = $this->projects->listing($this->projects->newQuery()->orderBy('start_date'));
 
-        $hobbies = $this->hobbies->listing($this->hobbies->newQuery()->user($user)->orderBy('order'));
+        $education = $this->education->newQuery()->orderBy('start_date', 'DESC')->get();
 
-        $education = $this->education->newQuery()->user($user)->orderBy('start_date', 'DESC')->get();
-
-        $userLanguages = $this->usersLanguages->listing($this->usersLanguages->newQuery()->user($user)->orderByDesc('level'));
-
-        return view('home.index', compact('user','skills','experiences','projects','hobbies','education','userLanguages'));
+        return view('home.index', compact('user','skills','experiences','projects','education'));
     }
 }
