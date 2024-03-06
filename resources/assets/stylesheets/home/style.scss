@@ -1,49 +1,22 @@
-/* Template Name: Cristino - Responsive Personal Template
-   Author: Shreethemes
-   Email: shreethemes@gmail.com
-   Website: http://www.shreethemes.in
-   Version: 1.9.0
-   Created: May 2020
-   File Description: Main Css file of the template
-*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-/***********************/
-/*       INDEX         */
-/*======================
- *    01.  Variables   *
- *    02.  Components  *
- *    03.  General     *
- *    04.  Helper      *
- *    05.  Menu        *
- *    06.  Home        *
- *    07.  About       *
- *    08.  Service     *
- *    09.  Counter     *
- *    10.  Resume      *
- *    11.  C.T.A       *
- *    12.  Portfolio   *
- *    13.  Testi       *
- *    14.  Blog        *
- *    15.  Contact     *
- *    16.  Footer      *
- *    17.  Switcher    *
- ======================*/
-
+@import "animate.min.css";
 @import "~bootstrap";
+@import '~@fortawesome/fontawesome-free/css/all.min.css';
+@import "owl.carousel.min.css";
+@import "~magnific-popup/dist/magnific-popup.css";
+
+// Initialize
 @import "variables";
-@import "bootstrap-custom";
-@import "components";
-@import "general";
-@import "helper";
-@import "menu";
-@import "home";
-@import "about";
-@import "service";
-@import "resume";
-@import "cta";
-@import "portfolio";
-@import "testi";
-@import "blog";
-@import "contact";
+@import "mixins";
+
+// Core CSS
+@import "reset";
+@import "helpers";
+@import "layouts";
+
+// Content Blocks
+@import "header";
+@import "elements";
 @import "footer";
-@import "switcher";
+@import "extras";

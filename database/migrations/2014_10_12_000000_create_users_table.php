@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('linkedin')->nullable();
             $table->string('x')->nullable();
             $table->string('instagram')->nullable();
+            $table->string('github')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
             $table->rememberToken();

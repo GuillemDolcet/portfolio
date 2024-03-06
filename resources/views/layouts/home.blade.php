@@ -1,9 +1,12 @@
 <!doctype html>
 <html lang="es">
 <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
-    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
+    <meta name="description" content="Callum is responsive bootstrap 5 one page personal portfolio html template.">
+    <meta name="author" content="harnishdesign.net">
+
 
     <title>@yield('title', config('app.name'))</title>
 
@@ -17,17 +20,22 @@
 
     @stack('top-stylesheets')
 
-    @vite(['resources/assets/stylesheets/home/style.scss'], 'assets')
+    @vite(['resources/assets/stylesheets/home/style.scss', 'resources/assets/javascripts/home.js'], 'assets')
 
     @stack('top-scripts')
 </head>
-<body class="@yield('body-classlist', '')">
+<body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="70" class="text-black">
 
-    @include('shared.home._loader')
+    <div class="preloader">
+        <div class="lds-ellipsis">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
 
     @include('shared.home._header')
-
-    @stack('top-content')
 
     @yield('main-content')
 

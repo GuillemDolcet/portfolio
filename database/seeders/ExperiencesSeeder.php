@@ -36,8 +36,8 @@ class ExperiencesSeeder extends Seeder
     {
         $experience = $user->experiences()->create([
             'position' => [
-                'en' => 'Middle Fullstack Developer',
-                'es' => 'Middle Fullstack Developer',
+                'en' => 'Middle Backend Developer',
+                'es' => 'Middle Backend Developer',
             ],
             'company' => [
                 'en' => 'INSON S.A.',

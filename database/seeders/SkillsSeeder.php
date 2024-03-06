@@ -104,12 +104,5 @@ class SkillsSeeder extends Seeder
             'level' => '30',
             'image' => new File('resources/assets/images/skills/wordpress.png')
         ], $user);
-
-        $this->skills->create([
-            'name' => 'Linux',
-            'order' => 11,
-            'level' => '30',
-            'image' => new File('resources/assets/images/skills/linux.png')
-        ], $user);
     }
 }
