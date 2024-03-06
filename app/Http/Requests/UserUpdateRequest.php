@@ -21,7 +21,7 @@ class UserUpdateRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return current_user()->hasRole(['admin']) || $this->user->getKey() == current_user()->getKey();
+        return current_user()->hasRole(['admin']);
     }
 
     /**

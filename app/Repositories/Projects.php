@@ -60,12 +60,11 @@ class Projects extends Repository
      * Creates a Project instance.
      *
      * @param array $attributes
-     * @param User $user
      * @return Project|null
      */
-    public function create(array $attributes, User $user): ?Project
+    public function create(array $attributes): ?Project
     {
-        return $this->update($this->build(), $attributes, $user);
+        return $this->update($this->build(), $attributes);
     }
 
     /**
@@ -87,21 +86,18 @@ class Projects extends Repository
      *
      * @param Project $instance
      * @param array $attributes
-     * @param User $user
      * @return Project|null
      */
-    public function update(Project $instance, array $attributes, User $user): ?Project
+    public function update(Project $instance, array $attributes): ?Project
     {
         $instance->fill(Arr::except($attributes, ['image']));
-
-        $instance->user()->associate($user);
 
         if (isset($attributes['image'])){
             if ($instance->exists){
                 Storage::disk('public')->delete($instance->image);
             }
 
-            $path = Storage::disk('public')->putFile($user->getKey().'/projects', $attributes['image']);
+            $path = Storage::disk('public')->putFile('projects', $attributes['image']);
             $instance->image = $path;
         }
 

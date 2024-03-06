@@ -133,7 +133,7 @@ class EducationController extends AdminController
     {
         if ($attributes = $request->validated()) {
             $attributes = $this->translator->translate($attributes, $this->education->build()->getTranslatableAttributes());
-            $this->education->create($attributes, current_user());
+            $this->education->create($attributes);
             return redirect()
                 ->back()
                 ->with([
@@ -162,7 +162,7 @@ class EducationController extends AdminController
     {
         if ($attributes = $request->validated()) {
             $attributes = $this->translator->translate($attributes, $this->education->build()->getTranslatableAttributes());
-            $this->education->update($education, $attributes, current_user());
+            $this->education->update($education, $attributes);
             return redirect()
                 ->back()
                 ->with([

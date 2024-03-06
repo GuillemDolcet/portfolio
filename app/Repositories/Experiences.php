@@ -57,12 +57,11 @@ class Experiences extends Repository
      * Creates a Experience instance.
      *
      * @param array $attributes
-     * @param User $user
      * @return Experience|null
      */
-    public function create(array $attributes, User $user): ?Experience
+    public function create(array $attributes): ?Experience
     {
-        return $this->update($this->build(), $attributes, $user);
+        return $this->update($this->build(), $attributes);
     }
 
     /**
@@ -84,14 +83,11 @@ class Experiences extends Repository
      *
      * @param Experience $instance
      * @param array $attributes
-     * @param User $user
      * @return Experience|null
      */
-    public function update(Experience $instance, array $attributes, User $user): ?Experience
+    public function update(Experience $instance, array $attributes): ?Experience
     {
         $instance->fill($attributes);
-
-        $instance->user()->associate($user);
 
         $result = $instance->save();
 

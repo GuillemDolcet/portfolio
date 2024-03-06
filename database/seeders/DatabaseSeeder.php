@@ -29,9 +29,9 @@ class DatabaseSeeder extends Seeder
         ]);
         $user->assignRole('admin');
 
-        $this->call(SkillsSeeder::class, false, ['user' => $user]);
-        $this->call(ExperiencesSeeder::class, false, ['user' => $user]);
-        $this->call(ProjectsSeeder::class, false, ['user' => $user]);
-        $this->call(EducationSeeder::class, false, ['user' => $user]);
+        $this->call(SkillsSeeder::class);
+        $this->call(ExperiencesSeeder::class);
+        $this->call(ProjectsSeeder::class);
+        $this->call(EducationSeeder::class);
     }
 }

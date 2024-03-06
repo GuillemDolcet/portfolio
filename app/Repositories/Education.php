@@ -57,12 +57,11 @@ class Education extends Repository
      * Creates a EducationModel instance.
      *
      * @param array $attributes
-     * @param User $user
      * @return EducationModel|null
      */
-    public function create(array $attributes, User $user): ?EducationModel
+    public function create(array $attributes): ?EducationModel
     {
-        return $this->update($this->build(), $attributes, $user);
+        return $this->update($this->build(), $attributes);
     }
 
     /**
@@ -84,14 +83,11 @@ class Education extends Repository
      *
      * @param EducationModel $instance
      * @param array $attributes
-     * @param User $user
      * @return EducationModel|null
      */
-    public function update(EducationModel $instance, array $attributes, User $user): ?EducationModel
+    public function update(EducationModel $instance, array $attributes): ?EducationModel
     {
         $instance->fill($attributes);
-
-        $instance->user()->associate($user);
 
         $result = $instance->save();
 

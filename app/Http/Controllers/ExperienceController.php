@@ -133,7 +133,7 @@ class ExperienceController extends AdminController
     {
         if ($attributes = $request->validated()) {
             $attributes = $this->translator->translate($attributes, $this->experiences->build()->getTranslatableAttributes());
-            $this->experiences->create($attributes, current_user());
+            $this->experiences->create($attributes);
             return redirect()
                 ->back()
                 ->with([
@@ -162,7 +162,7 @@ class ExperienceController extends AdminController
     {
         if ($attributes = $request->validated()) {
             $attributes = $this->translator->translate($attributes, $this->experiences->build()->getTranslatableAttributes());
-            $this->experiences->update($experience, $attributes, current_user());
+            $this->experiences->update($experience, $attributes);
             return redirect()
                 ->back()
                 ->with([

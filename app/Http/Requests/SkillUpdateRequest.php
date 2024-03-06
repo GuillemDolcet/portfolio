@@ -20,7 +20,7 @@ class SkillUpdateRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return current_user()->hasRole(['admin']) || $this->skill->user->getKey() == current_user()->getKey();
+        return current_user()->hasRole(['admin']);
     }
 
     /**

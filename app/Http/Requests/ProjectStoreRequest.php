@@ -24,7 +24,7 @@ class ProjectStoreRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return !is_null(current_user());
+        return current_user()->hasRole(['admin']);
     }
 
     /**
@@ -58,7 +58,7 @@ class ProjectStoreRequest extends FormRequest
             'finish_date' => ['required_without:currently', 'date', 'after:start_date'],
             'currently' => ['required_without:finish_date'],
             'skills' => ['nullable', 'array'],
-            'skills.*' => ['required','exists:skills,id', new Ownership(Skill::class)]
+            'skills.*' => ['required','exists:skills,id']
         ];
     }
 }

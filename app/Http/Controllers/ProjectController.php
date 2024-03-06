@@ -133,7 +133,7 @@ class ProjectController extends AdminController
     {
         if ($attributes = $request->validated()) {
             $attributes = $this->translator->translate($attributes, $this->projects->build()->getTranslatableAttributes());
-            $this->projects->create($attributes, current_user());
+            $this->projects->create($attributes);
             return redirect()
                 ->back()
                 ->with([
@@ -162,7 +162,7 @@ class ProjectController extends AdminController
     {
         if ($attributes = $request->validated()) {
             $attributes = $this->translator->translate($attributes, $this->projects->build()->getTranslatableAttributes());
-            $this->projects->update($project, $attributes, current_user());
+            $this->projects->update($project, $attributes);
             return redirect()
                 ->back()
                 ->with([

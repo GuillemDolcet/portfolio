@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
+use App\Repositories\Education;
 use App\Repositories\Skills;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
@@ -17,24 +17,32 @@ class EducationSeeder extends Seeder
     protected Skills $skills;
 
     /**
+     * Education repository instance.
+     *
+     * @param Education $education
+     */
+    protected Education $education;
+
+    /**
      * Class constructor.
      *
      * @return void
      */
-    public function __construct(Skills $skills)
+    public function __construct(Skills $skills, Education $education)
     {
         $this->skills = $skills;
+
+        $this->education = $education;
     }
 
     /**
      * Seed the application's database.
      *
-     * @param User $user
      * @return void
      */
-    public function run(User $user): void
+    public function run(): void
     {
-        $education = $user->education()->create([
+        $education = $this->education->create([
             'school' => [
                 'en' => 'Institut Almatà',
                 'es' => 'Institut Almatà',
@@ -59,7 +67,7 @@ class EducationSeeder extends Seeder
         $education->skills()->attach($this->skills->newQuery()->name('Css')->first());
         $education->skills()->attach($this->skills->newQuery()->name('Wordpress')->first());
 
-        $education = $user->education()->create([
+        $education = $this->education->create([
             'school' => [
                 'en' => 'Institut Almatà',
                 'es' => 'Institut Almatà',

@@ -23,7 +23,7 @@ class EducationUpdateRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return current_user()->hasRole(['admin']) || $this->education->user->getKey() == current_user()->getKey();
+        return current_user()->hasRole(['admin']);
     }
 
     /**
@@ -60,7 +60,7 @@ class EducationUpdateRequest extends FormRequest
             'start_date' =>  ['required', 'date'],
             'finish_date' => ['required', 'date', 'after:start_date'],
             'skills' => ['nullable', 'array'],
-            'skills.*' => ['required','exists:skills,id', new Ownership(Skill::class)]
+            'skills.*' => ['required','exists:skills,id']
         ];
     }
 

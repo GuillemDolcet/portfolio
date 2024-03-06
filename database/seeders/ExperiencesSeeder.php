@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
+use App\Repositories\Experiences;
 use App\Repositories\Skills;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
@@ -17,24 +17,32 @@ class ExperiencesSeeder extends Seeder
     protected Skills $skills;
 
     /**
+     * Experiences repository instance.
+     *
+     * @param Experiences $experiences
+     */
+    protected Experiences $experiences;
+
+    /**
      * Class constructor.
      *
      * @return void
      */
-    public function __construct(Skills $skills)
+    public function __construct(Skills $skills, Experiences $experiences)
     {
         $this->skills = $skills;
+
+        $this->experiences = $experiences;
     }
 
     /**
      * Seed the application's database.
      *
-     * @param User $user
      * @return void
      */
-    public function run(User $user): void
+    public function run(): void
     {
-        $experience = $user->experiences()->create([
+        $experience = $this->experiences->create([
             'position' => [
                 'en' => 'Middle Backend Developer',
                 'es' => 'Middle Backend Developer',
@@ -64,7 +72,7 @@ class ExperiencesSeeder extends Seeder
         $experience->skills()->attach($this->skills->newQuery()->name('Html')->first());
         $experience->skills()->attach($this->skills->newQuery()->name('Css')->first());
 
-        $experience = $user->experiences()->create([
+        $experience = $this->experiences->create([
             'position' => [
                 'en' => 'Junior Fullstack Developer',
                 'es' => 'Junior Fullstack Developer',

@@ -40,10 +40,9 @@ class ProjectsSeeder extends Seeder
     /**
      * Seed the application's database.
      *
-     * @param User $user
      * @return void
      */
-    public function run(User $user): void
+    public function run(): void
     {
         $project = $this->projects->create([
             'name' => [
@@ -58,7 +57,7 @@ class ProjectsSeeder extends Seeder
             'image' => new File('resources/assets/images/projects/ielectro.png'),
             'start_date' => Carbon::parse('21-02-2023'),
             'finish_date' => null
-        ], $user);
+        ]);
 
         $project->skills()->attach($this->skills->newQuery()->name('Laravel')->first());
         $project->skills()->attach($this->skills->newQuery()->name('PHP')->first());
@@ -82,7 +81,7 @@ class ProjectsSeeder extends Seeder
             'image' => new File('resources/assets/images/projects/mayor2010.png'),
             'start_date' => Carbon::parse('21-02-2023'),
             'finish_date' => null
-        ], $user);
+        ]);
 
         $project->skills()->attach($this->skills->newQuery()->name('Laravel')->first());
         $project->skills()->attach($this->skills->newQuery()->name('PHP')->first());
@@ -106,7 +105,7 @@ class ProjectsSeeder extends Seeder
             'image' => new File('resources/assets/images/projects/turismeager.png'),
             'start_date' => Carbon::parse('21-06-2022'),
             'finish_date' => Carbon::parse('15-07-2022')
-        ], $user);
+        ]);
 
         $project->skills()->attach($this->skills->newQuery()->name('Wordpress')->first());
         $project->skills()->attach($this->skills->newQuery()->name('PHP')->first());
@@ -126,7 +125,7 @@ class ProjectsSeeder extends Seeder
             'image' => new File('resources/assets/images/projects/runedia.png'),
             'start_date' => Carbon::parse('01-01-2022'),
             'finish_date' => Carbon::parse('01-01-2023')
-        ], $user);
+        ]);
 
         $project->skills()->attach($this->skills->newQuery()->name('PHP')->first());
         $project->skills()->attach($this->skills->newQuery()->name('JS')->first());
@@ -147,7 +146,7 @@ class ProjectsSeeder extends Seeder
             'image' => new File('resources/assets/images/projects/ferreteriaes.png'),
             'start_date' => Carbon::parse('01-06-2022'),
             'finish_date' => Carbon::parse('01-09-2022')
-        ], $user);
+        ]);
 
         $project->skills()->attach($this->skills->newQuery()->name('PHP')->first());
         $project->skills()->attach($this->skills->newQuery()->name('Laravel')->first());

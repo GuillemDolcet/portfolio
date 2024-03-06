@@ -107,7 +107,7 @@ class SkillController extends AdminController
      */
     public function store(SkillStoreRequest $request): RedirectResponse
     {
-        if ($this->skills->create($request->validated(), current_user())) {
+        if ($this->skills->create($request->validated())) {
             return redirect()
                 ->back()
                 ->with([
@@ -133,7 +133,7 @@ class SkillController extends AdminController
      */
     public function update(SkillUpdateRequest $request, Skill $skill): RedirectResponse
     {
-        if ($this->skills->update($skill, $request->validated(), current_user())) {
+        if ($this->skills->update($skill, $request->validated())) {
             return redirect()
                 ->back()
                 ->with([

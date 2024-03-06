@@ -61,12 +61,11 @@ class Skills extends Repository
      * Creates a Skill instance.
      *
      * @param array $attributes
-     * @param User $user
      * @return Skill|null
      */
-    public function create(array $attributes, User $user): ?Skill
+    public function create(array $attributes): ?Skill
     {
-        return $this->update($this->build(), $attributes, $user);
+        return $this->update($this->build(), $attributes);
     }
 
     /**
@@ -88,21 +87,18 @@ class Skills extends Repository
      *
      * @param Skill $instance
      * @param array $attributes
-     * @param User $user
      * @return Skill|null
      */
-    public function update(Skill $instance, array $attributes, User $user): ?Skill
+    public function update(Skill $instance, array $attributes): ?Skill
     {
         $instance->fill(Arr::except($attributes, ['image']));
-
-        $instance->user()->associate($user);
 
         if (isset($attributes['image'])){
             if ($instance->exists){
                 Storage::disk('public')->delete($instance->image);
             }
 
-            $path = Storage::disk('public')->putFile($user->getKey().'/skills', $attributes['image']);
+            $path = Storage::disk('public')->putFile('skills', $attributes['image']);
             $instance->image = $path;
         }
 
