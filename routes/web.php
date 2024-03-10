@@ -8,6 +8,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\OverviewController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\SectionController;
+use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SkillController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -76,5 +78,26 @@ Route::middleware('auth')->group(function () {
         Route::get('/projects/{project}/edit', [ProjectController::class, 'edit'])->name('admin.projects.edit');
         Route::match(['put', 'patch'], '/projects/{project}', [ProjectController::class, 'update'])->name('admin.projects.update');
         Route::delete('/projects/{project}', [ProjectController::class, 'destroy'])->name('admin.projects.destroy');
+        //Sections
+        Route::get('/sections', [SectionController::class, 'index'])->name('admin.sections.index');
+        Route::post('/sections', [SectionController::class, 'store'])->name('admin.sections.store');
+        //Route::get('/sections/create', [SectionController::class, 'create'])->name('admin.sections.create');
+        Route::get('/sections/{section}/edit', [SectionController::class, 'edit'])->name('admin.sections.edit');
+        Route::match(['put', 'patch'], '/sections/{section}', [SectionController::class, 'update'])->name('admin.sections.update');
+        //Route::delete('/sections/{section}', [SectionController::class, 'destroy'])->name('admin.sections.destroy');
+        //Personal Info
+        Route::get('/personalInfo', [ProjectController::class, 'index'])->name('admin.personalInfo.index');
+        Route::post('/personalInfo', [ProjectController::class, 'store'])->name('admin.personalInfo.store');
+        Route::get('/personalInfo/create', [ProjectController::class, 'create'])->name('admin.personalInfo.create');
+        Route::get('/personalInfo/{personalInfo}/edit', [ProjectController::class, 'edit'])->name('admin.personalInfo.edit');
+        Route::match(['put', 'patch'], '/personalInfo/{personalInfo}', [ProjectController::class, 'update'])->name('admin.personalInfo.update');
+        Route::delete('/personalInfo/{personalInfo}', [ProjectController::class, 'destroy'])->name('admin.personalInfo.destroy');
+        //Service
+        Route::get('/services', [ServiceController::class, 'index'])->name('admin.services.index');
+        Route::post('/services', [ServiceController::class, 'store'])->name('admin.services.store');
+        Route::get('/services/create', [ServiceController::class, 'create'])->name('admin.services.create');
+        Route::get('/services/{service}/edit', [ServiceController::class, 'edit'])->name('admin.services.edit');
+        Route::match(['put', 'patch'], '/services/{service}', [ServiceController::class, 'update'])->name('admin.services.update');
+        Route::delete('/services/{service}', [ServiceController::class, 'destroy'])->name('admin.services.destroy');
     });
 });

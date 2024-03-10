@@ -11,13 +11,6 @@
                 </a></div>
         </div>
         @each('admin.overview.experiences._experience', $experiences, 'experience', 'admin.overview.experiences._empty')
-        @if ($experiences->hasMorePages())
-            <div class="mt-2 mb-2 justify-content-center d-flex">
-                <a href="{{route('admin.experiences.index')}}">
-                    @lang('admin.show.experiences') ({{$experiences->total()}}) <x-icon icon="share" />
-                </a>
-            </div>
-        @endif
     </div>
 </div>
 

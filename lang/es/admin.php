@@ -27,14 +27,16 @@ return [
         'delete-project' => '¿Realmente desea eliminar este proyecto? Esta acción no se puede deshacer',
         'delete-education' => '¿Realmente desea eliminar esta educación? Esta acción no se puede deshacer',
         'delete-hobby' => '¿Realmente desea eliminar este hobby? Esta acción no se puede deshacer',
-        'delete-user-language' => '¿Realmente desea eliminar este idioma? Esta acción no se puede deshacer'
+        'delete-user-language' => '¿Realmente desea eliminar este idioma? Esta acción no se puede deshacer',
+        'delete-service' => '¿Realmente desea eliminar este servicio? Esta acción no se puede deshacer'
     ],
     'created' => 'Creado',
     'created_at' => 'Creado en',
     'currently' => 'Actualmente tengo este cargo',
     'currently-project' => 'Trabajando',
     'date_of_birth' => 'Cumpleaños',
-    'degree' => 'Título',
+    'tag' => 'Tag',
+    'title' => 'Título',
     'delete' => 'Eliminar',
     'description' => 'Descripción',
     'discipline' => 'Disciplina académica',
@@ -51,6 +53,7 @@ return [
     'hobby' => 'Hobby',
     'home' => 'Inicio',
     'image' => 'Imagen',
+    'icon' => 'Icono',
     'language' => 'Idioma',
     'languages' => 'Idiomas',
     'level' => 'Nivel',
@@ -63,6 +66,7 @@ return [
     'or' => 'O',
     'order' => 'Orden',
     'password' => 'Contraseña',
+    'personal-info' => 'Información personal',
     'phone' => 'Teléfono',
     'placeholders' => [
         'email' => 'tu@email.com',
@@ -113,10 +117,32 @@ return [
         'error-create-user-language' => 'No se pudo crear el idioma',
         'success-update-user-language' => 'Idioma actualizado',
         'error-update-user-language' => 'No se pudo actualizar el idioma',
-        'delete-user-language' => 'Idioma eliminado'
+        'delete-user-language' => 'Idioma eliminado',
+
+        'success-create-personal-info' => 'Infromación personal creado',
+        'error-create-personal-info' => 'No se pudo crear la infromación personal',
+        'success-update-personal-info' => 'Infromación personal actualizado',
+        'error-update-personal-info' => 'No se pudo actualizar la infromación personal',
+        'delete-personal-info' => 'Infromación personal eliminado',
+
+        'success-create-section' => 'Sección creada',
+        'error-create-section' => 'No se pudo crear la sección',
+        'success-update-section' => 'Sección actualizada',
+        'error-update-section' => 'No se pudo actualizar la sección',
+        'delete-section' => 'Sección eliminada',
+
+        'success-create-service' => 'Servicio creado',
+        'error-create-service' => 'No se pudo crear el servicio',
+        'success-update-service' => 'Servicio actualizado',
+        'error-update-service' => 'No se pudo actualizar el servicio',
+        'delete-service' => 'Servicio eliminado'
     ],
     'role' => 'Rol',
     'school' => 'Escuela',
+    'sections' => 'Secciones',
+    'section' => 'Seccion',
+    'services' => 'Servicios',
+    'service' => 'Servicio',
     'show' => [
         'skills' => 'Mostrar todas las habilidades',
         'experiences' => 'Mostrar todas las experiencias',
@@ -131,5 +157,4 @@ return [
     'user' => 'Usuario',
     'users' => 'Usuarios',
     'with' => 'con'
-
 ];

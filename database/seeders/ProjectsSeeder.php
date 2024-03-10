@@ -55,15 +55,14 @@ class ProjectsSeeder extends Seeder
             ],
             'url' => 'https://www.ielectro.es/',
             'image' => new File('resources/assets/images/projects/ielectro.png'),
-            'start_date' => Carbon::parse('21-02-2023'),
-            'finish_date' => null
+            'order' => 1
         ]);
 
         $project->skills()->attach($this->skills->newQuery()->name('Laravel')->first());
         $project->skills()->attach($this->skills->newQuery()->name('PHP')->first());
         $project->skills()->attach($this->skills->newQuery()->name('APIs')->first());
         $project->skills()->attach($this->skills->newQuery()->name('JS')->first());
-        $project->skills()->attach($this->skills->newQuery()->name('Postgres')->first());
+        $project->skills()->attach($this->skills->newQuery()->name('SQL')->first());
         $project->skills()->attach($this->skills->newQuery()->name('Html')->first());
         $project->skills()->attach($this->skills->newQuery()->name('Css')->first());
         $project->skills()->attach($this->skills->newQuery()->name('Docker')->first());
@@ -79,15 +78,14 @@ class ProjectsSeeder extends Seeder
             ],
             'url' => 'https://www.mayor2010.com/',
             'image' => new File('resources/assets/images/projects/mayor2010.png'),
-            'start_date' => Carbon::parse('21-02-2023'),
-            'finish_date' => null
+            'order' => 2
         ]);
 
         $project->skills()->attach($this->skills->newQuery()->name('Laravel')->first());
         $project->skills()->attach($this->skills->newQuery()->name('PHP')->first());
         $project->skills()->attach($this->skills->newQuery()->name('APIs')->first());
         $project->skills()->attach($this->skills->newQuery()->name('JS')->first());
-        $project->skills()->attach($this->skills->newQuery()->name('Postgres')->first());
+        $project->skills()->attach($this->skills->newQuery()->name('SQL')->first());
         $project->skills()->attach($this->skills->newQuery()->name('Html')->first());
         $project->skills()->attach($this->skills->newQuery()->name('Css')->first());
         $project->skills()->attach($this->skills->newQuery()->name('Docker')->first());
@@ -103,8 +101,7 @@ class ProjectsSeeder extends Seeder
             ],
             'url' => 'https://turismeager.cat/',
             'image' => new File('resources/assets/images/projects/turismeager.png'),
-            'start_date' => Carbon::parse('21-06-2022'),
-            'finish_date' => Carbon::parse('15-07-2022')
+            'order' => 3
         ]);
 
         $project->skills()->attach($this->skills->newQuery()->name('Wordpress')->first());
@@ -123,13 +120,12 @@ class ProjectsSeeder extends Seeder
             ],
             'url' => 'https://runedia.mundodeportivo.com/',
             'image' => new File('resources/assets/images/projects/runedia.png'),
-            'start_date' => Carbon::parse('01-01-2022'),
-            'finish_date' => Carbon::parse('01-01-2023')
+            'order' => 4
         ]);
 
         $project->skills()->attach($this->skills->newQuery()->name('PHP')->first());
         $project->skills()->attach($this->skills->newQuery()->name('JS')->first());
-        $project->skills()->attach($this->skills->newQuery()->name('Mysql')->first());
+        $project->skills()->attach($this->skills->newQuery()->name('SQL')->first());
         $project->skills()->attach($this->skills->newQuery()->name('Html')->first());
         $project->skills()->attach($this->skills->newQuery()->name('Css')->first());
 
@@ -144,14 +140,13 @@ class ProjectsSeeder extends Seeder
             ],
             'url' => 'https://ferreteria.es/',
             'image' => new File('resources/assets/images/projects/ferreteriaes.png'),
-            'start_date' => Carbon::parse('01-06-2022'),
-            'finish_date' => Carbon::parse('01-09-2022')
+            'order' => 5
         ]);
 
         $project->skills()->attach($this->skills->newQuery()->name('PHP')->first());
         $project->skills()->attach($this->skills->newQuery()->name('Laravel')->first());
         $project->skills()->attach($this->skills->newQuery()->name('JS')->first());
-        $project->skills()->attach($this->skills->newQuery()->name('Mysql')->first());
+        $project->skills()->attach($this->skills->newQuery()->name('SQL')->first());
         $project->skills()->attach($this->skills->newQuery()->name('Html')->first());
         $project->skills()->attach($this->skills->newQuery()->name('Css')->first());
     }

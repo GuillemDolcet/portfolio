@@ -6,7 +6,6 @@
         <div>
             <div><a href="{{$project->url}}"><b>{{$project->name}}</b></a></div>
             <div class="mt-2 mb-2">{{$project->description}}</div>
-            <div class="text-muted">{{ ucfirst($project->start_date->translatedFormat('F Y')) }} - {{ !is_null($project->finish_date) ? ucfirst($project->finish_date->translatedFormat('F Y')) : Lang::get('admin.currently-project') }}</div>
         </div>
     </div>
     <div class="col-2 d-flex text-end justify-content-end">

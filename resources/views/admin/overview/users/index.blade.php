@@ -5,38 +5,49 @@
                 <div class="row align">
                     <div class="col-11">
                         <div class="row align-items-center">
-                            <div class="col-2"><img alt="avatar" class="rounded"
-                                                    src="data:image/jpg;base64,{{ $user->avatar }}"/></div>
+                            <div class="col-2">
+                                <img src="{{\Storage::url($personalInfo->image)}}" width="100" alt="{{$personalInfo->firstName}}">
+                            </div>
                             <div class="col-10 d-flex flex-column">
-                                <div class="mb-2"><h2 class="page-title">{{$user->name}}</h2></div>
+                                <div class="mb-2"><h2
+                                        class="page-title">{{$personalInfo->firstName}} {{$personalInfo->lastName}}</h2>
+                                </div>
                                 <div class="d-flex">
                                     <div class="d-flex flex-column text-muted mt-2">
                                         <div class="me-2 mb-2"><small>
-                                                <x-icon class="me-1" icon="location"/> {{$user->location}}</small></div>
+                                                <x-icon class="me-1" icon="location"/> {{$personalInfo->location}}
+                                            </small></div>
                                         <div class="me-2 mb-2"><small>
-                                                <x-icon class="me-1" icon="mail"/> {{$user->email}}</small></div>
+                                                <x-icon class="me-1" icon="mail"/> {{$personalInfo->email}}</small>
+                                        </div>
                                         <div class="me-2"><small>
-                                                <x-icon class="me-1" icon="phone"/> {{$user->phone}}</small></div>
+                                                <x-icon class="me-1" icon="phone"/> {{$personalInfo->phone}}</small>
+                                        </div>
                                     </div>
                                     <div class="d-flex flex-column text-muted mt-2 ms-4">
-                                        @if(!is_null($user->linkedin))
+                                        @if(!is_null($personalInfo->linkedin))
                                             <div class="me-2 mb-2">
-                                                <a href="https://www.linkedin.com/in/{{$user->linkedin}}">
-                                                    <small><x-icon class="me-1" icon="linkedin"/> {{$user->linkedin}}</small>
+                                                <a href="https://www.linkedin.com/in/{{$personalInfo->linkedin}}">
+                                                    <small>
+                                                        <x-icon class="me-1"
+                                                                icon="linkedin"/> {{$personalInfo->linkedin}}</small>
                                                 </a>
                                             </div>
                                         @endif
-                                        @if(!is_null($user->x))
+                                        @if(!is_null($personalInfo->github))
                                             <div class="me-2 mb-2">
-                                                <a href="https://twitter.com/{{$user->x}}">
-                                                    <small><x-icon class="me-1" icon="x"/> {{$user->x}}</small>
+                                                <a href="https://www.github.com/{{$personalInfo->github}}">
+                                                    <small>
+                                                        <x-icon class="me-1" icon="github"/>{{$personalInfo->github}}</small>
                                                 </a>
                                             </div>
                                         @endif
-                                        @if(!is_null($user->instagram))
-                                            <div class="me-2">
-                                                <a href="https://instagram.com/{{$user->instagram}}">
-                                                    <small><x-icon class="me-1" icon="instagram"/> {{$user->instagram}}</small>
+                                        @if(!is_null($personalInfo->twitter))
+                                            <div class="me-2 mb-2">
+                                                <a href="https://twitter.com/{{$personalInfo->twitter}}">
+                                                    <small>
+                                                        <x-icon class="me-1" icon="x"/> {{$personalInfo->twitter}}
+                                                    </small>
                                                 </a>
                                             </div>
                                         @endif
@@ -50,8 +61,8 @@
                             <a href="#"
                                data-controller="remote-modal"
                                data-action="remote-modal#toggle"
-                               data-remote-modal-url-value="{{ route('admin.users.edit', $user) }}"
-                               data-remote-modal-target-value="#user-form-modal">
+                               data-remote-modal-url-value="{{ route('admin.personalInfo.edit', $personalInfo) }}"
+                               data-remote-modal-target-value="#personal-info-form-modal">
                                 <x-icon icon="edit"/>
                             </a>
                         </div>

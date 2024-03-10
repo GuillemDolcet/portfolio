@@ -54,11 +54,10 @@ class ProjectUpdateRequest extends FormRequest
             'description.*' => ['required', 'string'],
             'image' =>  ['nullable', 'image', 'max:10000'],
             'url' =>  ['nullable', 'string', 'max:254'],
-            'start_date' =>  ['required', 'date'],
-            'finish_date' => ['required_without:currently', 'date', 'after:start_date'],
             'currently' => ['required_without:finish_date'],
             'skills' => ['nullable', 'array'],
-            'skills.*' => ['required','exists:skills,id']
+            'skills.*' => ['required','exists:skills,id'],
+            'order' =>  ['nullable', 'integer']
         ];
     }
 

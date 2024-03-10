@@ -11,13 +11,6 @@
                 </a></div>
         </div>
         @each('admin.overview.skills._skill', $skills, 'skill', 'admin.overview.skills._empty')
-        @if ($skills->hasMorePages())
-            <div class="mt-2 mb-2 justify-content-center d-flex">
-                <a href="{{route('admin.skills.index')}}">
-                    @lang('admin.show.skills') ({{$skills->total()}}) <x-icon icon="share" />
-                </a>
-            </div>
-        @endif
     </div>
 </div>
 

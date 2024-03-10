@@ -1,5 +1,4 @@
-<form id="skill-form"
-      action="{{ $project->exists ? route('admin.projects.update', $project) : route('admin.projects.store') }}"
+<form id="skill-form" action="{{ $project->exists ? route('admin.projects.update', $project) : route('admin.projects.store') }}"
       method="post" accept-charset="utf-8" data-controller="form" enctype="multipart/form-data">
     @csrf
     @if ($project->exists)

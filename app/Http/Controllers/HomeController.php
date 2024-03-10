@@ -88,7 +88,7 @@ class HomeController
 
         $experiences = $this->experiences->newQuery()->orderBy('start_date', 'DESC')->get();
 
-        $projects = $this->projects->listing($this->projects->newQuery()->orderBy('start_date'));
+        $projects = $this->projects->listing($this->projects->newQuery()->orderBy('order'));
 
         $education = $this->education->newQuery()->orderBy('start_date', 'DESC')->get();
 

@@ -68,7 +68,7 @@ class ExperiencesSeeder extends Seeder
         $experience->skills()->attach($this->skills->newQuery()->name('APIs')->first());
         $experience->skills()->attach($this->skills->newQuery()->name('Docker')->first());
         $experience->skills()->attach($this->skills->newQuery()->name('JS')->first());
-        $experience->skills()->attach($this->skills->newQuery()->name('Postgres')->first());
+        $experience->skills()->attach($this->skills->newQuery()->name('SQL')->first());
         $experience->skills()->attach($this->skills->newQuery()->name('Html')->first());
         $experience->skills()->attach($this->skills->newQuery()->name('Css')->first());
 
@@ -97,7 +97,7 @@ class ExperiencesSeeder extends Seeder
         $experience->skills()->attach($this->skills->newQuery()->name('PHP')->first());
         $experience->skills()->attach($this->skills->newQuery()->name('APIs')->first());
         $experience->skills()->attach($this->skills->newQuery()->name('JS')->first());
-        $experience->skills()->attach($this->skills->newQuery()->name('Mysql')->first());
+        $experience->skills()->attach($this->skills->newQuery()->name('SQL')->first());
         $experience->skills()->attach($this->skills->newQuery()->name('Html')->first());
         $experience->skills()->attach($this->skills->newQuery()->name('Css')->first());
         $experience->skills()->attach($this->skills->newQuery()->name('Wordpress')->first());

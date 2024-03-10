@@ -27,14 +27,16 @@ return [
         'delete-project' => 'Do you really want to delete this project? This action cannot be undone',
         'delete-education' => 'Do you really want to delete this education? This action cannot be undone',
         'delete-hobby' => 'Do you really want to delete this hobby? This action cannot be undone',
-        'delete-user-language' => 'Do you really want to delete this language? This action cannot be undone'
+        'delete-user-language' => 'Do you really want to delete this language? This action cannot be undone',
+        'delete-service' => 'Do you really want to delete this service? This action cannot be undone'
     ],
     'created' => 'Created',
     'created_at' => 'Created At',
     'currently' => 'Still working here',
     'currently-project' => 'Working',
     'date_of_birth' => 'Date of birth',
-    'degree' => 'Degree',
+    'tag' => 'tag',
+    'title' => 'title',
     'delete' => 'Delete',
     'description' => 'Description',
     'discipline' => 'Discipline',
@@ -50,6 +52,7 @@ return [
     'hobbies' => 'Hobbies',
     'hobby' => 'Hobby',
     'home' => 'Home',
+    'icon' => 'Icon',
     'image' => 'Image',
     'language' => 'Language',
     'languages' => 'Languages',
@@ -63,6 +66,7 @@ return [
     'or' => 'OR',
     'order' => 'Order',
     'password' => 'Password',
+    'personal-info' => 'Personal info',
     'phone' => 'Phone',
     'placeholders' => [
         'email' => 'your@email.com',
@@ -113,10 +117,32 @@ return [
         'error-create-user-language' => 'Error on create language',
         'success-update-user-language' => 'Language updated',
         'error-update-user-language' => 'Error on update language',
-        'delete-user-language' => 'Language deleted'
+        'delete-user-language' => 'Language deleted',
+
+        'success-create-personal-info' => 'Personal Info created',
+        'error-create-personal-info' => 'Error on create personal info',
+        'success-update-personal-info' => 'Personal Info updated',
+        'error-update-personal-info' => 'Error on update personal info',
+        'delete-personal-info' => 'Personal Info deleted',
+
+        'success-create-section' => 'Section created',
+        'error-create-section' => 'Error on create section',
+        'success-update-section' => 'Section updated',
+        'error-update-section' => 'Error on update section',
+        'delete-section' => 'Section deleted',
+
+        'success-create-service' => 'Service created',
+        'error-create-service' => 'Error on create service',
+        'success-update-service' => 'Service updated',
+        'error-update-service' => 'Error on update service',
+        'delete-service' => 'Service deleted'
     ],
     'role' => 'Role',
     'school' => 'School',
+    'sections' => 'Sections',
+    'section' => 'Section',
+    'services' => 'Services',
+    'service' => 'Service',
     'show' => [
         'skills' => 'Show all skills',
         'experiences' => 'Show all experience',
@@ -131,5 +157,4 @@ return [
     'user' => 'User',
     'users' => 'Users',
     'with' => 'with'
-
 ];

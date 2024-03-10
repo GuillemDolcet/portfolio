@@ -13,13 +13,6 @@
             </div>
         </div>
         @each('admin.overview.education._education', $education, 'educationModel', 'admin.overview.education._empty')
-        @if ($experiences->hasMorePages())
-            <div class="mt-2 mb-2 justify-content-center d-flex">
-                <a href="{{route('admin.education.index')}}">
-                    @lang('admin.show.education') ({{$education->total()}}) <x-icon icon="share" />
-                </a>
-            </div>
-        @endif
     </div>
 </div>
 
