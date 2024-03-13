@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UserStoreRequest;
 use App\Http\Requests\UserUpdateRequest;
 use App\Models\User;
+use App\Repositories\Languages;
 use App\Repositories\Users;
 use Illuminate\Contracts\Console\Application as ConsoleApplication;
 use Illuminate\Contracts\Container\BindingResolutionException;
@@ -29,15 +30,24 @@ class UserController extends AdminController
     protected Users $users;
 
     /**
+     * Languages repository instance.
+     *
+     * @param Languages $languages
+     */
+    protected Languages $languages;
+
+    /**
      * Class constructor.
      *
      * @return void
      */
-    public function __construct(Request $request, Users $users)
+    public function __construct(Request $request, Users $users, Languages $languages)
     {
         parent::__construct($request);
 
         $this->users = $users;
+
+        $this->languages = $languages;
     }
 
     /**

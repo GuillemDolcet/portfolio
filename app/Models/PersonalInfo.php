@@ -21,7 +21,7 @@ class PersonalInfo extends Model
      *
      * @var array<int, string>
      */
-    protected $fillable = ['firstName', 'lastName', 'phone', 'location', 'email', 'date_of_birth', 'image', 'bio',
+    protected $fillable = ['firstName', 'lastName', 'phone', 'location', 'email', 'date_of_birth', 'image',
         'linkedin', 'github', 'twitter', 'cv'
     ];
 
@@ -31,7 +31,16 @@ class PersonalInfo extends Model
      * @var array
      */
     protected array $translatable = [
-        'location', 'bio'
+        'location'
+    ];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'date_of_birth' => 'datetime'
     ];
 
     /**

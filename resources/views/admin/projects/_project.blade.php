@@ -1,12 +1,14 @@
 <tr>
-    <td><a href="{{$project->url}}">{{ ucfirst($project->name) }}</a></td>
+    <td>
+        <a href="{{$project->url}}" target="_blank">
+            <div><img src="{{\Storage::url($project->image)}}" width="200" alt="{{$project->name}}"></div>
+        </a>
+    </td>
     <td>{{ ucfirst($project->description) }}</td>
-    <td>{{ $project->start_date->format('d/m/y') }}</td>
-    <td>{{ !is_null($project->finish_date) ? $project->finish_date->format('d/m/y') : Lang::get('admin.currently') }}</td>
     <td>
         <div class="d-flex flex-wrap gap-1">
             @foreach($project->skills as $skill)
-                <div><img src="{{\Storage::url($skill->image)}}" alt="{{$skill->name}}" height="40"/></div>
+                <div class="me-2"><img src="{{\Storage::url($skill->image)}}" alt="{{$skill->name}}" height="40"/></div>
             @endforeach
         </div>
     </td>

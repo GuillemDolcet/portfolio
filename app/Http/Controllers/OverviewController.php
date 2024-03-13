@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Repositories\Education;
 use App\Repositories\Experiences;
+use App\Repositories\Languages;
 use App\Repositories\PersonalInfo;
 use App\Repositories\Projects;
 use App\Repositories\Sections;
@@ -79,6 +80,13 @@ class OverviewController extends AdminController
     protected Services $services;
 
     /**
+     * Languages repository instance.
+     *
+     * @param Languages $languages
+     */
+    protected Languages $languages;
+
+    /**
      * Class constructor.
      *
      * @param Request $request
@@ -89,9 +97,11 @@ class OverviewController extends AdminController
      * @param Sections $sections
      * @param PersonalInfo $personalInfo
      * @param Services $services
+     * @param Languages $languages
      */
     public function __construct(Request $request, Skills $skills, Experiences $experiences, Projects $projects,
-                                Education $education, Sections $sections, PersonalInfo $personalInfo, Services $services)
+                                Education $education, Sections $sections, PersonalInfo $personalInfo, Services $services,
+                                Languages $languages)
     {
         parent::__construct($request);
 
@@ -108,6 +118,8 @@ class OverviewController extends AdminController
         $this->personalInfo = $personalInfo;
 
         $this->services = $services;
+
+        $this->languages = $languages;
     }
 
     /**

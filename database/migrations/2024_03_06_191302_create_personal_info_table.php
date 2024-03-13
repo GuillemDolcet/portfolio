@@ -18,11 +18,10 @@ return new class extends Migration
             $table->string('firstName');
             $table->string('lastName');
             $table->string('phone');
-            $table->string('email')->unique();
+            $table->string('email');
             $table->timestamp('date_of_birth')->nullable();
             $table->string('image')->nullable();
             $table->json('location')->nullable();
-            $table->json('bio')->nullable();
             $table->string('linkedin')->nullable();
             $table->string('github')->nullable();
             $table->string('twitter')->nullable();

@@ -34,6 +34,7 @@ return [
     'created_at' => 'Created At',
     'currently' => 'Still working here',
     'currently-project' => 'Working',
+    'cv' => 'CV',
     'date_of_birth' => 'Date of birth',
     'tag' => 'tag',
     'title' => 'title',
@@ -42,6 +43,7 @@ return [
     'discipline' => 'Discipline',
     'edit' => 'Edit',
     'education' => 'Education',
+    'email' => 'Email',
     'errors' => [
         'login' => 'An error occurred with the verification of your user account. Please try again in a few minutes.',
         'account-suspended' => 'Your user account has been suspended.'
@@ -49,6 +51,7 @@ return [
     'experience' => 'Experience',
     'experiences' => 'Experiences',
     'finish_date' => 'Finish date',
+    'first_name' => 'First name',
     'hobbies' => 'Hobbies',
     'hobby' => 'Hobby',
     'home' => 'Home',
@@ -56,6 +59,7 @@ return [
     'image' => 'Image',
     'language' => 'Language',
     'languages' => 'Languages',
+    'last_name' => 'Last name',
     'level' => 'Level',
     'location' => 'Location',
     'login' => 'Login',

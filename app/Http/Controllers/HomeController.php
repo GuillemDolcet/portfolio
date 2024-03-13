@@ -6,6 +6,7 @@ use App\Concerns\InteractsWithTurbo;
 use App\Models\User;
 use App\Repositories\Education;
 use App\Repositories\Experiences;
+use App\Repositories\Languages;
 use App\Repositories\Projects;
 use App\Repositories\Skills;
 use Illuminate\Contracts\Console\Application as ConsoleApplication;
@@ -56,14 +57,23 @@ class HomeController
     protected Projects $projects;
 
     /**
+     * Languages repository instance.
+     *
+     * @param Languages $languages
+     */
+    protected Languages $languages;
+
+    /**
      * Class constructor.
      *
      * @param Skills $skills
      * @param Experiences $experiences
      * @param Projects $projects
      * @param Education $education
+     * @param Languages $languages
      */
-    public function __construct(Skills $skills, Experiences $experiences, Projects $projects, Education $education)
+    public function __construct(Skills $skills, Experiences $experiences, Projects $projects, Education $education,
+                                Languages $languages)
     {
         $this->skills = $skills;
 
@@ -72,6 +82,8 @@ class HomeController
         $this->education = $education;
 
         $this->projects = $projects;
+
+        $this->languages = $languages;
     }
 
     /**

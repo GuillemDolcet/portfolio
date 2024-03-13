@@ -32,8 +32,7 @@ class PersonalInfoUpdateRequest extends FormRequest
     protected function prepareForValidation(): void
     {
         $this->merge([
-            'location' => array_filter($this->get('location')),
-            'bio' => array_filter($this->get('bio'))
+            'location' => array_filter($this->get('location'))
         ]);
     }
 
@@ -54,11 +53,9 @@ class PersonalInfoUpdateRequest extends FormRequest
             'twitter' => ['nullable', 'string'],
             'github' => ['nullable', 'string'],
             'image' =>  ['nullable', 'image', 'max:10000'],
-            'cv' =>  ['nullable', 'file', 'max:10000'],
+            'cv' =>  ['nullable', 'mimes:pdf', 'max:10000'],
             'location' => ['required', 'array', new Language()],
-            'location.*' => ['required', 'string', 'max:100'],
-            'bio' => ['required', 'array', new Language()],
-            'bio.*' => ['required', 'string', 'max:100'],
+            'location.*' => ['required', 'string', 'max:100']
         ];
     }
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProjectStoreRequest;
 use App\Http\Requests\ProjectUpdateRequest;
 use App\Models\Project;
+use App\Repositories\Languages;
 use App\Repositories\Projects;
 use App\Repositories\Skills;
 use App\Services\Translator;
@@ -38,6 +39,13 @@ class ProjectController extends AdminController
     protected Skills $skills;
 
     /**
+     * Languages repository instance.
+     *
+     * @param Languages $languages
+     */
+    protected Languages $languages;
+
+    /**
      * Translator service instance.
      *
      * @param Translator $translator
@@ -49,13 +57,15 @@ class ProjectController extends AdminController
      *
      * @return void
      */
-    public function __construct(Request $request, Projects $projects, Skills $skills, Translator $translator)
+    public function __construct(Request $request, Projects $projects, Skills $skills, Translator $translator, Languages $languages)
     {
         parent::__construct($request);
 
         $this->projects = $projects;
 
         $this->skills = $skills;
+
+        $this->languages = $languages;
 
         $this->translator = $translator;
     }
@@ -70,7 +80,7 @@ class ProjectController extends AdminController
      */
     public function index(): ConsoleApplication|FoundationApplication|View|Factory
     {
-        $projects = $this->projects->listing($this->projects->newQuery()->orderBy('start_date'));
+        $projects = $this->projects->listing($this->projects->newQuery()->orderBy('order'));
 
         return view('admin.projects.index', compact('projects'));
     }

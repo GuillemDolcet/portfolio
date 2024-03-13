@@ -32,8 +32,7 @@ class PersonalInfoStoreRequest extends FormRequest
     protected function prepareForValidation(): void
     {
         $this->merge([
-            'location' => array_filter($this->get('location')),
-            'bio' => array_filter($this->get('bio'))
+            'location' => array_filter($this->get('location'))
         ]);
     }
 
@@ -54,11 +53,9 @@ class PersonalInfoStoreRequest extends FormRequest
             'twitter' => ['nullable', 'string'],
             'github' => ['nullable', 'string'],
             'image' =>  ['required', 'image', 'max:10000'],
-            'cv' =>  ['required', 'file', 'max:10000'],
+            'cv' =>  ['required', 'mimes:pdf', 'max:10000'],
             'location' => ['required', 'array', new Language()],
-            'location.*' => ['required', 'string', 'max:100'],
-            'bio' => ['required', 'array', new Language()],
-            'bio.*' => ['required', 'string', 'max:100'],
+            'location.*' => ['required', 'string', 'max:100']
         ];
     }
 }

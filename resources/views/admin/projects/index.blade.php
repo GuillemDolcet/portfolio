@@ -38,8 +38,6 @@
                         <tr>
                             <th>@lang('admin.name')</th>
                             <th>@lang('admin.description')</th>
-                            <th>@lang('admin.start_date')</th>
-                            <th>@lang('admin.finish_date')</th>
                             <th>@lang('admin.skills')</th>
                             <th></th>
                         </tr>

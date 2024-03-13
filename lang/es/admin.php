@@ -34,6 +34,7 @@ return [
     'created_at' => 'Creado en',
     'currently' => 'Actualmente tengo este cargo',
     'currently-project' => 'Trabajando',
+    'cv' => 'Currículum',
     'date_of_birth' => 'Cumpleaños',
     'tag' => 'Tag',
     'title' => 'Título',
@@ -42,6 +43,7 @@ return [
     'discipline' => 'Disciplina académica',
     'edit' => 'Editar',
     'education' => 'Educación',
+    'email' => 'Email',
     'errors' => [
         'login' => 'Ocurrió un error con la comprobación de su cuenta de usuario. Reintente en unos minutos.',
         'account-suspended' => 'Tu cuenta de usuario ha sido suspendida.'
@@ -49,6 +51,7 @@ return [
     'experience' => 'Experiencia',
     'experiences' => 'Experiencias',
     'finish_date' => 'Fecha de finalización',
+    'first_name' => 'Nombre',
     'hobbies' => 'Hobbies',
     'hobby' => 'Hobby',
     'home' => 'Inicio',
@@ -56,6 +59,7 @@ return [
     'icon' => 'Icono',
     'language' => 'Idioma',
     'languages' => 'Idiomas',
+    'last_name' => 'Apellidos',
     'level' => 'Nivel',
     'location' => 'Localización',
     'login' => 'Iniciar sesión',

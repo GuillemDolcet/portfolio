@@ -54,7 +54,6 @@ class ProjectStoreRequest extends FormRequest
             'description.*' => ['required'],
             'image' =>  ['required', 'image', 'max:10000'],
             'url' =>  ['nullable', 'string', 'max:254'],
-            'currently' => ['required_without:finish_date'],
             'skills' => ['nullable', 'array'],
             'skills.*' => ['required','exists:skills,id'],
             'order' =>  ['nullable', 'integer']

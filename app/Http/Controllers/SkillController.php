@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\SkillStoreRequest;
 use App\Http\Requests\SkillUpdateRequest;
 use App\Models\Skill;
+use App\Repositories\Languages;
 use App\Repositories\Skills;
 use Illuminate\Contracts\Console\Application as ConsoleApplication;
 use Illuminate\Contracts\Container\BindingResolutionException;
@@ -28,15 +29,24 @@ class SkillController extends AdminController
     protected Skills $skills;
 
     /**
+     * Languages repository instance.
+     *
+     * @param Languages $languages
+     */
+    protected Languages $languages;
+
+    /**
      * Class constructor.
      *
      * @return void
      */
-    public function __construct(Request $request, Skills $skills)
+    public function __construct(Request $request, Skills $skills, Languages $languages)
     {
         parent::__construct($request);
 
         $this->skills = $skills;
+
+        $this->languages = $languages;
     }
 
     /**
@@ -46,11 +56,11 @@ class SkillController extends AdminController
      * Returns the skills view.
      *
      * @return ConsoleApplication|FoundationApplication|View|Factory|Response|ResponseFactory
-     * @throws BindingResolutionException
      */
     public function index(): ConsoleApplication|FoundationApplication|View|Factory|Response|ResponseFactory
     {
         $skills = $this->skills->listing($this->skills->newQuery()->orderBy('order'));
+
         return view('admin.skills.index', compact('skills'));
     }
 

@@ -1,9 +1,12 @@
 <tr>
-    <td>{{ ucfirst($skill->name) }}</td>
+    <td>
+        <div class="d-flex align-items-center">
+            <div class="me-4"><img src="{{\Storage::url($skill->image)}}" width="50" alt="{{$skill->name}}"></div>
+            <div><b>{{ ucfirst($skill->name) }}</b></div>
+        </div>
+    </td>
     <td>{{ $skill->level }}</td>
     <td>{{ $skill->order }}</td>
-    <td>{{ $skill?->created_at->format('d/m/y H:i') ?? '-' }}</td>
-    <td>{{ $skill?->updated_at->format('d/m/y H:i') ?? '-' }}</td>
     <td class="text-end cursor-pointer ali">
         <div class="d-flex text-end justify-content-end">
             <a href="#" class="me-1" title="@lang('admin.edit')"

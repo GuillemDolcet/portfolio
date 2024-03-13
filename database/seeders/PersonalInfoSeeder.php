@@ -43,10 +43,6 @@ class PersonalInfoSeeder extends Seeder
                 'en' => 'Os de Balaguer, Cataluña, Spain',
                 'es' => 'Os de Balaguer, Cataluña, España',
             ],
-            'bio' => [
-                'en' => "I'm a designer & developer with a passion for web design. I enjoy developing simple, clean and slick websites that provide real value to the end user. Thousands of clients have procured exceptional results while working with me. Delivering work within time and budget which meets client’s requirements is our moto.",
-                'es' => "I'm a designer & developer with a passion for web design. I enjoy developing simple, clean and slick websites that provide real value to the end user. Thousands of clients have procured exceptional results while working with me. Delivering work within time and budget which meets client’s requirements is our moto.",
-            ],
             'linkedin' => 'guillem-dolcet',
             'github' => 'GuillemDolcet',
             'image' => new File('resources/assets/images/personalInfo/main-image.png'),

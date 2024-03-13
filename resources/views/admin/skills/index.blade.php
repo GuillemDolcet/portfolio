@@ -39,8 +39,6 @@
                             <th>@lang('admin.name')</th>
                             <th>@lang('admin.level')</th>
                             <th>@lang('admin.order')</th>
-                            <th>@lang('admin.created_at')</th>
-                            <th>@lang('admin.updated_at')</th>
                             <th></th>
                         </tr>
                         </thead>

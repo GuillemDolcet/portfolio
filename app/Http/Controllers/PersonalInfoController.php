@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PersonalInfoStoreRequest;
+use App\Http\Requests\PersonalInfoUpdateRequest;
 use App\Http\Requests\SectionStoreRequest;
 use App\Http\Requests\SectionUpdateRequest;
+use App\Repositories\Languages;
 use App\Repositories\PersonalInfo;
 use App\Services\Translator;
 use DeepL\DeepLException;
@@ -30,6 +33,13 @@ class PersonalInfoController extends AdminController
     protected PersonalInfo $personalInfo;
 
     /**
+     * Languages repository instance.
+     *
+     * @param Languages $languages
+     */
+    protected Languages $languages;
+
+    /**
      * Translator service instance.
      *
      * @param Translator $translator
@@ -41,11 +51,13 @@ class PersonalInfoController extends AdminController
      *
      * @return void
      */
-    public function __construct(Request $request, PersonalInfo $personalInfo, Translator $translator)
+    public function __construct(Request $request, PersonalInfo $personalInfo, Translator $translator, Languages $languages)
     {
         parent::__construct($request);
 
         $this->personalInfo = $personalInfo;
+
+        $this->languages = $languages;
 
         $this->translator = $translator;
     }
@@ -113,11 +125,11 @@ class PersonalInfoController extends AdminController
      *
      * Validate personalInfo form and create project, then redirect to personalInfo index.
      *
-     * @param SectionStoreRequest $request
+     * @param PersonalInfoStoreRequest $request
      * @return RedirectResponse
      * @throws DeepLException
      */
-    public function store(SectionStoreRequest $request): RedirectResponse
+    public function store(PersonalInfoStoreRequest $request): RedirectResponse
     {
         if ($attributes = $request->validated()) {
             $attributes = $this->translator->translate($attributes, $this->personalInfo->build()->getTranslatableAttributes());
@@ -141,12 +153,12 @@ class PersonalInfoController extends AdminController
      *
      * Validate personalInfo form and update project, then redirect to personalInfo index.
      *
-     * @param SectionUpdateRequest $request
+     * @param PersonalInfoUpdateRequest $request
      * @param PersonalInfoModel $personalInfo
      * @return RedirectResponse
      * @throws DeepLException
      */
-    public function update(SectionUpdateRequest $request, PersonalInfoModel $personalInfo): RedirectResponse
+    public function update(PersonalInfoUpdateRequest $request, PersonalInfoModel $personalInfo): RedirectResponse
     {
         if ($attributes = $request->validated()) {
             $attributes = $this->translator->translate($attributes, $this->personalInfo->build()->getTranslatableAttributes());

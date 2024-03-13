@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\SectionStoreRequest;
 use App\Http\Requests\SectionUpdateRequest;
 use App\Models\Section;
+use App\Repositories\Languages;
 use App\Repositories\Sections;
 use App\Services\Translator;
 use DeepL\DeepLException;
@@ -30,6 +31,13 @@ class SectionController extends AdminController
     protected Sections $sections;
 
     /**
+     * Languages repository instance.
+     *
+     * @param Languages $languages
+     */
+    protected Languages $languages;
+
+    /**
      * Translator service instance.
      *
      * @param Translator $translator
@@ -41,13 +49,15 @@ class SectionController extends AdminController
      *
      * @return void
      */
-    public function __construct(Request $request, Sections $sections, Translator $translator)
+    public function __construct(Request $request, Sections $sections, Translator $translator, Languages $languages)
     {
         parent::__construct($request);
 
         $this->sections = $sections;
 
         $this->translator = $translator;
+
+        $this->languages = $languages;
     }
 
     /**

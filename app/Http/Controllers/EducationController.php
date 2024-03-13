@@ -6,6 +6,7 @@ use App\Http\Requests\EducationStoreRequest;
 use App\Http\Requests\EducationUpdateRequest;
 use App\Models\Education as EducationModel;
 use App\Repositories\Education;
+use App\Repositories\Languages;
 use App\Repositories\Skills;
 use App\Services\Translator;
 use DeepL\DeepLException;
@@ -38,6 +39,14 @@ class EducationController extends AdminController
     protected Skills $skills;
 
     /**
+     * Languages repository instance.
+     *
+     * @param Languages $languages
+     */
+    protected Languages $languages;
+
+
+    /**
      * Translator service instance.
      *
      * @param Translator $translator
@@ -49,13 +58,16 @@ class EducationController extends AdminController
      *
      * @return void
      */
-    public function __construct(Request $request, Education $education, Skills $skills, Translator $translator)
+    public function __construct(Request $request, Education $education, Skills $skills, Translator $translator,
+                                Languages $languages)
     {
         parent::__construct($request);
 
         $this->education = $education;
 
         $this->skills = $skills;
+
+        $this->languages = $languages;
 
         $this->translator = $translator;
     }
@@ -120,10 +132,10 @@ class EducationController extends AdminController
     }
 
     /**
-     * [POST] /admin/experiences
-     * admin.experiences.store
+     * [POST] /admin/education
+     * admin.education.store
      *
-     * Validate experience form and create experience, then redirect to experiences index.
+     * Validate education form and create education, then redirect to education index.
      *
      * @param EducationStoreRequest $request
      * @return RedirectResponse

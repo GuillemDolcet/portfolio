@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ServiceStoreRequest;
 use App\Http\Requests\ServiceUpdateRequest;
 use App\Models\Service;
+use App\Repositories\Languages;
 use App\Repositories\Services;
 use App\Services\Translator;
 use DeepL\DeepLException;
@@ -30,6 +31,13 @@ class ServiceController extends AdminController
     protected Services $services;
 
     /**
+     * Languages repository instance.
+     *
+     * @param Languages $languages
+     */
+    protected Languages $languages;
+
+    /**
      * Translator service instance.
      *
      * @param Translator $translator
@@ -41,13 +49,15 @@ class ServiceController extends AdminController
      *
      * @return void
      */
-    public function __construct(Request $request, Services $services, Translator $translator)
+    public function __construct(Request $request, Services $services, Translator $translator, Languages $languages)
     {
         parent::__construct($request);
 
         $this->services = $services;
 
         $this->translator = $translator;
+
+        $this->languages = $languages;
     }
 
     /**

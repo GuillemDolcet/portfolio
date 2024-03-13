@@ -11,9 +11,9 @@
                 @endforeach
             </div>
         </div>
-        <div class="col-12 row">
+        <div class="col-12 row mb-3">
             <div class="col-6">
-                <label class="form-label fw-bold" for="firstName">@lang('admin.firstName')</label>
+                <label class="form-label fw-bold" for="firstName">@lang('admin.first_name')</label>
                 <input id="firstName" name="firstName" type="text" class="form-control @error('firstName') is-invalid @enderror"
                        autocomplete="off" value="{{ old('firstName', $personalInfo->firstName) }}">
                 @error('firstName')
@@ -21,7 +21,7 @@
                 @endif
             </div>
             <div class="col-6">
-                <label class="form-label fw-bold" for="lastName">@lang('admin.lastName')</label>
+                <label class="form-label fw-bold" for="lastName">@lang('admin.last_name')</label>
                 <input id="lastName" name="lastName" type="text" class="form-control @error('lastName') is-invalid @enderror"
                        autocomplete="off" value="{{ old('lastName', $personalInfo->lastName) }}">
                 @error('lastName')
@@ -29,16 +29,16 @@
                 @endif
             </div>
         </div>
-        <div class="col-12 row">
-            <div class="col-6">
+        <div class="col-12 row mb-3">
+            <div class="col-4">
                 <label class="form-label fw-bold" for="email">@lang('admin.email')</label>
                 <input id="email" name="email" type="text" class="form-control @error('email') is-invalid @enderror"
-                       autocomplete="off" value="{{ old('firstName', $personalInfo->email) }}">
+                       autocomplete="off" value="{{ old('email', $personalInfo->email) }}">
                 @error('email')
                 <div class="invalid-feedback">{{ $message }}</div>
                 @endif
             </div>
-            <div class="col-6">
+            <div class="col-4">
                 <label class="form-label fw-bold" for="phone">@lang('admin.phone')</label>
                 <input id="phone" name="phone" type="text" class="form-control @error('phone') is-invalid @enderror"
                        autocomplete="off" value="{{ old('phone', $personalInfo->phone) }}">
@@ -46,10 +46,20 @@
                 <div class="invalid-feedback">{{ $message }}</div>
                 @endif
             </div>
-        </div>
-        <div class="col-12 row">
             <div class="col-4">
-                <label class="form-label fw-bold" for="linkedin">@lang('admin.linkedin')</label>
+                <label class="form-label fw-bold" for="date_of_birth">@lang('admin.date_of_birth')</label>
+                <input id="date_of_birth" name="date_of_birth" type="date"
+                       class="form-control @error('date_of_birth') is-invalid @enderror"
+                       autocomplete="off"
+                       value="{{ old('date_of_birth', !is_null($personalInfo->date_of_birth) ? $personalInfo->date_of_birth->format('Y-m-d') : '') }}">
+                @error('date_of_birth')
+                <div class="invalid-feedback">{{ $message }}</div>
+                @endif
+            </div>
+        </div>
+        <div class="col-12 row mb-3">
+            <div class="col-4">
+                <label class="form-label fw-bold" for="linkedin">Linkedin</label>
                 <input id="linkedin" name="linkedin" type="text" class="form-control @error('linkedin') is-invalid @enderror"
                        autocomplete="off" value="{{ old('linkedin', $personalInfo->linkedin) }}">
                 @error('linkedin')
@@ -57,7 +67,7 @@
                 @endif
             </div>
             <div class="col-4">
-                <label class="form-label fw-bold" for="twitter">@lang('admin.twitter')</label>
+                <label class="form-label fw-bold" for="twitter">Twitter/X</label>
                 <input id="twitter" name="twitter" type="text" class="form-control @error('twitter') is-invalid @enderror"
                        autocomplete="off" value="{{ old('twitter', $personalInfo->twitter) }}">
                 @error('twitter')
@@ -65,7 +75,7 @@
                 @endif
             </div>
             <div class="col-4">
-                <label class="form-label fw-bold" for="github">@lang('admin.github')</label>
+                <label class="form-label fw-bold" for="github">Github</label>
                 <input id="github" name="github" type="text" class="form-control @error('github') is-invalid @enderror"
                        autocomplete="off" value="{{ old('github', $personalInfo->github) }}">
                 @error('github')
@@ -83,17 +93,6 @@
                            autocomplete="off" maxlength="100"
                            value="{{ old('location.'.$language->name, $personalInfo->getTranslation('location',$language->name)) }}">
                     @error('location.'.$language->name)
-                    <div class="invalid-feedback">{{ $message }}</div>
-                    @endif
-                </div>
-                <div class="col-12 mb-3">
-                    <label class="form-label fw-bold" for="bio[{{$language->name}}]">@lang('admin.bio') <sup
-                            class="text-danger fs-xs">*</sup></label>
-                    <input id="bio[{{$language->name}}]" name="bio[{{$language->name}}]" type="text"
-                           class="form-control @error('bio.'.$language->name) is-invalid @enderror"
-                           autocomplete="off" maxlength="100"
-                           value="{{ old('bio.'.$language->name, $personalInfo->getTranslation('bio',$language->name)) }}">
-                    @error('bio.'.$language->name)
                     <div class="invalid-feedback">{{ $message }}</div>
                     @endif
                 </div>
@@ -116,10 +115,12 @@
         @endif
     </div>
     <div class="col-12 mb-3">
-        <label class="form-label fw-bold" for="order">@lang('admin.order')</label>
-        <input id="order" name="order" type="number" class="form-control @error('order') is-invalid @enderror"
-               autocomplete="off" value="{{ old('order', $personalInfo->order) }}">
-        @error('order')
+        <label class="form-label fw-bold" for="cv">@lang('admin.cv') <sup
+                class="text-danger fs-xs">*</sup></label>
+        <input id="cv" name="cv" type="file" class="form-control @error('cv') is-invalid @enderror"
+               autocomplete="off" accept="application/pdf"
+               {{$personalInfo->exists ? '' : 'required'}} value="{{ old('cv', $personalInfo->cv) }}">
+        @error('cv')
         <div class="invalid-feedback">{{ $message }}</div>
         @endif
     </div>

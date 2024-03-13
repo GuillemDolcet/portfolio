@@ -6,6 +6,7 @@ use App\Http\Requests\ExperienceStoreRequest;
 use App\Http\Requests\ExperienceUpdateRequest;
 use App\Models\Experience;
 use App\Repositories\Experiences;
+use App\Repositories\Languages;
 use App\Repositories\Skills;
 use App\Services\Translator;
 use DeepL\DeepLException;
@@ -45,11 +46,19 @@ class ExperienceController extends AdminController
     protected Translator $translator;
 
     /**
+     * Languages repository instance.
+     *
+     * @param Languages $languages
+     */
+    protected Languages $languages;
+
+    /**
      * Class constructor.
      *
      * @return void
      */
-    public function __construct(Request $request, Experiences $experiences, Skills $skills, Translator $translator)
+    public function __construct(Request $request, Experiences $experiences, Skills $skills, Translator $translator,
+                                Languages $languages)
     {
         parent::__construct($request);
 
@@ -58,6 +67,8 @@ class ExperienceController extends AdminController
         $this->skills = $skills;
 
         $this->translator = $translator;
+
+        $this->languages = $languages;
     }
 
     /**
