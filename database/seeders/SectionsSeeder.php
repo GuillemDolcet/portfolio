@@ -111,18 +111,6 @@ class SectionsSeeder extends Seeder
         ]);
 
         $this->sections->create([
-            'name' => 'testimonial',
-            'tag' => [
-                'es' => 'Los clientes hablan',
-                'en' => 'Client Speak'
-            ],
-            'title' => [
-                'es' => 'Lo que dicen algunos de mis clientes',
-                'en' => 'What Some of my Clients Say'
-            ]
-        ]);
-
-        $this->sections->create([
             'name' => 'contact',
             'tag' => [
                 'es' => 'Contáctame',
