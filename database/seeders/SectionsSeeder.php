@@ -36,7 +36,7 @@ class SectionsSeeder extends Seeder
         $this->sections->create([
             'name' => 'about',
             'tag' => [
-                'es' => 'About Me',
+                'es' => 'Sobre Mi',
                 'en' => 'About Me'
             ],
             'title' => [
@@ -105,7 +105,7 @@ class SectionsSeeder extends Seeder
                 'en' => 'FAQ'
             ],
             'title' => [
-                'es' => '¿Tiene alguna pregunta?',
+                'es' => 'Preguntas frecuentes',
                 'en' => 'Have any questions?'
             ]
         ]);

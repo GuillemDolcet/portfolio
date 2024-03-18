@@ -1,7 +1,7 @@
 <section id="faq" class="section bg-light">
     <div class="container">
         <div class="row gy-5">
-            <div class="col-lg-6 order-1 order-lg-0 wow fadeInUp">
+            <div class="col-lg-8 order-1 order-lg-0 wow fadeInUp">
                 <!-- Heading -->
                 <p class="text-center text-lg-start mb-2"><span class="bg-primary text-dark px-2">{{ $section->tag }}</span></p>
                 <h2 class="text-10 fw-600 text-center text-lg-start mb-5">{{ $section->title }}</h2>
@@ -10,7 +10,7 @@
                     @foreach($faqs as $key => $faq)
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="flush-heading-{{ $key }}">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse-{{ $key }}" aria-expanded="{{ $key == 0 ? 'true' : 'false' }}" aria-controls="flush-collapse-{{ $key }}">{{ $faq->question }}</button>
+                                <button class="accordion-button {{ $key != 0 ? 'collapsed' : '' }}" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse-{{ $key }}" aria-expanded="{{ $key == 0 ? 'true' : 'false' }}" aria-controls="flush-collapse-{{ $key }}">{{ $faq->question }}</button>
                             </h2>
                             <div id="flush-collapse-{{ $key }}" class="accordion-collapse collapse {{ $key == 0 ? 'show' : '' }}" aria-labelledby="flush-heading-{{ $key }}" data-bs-parent="#faqTopics">
                                 <div class="accordion-body">{{ $faq->answer }}</div>
@@ -19,7 +19,7 @@
                     @endforeach
                 </div>
             </div>
-            <div class="col-lg-6 d-flex align-items-center justify-content-center order-0 order-lg-1 wow fadeIn" data-wow-delay="1s"> <img class="img-fluid" src="{{ image_url('home/faq.png') }}" title="FAQ" alt="faq"> </div>
+            <div class="col-lg-4 d-flex align-items-center justify-content-center order-0 order-lg-1 wow fadeIn" data-wow-delay="1s"> <img class="img-fluid" src="{{ image_url('home/faq.png') }}" title="FAQ" alt="faq"> </div>
         </div>
     </div>
 </section>
