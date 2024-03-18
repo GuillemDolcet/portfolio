@@ -1,8 +1,8 @@
 <section id="testimonial" class="section bg-secondary">
     <div class="container">
         <!-- Heading -->
-        <p class=" text-center mb-2 wow fadeIn"><span class="bg-primary text-dark px-2">Client Speak</span></p>
-        <h2 class="text-10 fw-600 text-white text-center mb-5 wow fadeIn">What Some of my Clients Say</h2>
+        <p class=" text-center mb-2 wow fadeIn"><span class="bg-primary text-dark px-2">{{ $section->tag }}</span></p>
+        <h2 class="text-10 fw-600 text-white text-center mb-5 wow fadeIn">{{ $section->title }}</h2>
         <!-- Heading end-->
         <div class="row">
             <div class="col-lg-9 mx-auto wow fadeInUp">

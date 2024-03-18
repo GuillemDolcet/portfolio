@@ -210,30 +210,6 @@ class Category{
             });
         });
 
-        // Isotope Portfolio Filter
-        $(window).on('load', function () {
-            $(".portfolio-filter").each(function() {
-                let e = $(this);
-                let rtlVal = true;
-                e.imagesLoaded(function () {
-                    if ($("html").attr("dir") === 'rtl') {
-                        rtlVal = false
-                    }
-                    let $grid = e.isotope({
-                        layoutMode: "masonry",
-                        originLeft: rtlVal
-                    });
-                    $(".portfolio-menu").find("a").on("click", function() {
-                        let filterValue = $(this).attr("data-filter");
-                        return $(".portfolio-menu").find("a").removeClass("active"), $(this).addClass("active"),
-                            $grid.isotope({
-                                filter: filterValue
-                            }), !1
-                    });
-                });
-            });
-        });
-
         // Parallax Background
         $(".parallax").each(function () {
             $(this).parallaxie({

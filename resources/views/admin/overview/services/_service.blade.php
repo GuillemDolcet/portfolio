@@ -1,6 +1,11 @@
 <div class="d-flex align-items-center justify-content-between border-bottom p-3">
-    <div class="col-3"><b>{{ ucfirst($service->title) }}</b></div>
-    <div class="col-8">{{ Str::limit($service->description, 250, ' ...') }}</div>
+    <div class="col-2 justify-content-center d-flex">
+        <div><img src="{{\Storage::url($service->image)}}" alt="{{$service->title}}" width="50"/></div>
+    </div>
+    <div class="col-9">
+        <div><b>{{ ucfirst($service->title) }}</b></div>
+        <div>{{ Str::limit($service->description, 250, ' ...') }}</div>
+    </div>
     <div class="col-1 d-flex text-end justify-content-end">
         <a href="#" class="me-1" title="@lang('admin.edit')"
            data-controller="remote-modal"

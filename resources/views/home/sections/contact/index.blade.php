@@ -2,43 +2,38 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-5 text-center text-lg-start wow fadeInUp">
-                <h2 class="text-10 fw-600 mb-5">Let's get in touch</h2>
-                <p class="text-5 mb-5">I enjoy discussing new projects and design challenges. Please share as much info, as possible so we can get the most out of our first catch-up.</p>
-                <h3 class="text-5 fw-600">Living In:</h3>
-                <address class="text-4">
-                    30 Shacham street,
-                    Los Angeles, USA.
-                </address>
+                <h2 class="text-10 fw-600 mb-5">{{ $section->title }}</h2>
+                <p class="text-5 mb-5">{!! $section->description !!}</p>
                 <h3 class="text-5 fw-600">Call:</h3>
-                <p class="text-4">{{ $user->phone }}</p>
+                <p class="text-4">{{ $personalInfo->phone }}</p>
                 <ul class="social-icons social-icons-lg justify-content-center justify-content-lg-start mt-5">
-                    @if(isset($user->linkedin))
+                    @if(isset($personalInfo->linkedin))
                         <li class="social-icons-linkedin">
-                            <a data-bs-toggle="tooltip" href="https://linkedin.com//{{ $user->linkedin }}"
+                            <a data-bs-toggle="tooltip" href="https://linkedin.com//{{ $personalInfo->linkedin }}"
                                target="_blank" title="" data-bs-original-title="Linkedin">
                                 <i class="fab fa-linkedin"></i>
                             </a>
                         </li>
                     @endif
-                    @if(isset($user->github))
+                    @if(isset($personalInfo->github))
                         <li class="social-icons-github">
-                            <a data-bs-toggle="tooltip" href="https://www.github.com/{{ $user->github }}"
+                            <a data-bs-toggle="tooltip" href="https://www.github.com/{{ $personalInfo->github }}"
                                target="_blank" title="" data-bs-original-title="Github">
                                 <i class="fab fa-github"></i>
                             </a>
                         </li>
                     @endif
-                    @if(isset($user->x))
+                    @if(isset($personalInfo->x))
                         <li class="social-icons-twitter">
-                            <a data-bs-toggle="tooltip" href="https://twitter.com/{{ $user->x }}" target="_blank"
+                            <a data-bs-toggle="tooltip" href="https://twitter.com/{{ $personalInfo->x }}" target="_blank"
                                title="" data-bs-original-title="Twitter">
                                 <i class="fab fa-twitter"></i>
                             </a>
                         </li>
                     @endif
-                    @if(isset($user->instagram))
+                    @if(isset($personalInfo->instagram))
                         <li class="social-icons-instagram">
-                            <a data-bs-toggle="tooltip" href="https://www.instagram.com/{{ $user->instagram }}"
+                            <a data-bs-toggle="tooltip" href="https://www.instagram.com/{{ $personalInfo->instagram }}"
                                target="_blank" title="" data-bs-original-title="Instagram">
                                 <i class="fab fa-instagram"></i>
                             </a>
@@ -47,28 +42,26 @@
                 </ul>
             </div>
             <div class="col-lg-6 ms-auto mt-5 mt-lg-0 wow fadeInUp" data-wow-delay="0.3s">
-                <h2 class="text-10 fw-600 text-center text-lg-start mb-5">Estimate your Project?</h2>
-                <!-- Contact Form -->
+                <h2 class="text-10 fw-600 text-center text-lg-start mb-5">@lang('admin.estimate-project')</h2>
                 <form id="contact-form" class="form-border" action="php/mail.php" method="post">
                     <div class="row g-4">
                         <div class="col-12">
-                            <label class="form-label" for="name">What is Your Name:</label>
+                            <label class="form-label" for="name">@lang('admin.contact.name')</label>
                             <input id="name" name="name" type="text" class="form-control py-1" required >
                         </div>
                         <div class="col-12">
-                            <label class="form-label" for="email">Your Email Address:</label>
+                            <label class="form-label" for="email">@lang('admin.contact.email')</label>
                             <input id="email" name="email" type="email" class="form-control py-1" required >
                         </div>
                         <div class="col-12">
-                            <label class="form-label" for="form-message">How can I Help you?:</label>
+                            <label class="form-label" for="form-message">@lang('admin.contact.help')</label>
                             <textarea id="form-message" name="form-message" class="form-control py-1" rows="4" required ></textarea>
                         </div>
                         <div class="col-12 text-center text-lg-start">
-                            <button id="submit-btn" class="btn btn-dark rounded-0" type="submit">Send <span class="ms-3"><i class="fas fa-arrow-right"></i></span></button>
+                            <button id="submit-btn" class="btn btn-dark rounded-0" type="submit">@lang('admin.send') <span class="ms-3"><i class="fas fa-arrow-right"></i></span></button>
                         </div>
                     </div>
                 </form>
-                <!-- Contact Form end -->
             </div>
         </div>
     </div>

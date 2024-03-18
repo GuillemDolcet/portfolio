@@ -3,8 +3,8 @@
         <div class="row gy-5">
             <div class="col-lg-6 order-1 order-lg-0 wow fadeInUp">
                 <!-- Heading -->
-                <p class="text-center text-lg-start mb-2"><span class="bg-primary text-dark px-2">FAQ</span></p>
-                <h2 class="text-10 fw-600 text-center text-lg-start mb-5">Have any questions?</h2>
+                <p class="text-center text-lg-start mb-2"><span class="bg-primary text-dark px-2">{{ $section->tag }}</span></p>
+                <h2 class="text-10 fw-600 text-center text-lg-start mb-5">{{ $section->title }}</h2>
                 <!-- Heading end-->
                 <div class="accordion accordion-flush" id="faqTopics">
                     <div class="accordion-item">

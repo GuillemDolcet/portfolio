@@ -30,33 +30,12 @@
                         </div>
                     </div>
                 </div>
-                <a href="#about" class="scroll-down-arrow text-dark smooth-scroll"><span class="animated"><i class="fas fa-arrow-down"></i></span></a> </section>
-
-            @include('home.sections.about.index')
-
-            @include('home.sections.services.index')
-
-            @include('home.sections.resume.index')
-
-            @include('home.sections.portfolio.index')
-
-            <section>
-                <div class="hero-wrap">
-                    <div class="hero-mask opacity-8 bg-dark"></div>
-                    <div class="hero-bg parallax" style="background-image:url('images/intro-bg-2.jpg');"></div>
-                    <div class="hero-content section">
-                        <div class="container text-center py-5 wow fadeInUp">
-                            <h2 class="text-10 fw-600 text-white mb-5">Interested in working with me?</h2>
-                            <a href="#contact" class="btn btn-primary rounded-0 smooth-scroll wow rubberBand" data-wow-delay="1s">Hire Me!</a> </div>
-                    </div>
-                </div>
+                <a href="#about" class="scroll-down-arrow text-dark smooth-scroll"><span class="animated"><i class="fas fa-arrow-down"></i></span></a>
             </section>
 
-            @include('home.sections.faq.index')
-
-            @include('home.sections.testimonial.index')
-
-            @include('home.sections.contact.index')
+            @foreach($sections as $section)
+                @include("home.sections.{$section->name}.index")
+            @endforeach
 
         </div>
 

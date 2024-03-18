@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Concerns\InteractsWithTurbo;
-use App\Models\User;
 use App\Repositories\Education;
 use App\Repositories\Experiences;
 use App\Repositories\Languages;
+use App\Repositories\PersonalInfo;
 use App\Repositories\Projects;
+use App\Repositories\Sections;
+use App\Repositories\Services;
 use App\Repositories\Skills;
 use Illuminate\Contracts\Console\Application as ConsoleApplication;
 use Illuminate\Contracts\View\Factory;
@@ -57,6 +59,27 @@ class HomeController
     protected Projects $projects;
 
     /**
+     * Sections repository instance.
+     *
+     * @param Sections $sections
+     */
+    protected Sections $sections;
+
+    /**
+     * PersonalInfo repository instance.
+     *
+     * @param PersonalInfo $personalInfo
+     */
+    protected PersonalInfo $personalInfo;
+
+    /**
+     * Services repository instance.
+     *
+     * @param Services $services
+     */
+    protected Services $services;
+
+    /**
      * Languages repository instance.
      *
      * @param Languages $languages
@@ -70,9 +93,13 @@ class HomeController
      * @param Experiences $experiences
      * @param Projects $projects
      * @param Education $education
+     * @param Sections $sections
+     * @param PersonalInfo $personalInfo
+     * @param Services $services
      * @param Languages $languages
      */
-    public function __construct(Skills $skills, Experiences $experiences, Projects $projects, Education $education,
+    public function __construct(Skills $skills, Experiences $experiences, Projects $projects,
+                                Education $education, Sections $sections, PersonalInfo $personalInfo, Services $services,
                                 Languages $languages)
     {
         $this->skills = $skills;
@@ -82,6 +109,12 @@ class HomeController
         $this->education = $education;
 
         $this->projects = $projects;
+
+        $this->sections = $sections;
+
+        $this->personalInfo = $personalInfo;
+
+        $this->services = $services;
 
         $this->languages = $languages;
     }
@@ -94,16 +127,21 @@ class HomeController
      */
     public function index(): ConsoleApplication|FoundationApplication|View|Factory
     {
-        $user = User::query()->first();
+        $sections = $this->sections->newQuery()->get();
 
         $skills = $this->skills->newQuery()->orderBy('order')->get();
 
-        $experiences = $this->experiences->newQuery()->orderBy('start_date', 'DESC')->get();
+        $experiences = $this->experiences->newQuery()->orderBy('start_date')->get();
 
-        $projects = $this->projects->listing($this->projects->newQuery()->orderBy('order'));
+        $projects = $this->projects->newQuery()->orderBy('order')->get();
 
-        $education = $this->education->newQuery()->orderBy('start_date', 'DESC')->get();
+        $education = $this->education->newQuery()->orderBy('start_date')->get();
 
-        return view('home.index', compact('user','skills','experiences','projects','education'));
+        $personalInfo = $this->personalInfo->newQuery()->first();
+
+        $services = $this->services->newQuery()->get();
+
+        return view('home.index', compact('skills','experiences','projects', 'education',
+            'sections','personalInfo', 'services'));
     }
 }
