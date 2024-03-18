@@ -4,7 +4,9 @@
         class="primary-menu navbar navbar-expand-none navbar-overlay navbar-overlay-dark bg-transparent border-bottom-0 text-5 fw-600">
         <div class="container">
             <!-- Logo -->
-            <a class="logo" href="index.html" title="Callum"> <img src="images/logo.png" alt="Callum"/> </a>
+            <a class="logo" title="{{ config('app.name') }}">
+                <img src="{{ image_url('logo.svg') }}" alt="{{ config('app.name') }}" width="32" height="32"/>
+            </a>
             <!-- Logo End -->
             <div class="text-3 ms-auto me-2"><span class="text-4 me-2"><i
                         class="fas fa-phone"></i></span>{{ $personalInfo->phone }}</div>

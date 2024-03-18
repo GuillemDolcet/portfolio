@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Concerns\InteractsWithTurbo;
 use App\Repositories\Education;
 use App\Repositories\Experiences;
+use App\Repositories\Faqs;
 use App\Repositories\Languages;
 use App\Repositories\PersonalInfo;
 use App\Repositories\Projects;
@@ -88,6 +89,13 @@ class HomeController
     protected Testimonials $testimonials;
 
     /**
+     * Faqs repository instance.
+     *
+     * @param Faqs $faqs
+     */
+    protected Faqs $faqs;
+
+    /**
      * Languages repository instance.
      *
      * @param Languages $languages
@@ -104,11 +112,13 @@ class HomeController
      * @param Sections $sections
      * @param PersonalInfo $personalInfo
      * @param Services $services
+     * @param Testimonials $testimonials
      * @param Languages $languages
+     * @param Faqs $faqs
      */
     public function __construct(Skills $skills, Experiences $experiences, Projects $projects, Education $education,
                                 Sections $sections, PersonalInfo $personalInfo, Services $services, Testimonials $testimonials,
-                                Languages $languages)
+                                Languages $languages, Faqs $faqs)
     {
         $this->skills = $skills;
 
@@ -125,6 +135,8 @@ class HomeController
         $this->services = $services;
 
         $this->testimonials = $testimonials;
+
+        $this->faqs = $faqs;
 
         $this->languages = $languages;
     }
@@ -151,9 +163,11 @@ class HomeController
 
         $testimonials = $this->testimonials->newQuery()->get();
 
+        $faqs = $this->faqs->newQuery()->orderBy('order')->get();
+
         $services = $this->services->newQuery()->get();
 
         return view('home.index', compact('skills','experiences','projects', 'education',
-            'sections','personalInfo', 'services', 'testimonials'));
+            'sections','personalInfo', 'services', 'testimonials', 'faqs'));
     }
 }
