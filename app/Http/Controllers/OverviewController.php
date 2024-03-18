@@ -10,6 +10,7 @@ use App\Repositories\Projects;
 use App\Repositories\Sections;
 use App\Repositories\Services;
 use App\Repositories\Skills;
+use App\Repositories\Testimonials;
 use Illuminate\Contracts\Console\Application as ConsoleApplication;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -80,6 +81,13 @@ class OverviewController extends AdminController
     protected Services $services;
 
     /**
+     * Testimonials repository instance.
+     *
+     * @param Testimonials $testimonials
+     */
+    protected Testimonials $testimonials;
+
+    /**
      * Languages repository instance.
      *
      * @param Languages $languages
@@ -101,7 +109,7 @@ class OverviewController extends AdminController
      */
     public function __construct(Request $request, Skills $skills, Experiences $experiences, Projects $projects,
                                 Education $education, Sections $sections, PersonalInfo $personalInfo, Services $services,
-                                Languages $languages)
+                                Languages $languages, Testimonials $testimonials)
     {
         parent::__construct($request);
 
@@ -116,6 +124,8 @@ class OverviewController extends AdminController
         $this->sections = $sections;
 
         $this->personalInfo = $personalInfo;
+
+        $this->testimonials = $testimonials;
 
         $this->services = $services;
 
@@ -146,9 +156,11 @@ class OverviewController extends AdminController
 
         $personalInfo = $this->personalInfo->newQuery()->first();
 
+        $testimonials = $this->testimonials->newQuery()->get();
+
         $services = $this->services->newQuery()->get();
 
         return view('admin.overview.index', compact('user','skills','experiences','projects',
-                    'education','sections','personalInfo', 'services'));
+                    'education','sections','personalInfo', 'services', 'testimonials'));
     }
 }

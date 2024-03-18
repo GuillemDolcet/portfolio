@@ -18,6 +18,7 @@ return [
     'add' => 'Add',
     'advice-translations' => 'All fields must be filled in once regardless of language, untranslated fields will be translated automatically !!!',
     'all' => 'all',
+    'comment' => 'Comment',
     'company' => 'Company',
     'confirm' => 'Confirm',
     'confirms' => [
@@ -28,7 +29,8 @@ return [
         'delete-education' => 'Do you really want to delete this education? This action cannot be undone',
         'delete-hobby' => 'Do you really want to delete this hobby? This action cannot be undone',
         'delete-user-language' => 'Do you really want to delete this language? This action cannot be undone',
-        'delete-service' => 'Do you really want to delete this service? This action cannot be undone'
+        'delete-service' => 'Do you really want to delete this service? This action cannot be undone',
+        'delete-testimonial' => 'Do you really want to delete this testimonial? This action cannot be undone'
     ],
     'contact' => [
         'name' => 'What is Your Name',
@@ -46,6 +48,8 @@ return [
     'discipline' => 'Discipline',
     'download_cv' => 'Download CV',
     'tag' => 'tag',
+    'testimonial' => 'Testimonial',
+    'testimonials' => 'Testimonials',
     'title' => 'title',
     'edit' => 'Edit',
     'education' => 'Education',
@@ -65,6 +69,7 @@ return [
     'home' => 'Home',
     'icon' => 'Icon',
     'image' => 'Image',
+    'job' => 'Job',
     'language' => 'Language',
     'languages' => 'Languages',
     'last_name' => 'Last name',
@@ -150,7 +155,13 @@ return [
         'error-create-service' => 'Error on create service',
         'success-update-service' => 'Service updated',
         'error-update-service' => 'Error on update service',
-        'delete-service' => 'Service deleted'
+        'delete-service' => 'Service deleted',
+
+        'success-create-testimonial' => 'Testimonial created',
+        'error-create-testimonial' => 'Error on create testimonial',
+        'success-update-testimonial' => 'Testimonial updated',
+        'error-update-testimonial' => 'Error on update testimonial',
+        'delete-testimonial' => 'Testimonial deleted'
     ],
     'role' => 'Role',
     'school' => 'School',

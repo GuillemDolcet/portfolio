@@ -11,6 +11,7 @@ use App\Repositories\Projects;
 use App\Repositories\Sections;
 use App\Repositories\Services;
 use App\Repositories\Skills;
+use App\Repositories\Testimonials;
 use Illuminate\Contracts\Console\Application as ConsoleApplication;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -80,6 +81,13 @@ class HomeController
     protected Services $services;
 
     /**
+     * Testimonials repository instance.
+     *
+     * @param Testimonials $testimonials
+     */
+    protected Testimonials $testimonials;
+
+    /**
      * Languages repository instance.
      *
      * @param Languages $languages
@@ -98,8 +106,8 @@ class HomeController
      * @param Services $services
      * @param Languages $languages
      */
-    public function __construct(Skills $skills, Experiences $experiences, Projects $projects,
-                                Education $education, Sections $sections, PersonalInfo $personalInfo, Services $services,
+    public function __construct(Skills $skills, Experiences $experiences, Projects $projects, Education $education,
+                                Sections $sections, PersonalInfo $personalInfo, Services $services, Testimonials $testimonials,
                                 Languages $languages)
     {
         $this->skills = $skills;
@@ -115,6 +123,8 @@ class HomeController
         $this->personalInfo = $personalInfo;
 
         $this->services = $services;
+
+        $this->testimonials = $testimonials;
 
         $this->languages = $languages;
     }
@@ -139,9 +149,11 @@ class HomeController
 
         $personalInfo = $this->personalInfo->newQuery()->first();
 
+        $testimonials = $this->testimonials->newQuery()->get();
+
         $services = $this->services->newQuery()->get();
 
         return view('home.index', compact('skills','experiences','projects', 'education',
-            'sections','personalInfo', 'services'));
+            'sections','personalInfo', 'services', 'testimonials'));
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Models\Language;
 use App\Models\Project;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
@@ -15,7 +16,7 @@ class Languages extends Repository
      */
     public function getModelClass(): string
     {
-        return Project::class;
+        return Language::class;
     }
 
     /**

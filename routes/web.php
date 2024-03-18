@@ -12,6 +12,7 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SkillController;
+use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -100,5 +101,12 @@ Route::middleware('auth')->group(function () {
         Route::get('/services/{service}/edit', [ServiceController::class, 'edit'])->name('admin.services.edit');
         Route::match(['put', 'patch'], '/services/{service}', [ServiceController::class, 'update'])->name('admin.services.update');
         Route::delete('/services/{service}', [ServiceController::class, 'destroy'])->name('admin.services.destroy');
+        //Testimonial
+        Route::get('/testimonials', [TestimonialController::class, 'index'])->name('admin.testimonials.index');
+        Route::post('/testimonials', [TestimonialController::class, 'store'])->name('admin.testimonials.store');
+        Route::get('/testimonials/create', [TestimonialController::class, 'create'])->name('admin.testimonials.create');
+        Route::get('/testimonials/{testimonial}/edit', [TestimonialController::class, 'edit'])->name('admin.testimonials.edit');
+        Route::match(['put', 'patch'], '/testimonials/{testimonial}', [TestimonialController::class, 'update'])->name('admin.testimonials.update');
+        Route::delete('/testimonials/{testimonial}', [TestimonialController::class, 'destroy'])->name('admin.testimonials.destroy');
     });
 });

@@ -18,6 +18,7 @@ return [
     'add' => 'Añadir',
     'advice-translations' => 'Es necesario rellenar todos los campos 1 vez independientemente del idioma, los campos no traducidos se traducirán automáticamente !!!',
     'all' => 'todas',
+    'comment' => 'Comentario',
     'company' => 'Empresa',
     'confirm' => 'Confirmar',
     'confirms' => [
@@ -28,7 +29,8 @@ return [
         'delete-education' => '¿Realmente desea eliminar esta educación? Esta acción no se puede deshacer',
         'delete-hobby' => '¿Realmente desea eliminar este hobby? Esta acción no se puede deshacer',
         'delete-user-language' => '¿Realmente desea eliminar este idioma? Esta acción no se puede deshacer',
-        'delete-service' => '¿Realmente desea eliminar este servicio? Esta acción no se puede deshacer'
+        'delete-service' => '¿Realmente desea eliminar este servicio? Esta acción no se puede deshacer',
+        'delete-testimonial' => '¿Realmente desea eliminar este testimonio? Esta acción no se puede deshacer'
     ],
     'contact' => [
         'name' => '¿Cuál es tu nombre?',
@@ -46,6 +48,8 @@ return [
     'discipline' => 'Disciplina académica',
     'download_cv' => 'Descargar CV',
     'tag' => 'Tag',
+    'testimonial' => 'Testimonio',
+    'testimonials' => 'Testimonios',
     'title' => 'Título',
     'edit' => 'Editar',
     'education' => 'Educación',
@@ -65,6 +69,7 @@ return [
     'home' => 'Inicio',
     'image' => 'Imagen',
     'icon' => 'Icono',
+    'job' => 'Trabajo',
     'language' => 'Idioma',
     'languages' => 'Idiomas',
     'last_name' => 'Apellidos',
@@ -150,7 +155,13 @@ return [
         'error-create-service' => 'No se pudo crear el servicio',
         'success-update-service' => 'Servicio actualizado',
         'error-update-service' => 'No se pudo actualizar el servicio',
-        'delete-service' => 'Servicio eliminado'
+        'delete-service' => 'Servicio eliminado',
+
+        'success-create-testimonial' => 'Testimonio creado',
+        'error-create-testimonial' => 'No se pudo crear el testimonio',
+        'success-update-testimonial' => 'Testimonio actualizado',
+        'error-update-testimonial' => 'No se pudo actualizar el testimonio',
+        'delete-testimonial' => 'Testimonio eliminado'
     ],
     'role' => 'Rol',
     'school' => 'Escuela',

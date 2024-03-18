@@ -15,9 +15,11 @@
 
             @include('admin.overview.experiences.index')
 
+            @include('admin.overview.skills.index')
+
             @include('admin.overview.projects.index')
 
-            @include('admin.overview.skills.index')
+            @include('admin.overview.testimonials.index')
 
         </div>
     </div>
