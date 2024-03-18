@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\Auth\SessionsController;
 use App\Http\Controllers\EducationController;
 use App\Http\Controllers\ExperienceController;
+use App\Http\Controllers\FaqController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\OverviewController;
@@ -108,5 +109,12 @@ Route::middleware('auth')->group(function () {
         Route::get('/testimonials/{testimonial}/edit', [TestimonialController::class, 'edit'])->name('admin.testimonials.edit');
         Route::match(['put', 'patch'], '/testimonials/{testimonial}', [TestimonialController::class, 'update'])->name('admin.testimonials.update');
         Route::delete('/testimonials/{testimonial}', [TestimonialController::class, 'destroy'])->name('admin.testimonials.destroy');
+        //Faqs
+        Route::get('/faqs', [FaqController::class, 'index'])->name('admin.faqs.index');
+        Route::post('/faqs', [FaqController::class, 'store'])->name('admin.faqs.store');
+        Route::get('/faqs/create', [FaqController::class, 'create'])->name('admin.faqs.create');
+        Route::get('/faqs/{faq}/edit', [FaqController::class, 'edit'])->name('admin.faqs.edit');
+        Route::match(['put', 'patch'], '/faqs/{faq}', [FaqController::class, 'update'])->name('admin.faqs.update');
+        Route::delete('/faqs/{faq}', [FaqController::class, 'destroy'])->name('admin.faqs.destroy');
     });
 });

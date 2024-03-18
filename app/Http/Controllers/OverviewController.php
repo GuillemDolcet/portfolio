@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Repositories\Education;
 use App\Repositories\Experiences;
+use App\Repositories\Faqs;
 use App\Repositories\Languages;
 use App\Repositories\PersonalInfo;
 use App\Repositories\Projects;
@@ -88,6 +89,13 @@ class OverviewController extends AdminController
     protected Testimonials $testimonials;
 
     /**
+     * Faqs repository instance.
+     *
+     * @param Faqs $faqs
+     */
+    protected Faqs $faqs;
+
+    /**
      * Languages repository instance.
      *
      * @param Languages $languages
@@ -106,10 +114,12 @@ class OverviewController extends AdminController
      * @param PersonalInfo $personalInfo
      * @param Services $services
      * @param Languages $languages
+     * @param Testimonials $testimonials
+     * @param Faqs $faqs
      */
     public function __construct(Request $request, Skills $skills, Experiences $experiences, Projects $projects,
                                 Education $education, Sections $sections, PersonalInfo $personalInfo, Services $services,
-                                Languages $languages, Testimonials $testimonials)
+                                Languages $languages, Testimonials $testimonials, Faqs $faqs)
     {
         parent::__construct($request);
 
@@ -128,6 +138,8 @@ class OverviewController extends AdminController
         $this->testimonials = $testimonials;
 
         $this->services = $services;
+
+        $this->faqs = $faqs;
 
         $this->languages = $languages;
     }
@@ -160,7 +172,9 @@ class OverviewController extends AdminController
 
         $services = $this->services->newQuery()->get();
 
+        $faqs = $this->faqs->newQuery()->orderBy('order')->get();
+
         return view('admin.overview.index', compact('user','skills','experiences','projects',
-                    'education','sections','personalInfo', 'services', 'testimonials'));
+                    'education','sections','personalInfo', 'services', 'testimonials', 'faqs'));
     }
 }

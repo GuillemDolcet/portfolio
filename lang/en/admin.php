@@ -18,6 +18,7 @@ return [
     'add' => 'Add',
     'advice-translations' => 'All fields must be filled in once regardless of language, untranslated fields will be translated automatically !!!',
     'all' => 'all',
+    'answer' => 'Answer',
     'comment' => 'Comment',
     'company' => 'Company',
     'confirm' => 'Confirm',
@@ -30,7 +31,8 @@ return [
         'delete-hobby' => 'Do you really want to delete this hobby? This action cannot be undone',
         'delete-user-language' => 'Do you really want to delete this language? This action cannot be undone',
         'delete-service' => 'Do you really want to delete this service? This action cannot be undone',
-        'delete-testimonial' => 'Do you really want to delete this testimonial? This action cannot be undone'
+        'delete-testimonial' => 'Do you really want to delete this testimonial? This action cannot be undone',
+        'delete-faq' => 'Do you really want to delete this FAQ? This action cannot be undone'
     ],
     'contact' => [
         'name' => 'What is Your Name',
@@ -61,6 +63,8 @@ return [
     'estimate-project' => 'Estimate your Project',
     'experience' => 'Experience',
     'experiences' => 'Experiences',
+    'faq' => 'FAQ',
+    'faqs' => 'FAQs',
     'finish_date' => 'Finish date',
     'first_name' => 'First name',
     'hire' => 'Hire Me!',
@@ -95,6 +99,7 @@ return [
     'position' => 'Position',
     'project' => 'Project',
     'projects' => 'Projects',
+    'question' => 'Question',
     'remember-me' => 'Remember me',
     'responses' => [
         'success-create-user' => 'User created',
@@ -161,7 +166,13 @@ return [
         'error-create-testimonial' => 'Error on create testimonial',
         'success-update-testimonial' => 'Testimonial updated',
         'error-update-testimonial' => 'Error on update testimonial',
-        'delete-testimonial' => 'Testimonial deleted'
+        'delete-testimonial' => 'Testimonial deleted',
+
+        'success-create-faq' => 'FAQ created',
+        'error-create-faq' => 'Error on create FAQ',
+        'success-update-faq' => 'FAQ updated',
+        'error-update-faq' => 'Error on update FAQ',
+        'delete-faq' => 'FAQ deleted'
     ],
     'role' => 'Role',
     'school' => 'School',

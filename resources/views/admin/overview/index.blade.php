@@ -21,6 +21,8 @@
 
             @include('admin.overview.testimonials.index')
 
+            @include('admin.overview.faqs.index')
+
         </div>
     </div>
 @endsection

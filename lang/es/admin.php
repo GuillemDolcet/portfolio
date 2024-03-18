@@ -18,6 +18,7 @@ return [
     'add' => 'Añadir',
     'advice-translations' => 'Es necesario rellenar todos los campos 1 vez independientemente del idioma, los campos no traducidos se traducirán automáticamente !!!',
     'all' => 'todas',
+    'answer' => 'Respuesta',
     'comment' => 'Comentario',
     'company' => 'Empresa',
     'confirm' => 'Confirmar',
@@ -30,7 +31,8 @@ return [
         'delete-hobby' => '¿Realmente desea eliminar este hobby? Esta acción no se puede deshacer',
         'delete-user-language' => '¿Realmente desea eliminar este idioma? Esta acción no se puede deshacer',
         'delete-service' => '¿Realmente desea eliminar este servicio? Esta acción no se puede deshacer',
-        'delete-testimonial' => '¿Realmente desea eliminar este testimonio? Esta acción no se puede deshacer'
+        'delete-testimonial' => '¿Realmente desea eliminar este testimonio? Esta acción no se puede deshacer',
+        'delete-faq' => '¿Realmente desea eliminar esta pregunta frecuente? Esta acción no se puede deshacer'
     ],
     'contact' => [
         'name' => '¿Cuál es tu nombre?',
@@ -61,6 +63,8 @@ return [
     'estimate-project' => 'Estime su proyecto',
     'experience' => 'Experiencia',
     'experiences' => 'Experiencias',
+    'faq' => 'Pregunta frecuente',
+    'faqs' => 'Preguntas frecuentes',
     'finish_date' => 'Fecha de finalización',
     'first_name' => 'Nombre',
     'hire' => '¡Contrátame!',
@@ -95,6 +99,7 @@ return [
     'position' => 'Cargo',
     'project' => 'Proyecto',
     'projects' => 'Proyectos',
+    'question' => 'Pregunta',
     'remember-me' => 'Recuérdame',
     'responses' => [
         'success-create-user' => 'Usuario creado',
@@ -161,7 +166,13 @@ return [
         'error-create-testimonial' => 'No se pudo crear el testimonio',
         'success-update-testimonial' => 'Testimonio actualizado',
         'error-update-testimonial' => 'No se pudo actualizar el testimonio',
-        'delete-testimonial' => 'Testimonio eliminado'
+        'delete-testimonial' => 'Testimonio eliminado',
+
+        'success-create-faq' => 'Pregunta frecuente creada',
+        'error-create-faq' => 'No se pudo crear la pregunta frecuente',
+        'success-update-faq' => 'Pregunta frecuente actualizada',
+        'error-update-faq' => 'No se pudo actualizar la pregunta frecuente',
+        'delete-faq' => 'Pregunta frecuente eliminada'
     ],
     'role' => 'Rol',
     'school' => 'Escuela',

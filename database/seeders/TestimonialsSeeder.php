@@ -2,10 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Repositories\Skills;
 use App\Repositories\Testimonials;
 use Illuminate\Database\Seeder;
-use Illuminate\Http\File;
 
 class TestimonialsSeeder extends Seeder
 {
