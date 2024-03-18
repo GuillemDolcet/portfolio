@@ -2,11 +2,6 @@
 
 @section('main-content')
 
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-    />
-
     <div id="main-wrapper">
 
         <div id="content" role="main">
@@ -26,7 +21,7 @@
                             <a href="#portfolio" class="btn btn-dark rounded-0 smooth-scroll mt-3">View My Works</a><a href="#contact" class="btn btn-link text-dark smooth-scroll mt-3">Contact Me<span class="text-4 ms-2"><i class="far fa-arrow-alt-circle-down"></i></span></a>
                         </div>
                         <div class="col-lg-5 text-center align-self-center mb-4 mb-lg-0 order-0 order-lg-1">
-                            <div class="bg-light rounded-pill d-inline-block p-3 shadow-lg wow zoomIn"> <img class="img-fluid rounded-pill d-block" src="images/web-developer.jpg" title="I'm Callum" alt=""></div>
+                            <div class="bg-light rounded-pill d-inline-block p-3 shadow-lg wow zoomIn"> <img class="img-fluid rounded-pill d-block" src="{{ Storage::url($personalInfo->image) }}" title="I'm Callum" alt=""></div>
                         </div>
                     </div>
                 </div>
