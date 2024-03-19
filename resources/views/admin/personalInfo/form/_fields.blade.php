@@ -15,46 +15,46 @@
             <div class="col-6">
                 <label class="form-label fw-bold" for="firstName">@lang('admin.first_name')</label>
                 <input id="firstName" name="firstName" type="text" class="form-control @error('firstName') is-invalid @enderror"
-                       autocomplete="off" value="{{ old('firstName', $personalInfo->firstName) }}">
+                       autocomplete="off" value="{{ old('firstName', $personalInfo->firstName) }}" required>
                 @error('firstName')
                 <div class="invalid-feedback">{{ $message }}</div>
-                @endif
+                @enderror
             </div>
             <div class="col-6">
                 <label class="form-label fw-bold" for="lastName">@lang('admin.last_name')</label>
                 <input id="lastName" name="lastName" type="text" class="form-control @error('lastName') is-invalid @enderror"
-                       autocomplete="off" value="{{ old('lastName', $personalInfo->lastName) }}">
+                       autocomplete="off" value="{{ old('lastName', $personalInfo->lastName) }}" required>
                 @error('lastName')
                 <div class="invalid-feedback">{{ $message }}</div>
-                @endif
+                @enderror
             </div>
         </div>
         <div class="col-12 row mb-3">
             <div class="col-4">
                 <label class="form-label fw-bold" for="email">@lang('admin.email')</label>
                 <input id="email" name="email" type="text" class="form-control @error('email') is-invalid @enderror"
-                       autocomplete="off" value="{{ old('email', $personalInfo->email) }}">
+                       autocomplete="off" value="{{ old('email', $personalInfo->email) }}" required>
                 @error('email')
                 <div class="invalid-feedback">{{ $message }}</div>
-                @endif
+                @enderror
             </div>
             <div class="col-4">
                 <label class="form-label fw-bold" for="phone">@lang('admin.phone')</label>
                 <input id="phone" name="phone" type="text" class="form-control @error('phone') is-invalid @enderror"
-                       autocomplete="off" value="{{ old('phone', $personalInfo->phone) }}">
+                       autocomplete="off" value="{{ old('phone', $personalInfo->phone) }}" required>
                 @error('phone')
                 <div class="invalid-feedback">{{ $message }}</div>
-                @endif
+                @enderror
             </div>
             <div class="col-4">
                 <label class="form-label fw-bold" for="date_of_birth">@lang('admin.date_of_birth')</label>
                 <input id="date_of_birth" name="date_of_birth" type="date"
                        class="form-control @error('date_of_birth') is-invalid @enderror"
-                       autocomplete="off"
+                       autocomplete="off" required
                        value="{{ old('date_of_birth', !is_null($personalInfo->date_of_birth) ? $personalInfo->date_of_birth->format('Y-m-d') : '') }}">
                 @error('date_of_birth')
                 <div class="invalid-feedback">{{ $message }}</div>
-                @endif
+                @enderror
             </div>
         </div>
         <div class="col-12 row mb-3">
@@ -64,7 +64,7 @@
                        autocomplete="off" value="{{ old('linkedin', $personalInfo->linkedin) }}">
                 @error('linkedin')
                 <div class="invalid-feedback">{{ $message }}</div>
-                @endif
+                @enderror
             </div>
             <div class="col-4">
                 <label class="form-label fw-bold" for="twitter">Twitter/X</label>
@@ -72,7 +72,7 @@
                        autocomplete="off" value="{{ old('twitter', $personalInfo->twitter) }}">
                 @error('twitter')
                 <div class="invalid-feedback">{{ $message }}</div>
-                @endif
+                @enderror
             </div>
             <div class="col-4">
                 <label class="form-label fw-bold" for="github">Github</label>
@@ -80,7 +80,7 @@
                        autocomplete="off" value="{{ old('github', $personalInfo->github) }}">
                 @error('github')
                 <div class="invalid-feedback">{{ $message }}</div>
-                @endif
+                @enderror
             </div>
         </div>
         @foreach($languages as $key => $language)
@@ -89,12 +89,15 @@
                     <label class="form-label fw-bold" for="location[{{$language->name}}]">@lang('admin.location') <sup
                             class="text-danger fs-xs">*</sup></label>
                     <input id="location[{{$language->name}}]" name="location[{{$language->name}}]" type="text"
-                           class="form-control @error('location.'.$language->name) is-invalid @enderror"
+                           class="form-control @if($errors->has('location') || $errors->has('location.*')) is-invalid @endif"
                            autocomplete="off" maxlength="100"
                            value="{{ old('location.'.$language->name, $personalInfo->getTranslation('location',$language->name)) }}">
-                    @error('location.'.$language->name)
+                    @error('location')
                     <div class="invalid-feedback">{{ $message }}</div>
-                    @endif
+                    @enderror
+                    @error('location.*')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
             </div>
         @endforeach
@@ -107,7 +110,7 @@
                {{$personalInfo->exists ? '' : 'required'}} value="{{ old('image', $personalInfo->image) }}">
         @error('image')
         <div class="invalid-feedback">{{ $message }}</div>
-        @endif
+        @enderror
         @if($personalInfo->exists)
             <div class="d-flex align-items-center mt-5">
                 <b class="me-3">@lang('admin.actual-image') : </b><img src="{{\Storage::url($personalInfo->image)}}" width="100" alt="{{$personalInfo->name}}">
@@ -122,6 +125,6 @@
                {{$personalInfo->exists ? '' : 'required'}} value="{{ old('cv', $personalInfo->cv) }}">
         @error('cv')
         <div class="invalid-feedback">{{ $message }}</div>
-        @endif
+        @enderror
     </div>
 </div>

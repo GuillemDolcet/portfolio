@@ -26,7 +26,7 @@ class ExperiencePolicy
     /**
      * Determine whether the user can store the model.
      */
-    public function store(User $user, Experience $experience): bool
+    public function store(User $user): bool
     {
         return $user->hasRole('admin');
     }

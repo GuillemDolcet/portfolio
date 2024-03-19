@@ -1,7 +1,6 @@
 <tr>
     <td>{{ ucfirst($service->title) }}</td>
     <td>{{ ucfirst($service->description) }}</td>
-    <td>{{ $service->icon }}</td>
     <td class="text-end cursor-pointer ali">
         <div class="d-flex text-end justify-content-end">
             @can('edit', $service)

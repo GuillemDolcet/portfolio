@@ -51,7 +51,7 @@ class SectionRequest extends FormRequest
     public function rules(): array
     {
         $rules = [
-            'name' => ['required', 'string'],
+            'name' => ['required', 'string','unique:sections,name'],
             'tag' => ['required', 'array', new Language()],
             'tag.*' => ['required', 'string', 'max:100'],
             'title' => ['required', 'array', new Language()],

@@ -51,7 +51,7 @@ class FaqRequest extends FormRequest
     {
         return [
             'question' => ['required', 'array', new Language()],
-            'question.*' => ['required', 'string', 'max:100'],
+            'question.*' => ['required', 'string', 'max:150'],
             'answer' => ['required', 'array', new Language()],
             'answer.*' => ['required', 'string'],
             'order' => ['nullable', 'integer', 'max:9999999999']

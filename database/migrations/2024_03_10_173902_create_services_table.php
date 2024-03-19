@@ -16,7 +16,7 @@ return new class extends Migration
             $table->json('title');
             $table->json('description');
             $table->string('image');
-            $table->integer('order');
+            $table->integer('order')->nullable();
             $table->timestamps();
         });
     }

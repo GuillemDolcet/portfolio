@@ -45,6 +45,7 @@ return [
     'currently-project' => 'Working',
     'cv' => 'CV',
     'date_of_birth' => 'Date of birth',
+    'degree' => 'Degree',
     'delete' => 'Delete',
     'description' => 'Description',
     'discipline' => 'Discipline',

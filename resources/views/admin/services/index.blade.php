@@ -40,7 +40,6 @@
                         <tr>
                             <th>@lang('admin.title')</th>
                             <th>@lang('admin.description')</th>
-                            <th>@lang('admin.icon')</th>
                             <th></th>
                         </tr>
                         </thead>

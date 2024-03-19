@@ -17,44 +17,56 @@
                     <label class="form-label fw-bold" for="school[{{$language->name}}]">@lang('admin.school') <sup
                             class="text-danger fs-xs">*</sup></label>
                     <input id="school[{{$language->name}}]" name="school[{{$language->name}}]" type="text"
-                           class="form-control @error('school.'.$language->name) is-invalid @enderror"
+                           class="form-control @if($errors->has('school') || $errors->has('school.*')) is-invalid @endif"
                            autocomplete="off" maxlength="100"
                            value="{{ old('school.'.$language->name, $education->getTranslation('school',$language->name)) }}">
-                    @error('school.'.$language->name)
+                    @error('school')
                     <div class="invalid-feedback">{{ $message }}</div>
-                    @endif
+                    @enderror
+                    @error('school.*')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="col-12 mb-3">
                     <label class="form-label fw-bold" for="degree[{{$language->name}}]">@lang('admin.degree') <sup
                             class="text-danger fs-xs">*</sup></label>
                     <input id="degree[{{$language->name}}]" name="degree[{{$language->name}}]" type="text"
-                           class="form-control @error('degree.'.$language->name) is-invalid @enderror"
+                           class="form-control @if($errors->has('degree') || $errors->has('degree.*')) is-invalid @endif"
                            autocomplete="off" maxlength="100"
                            value="{{ old('degree.'.$language->name, $education->getTranslation('degree',$language->name)) }}">
-                    @error('degree.'.$language->name)
+                    @error('degree')
                     <div class="invalid-feedback">{{ $message }}</div>
-                    @endif
+                    @enderror
+                    @error('degree.*')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="col-12 mb-3">
                     <label class="form-label fw-bold" for="discipline[{{$language->name}}]">@lang('admin.discipline') <sup
                             class="text-danger fs-xs">*</sup></label>
                     <input id="discipline[{{$language->name}}]" name="discipline[{{$language->name}}]" type="text"
-                           class="form-control @error('discipline.'.$language->name) is-invalid @enderror"
+                           class="form-control @if($errors->has('discipline') || $errors->has('discipline.*')) is-invalid @endif"
                            autocomplete="off" maxlength="100"
                            value="{{ old('discipline.'.$language->name, $education->getTranslation('discipline',$language->name)) }}">
-                    @error('discipline.'.$language->name)
+                    @error('discipline')
                     <div class="invalid-feedback">{{ $message }}</div>
-                    @endif
+                    @enderror
+                    @error('discipline.*')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="col-12 mb-3">
                     <label class="form-label fw-bold" for="description[{{$language->name}}]">@lang('admin.description')
                         <sup class="text-danger fs-xs">*</sup></label>
                     <textarea id="description[{{$language->name}}]" name="description[{{$language->name}}]" type="text"
-                              class="form-control @error('description.'.$language->name) is-invalid @enderror"
+                              class="form-control @if($errors->has('description') || $errors->has('description.*')) is-invalid @endif"
                               autocomplete="off">{{ old('description.'.$language->name, $education->getTranslation('description',$language->name)) }}</textarea>
-                    @error('description.'.$language->name)
+                    @error('description')
                     <div class="invalid-feedback">{{ $message }}</div>
-                    @endif
+                    @enderror
+                    @error('description.*')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
             </div>
         @endforeach
@@ -68,7 +80,7 @@
                    required value="{{ old('start_date', !is_null($education->start_date) ? $education->start_date->format('Y-m-d') : '') }}">
             @error('start_date')
             <div class="invalid-feedback">{{ $message }}</div>
-            @endif
+            @enderror
         </div>
         <div class="col-6">
             <label class="form-label fw-bold" for="finish_date">@lang('admin.finish_date') <sup
@@ -79,7 +91,7 @@
                    required value="{{ old('start_date', !is_null($education->finish_date) ? $education->finish_date->format('Y-m-d') : '') }}">
             @error('finish_date')
             <div class="invalid-feedback">{{ $message }}</div>
-            @endif
+            @enderror
         </div>
     </div>
     <div class="col-12">

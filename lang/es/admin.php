@@ -45,6 +45,7 @@ return [
     'currently-project' => 'Trabajando',
     'cv' => 'Currículum',
     'date_of_birth' => 'Cumpleaños',
+    'degree' => 'Título',
     'delete' => 'Eliminar',
     'description' => 'Descripción',
     'discipline' => 'Disciplina académica',

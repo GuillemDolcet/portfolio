@@ -17,23 +17,28 @@
                     <label class="form-label fw-bold" for="question[{{$language->name}}]">@lang('admin.question') <sup
                             class="text-danger fs-xs">*</sup></label>
                     <input id="question[{{$language->name}}]" name="question[{{$language->name}}]" type="text"
-                           class="form-control @error('question.'.$language->name) is-invalid @enderror"
-                           autocomplete="off" maxlength="100"
+                           class="form-control @if($errors->has('question') || $errors->has('question.*')) is-invalid @endif"
+                           autocomplete="off" maxlength="150"
                            value="{{ old('question.'.$language->name, $faq->getTranslation('question',$language->name)) }}">
-                    @error('question.'.$language->name)
+                    @error('question')
                     <div class="invalid-feedback">{{ $message }}</div>
-                    @endif
+                    @enderror
+                    @error('question.*')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="col-12 mb-3">
                     <label class="form-label fw-bold" for="answer[{{$language->name}}]">@lang('admin.answer') <sup
                             class="text-danger fs-xs">*</sup></label>
-                    <input id="answer[{{$language->name}}]" name="answer[{{$language->name}}]" type="text"
-                           class="form-control @error('answer.'.$language->name) is-invalid @enderror"
-                           autocomplete="off" maxlength="100"
-                           value="{{ old('answer.'.$language->name, $faq->getTranslation('answer',$language->name)) }}">
-                    @error('answer.'.$language->name)
+                    <textarea id="answer[{{$language->name}}]" name="answer[{{$language->name}}]"
+                           class="form-control @if($errors->has('answer') || $errors->has('answer.*')) is-invalid @endif"
+                              autocomplete="off">{{ old('answer.'.$language->name, $faq->getTranslation('answer',$language->name)) }}</textarea>
+                    @error('answer')
                     <div class="invalid-feedback">{{ $message }}</div>
-                    @endif
+                    @enderror
+                    @error('answer.*')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
             </div>
         @endforeach
@@ -45,6 +50,6 @@
                value="{{ old('order', $faq->order) }}" max="9999999999">
         @error('order')
         <div class="invalid-feedback">{{ $message }}</div>
-        @endif
+        @enderror
     </div>
 </div>

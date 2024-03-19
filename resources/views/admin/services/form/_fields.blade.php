@@ -17,36 +17,44 @@
                     <label class="form-label fw-bold" for="title[{{$language->name}}]">@lang('admin.title') <sup
                             class="text-danger fs-xs">*</sup></label>
                     <input id="title[{{$language->name}}]" name="title[{{$language->name}}]" type="text"
-                           class="form-control @error('title.'.$language->name) is-invalid @enderror"
+                           class="form-control @if($errors->has('title') || $errors->has('title.*')) is-invalid @endif"
                            autocomplete="off" maxlength="100"
                            value="{{ old('title.'.$language->name, $service->getTranslation('title',$language->name)) }}">
-                    @error('title.'.$language->name)
+                    @error('title')
                     <div class="invalid-feedback">{{ $message }}</div>
-                    @endif
+                    @enderror
+                    @error('title.*')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="col-12 mb-3">
                     <label class="form-label fw-bold" for="description[{{$language->name}}]">@lang('admin.description') <sup
                             class="text-danger fs-xs">*</sup></label>
-                    <input id="description[{{$language->name}}]" name="description[{{$language->name}}]" type="text"
-                           class="form-control @error('description.'.$language->name) is-invalid @enderror"
-                           autocomplete="off" maxlength="100"
-                           value="{{ old('description.'.$language->name, $service->getTranslation('description',$language->name)) }}">
-                    @error('description.'.$language->name)
+                    <textarea id="description[{{$language->name}}]" name="description[{{$language->name}}]"
+                           class="form-control @if($errors->has('description') || $errors->has('description.*')) is-invalid @endif"
+                              autocomplete="off">{{ old('description.'.$language->name, $service->getTranslation('description',$language->name)) }}</textarea>
+                    @error('description')
                     <div class="invalid-feedback">{{ $message }}</div>
-                    @endif
+                    @enderror
+                    @error('description.*')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
             </div>
         @endforeach
     </div>
     <div class="col-12 mb-3">
-        <label class="form-label fw-bold" for="image">@lang('admin.image') <sup
-                class="text-danger fs-xs">*</sup></label>
+        <label class="form-label fw-bold" for="image">@lang('admin.image')
+            @if(!$service->exists)
+                <sup class="text-danger fs-xs">*</sup>
+            @endif
+       </label>
         <input id="image" name="image" type="file" class="form-control @error('image') is-invalid @enderror"
                autocomplete="off" accept="image/*"
                {{$service->exists ? '' : 'required'}} value="{{ old('image', $service->image) }}">
         @error('image')
         <div class="invalid-feedback">{{ $message }}</div>
-        @endif
+        @enderror
         @if($service->exists)
             <div class="d-flex align-items-center mt-5">
                 <b class="me-3">@lang('admin.actual-image') : </b><img src="{{\Storage::url($service->image)}}" width="100" alt="{{$service->name}}">
@@ -59,6 +67,6 @@
                autocomplete="off" value="{{ old('order', $service->order) }}">
         @error('order')
         <div class="invalid-feedback">{{ $message }}</div>
-        @endif
+        @enderror
     </div>
 </div>
