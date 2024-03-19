@@ -172,9 +172,11 @@ class OverviewController extends AdminController
 
         $services = $this->services->newQuery()->get();
 
+        $languages = $this->languages->newQuery()->orderByLocale()->get();
+
         $faqs = $this->faqs->newQuery()->orderBy('order')->get();
 
         return view('admin.overview.index', compact('user','skills','experiences','projects',
-                    'education','sections','personalInfo', 'services', 'testimonials', 'faqs'));
+                    'education','sections','personalInfo', 'services', 'testimonials', 'faqs','languages'));
     }
 }

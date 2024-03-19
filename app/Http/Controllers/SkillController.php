@@ -61,7 +61,9 @@ class SkillController extends AdminController
     {
         $skills = $this->skills->listing($this->skills->newQuery()->orderBy('order'));
 
-        return view('admin.skills.index', compact('skills'));
+        $languages = $this->languages->newQuery()->orderByLocale()->get();
+
+        return view('admin.skills.index', compact('skills','languages'));
     }
 
     /**

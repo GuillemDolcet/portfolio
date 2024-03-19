@@ -72,7 +72,9 @@ class PersonalInfoController extends AdminController
     {
         $sections = $this->personalInfo->listing($this->personalInfo->newQuery());
 
-        return view('admin.personalInfo.index', compact('sections'));
+        $languages = $this->languages->newQuery()->orderByLocale()->get();
+
+        return view('admin.personalInfo.index', compact('sections', 'languages'));
     }
 
     /**
@@ -90,10 +92,11 @@ class PersonalInfoController extends AdminController
 
         if ($this->wantsTurboStream($this->request)) {
             $personalInfo = $this->personalInfo->build();
+            $languages = $this->languages->newQuery()->orderByLocale()->get();
             if (($sess = $this->request->session()) && $sess->hasOldInput()) {
-                return $this->renderTurboStream('admin.personalInfo.form.modal_stream', compact('personalInfo'));
+                return $this->renderTurboStream('admin.personalInfo.form.modal_stream', compact('personalInfo','languages'));
             }
-            return $this->renderTurboStream('admin.personalInfo.form.modal_stream', compact('personalInfo'));
+            return $this->renderTurboStream('admin.personalInfo.form.modal_stream', compact('personalInfo','languages'));
         }
         return redirect()->back();
     }
@@ -113,10 +116,11 @@ class PersonalInfoController extends AdminController
         $this->authorize('edit', $personalInfo);
 
         if ($this->wantsTurboStream($this->request)) {
+            $languages = $this->languages->newQuery()->orderByLocale()->get();
             if (($sess = $this->request->session()) && $sess->hasOldInput()) {
-                return $this->renderTurboStream('admin.personalInfo.form.modal_stream', compact('personalInfo'));
+                return $this->renderTurboStream('admin.personalInfo.form.modal_stream', compact('personalInfo','languages'));
             }
-            return $this->renderTurboStream('admin.personalInfo.form.modal_stream', compact('personalInfo'));
+            return $this->renderTurboStream('admin.personalInfo.form.modal_stream', compact('personalInfo','languages'));
         }
         return redirect()->back();
     }

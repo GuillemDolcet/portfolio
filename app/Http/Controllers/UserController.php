@@ -61,7 +61,10 @@ class UserController extends AdminController
     public function index(): ConsoleApplication|FoundationApplication|View|Factory
     {
         $users = $this->users->listing($this->users->newQuery());
-        return view('admin.users.index', compact('users'));
+
+        $languages = $this->languages->newQuery()->orderByLocale()->get();
+
+        return view('admin.users.index', compact('users','languages'));
     }
 
     /**

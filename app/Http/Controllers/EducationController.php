@@ -84,7 +84,9 @@ class EducationController extends AdminController
     {
         $education = $this->education->listing($this->education->newQuery()->orderBy('start_date'));
 
-        return view('admin.education.index', compact('education'));
+        $languages = $this->languages->newQuery()->orderByLocale()->get();
+
+        return view('admin.education.index', compact('education', 'languages'));
     }
 
     /**
@@ -103,10 +105,11 @@ class EducationController extends AdminController
         if ($this->wantsTurboStream($this->request)) {
             $education = $this->education->build();
             $skills = $this->skills->newQuery()->orderBy('order')->get();
+            $languages = $this->languages->newQuery()->orderByLocale()->get();
             if (($sess = $this->request->session()) && $sess->hasOldInput()) {
-                return $this->renderTurboStream('admin.education.form.modal_stream', compact('education','skills'));
+                return $this->renderTurboStream('admin.education.form.modal_stream', compact('education','skills', 'languages'));
             }
-            return $this->renderTurboStream('admin.education.form.modal_stream', compact('education','skills'));
+            return $this->renderTurboStream('admin.education.form.modal_stream', compact('education','skills', 'languages'));
         }
         return redirect()->back();
     }
@@ -127,10 +130,11 @@ class EducationController extends AdminController
 
         if ($this->wantsTurboStream($this->request)) {
             $skills = $this->skills->newQuery()->orderBy('order')->get();
+            $languages = $this->languages->newQuery()->orderByLocale()->get();
             if (($sess = $this->request->session()) && $sess->hasOldInput()) {
-                return $this->renderTurboStream('admin.education.form.modal_stream', compact('education','skills'));
+                return $this->renderTurboStream('admin.education.form.modal_stream', compact('education','skills', 'languages'));
             }
-            return $this->renderTurboStream('admin.education.form.modal_stream', compact('education','skills'));
+            return $this->renderTurboStream('admin.education.form.modal_stream', compact('education','skills', 'languages'));
         }
         return redirect()->back();
     }

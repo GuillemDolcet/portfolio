@@ -83,7 +83,9 @@ class ExperienceController extends AdminController
     {
         $experiences = $this->experiences->listing($this->experiences->newQuery()->orderBy('start_date'));
 
-        return view('admin.experiences.index', compact('experiences'));
+        $languages = $this->languages->newQuery()->orderByLocale()->get();
+
+        return view('admin.experiences.index', compact('experiences', 'languages'));
     }
 
     /**
@@ -98,14 +100,15 @@ class ExperienceController extends AdminController
     public function create(): RedirectResponse|Response|ResponseFactory
     {
         $this->authorize('create', Experience::class);
+        $languages = $this->languages->newQuery()->orderByLocale()->get();
 
         if ($this->wantsTurboStream($this->request)) {
             $experience = $this->experiences->build();
             $skills = $this->skills->newQuery()->orderBy('order')->get();
             if (($sess = $this->request->session()) && $sess->hasOldInput()) {
-                return $this->renderTurboStream('admin.experiences.form.modal_stream', compact('experience','skills'));
+                return $this->renderTurboStream('admin.experiences.form.modal_stream', compact('experience','skills','languages'));
             }
-            return $this->renderTurboStream('admin.experiences.form.modal_stream', compact('experience','skills'));
+            return $this->renderTurboStream('admin.experiences.form.modal_stream', compact('experience','skills','languages'));
         }
         return redirect()->back();
     }
@@ -126,10 +129,11 @@ class ExperienceController extends AdminController
 
         if ($this->wantsTurboStream($this->request)) {
             $skills = $this->skills->newQuery()->orderBy('order')->get();
+            $languages = $this->languages->newQuery()->orderByLocale()->get();
             if (($sess = $this->request->session()) && $sess->hasOldInput()) {
-                return $this->renderTurboStream('admin.experiences.form.modal_stream', compact('experience','skills'));
+                return $this->renderTurboStream('admin.experiences.form.modal_stream', compact('experience','skills','languages'));
             }
-            return $this->renderTurboStream('admin.experiences.form.modal_stream', compact('experience','skills'));
+            return $this->renderTurboStream('admin.experiences.form.modal_stream', compact('experience','skills','languages'));
         }
         return redirect()->back();
     }

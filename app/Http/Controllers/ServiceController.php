@@ -72,7 +72,9 @@ class ServiceController extends AdminController
     {
         $services = $this->services->listing($this->services->newQuery()->orderBy('order'));
 
-        return view('admin.services.index', compact('services'));
+        $languages = $this->languages->newQuery()->orderByLocale()->get();
+
+        return view('admin.services.index', compact('services','languages'));
     }
 
     /**
@@ -89,11 +91,12 @@ class ServiceController extends AdminController
         $this->authorize('create', Service::class);
 
         if ($this->wantsTurboStream($this->request)) {
+            $languages = $this->languages->newQuery()->orderByLocale()->get();
             $service = $this->services->build();
             if (($sess = $this->request->session()) && $sess->hasOldInput()) {
-                return $this->renderTurboStream('admin.services.form.modal_stream', compact('service'));
+                return $this->renderTurboStream('admin.services.form.modal_stream', compact('service','languages'));
             }
-            return $this->renderTurboStream('admin.services.form.modal_stream', compact('service'));
+            return $this->renderTurboStream('admin.services.form.modal_stream', compact('service','languages'));
         }
         return redirect()->back();
     }
@@ -113,10 +116,11 @@ class ServiceController extends AdminController
         $this->authorize('edit', $service);
 
         if ($this->wantsTurboStream($this->request)) {
+            $languages = $this->languages->newQuery()->orderByLocale()->get();
             if (($sess = $this->request->session()) && $sess->hasOldInput()) {
-                return $this->renderTurboStream('admin.services.form.modal_stream', compact('service'));
+                return $this->renderTurboStream('admin.services.form.modal_stream', compact('service','languages'));
             }
-            return $this->renderTurboStream('admin.services.form.modal_stream', compact('service'));
+            return $this->renderTurboStream('admin.services.form.modal_stream', compact('service','languages'));
         }
         return redirect()->back();
     }

@@ -82,7 +82,9 @@ class ProjectController extends AdminController
     {
         $projects = $this->projects->listing($this->projects->newQuery()->orderBy('order'));
 
-        return view('admin.projects.index', compact('projects'));
+        $languages = $this->languages->newQuery()->orderByLocale()->get();
+
+        return view('admin.projects.index', compact('projects', 'languages'));
     }
 
     /**
@@ -101,10 +103,11 @@ class ProjectController extends AdminController
         if ($this->wantsTurboStream($this->request)) {
             $project = $this->projects->build();
             $skills = $this->skills->newQuery()->orderBy('order')->get();
+            $languages = $this->languages->newQuery()->orderByLocale()->get();
             if (($sess = $this->request->session()) && $sess->hasOldInput()) {
-                return $this->renderTurboStream('admin.projects.form.modal_stream', compact('project','skills'));
+                return $this->renderTurboStream('admin.projects.form.modal_stream', compact('project','skills','languages'));
             }
-            return $this->renderTurboStream('admin.projects.form.modal_stream', compact('project','skills'));
+            return $this->renderTurboStream('admin.projects.form.modal_stream', compact('project','skills','languages'));
         }
 
         return redirect()->back();
@@ -126,10 +129,11 @@ class ProjectController extends AdminController
 
         if ($this->wantsTurboStream($this->request)) {
             $skills = $this->skills->newQuery()->orderBy('order')->get();
+            $languages = $this->languages->newQuery()->orderByLocale()->get();
             if (($sess = $this->request->session()) && $sess->hasOldInput()) {
-                return $this->renderTurboStream('admin.projects.form.modal_stream', compact('project','skills'));
+                return $this->renderTurboStream('admin.projects.form.modal_stream', compact('project','skills','languages'));
             }
-            return $this->renderTurboStream('admin.projects.form.modal_stream', compact('project','skills'));
+            return $this->renderTurboStream('admin.projects.form.modal_stream', compact('project','skills','languages'));
         }
         return redirect()->back();
     }

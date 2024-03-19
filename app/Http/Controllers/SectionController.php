@@ -72,7 +72,9 @@ class SectionController extends AdminController
     {
         $sections = $this->sections->listing($this->sections->newQuery());
 
-        return view('admin.sections.index', compact('sections'));
+        $languages = $this->languages->newQuery()->orderByLocale()->get();
+
+        return view('admin.sections.index', compact('sections','languages'));
     }
 
     /**
@@ -90,10 +92,11 @@ class SectionController extends AdminController
 
         if ($this->wantsTurboStream($this->request)) {
             $section = $this->sections->build();
+            $languages = $this->languages->newQuery()->orderByLocale()->get();
             if (($sess = $this->request->session()) && $sess->hasOldInput()) {
-                return $this->renderTurboStream('admin.sections.form.modal_stream', compact('section'));
+                return $this->renderTurboStream('admin.sections.form.modal_stream', compact('section','languages'));
             }
-            return $this->renderTurboStream('admin.sections.form.modal_stream', compact('section'));
+            return $this->renderTurboStream('admin.sections.form.modal_stream', compact('section','languages'));
         }
         return redirect()->back();
     }
@@ -113,10 +116,11 @@ class SectionController extends AdminController
         $this->authorize('edit', $section);
 
         if ($this->wantsTurboStream($this->request)) {
+            $languages = $this->languages->newQuery()->orderByLocale()->get();
             if (($sess = $this->request->session()) && $sess->hasOldInput()) {
-                return $this->renderTurboStream('admin.sections.form.modal_stream', compact('section'));
+                return $this->renderTurboStream('admin.sections.form.modal_stream', compact('section','languages'));
             }
-            return $this->renderTurboStream('admin.sections.form.modal_stream', compact('section'));
+            return $this->renderTurboStream('admin.sections.form.modal_stream', compact('section','languages'));
         }
         return redirect()->back();
     }

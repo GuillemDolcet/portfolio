@@ -3,7 +3,7 @@
     <div class="languages">
         <div class="mb-3">
             <div class="form-selectgroup">
-                @foreach(\App\Models\Language::orderByLocale()->get() as $language)
+                @foreach($languages as $language)
                     <label class="form-selectgroup-item">
                         <input type="radio" name="language" data-action="input->form#changeLanguage" value="{{$language->name}}" class="form-selectgroup-input" {{app()->getLocale() == $language->name ? 'checked' : ''}}/>
                         <span class="form-selectgroup-label"><img src="{{image_url($language->image)}}" alt="{{$language->name}}" width="24" height="24"/></span>
@@ -11,7 +11,7 @@
                 @endforeach
             </div>
         </div>
-        @foreach(\App\Models\Language::orderByLocale()->get() as $key => $language)
+        @foreach($languages as $key => $language)
             <div data-language="{{$language->name}}" class="{{$key <= 0 ? '' : 'd-none'}}">
                 <div class="col-12 mb-3">
                     <label class="form-label fw-bold" for="school[{{$language->name}}]">@lang('admin.school') <sup

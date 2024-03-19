@@ -167,7 +167,9 @@ class HomeController
 
         $services = $this->services->newQuery()->get();
 
+        $languages = $this->languages->newQuery()->orderByLocale()->get();
+
         return view('home.index', compact('skills','experiences','projects', 'education',
-            'sections','personalInfo', 'services', 'testimonials', 'faqs'));
+            'sections','personalInfo', 'services', 'testimonials', 'faqs', 'languages'));
     }
 }
