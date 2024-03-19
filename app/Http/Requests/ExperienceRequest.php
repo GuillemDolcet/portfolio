@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Experience;
 use App\Rules\Language;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -21,7 +22,11 @@ class ExperienceRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return current_user()->hasRole(['admin']);
+        if ($this->experience && $this->experience->exists) {
+            return current_user()->can('update', $this->experience);
+        }
+
+        return current_user()->can('store', Experience::class);
     }
 
     /**

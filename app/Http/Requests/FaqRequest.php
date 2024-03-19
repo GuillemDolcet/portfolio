@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Faq;
 use App\Rules\Language;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -21,7 +22,11 @@ class FaqRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return current_user()->hasRole(['admin']);
+        if ($this->faq && $this->faq->exists) {
+            return current_user()->can('update', $this->faq);
+        }
+
+        return current_user()->can('store', Faq::class);
     }
 
     /**

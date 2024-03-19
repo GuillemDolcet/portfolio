@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Testimonial;
 use App\Rules\Language;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -21,7 +22,11 @@ class TestimonialRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return current_user()->hasRole(['admin']);
+        if ($this->testimonial && $this->testimonial->exists) {
+            return current_user()->can('update', $this->testimonial);
+        }
+
+        return current_user()->can('store', Testimonial::class);
     }
 
     /**

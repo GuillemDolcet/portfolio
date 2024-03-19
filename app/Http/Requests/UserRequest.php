@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rules\Password;
 
@@ -21,7 +22,11 @@ class UserRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return current_user()->hasRole(['admin']);
+        if ($this->user && $this->user->exists) {
+            return current_user()->can('update', $this->user);
+        }
+
+        return current_user()->can('store', User::class);
     }
 
     /**

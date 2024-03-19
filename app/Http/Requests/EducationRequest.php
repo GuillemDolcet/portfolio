@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Education;
 use App\Rules\Language;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -21,7 +22,11 @@ class EducationRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return current_user()->hasRole(['admin']);
+        if ($this->education && $this->education->exists) {
+            return current_user()->can('update', $this->education);
+        }
+
+        return current_user()->can('store', Education::class);
     }
 
     /**

@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Skill;
 use Illuminate\Foundation\Http\FormRequest;
 
 class SkillRequest extends FormRequest
@@ -20,7 +21,11 @@ class SkillRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return current_user()->hasRole(['admin']);
+        if ($this->skill && $this->skill->exists) {
+            return current_user()->can('update', $this->skill);
+        }
+
+        return current_user()->can('store', Skill::class);
     }
 
     /**

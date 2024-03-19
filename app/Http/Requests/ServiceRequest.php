@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Service;
 use App\Rules\Language;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -21,7 +22,11 @@ class ServiceRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return current_user()->hasRole(['admin']);
+        if ($this->service && $this->service->exists) {
+            return current_user()->can('update', $this->service);
+        }
+
+        return current_user()->can('store', Service::class);
     }
 
     /**

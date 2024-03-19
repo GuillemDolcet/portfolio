@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Section;
 use App\Rules\Language;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -21,7 +22,11 @@ class SectionRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return current_user()->hasRole(['admin']);
+        if ($this->section && $this->section->exists) {
+            return current_user()->can('update', $this->section);
+        }
+
+        return current_user()->can('store', Section::class);
     }
 
     /**
