@@ -58,13 +58,19 @@
                     </div>
                     <div class="col-1">
                         <div class="d-flex justify-content-end">
-                            <a href="#"
-                               data-controller="remote-modal"
-                               data-action="remote-modal#toggle"
-                               data-remote-modal-url-value="{{ route('admin.personalInfo.edit', $personalInfo) }}"
-                               data-remote-modal-target-value="#personal-info-form-modal">
-                                <x-icon icon="edit"/>
-                            </a>
+                            @can('edit', $personalInfo)
+                                <a href="#"
+                                   data-controller="remote-modal"
+                                   data-action="remote-modal#toggle"
+                                   data-remote-modal-url-value="{{ route('admin.personalInfo.edit', $personalInfo) }}"
+                                   data-remote-modal-target-value="#personal-info-form-modal">
+                                    @can('update', $personalInfo)
+                                        <x-icon icon="edit"/>
+                                    @else
+                                        <x-icon icon="view"/>
+                                    @endcan
+                                </a>
+                            @endcan
                         </div>
                     </div>
                 </div>

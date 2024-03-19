@@ -1,4 +1,5 @@
 <form id="section-form" action="{{ $section->exists ? route('admin.sections.update', $section) : route('admin.sections.store') }}"
+      @if(($section->exists && !Auth::user()->can('update', $section)) || (!$section->exists && !Auth::user()->can('store', $section))) {{ "data-disabled=true" }} @endif
       method="post" accept-charset="utf-8" data-controller="form" enctype="multipart/form-data">
     @csrf
     @if ($section->exists)
@@ -11,14 +12,19 @@
     </div>
     <div class="modal-footer">
         <div class="d-flex justify-content-between">
-            <a href="#" class="btn btn-link link-secondary" data-bs-dismiss="modal">Cancel</a>
-            <button type="submit" id="send-form" name="action" class="btn btn-primary ms-auto me-2">
-                @if($section->exists)
-                    <x-icon icon="edit"/> @lang('admin.edit') @lang('admin.section')
-                @else
-                    <x-icon icon="plus"/> @lang('admin.add') @lang('admin.section')
-                @endif
-            </button>
+            @if($section->exists)
+                @can('update', $section)
+                    <button type="submit" id="send-form" name="action" class="btn btn-primary ms-auto me-2">
+                        <x-icon icon="edit"/> @lang('admin.edit') @lang('admin.section')
+                    </button>
+                @endcan
+            @else
+                @can('store', $section)
+                    <button type="submit" id="send-form" name="action" class="btn btn-primary ms-auto me-2">
+                        <x-icon icon="plus"/> @lang('admin.add') @lang('admin.section')
+                    </button>
+                @endcan
+            @endif
         </div>
     </div>
 </form>

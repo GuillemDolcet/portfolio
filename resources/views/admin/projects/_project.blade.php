@@ -26,16 +26,20 @@
                         <x-icon icon="view"/>
                     @endcan
                 </a>
+            @else
+                <span class="text-muted"><x-icon icon="view"/></span>
             @endcan
             @can('delete', $project)
                 <form method="post" action="{{ route('admin.projects.destroy', $project) }}" data-controller="form"
                       data-confirm="@lang('admin.confirms.delete-project')">
                     @csrf
                     @method('delete')
-                    <a href="#" class="text-danger" title="@lang('admin.delete')" data-action="form#submit" >
+                    <a href="#" class="text-danger" title="@lang('admin.delete')" data-action="form#submit">
                         <x-icon icon="trash"/>
                     </a>
                 </form>
+            @else
+                <span class="text-muted"><x-icon icon="trash"/></span>
             @endcan
         </div>
     </td>

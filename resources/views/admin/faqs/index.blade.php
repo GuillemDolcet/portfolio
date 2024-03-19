@@ -11,16 +11,18 @@
                             @lang('admin.faqs')
                         </h2>
                     </div>
-                    <div class="btn-list">
-                        <a href="#" class="btn btn-primary d-none d-sm-inline-block"
-                           data-controller="remote-modal"
-                           data-action="remote-modal#toggle"
-                           data-remote-modal-url-value="{{ route('admin.faqs.create') }}"
-                           data-remote-modal-target-value="#faq-form-modal">
-                            <x-icon icon="plus"/>
-                            @lang('admin.add') @lang('admin.faq')
-                        </a>
-                    </div>
+                    @can('create', \App\Models\Faq::class)
+                        <div class="btn-list">
+                            <a href="#" class="btn btn-primary d-none d-sm-inline-block"
+                               data-controller="remote-modal"
+                               data-action="remote-modal#toggle"
+                               data-remote-modal-url-value="{{ route('admin.faqs.create') }}"
+                               data-remote-modal-target-value="#faq-form-modal">
+                                <x-icon icon="plus"/>
+                                @lang('admin.add') @lang('admin.faq')
+                            </a>
+                        </div>
+                    @endcan
                 </div>
             </div>
         </div>

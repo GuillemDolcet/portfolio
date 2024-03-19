@@ -11,16 +11,18 @@
                             @lang('admin.testimonials')
                         </h2>
                     </div>
-                    <div class="btn-list">
-                        <a href="#" class="btn btn-primary d-none d-sm-inline-block"
-                           data-controller="remote-modal"
-                           data-action="remote-modal#toggle"
-                           data-remote-modal-url-value="{{ route('admin.testimonials.create') }}"
-                           data-remote-modal-target-value="#testimonial-form-modal">
-                            <x-icon icon="plus"/>
-                            @lang('admin.add') @lang('admin.testimonial')
-                        </a>
-                    </div>
+                    @can('create', \App\Models\Testimonial::class)
+                        <div class="btn-list">
+                            <a href="#" class="btn btn-primary d-none d-sm-inline-block"
+                               data-controller="remote-modal"
+                               data-action="remote-modal#toggle"
+                               data-remote-modal-url-value="{{ route('admin.testimonials.create') }}"
+                               data-remote-modal-target-value="#testimonial-form-modal">
+                                <x-icon icon="plus"/>
+                                @lang('admin.add') @lang('admin.testimonial')
+                            </a>
+                        </div>
+                    @endcan
                 </div>
             </div>
         </div>
