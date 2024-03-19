@@ -11,14 +11,19 @@
     </div>
     <div class="modal-footer">
         <div class="d-flex justify-content-between">
-            <a href="#" class="btn btn-link link-secondary" data-bs-dismiss="modal">Cancel</a>
-            <button type="submit" id="send-form" name="action" class="btn btn-primary ms-auto me-2">
-                @if($project->exists)
-                    <x-icon icon="edit"/> @lang('admin.edit') @lang('admin.project')
-                @else
-                    <x-icon icon="plus"/> @lang('admin.add') @lang('admin.project')
-                @endif
-            </button>
+            @canany(['update','store'], $project)
+                <button type="submit" id="send-form" name="action" class="btn btn-primary ms-auto me-2">
+                    @if($project->exists)
+                        @can('update', $project)
+                            <x-icon icon="edit"/> @lang('admin.edit') @lang('admin.project')
+                        @endcan
+                    @else
+                        @can('store', \App\Models\Project::class)
+                            <x-icon icon="plus"/> @lang('admin.add') @lang('admin.project')
+                        @endcan
+                    @endif
+                </button>
+            @endcanany
         </div>
     </div>
 </form>

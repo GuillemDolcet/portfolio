@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Project;
 use App\Rules\Language;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -21,7 +22,11 @@ class ProjectRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return current_user()->hasRole(['admin']);
+        if ($this->project && $this->project->exists) {
+            return current_user()->can('update', $this->project);
+        }
+
+        return current_user()->can('store', Project::class);
     }
 
     /**

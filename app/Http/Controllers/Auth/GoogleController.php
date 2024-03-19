@@ -61,6 +61,7 @@ class GoogleController extends Controller
                     : $this->failure(Lang::get('admin.errors.account-suspended'));
             } else {
                 $user = $this->users->create([
+                    'email' => $oauth->getEmail(),
                     'name' => $oauth->getName(),
                     'google_auth_id' => $oauth->getId(),
                     'avatar' => $oauth->getAvatar()

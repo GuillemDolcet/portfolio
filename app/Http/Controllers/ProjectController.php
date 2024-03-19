@@ -9,6 +9,7 @@ use App\Repositories\Projects;
 use App\Repositories\Skills;
 use App\Services\Translator;
 use DeepL\DeepLException;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Console\Application as ConsoleApplication;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Contracts\Support\Renderable;
@@ -91,10 +92,12 @@ class ProjectController extends AdminController
      * Returns the project modal stream view for create.
      *
      * @return RedirectResponse|Response|ResponseFactory
-     * @throws BindingResolutionException
+     * @throws BindingResolutionException|AuthorizationException
      */
     public function create(): RedirectResponse|Response|ResponseFactory
     {
+        $this->authorize('create', Project::class);
+
         if ($this->wantsTurboStream($this->request)) {
             $project = $this->projects->build();
             $skills = $this->skills->newQuery()->orderBy('order')->get();
@@ -103,6 +106,7 @@ class ProjectController extends AdminController
             }
             return $this->renderTurboStream('admin.projects.form.modal_stream', compact('project','skills'));
         }
+
         return redirect()->back();
     }
 
@@ -114,10 +118,12 @@ class ProjectController extends AdminController
      *
      * @param Project $project
      * @return RedirectResponse|Response|ResponseFactory
-     * @throws BindingResolutionException
+     * @throws BindingResolutionException|AuthorizationException
      */
     public function edit(Project $project): RedirectResponse|Response|ResponseFactory
     {
+        $this->authorize('edit', $project);
+
         if ($this->wantsTurboStream($this->request)) {
             $skills = $this->skills->newQuery()->orderBy('order')->get();
             if (($sess = $this->request->session()) && $sess->hasOldInput()) {
@@ -193,10 +199,14 @@ class ProjectController extends AdminController
      *
      * @param Project $project
      * @return Renderable|RedirectResponse
+     * @throws AuthorizationException
      */
     public function destroy(Project $project): Renderable|RedirectResponse
     {
+        $this->authorize('delete', $project);
+
         $this->projects->delete($project);
+
         return redirect()
             ->back()
             ->with([
