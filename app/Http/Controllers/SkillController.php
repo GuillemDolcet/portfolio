@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\SkillStoreRequest;
-use App\Http\Requests\SkillUpdateRequest;
+use App\Http\Requests\SkillRequest;
 use App\Models\Skill;
 use App\Repositories\Languages;
 use App\Repositories\Skills;
@@ -112,10 +111,10 @@ class SkillController extends AdminController
      *
      * Validate skill form and create skill, then redirect to skills index.
      *
-     * @param SkillStoreRequest $request
+     * @param SkillRequest $request
      * @return RedirectResponse
      */
-    public function store(SkillStoreRequest $request): RedirectResponse
+    public function store(SkillRequest $request): RedirectResponse
     {
         if ($this->skills->create($request->validated())) {
             return redirect()
@@ -137,11 +136,11 @@ class SkillController extends AdminController
      *
      * Validate skill form and update skill, then redirect to skills index.
      *
-     * @param SkillUpdateRequest $request
+     * @param SkillRequest $request
      * @param Skill $skill
      * @return RedirectResponse
      */
-    public function update(SkillUpdateRequest $request, Skill $skill): RedirectResponse
+    public function update(SkillRequest $request, Skill $skill): RedirectResponse
     {
         if ($this->skills->update($skill, $request->validated())) {
             return redirect()

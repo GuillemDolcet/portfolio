@@ -2,20 +2,17 @@
 
 namespace App\Http\Requests;
 
-use App\Models\Skill;
-use App\Rules\Ownership;
 use App\Rules\Language;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
-class ProjectUpdateRequest extends FormRequest
+class FaqRequest extends FormRequest
 {
     /**
      * The route to redirect to if validation fails.
      *
      * @var string
      */
-    protected $redirectRoute = 'admin.projects.edit';
+    protected $redirectRoute = 'admin.faqs.create';
 
     /**
      * Determine if the user is authorized to make this request.
@@ -35,8 +32,8 @@ class ProjectUpdateRequest extends FormRequest
     protected function prepareForValidation(): void
     {
         $this->merge([
-            'name' => array_filter($this->get('name')),
-            'description' => array_filter($this->get('description'))
+            'question' => array_filter($this->get('question')),
+            'answer' => array_filter($this->get('answer'))
         ]);
     }
 
@@ -48,15 +45,11 @@ class ProjectUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'array', new Language()],
-            'name.*' => ['required', 'string', 'max:100'],
-            'description' => ['required', 'array', new Language()],
-            'description.*' => ['required', 'string'],
-            'image' =>  ['nullable', 'image', 'max:10000'],
-            'url' =>  ['nullable', 'string', 'max:254'],
-            'skills' => ['nullable', 'array'],
-            'skills.*' => ['required','exists:skills,id'],
-            'order' =>  ['nullable', 'integer']
+            'question' => ['required', 'array', new Language()],
+            'question.*' => ['required', 'string', 'max:100'],
+            'answer' => ['required', 'array', new Language()],
+            'answer.*' => ['required', 'string'],
+            'order' => ['nullable', 'integer', 'max:9999999999']
         ];
     }
 
@@ -67,8 +60,8 @@ class ProjectUpdateRequest extends FormRequest
      */
     protected function getRedirectUrl(): string
     {
-        if ($this->project) {
-            return $this->redirector->getUrlGenerator()->route($this->redirectRoute, $this->project);
+        if ($this->faq && $this->faq->exists) {
+            return $this->redirector->getUrlGenerator()->route('admin.faqs.edit', $this->faq);
         }
 
         return parent::getRedirectUrl();

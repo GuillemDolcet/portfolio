@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\TestimonialStoreRequest;
-use App\Http\Requests\TestimonialUpdateRequest;
+use App\Http\Requests\TestimonialRequest;
 use App\Models\Testimonial;
 use App\Repositories\Languages;
 use App\Repositories\Testimonials;
@@ -127,11 +126,11 @@ class TestimonialController extends AdminController
      *
      * Validate testimonial form and create testimonial, then redirect to testimonials index.
      *
-     * @param TestimonialStoreRequest $request
+     * @param TestimonialRequest $request
      * @return RedirectResponse
      * @throws DeepLException
      */
-    public function store(TestimonialStoreRequest $request): RedirectResponse
+    public function store(TestimonialRequest $request): RedirectResponse
     {
         if ($attributes = $request->validated()) {
             $attributes = $this->translator->translate($attributes, $this->testimonials->build()->getTranslatableAttributes());
@@ -155,12 +154,12 @@ class TestimonialController extends AdminController
      *
      * Validate testimonial form and update testimonial, then redirect to testimonials index.
      *
-     * @param TestimonialUpdateRequest $request
+     * @param TestimonialRequest $request
      * @param Testimonial $testimonial
      * @return RedirectResponse
      * @throws DeepLException
      */
-    public function update(TestimonialUpdateRequest $request, Testimonial $testimonial): RedirectResponse
+    public function update(TestimonialRequest $request, Testimonial $testimonial): RedirectResponse
     {
         if ($attributes = $request->validated()) {
             $attributes = $this->translator->translate($attributes, $this->testimonials->build()->getTranslatableAttributes());

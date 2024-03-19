@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\EducationStoreRequest;
-use App\Http\Requests\EducationUpdateRequest;
+use App\Http\Requests\EducationRequest;
 use App\Models\Education as EducationModel;
 use App\Repositories\Education;
 use App\Repositories\Languages;
@@ -137,11 +136,11 @@ class EducationController extends AdminController
      *
      * Validate education form and create education, then redirect to education index.
      *
-     * @param EducationStoreRequest $request
+     * @param EducationRequest $request
      * @return RedirectResponse
      * @throws DeepLException
      */
-    public function store(EducationStoreRequest $request): RedirectResponse
+    public function store(EducationRequest $request): RedirectResponse
     {
         if ($attributes = $request->validated()) {
             $attributes = $this->translator->translate($attributes, $this->education->build()->getTranslatableAttributes());
@@ -165,12 +164,12 @@ class EducationController extends AdminController
      *
      * Validate education form and update education, then redirect to education index.
      *
-     * @param EducationUpdateRequest $request
+     * @param EducationRequest $request
      * @param EducationModel $education
      * @return RedirectResponse
      * @throws DeepLException
      */
-    public function update(EducationUpdateRequest $request, EducationModel $education): RedirectResponse
+    public function update(EducationRequest $request, EducationModel $education): RedirectResponse
     {
         if ($attributes = $request->validated()) {
             $attributes = $this->translator->translate($attributes, $this->education->build()->getTranslatableAttributes());

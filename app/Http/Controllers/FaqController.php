@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\FaqStoreRequest;
-use App\Http\Requests\FaqUpdateRequest;
+use App\Http\Requests\FaqRequest;
 use App\Models\Faq;
 use App\Repositories\Faqs;
 use App\Repositories\Languages;
@@ -127,11 +126,11 @@ class FaqController extends AdminController
      *
      * Validate faq form and create faq, then redirect to faqs index.
      *
-     * @param FaqStoreRequest $request
+     * @param FaqRequest $request
      * @return RedirectResponse
      * @throws DeepLException
      */
-    public function store(FaqStoreRequest $request): RedirectResponse
+    public function store(FaqRequest $request): RedirectResponse
     {
         if ($attributes = $request->validated()) {
             $attributes = $this->translator->translate($attributes, $this->faqs->build()->getTranslatableAttributes());
@@ -155,12 +154,12 @@ class FaqController extends AdminController
      *
      * Validate faq form and update faq, then redirect to faqs index.
      *
-     * @param FaqUpdateRequest $request
-     * @param Faq $faq
+     * @param FaqRequest $request
+     * @param Faq $faqs
      * @return RedirectResponse
      * @throws DeepLException
      */
-    public function update(FaqUpdateRequest $request, Faq $faq): RedirectResponse
+    public function update(FaqRequest $request, Faq $faq): RedirectResponse
     {
         if ($attributes = $request->validated()) {
             $attributes = $this->translator->translate($attributes, $this->faqs->build()->getTranslatableAttributes());

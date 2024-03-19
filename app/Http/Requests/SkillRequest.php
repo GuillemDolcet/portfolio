@@ -4,14 +4,14 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class SkillUpdateRequest extends FormRequest
+class SkillRequest extends FormRequest
 {
     /**
      * The route to redirect to if validation fails.
      *
      * @var string
      */
-    protected $redirectRoute = 'admin.skills.edit';
+    protected $redirectRoute = 'admin.skills.create';
 
     /**
      * Determine if the user is authorized to make this request.
@@ -30,12 +30,18 @@ class SkillUpdateRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
+        $rules = [
             'name' => ['required', 'max: 50'],
             'level' => ['required', 'integer', 'min:1', 'max:100'],
-            'image' =>  ['nullable', 'image', 'max:10000'],
+            'image' =>  ['required', 'image', 'max:10000'],
             'order' => ['nullable', 'integer', 'max:9999999999']
         ];
+
+        if ($this->skill && $this->skill->exists) {
+            $rules['image'] = ['nullable', 'image', 'max:10000'];
+        }
+
+        return $rules;
     }
 
     /**
@@ -45,8 +51,8 @@ class SkillUpdateRequest extends FormRequest
      */
     protected function getRedirectUrl(): string
     {
-        if ($this->skill) {
-            return $this->redirector->getUrlGenerator()->route($this->redirectRoute, $this->skill);
+        if ($this->skill && $this->skill->exists) {
+            return $this->redirector->getUrlGenerator()->route('admin.skills.edit', $this->skill);
         }
 
         return parent::getRedirectUrl();

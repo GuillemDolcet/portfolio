@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use App\Rules\Language;
 use Illuminate\Foundation\Http\FormRequest;
 
-class ServiceStoreRequest extends FormRequest
+class ServiceRequest extends FormRequest
 {
     /**
      * The route to redirect to if validation fails.
@@ -44,13 +44,33 @@ class ServiceStoreRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
+        $rules = [
             'title' => ['required', 'array', new Language()],
             'title.*' => ['required', 'string', 'max:100'],
             'description' => ['required', 'array', new Language()],
             'description.*' => ['required', 'string'],
-            'image' =>  ['nullable', 'image', 'max:10000'],
+            'image' => ['required', 'image', 'max:10000'],
             'order' => ['nullable', 'integer']
         ];
+
+        if ($this->service && $this->service->exists) {
+            $rules['image'] = ['nullable', 'image', 'max:10000'];
+        }
+
+        return $rules;
+    }
+
+    /**
+     * Get the URL to redirect to on a validation error.
+     *
+     * @return string
+     */
+    protected function getRedirectUrl(): string
+    {
+        if ($this->service && $this->service->exists) {
+            return $this->redirector->getUrlGenerator()->route('admin.services.edit', $this->service);
+        }
+
+        return parent::getRedirectUrl();
     }
 }

@@ -5,14 +5,14 @@ namespace App\Http\Requests;
 use App\Rules\Language;
 use Illuminate\Foundation\Http\FormRequest;
 
-class PersonalInfoUpdateRequest extends FormRequest
+class PersonalInfoRequest extends FormRequest
 {
     /**
      * The route to redirect to if validation fails.
      *
      * @var string
      */
-    protected $redirectRoute = 'admin.personalInfo.edit';
+    protected $redirectRoute = 'admin.personalInfo.create';
 
     /**
      * Determine if the user is authorized to make this request.
@@ -43,20 +43,27 @@ class PersonalInfoUpdateRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
+        $rules = [
             'firstName' => ['required', 'max: 50'],
             'lastName' => ['required', 'max: 200'],
-            'phone' => ['nullable', 'string'],
+            'phone' => ['required', 'string'],
             'email' =>  ['required', 'email'],
             'date_of_birth' => ['nullable', 'date'],
             'linkedin' => ['nullable', 'string'],
             'twitter' => ['nullable', 'string'],
             'github' => ['nullable', 'string'],
-            'image' =>  ['nullable', 'image', 'max:10000'],
-            'cv' =>  ['nullable', 'mimes:pdf', 'max:10000'],
+            'image' =>  ['required', 'image', 'max:10000'],
+            'cv' =>  ['required', 'mimes:pdf', 'max:10000'],
             'location' => ['required', 'array', new Language()],
             'location.*' => ['required', 'string', 'max:100']
         ];
+
+        if ($this->personalInfo && $this->personalInfo->exists){
+            $rules['image'] = ['nullable', 'image', 'max:10000'];
+            $rules['cv'] = ['nullable', 'mimes:pdf', 'max:10000'];
+        }
+
+        return $rules;
     }
 
     /**
@@ -66,8 +73,8 @@ class PersonalInfoUpdateRequest extends FormRequest
      */
     protected function getRedirectUrl(): string
     {
-        if ($this->personalInfo) {
-            return $this->redirector->getUrlGenerator()->route($this->redirectRoute, $this->personalInfo);
+        if ($this->personalInfo && $this->personalInfo->exists) {
+            return $this->redirector->getUrlGenerator()->route('admin.personalInfo.edit', $this->personalInfo);
         }
 
         return parent::getRedirectUrl();

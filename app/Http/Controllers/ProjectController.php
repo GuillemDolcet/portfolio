@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ProjectStoreRequest;
-use App\Http\Requests\ProjectUpdateRequest;
+use App\Http\Requests\ProjectRequest;
 use App\Models\Project;
 use App\Repositories\Languages;
 use App\Repositories\Projects;
@@ -135,11 +134,11 @@ class ProjectController extends AdminController
      *
      * Validate project form and create project, then redirect to projects index.
      *
-     * @param ProjectStoreRequest $request
+     * @param ProjectRequest $request
      * @return RedirectResponse
      * @throws DeepLException
      */
-    public function store(ProjectStoreRequest $request): RedirectResponse
+    public function store(ProjectRequest $request): RedirectResponse
     {
         if ($attributes = $request->validated()) {
             $attributes = $this->translator->translate($attributes, $this->projects->build()->getTranslatableAttributes());
@@ -163,12 +162,12 @@ class ProjectController extends AdminController
      *
      * Validate project form and update project, then redirect to projects index.
      *
-     * @param ProjectUpdateRequest $request
+     * @param ProjectRequest $request
      * @param Project $project
      * @return RedirectResponse
      * @throws DeepLException
      */
-    public function update(ProjectUpdateRequest $request, Project $project): RedirectResponse
+    public function update(ProjectRequest $request, Project $project): RedirectResponse
     {
         if ($attributes = $request->validated()) {
             $attributes = $this->translator->translate($attributes, $this->projects->build()->getTranslatableAttributes());

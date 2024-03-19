@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\SectionStoreRequest;
-use App\Http\Requests\SectionUpdateRequest;
+use App\Http\Requests\SectionRequest;
 use App\Models\Section;
 use App\Repositories\Languages;
 use App\Repositories\Sections;
@@ -123,11 +122,11 @@ class SectionController extends AdminController
      *
      * Validate section form and create project, then redirect to sections index.
      *
-     * @param SectionStoreRequest $request
+     * @param SectionRequest $request
      * @return RedirectResponse
      * @throws DeepLException
      */
-    public function store(SectionStoreRequest $request): RedirectResponse
+    public function store(SectionRequest $request): RedirectResponse
     {
         if ($attributes = $request->validated()) {
             $attributes = $this->translator->translate($attributes, $this->sections->build()->getTranslatableAttributes());
@@ -151,12 +150,12 @@ class SectionController extends AdminController
      *
      * Validate section form and update project, then redirect to sections index.
      *
-     * @param SectionUpdateRequest $request
+     * @param SectionRequest $request
      * @param Section $section
      * @return RedirectResponse
      * @throws DeepLException
      */
-    public function update(SectionUpdateRequest $request, Section $section): RedirectResponse
+    public function update(SectionRequest $request, Section $section): RedirectResponse
     {
         if ($attributes = $request->validated()) {
             $attributes = $this->translator->translate($attributes, $this->sections->build()->getTranslatableAttributes());

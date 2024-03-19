@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UserStoreRequest;
-use App\Http\Requests\UserUpdateRequest;
+use App\Http\Requests\UserRequest;
 use App\Models\User;
 use App\Repositories\Languages;
 use App\Repositories\Users;
@@ -114,10 +113,10 @@ class UserController extends AdminController
      *
      * Validate user form and create user, then redirect to users index.
      *
-     * @param UserStoreRequest $request
+     * @param UserRequest $request
      * @return RedirectResponse
      */
-    public function store(UserStoreRequest $request): RedirectResponse
+    public function store(UserRequest $request): RedirectResponse
     {
         if ($this->users->create($request->validated())) {
             return redirect()
@@ -139,11 +138,11 @@ class UserController extends AdminController
      *
      * Validate user form and update user, then redirect to users index.
      *
-     * @param UserUpdateRequest $request
+     * @param UserRequest $request
      * @param User $user
      * @return RedirectResponse
      */
-    public function update(UserUpdateRequest $request, User $user): RedirectResponse
+    public function update(UserRequest $request, User $user): RedirectResponse
     {
         if ($this->users->update($user, $request->validated())) {
             return redirect()

@@ -2,19 +2,17 @@
 
 namespace App\Http\Requests;
 
-use App\Models\Skill;
-use App\Rules\Ownership;
 use App\Rules\Language;
 use Illuminate\Foundation\Http\FormRequest;
 
-class EducationUpdateRequest extends FormRequest
+class ExperienceRequest extends FormRequest
 {
     /**
      * The route to redirect to if validation fails.
      *
      * @var string
      */
-    protected $redirectRoute = 'admin.education.edit';
+    protected $redirectRoute = 'admin.experiences.create';
 
     /**
      * Determine if the user is authorized to make this request.
@@ -34,9 +32,9 @@ class EducationUpdateRequest extends FormRequest
     protected function prepareForValidation(): void
     {
         $this->merge([
-            'school' => array_filter($this->get('school')),
-            'degree' => array_filter($this->get('degree')),
-            'discipline' => array_filter($this->get('discipline')),
+            'position' => array_filter($this->get('position')),
+            'company' => array_filter($this->get('company')),
+            'location' => array_filter($this->get('location')),
             'description' => array_filter($this->get('description')),
         ]);
     }
@@ -49,16 +47,17 @@ class EducationUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'school' => ['required', 'array', new Language()],
-            'school.*' => ['required', 'string', 'max:100'],
-            'degree' => ['required', 'array', new Language()],
-            'degree.*' => ['required', 'string', 'max:100'],
-            'discipline' => ['required', 'array', new Language()],
-            'discipline.*' => ['required', 'string', 'max:100'],
+            'position' => ['required', 'array', new Language()],
+            'position.*' => ['required', 'string', 'max:100'],
+            'company' => ['required', 'array', new Language()],
+            'company.*' => ['required', 'string', 'max:100'],
+            'location' => ['required', 'array', new Language()],
+            'location.*' => ['required', 'string', 'max:100'],
             'description' => ['required', 'array', new Language()],
             'description.*' => ['required', 'string'],
             'start_date' =>  ['required', 'date'],
-            'finish_date' => ['required', 'date', 'after:start_date'],
+            'finish_date' => ['required_without:currently', 'date', 'after:start_date'],
+            'currently' => ['required_without:finish_date'],
             'skills' => ['nullable', 'array'],
             'skills.*' => ['required','exists:skills,id']
         ];
@@ -71,8 +70,8 @@ class EducationUpdateRequest extends FormRequest
      */
     protected function getRedirectUrl(): string
     {
-        if ($this->education) {
-            return $this->redirector->getUrlGenerator()->route($this->redirectRoute, $this->education);
+        if ($this->experience && $this->experience->exists) {
+            return $this->redirector->getUrlGenerator()->route('admin.experiences.edit', $this->experience);
         }
 
         return parent::getRedirectUrl();

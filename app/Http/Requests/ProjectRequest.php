@@ -2,13 +2,10 @@
 
 namespace App\Http\Requests;
 
-use App\Models\Skill;
-use App\Rules\Ownership;
 use App\Rules\Language;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
-class ProjectStoreRequest extends FormRequest
+class ProjectRequest extends FormRequest
 {
     /**
      * The route to redirect to if validation fails.
@@ -47,7 +44,7 @@ class ProjectStoreRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
+        $rules =  [
             'name' => ['required', 'array', new Language()],
             'name.*' => ['required', 'string', 'max:100'],
             'description' => ['required', 'array', new Language()],
@@ -58,5 +55,25 @@ class ProjectStoreRequest extends FormRequest
             'skills.*' => ['required','exists:skills,id'],
             'order' =>  ['nullable', 'integer']
         ];
+
+        if ($this->project && $this->project->exists) {
+            $rules['image'] = ['nullable', 'image', 'max:10000'];
+        }
+
+        return $rules;
+    }
+
+    /**
+     * Get the URL to redirect to on a validation error.
+     *
+     * @return string
+     */
+    protected function getRedirectUrl(): string
+    {
+        if ($this->project && $this->project->exists) {
+            return $this->redirector->getUrlGenerator()->route('admin.projects.edit', $this->project);
+        }
+
+        return parent::getRedirectUrl();
     }
 }

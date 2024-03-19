@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ServiceStoreRequest;
-use App\Http\Requests\ServiceUpdateRequest;
+use App\Http\Requests\ServiceRequest;
 use App\Models\Service;
 use App\Repositories\Languages;
 use App\Repositories\Services;
@@ -123,11 +122,11 @@ class ServiceController extends AdminController
      *
      * Validate service form and create services
      *
-     * @param ServiceStoreRequest $request
+     * @param ServiceRequest $request
      * @return RedirectResponse
      * @throws DeepLException
      */
-    public function store(ServiceStoreRequest $request): RedirectResponse
+    public function store(ServiceRequest $request): RedirectResponse
     {
         if ($attributes = $request->validated()) {
             $attributes = $this->translator->translate($attributes, $this->services->build()->getTranslatableAttributes());
@@ -151,12 +150,12 @@ class ServiceController extends AdminController
      *
      * Validate service form and update experience, then redirect to services index.
      *
-     * @param ServiceUpdateRequest $request
+     * @param ServiceRequest $request
      * @param Service $service
      * @return RedirectResponse
      * @throws DeepLException
      */
-    public function update(ServiceUpdateRequest $request, Service $service): RedirectResponse
+    public function update(ServiceRequest $request, Service $service): RedirectResponse
     {
         if ($attributes = $request->validated()) {
             $attributes = $this->translator->translate($attributes, $this->services->build()->getTranslatableAttributes());

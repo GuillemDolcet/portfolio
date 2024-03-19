@@ -5,14 +5,14 @@ namespace App\Http\Requests;
 use App\Rules\Language;
 use Illuminate\Foundation\Http\FormRequest;
 
-class ServiceUpdateRequest extends FormRequest
+class SectionRequest extends FormRequest
 {
     /**
      * The route to redirect to if validation fails.
      *
      * @var string
      */
-    protected $redirectRoute = 'admin.services.edit';
+    protected $redirectRoute = 'admin.sections.create';
 
     /**
      * Determine if the user is authorized to make this request.
@@ -32,8 +32,9 @@ class ServiceUpdateRequest extends FormRequest
     protected function prepareForValidation(): void
     {
         $this->merge([
+            'tag' => array_filter($this->get('tag')),
             'title' => array_filter($this->get('title')),
-            'description' => array_filter($this->get('description'))
+            'description' => array_filter($this->get('description')),
         ]);
     }
 
@@ -44,14 +45,21 @@ class ServiceUpdateRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
+        $rules = [
+            'name' => ['required', 'string'],
+            'tag' => ['required', 'array', new Language()],
+            'tag.*' => ['required', 'string', 'max:100'],
             'title' => ['required', 'array', new Language()],
             'title.*' => ['required', 'string', 'max:100'],
-            'description' => ['required', 'array', new Language()],
+            'description' => ['nullable', 'array', new Language()],
             'description.*' => ['required', 'string'],
-            'image' =>  ['required', 'image', 'max:10000'],
-            'order' => ['nullable', 'integer']
         ];
+
+        if ($this->section && $this->section->exists){
+            unset($rules['name']);
+        }
+
+        return $rules;
     }
 
     /**
@@ -61,8 +69,8 @@ class ServiceUpdateRequest extends FormRequest
      */
     protected function getRedirectUrl(): string
     {
-        if ($this->service) {
-            return $this->redirector->getUrlGenerator()->route($this->redirectRoute, $this->service);
+        if ($this->section && $this->section->exists) {
+            return $this->redirector->getUrlGenerator()->route('admin.sections.edit', $this->section);
         }
 
         return parent::getRedirectUrl();

@@ -5,14 +5,14 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rules\Password;
 
-class UserUpdateRequest extends FormRequest
+class UserRequest extends FormRequest
 {
     /**
      * The route to redirect to if validation fails.
      *
      * @var string
      */
-    protected $redirectRoute = 'admin.users.edit';
+    protected $redirectRoute = 'admin.users.create';
 
     /**
      * Determine if the user is authorized to make this request.
@@ -31,20 +31,18 @@ class UserUpdateRequest extends FormRequest
      */
     public function rules(): array
     {
-        $rules = [];
-        if (current_user()->hasRole(['admin'])){
-            $rules['role'] = ['required', 'exists:roles,id'];
-        }
-        return array_merge([
+        $rules = [
             'name' => ['required', 'min: 3', 'max: 50'],
-            'password' =>  ['nullable', 'confirmed', Password::defaults()],
-            'date_of_birth' => ['nullable', 'date'],
-            'phone' => ['nullable', 'string'],
-            'location' => ['nullable', 'string'],
-            'linkedin' => ['nullable', 'string'],
-            'x' => ['nullable', 'string'],
-            'instagram' => ['nullable', 'string']
-        ], $rules);
+            'email' => ['required', 'email', 'unique:users,email'],
+            'password' =>  ['required', 'confirmed', Password::defaults()],
+            'role' => ['required', 'exists:roles,id'],
+        ];
+
+        if ($this->user && $this->user->exists) {
+            $rules['password'] = ['nullable', 'confirmed', Password::defaults()];
+        }
+
+        return $rules;
     }
 
     /**
@@ -54,8 +52,8 @@ class UserUpdateRequest extends FormRequest
      */
     protected function getRedirectUrl(): string
     {
-        if ($this->user) {
-            return $this->redirector->getUrlGenerator()->route($this->redirectRoute, $this->user);
+        if ($this->user && $this->user->exists) {
+            return $this->redirector->getUrlGenerator()->route('admin.users.edit', $this->user);
         }
 
         return parent::getRedirectUrl();

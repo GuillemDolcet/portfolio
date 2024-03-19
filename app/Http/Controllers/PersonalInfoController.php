@@ -2,10 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\PersonalInfoStoreRequest;
-use App\Http\Requests\PersonalInfoUpdateRequest;
-use App\Http\Requests\SectionStoreRequest;
-use App\Http\Requests\SectionUpdateRequest;
+use App\Http\Requests\PersonalInfoRequest;
 use App\Repositories\Languages;
 use App\Repositories\PersonalInfo;
 use App\Services\Translator;
@@ -125,11 +122,11 @@ class PersonalInfoController extends AdminController
      *
      * Validate personalInfo form and create project, then redirect to personalInfo index.
      *
-     * @param PersonalInfoStoreRequest $request
+     * @param PersonalInfoRequest $request
      * @return RedirectResponse
      * @throws DeepLException
      */
-    public function store(PersonalInfoStoreRequest $request): RedirectResponse
+    public function store(PersonalInfoRequest $request): RedirectResponse
     {
         if ($attributes = $request->validated()) {
             $attributes = $this->translator->translate($attributes, $this->personalInfo->build()->getTranslatableAttributes());
@@ -153,12 +150,12 @@ class PersonalInfoController extends AdminController
      *
      * Validate personalInfo form and update project, then redirect to personalInfo index.
      *
-     * @param PersonalInfoUpdateRequest $request
+     * @param PersonalInfoRequest $request
      * @param PersonalInfoModel $personalInfo
      * @return RedirectResponse
      * @throws DeepLException
      */
-    public function update(PersonalInfoUpdateRequest $request, PersonalInfoModel $personalInfo): RedirectResponse
+    public function update(PersonalInfoRequest $request, PersonalInfoModel $personalInfo): RedirectResponse
     {
         if ($attributes = $request->validated()) {
             $attributes = $this->translator->translate($attributes, $this->personalInfo->build()->getTranslatableAttributes());

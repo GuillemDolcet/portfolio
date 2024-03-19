@@ -19,9 +19,9 @@ return new class extends Migration
             $table->string('lastName');
             $table->string('phone');
             $table->string('email');
-            $table->timestamp('date_of_birth')->nullable();
-            $table->string('image')->nullable();
-            $table->json('location')->nullable();
+            $table->timestamp('date_of_birth');
+            $table->string('image');
+            $table->json('location');
             $table->string('linkedin')->nullable();
             $table->string('github')->nullable();
             $table->string('twitter')->nullable();

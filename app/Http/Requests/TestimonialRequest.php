@@ -5,14 +5,14 @@ namespace App\Http\Requests;
 use App\Rules\Language;
 use Illuminate\Foundation\Http\FormRequest;
 
-class FaqUpdateRequest extends FormRequest
+class TestimonialRequest extends FormRequest
 {
     /**
      * The route to redirect to if validation fails.
      *
      * @var string
      */
-    protected $redirectRoute = 'admin.faqs.edit';
+    protected $redirectRoute = 'admin.testimonials.create';
 
     /**
      * Determine if the user is authorized to make this request.
@@ -32,8 +32,8 @@ class FaqUpdateRequest extends FormRequest
     protected function prepareForValidation(): void
     {
         $this->merge([
-            'question' => array_filter($this->get('question')),
-            'answer' => array_filter($this->get('answer'))
+            'job' => array_filter($this->get('job')),
+            'comment' => array_filter($this->get('comment'))
         ]);
     }
 
@@ -45,11 +45,12 @@ class FaqUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'question' => ['required', 'array', new Language()],
-            'question.*' => ['required', 'string', 'max:100'],
-            'answer' => ['required', 'array', new Language()],
-            'answer.*' => ['required', 'string'],
-            'order' => ['nullable', 'integer', 'max:9999999999']
+            'name' => ['required', 'string'],
+            'job' => ['required', 'array', new Language()],
+            'job.*' => ['required', 'string', 'max:100'],
+            'comment' => ['required', 'array', new Language()],
+            'comment.*' => ['required', 'string'],
+            'image' =>  ['nullable', 'image', 'max:10000'],
         ];
     }
 
@@ -60,8 +61,8 @@ class FaqUpdateRequest extends FormRequest
      */
     protected function getRedirectUrl(): string
     {
-        if ($this->faq) {
-            return $this->redirector->getUrlGenerator()->route($this->redirectRoute, $this->faq);
+        if ($this->testimonial && $this->testimonial->exists) {
+            return $this->redirector->getUrlGenerator()->route('admin.testimonials.edit', $this->testimonial);
         }
 
         return parent::getRedirectUrl();
