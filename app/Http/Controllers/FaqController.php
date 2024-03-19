@@ -8,6 +8,7 @@ use App\Repositories\Faqs;
 use App\Repositories\Languages;
 use App\Services\Translator;
 use DeepL\DeepLException;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Console\Application as ConsoleApplication;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Contracts\Support\Renderable;
@@ -83,10 +84,12 @@ class FaqController extends AdminController
      * Returns the faq modal stream view for create.
      *
      * @return RedirectResponse|Response|ResponseFactory
-     * @throws BindingResolutionException
+     * @throws BindingResolutionException|AuthorizationException
      */
     public function create(): RedirectResponse|Response|ResponseFactory
     {
+        $this->authorize('create', Faq::class);
+
         if ($this->wantsTurboStream($this->request)) {
             $faq = $this->faqs->build();
             $languages = $this->languages->newQuery()->orderByLocale()->get();
@@ -106,10 +109,12 @@ class FaqController extends AdminController
      *
      * @param Faq $faq
      * @return RedirectResponse|Response|ResponseFactory
-     * @throws BindingResolutionException
+     * @throws BindingResolutionException|AuthorizationException
      */
     public function edit(Faq $faq): RedirectResponse|Response|ResponseFactory
     {
+        $this->authorize('edit', $faq);
+
         if ($this->wantsTurboStream($this->request)) {
             $languages = $this->languages->newQuery()->orderByLocale()->get();
             if (($sess = $this->request->session()) && $sess->hasOldInput()) {
@@ -155,7 +160,7 @@ class FaqController extends AdminController
      * Validate faq form and update faq, then redirect to faqs index.
      *
      * @param FaqRequest $request
-     * @param Faq $faqs
+     * @param Faq $faq
      * @return RedirectResponse
      * @throws DeepLException
      */
@@ -185,9 +190,12 @@ class FaqController extends AdminController
      *
      * @param Faq $faq
      * @return Renderable|RedirectResponse
+     * @throws AuthorizationException
      */
     public function destroy(Faq $faq): Renderable|RedirectResponse
     {
+        $this->authorize('delete', $faq);
+
         $this->faqs->delete($faq);
         return redirect()
             ->back()

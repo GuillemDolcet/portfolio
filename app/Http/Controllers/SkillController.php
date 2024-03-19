@@ -6,6 +6,7 @@ use App\Http\Requests\SkillRequest;
 use App\Models\Skill;
 use App\Repositories\Languages;
 use App\Repositories\Skills;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Console\Application as ConsoleApplication;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Contracts\Support\Renderable;
@@ -70,10 +71,12 @@ class SkillController extends AdminController
      * Returns the skill modal stream view for create.
      *
      * @return RedirectResponse|Response|ResponseFactory
-     * @throws BindingResolutionException
+     * @throws BindingResolutionException|AuthorizationException
      */
     public function create(): RedirectResponse|Response|ResponseFactory
     {
+        $this->authorize('create', Skill::class);
+
         if ($this->wantsTurboStream($this->request)) {
             $skill = $this->skills->build();
             if (($sess = $this->request->session()) && $sess->hasOldInput()) {
@@ -92,10 +95,12 @@ class SkillController extends AdminController
      *
      * @param Skill $skill
      * @return RedirectResponse|Response|ResponseFactory
-     * @throws BindingResolutionException
+     * @throws BindingResolutionException|AuthorizationException
      */
     public function edit(Skill $skill): RedirectResponse|Response|ResponseFactory
     {
+        $this->authorize('edit', $skill);
+
         if ($this->wantsTurboStream($this->request)) {
             if (($sess = $this->request->session()) && $sess->hasOldInput()) {
                 return $this->renderTurboStream('admin.skills.form.modal_stream', compact('skill'));
@@ -164,9 +169,12 @@ class SkillController extends AdminController
      *
      * @param Skill $skill
      * @return Renderable|RedirectResponse
+     * @throws AuthorizationException
      */
     public function destroy(Skill $skill): Renderable|RedirectResponse
     {
+        $this->authorize('delete', $skill);
+
         $this->skills->delete($skill);
         return redirect()
             ->back()

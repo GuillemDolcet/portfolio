@@ -9,6 +9,7 @@ use App\Repositories\Languages;
 use App\Repositories\Skills;
 use App\Services\Translator;
 use DeepL\DeepLException;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Console\Application as ConsoleApplication;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Contracts\Support\Renderable;
@@ -92,10 +93,12 @@ class ExperienceController extends AdminController
      * Returns the experience modal stream view for create.
      *
      * @return RedirectResponse|Response|ResponseFactory
-     * @throws BindingResolutionException
+     * @throws BindingResolutionException|AuthorizationException
      */
     public function create(): RedirectResponse|Response|ResponseFactory
     {
+        $this->authorize('create', Experience::class);
+
         if ($this->wantsTurboStream($this->request)) {
             $experience = $this->experiences->build();
             $skills = $this->skills->newQuery()->orderBy('order')->get();
@@ -115,10 +118,12 @@ class ExperienceController extends AdminController
      *
      * @param Experience $experience
      * @return RedirectResponse|Response|ResponseFactory
-     * @throws BindingResolutionException
+     * @throws BindingResolutionException|AuthorizationException
      */
     public function edit(Experience $experience): RedirectResponse|Response|ResponseFactory
     {
+        $this->authorize('edit', $experience);
+
         if ($this->wantsTurboStream($this->request)) {
             $skills = $this->skills->newQuery()->orderBy('order')->get();
             if (($sess = $this->request->session()) && $sess->hasOldInput()) {
@@ -194,9 +199,12 @@ class ExperienceController extends AdminController
      *
      * @param Experience $experience
      * @return Renderable|RedirectResponse
+     * @throws AuthorizationException
      */
     public function destroy(Experience $experience): Renderable|RedirectResponse
     {
+        $this->authorize('delete', $experience);
+
         $experience->delete();
         return redirect()
             ->back()

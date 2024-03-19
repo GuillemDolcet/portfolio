@@ -6,6 +6,7 @@ use App\Http\Requests\UserRequest;
 use App\Models\User;
 use App\Repositories\Languages;
 use App\Repositories\Users;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Console\Application as ConsoleApplication;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Contracts\Support\Renderable;
@@ -70,10 +71,12 @@ class UserController extends AdminController
      * Returns the user modal stream view for create.
      *
      * @return RedirectResponse|Response|ResponseFactory
-     * @throws BindingResolutionException
+     * @throws BindingResolutionException|AuthorizationException
      */
     public function create(): RedirectResponse|Response|ResponseFactory
     {
+        $this->authorize('create', User::class);
+
         if ($this->wantsTurboStream($this->request)) {
             $user = $this->users->build();
             $roles = Role::all();
@@ -93,10 +96,12 @@ class UserController extends AdminController
      *
      * @param User $user
      * @return RedirectResponse|Response|ResponseFactory
-     * @throws BindingResolutionException
+     * @throws BindingResolutionException|AuthorizationException
      */
     public function edit(User $user): RedirectResponse|Response|ResponseFactory
     {
+        $this->authorize('edit', $user);
+
         if ($this->wantsTurboStream($this->request)) {
             $roles = Role::all();
             if (($sess = $this->request->session()) && $sess->hasOldInput()) {
@@ -166,9 +171,12 @@ class UserController extends AdminController
      *
      * @param User $user
      * @return Renderable|RedirectResponse
+     * @throws AuthorizationException
      */
     public function destroy(User $user): Renderable|RedirectResponse
     {
+        $this->authorize('delete', $user);
+
         $user->delete();
         return redirect()
             ->back()

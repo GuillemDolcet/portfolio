@@ -8,6 +8,7 @@ use App\Repositories\Languages;
 use App\Repositories\Testimonials;
 use App\Services\Translator;
 use DeepL\DeepLException;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Console\Application as ConsoleApplication;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Contracts\Support\Renderable;
@@ -83,10 +84,12 @@ class TestimonialController extends AdminController
      * Returns the testimonial modal stream view for create.
      *
      * @return RedirectResponse|Response|ResponseFactory
-     * @throws BindingResolutionException
+     * @throws BindingResolutionException|AuthorizationException
      */
     public function create(): RedirectResponse|Response|ResponseFactory
     {
+        $this->authorize('create', Testimonial::class);
+
         if ($this->wantsTurboStream($this->request)) {
             $testimonial = $this->testimonials->build();
             $languages = $this->languages->newQuery()->orderByLocale()->get();
@@ -106,10 +109,12 @@ class TestimonialController extends AdminController
      *
      * @param Testimonial $testimonial
      * @return RedirectResponse|Response|ResponseFactory
-     * @throws BindingResolutionException
+     * @throws BindingResolutionException|AuthorizationException
      */
     public function edit(Testimonial $testimonial): RedirectResponse|Response|ResponseFactory
     {
+        $this->authorize('edit', $testimonial);
+
         if ($this->wantsTurboStream($this->request)) {
             $languages = $this->languages->newQuery()->orderByLocale()->get();
             if (($sess = $this->request->session()) && $sess->hasOldInput()) {
@@ -185,9 +190,12 @@ class TestimonialController extends AdminController
      *
      * @param Testimonial $testimonial
      * @return Renderable|RedirectResponse
+     * @throws AuthorizationException
      */
     public function destroy(Testimonial $testimonial): Renderable|RedirectResponse
     {
+        $this->authorize('delete', $testimonial);
+
         $this->testimonials->delete($testimonial);
         return redirect()
             ->back()

@@ -8,6 +8,7 @@ use App\Repositories\Languages;
 use App\Repositories\Sections;
 use App\Services\Translator;
 use DeepL\DeepLException;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Console\Application as ConsoleApplication;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Contracts\Support\Renderable;
@@ -81,10 +82,12 @@ class SectionController extends AdminController
      * Returns the sections modal stream view for create.
      *
      * @return RedirectResponse|Response|ResponseFactory
-     * @throws BindingResolutionException
+     * @throws BindingResolutionException|AuthorizationException
      */
     public function create(): RedirectResponse|Response|ResponseFactory
     {
+        $this->authorize('create', Section::class);
+
         if ($this->wantsTurboStream($this->request)) {
             $section = $this->sections->build();
             if (($sess = $this->request->session()) && $sess->hasOldInput()) {
@@ -103,10 +106,12 @@ class SectionController extends AdminController
      *
      * @param Section $section
      * @return RedirectResponse|Response|ResponseFactory
-     * @throws BindingResolutionException
+     * @throws BindingResolutionException|AuthorizationException
      */
     public function edit(Section $section): RedirectResponse|Response|ResponseFactory
     {
+        $this->authorize('edit', $section);
+
         if ($this->wantsTurboStream($this->request)) {
             if (($sess = $this->request->session()) && $sess->hasOldInput()) {
                 return $this->renderTurboStream('admin.sections.form.modal_stream', compact('section'));
@@ -181,9 +186,12 @@ class SectionController extends AdminController
      *
      * @param Section $section
      * @return Renderable|RedirectResponse
+     * @throws AuthorizationException
      */
     public function destroy(Section $section): Renderable|RedirectResponse
     {
+        $this->authorize('delete', $section);
+
         $section->delete();
         return redirect()
             ->back()

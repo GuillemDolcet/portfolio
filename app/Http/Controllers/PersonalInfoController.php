@@ -7,6 +7,7 @@ use App\Repositories\Languages;
 use App\Repositories\PersonalInfo;
 use App\Services\Translator;
 use DeepL\DeepLException;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Console\Application as ConsoleApplication;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Contracts\Support\Renderable;
@@ -81,10 +82,12 @@ class PersonalInfoController extends AdminController
      * Returns the personalInfo modal stream view for create.
      *
      * @return RedirectResponse|Response|ResponseFactory
-     * @throws BindingResolutionException
+     * @throws BindingResolutionException|AuthorizationException
      */
     public function create(): RedirectResponse|Response|ResponseFactory
     {
+        $this->authorize('create', PersonalInfoModel::class);
+
         if ($this->wantsTurboStream($this->request)) {
             $personalInfo = $this->personalInfo->build();
             if (($sess = $this->request->session()) && $sess->hasOldInput()) {
@@ -103,10 +106,12 @@ class PersonalInfoController extends AdminController
      *
      * @param PersonalInfoModel $personalInfo
      * @return RedirectResponse|Response|ResponseFactory
-     * @throws BindingResolutionException
+     * @throws BindingResolutionException|AuthorizationException
      */
     public function edit(PersonalInfoModel $personalInfo): RedirectResponse|Response|ResponseFactory
     {
+        $this->authorize('edit', $personalInfo);
+
         if ($this->wantsTurboStream($this->request)) {
             if (($sess = $this->request->session()) && $sess->hasOldInput()) {
                 return $this->renderTurboStream('admin.personalInfo.form.modal_stream', compact('personalInfo'));
@@ -181,9 +186,12 @@ class PersonalInfoController extends AdminController
      *
      * @param PersonalInfoModel $personalInfo
      * @return Renderable|RedirectResponse
+     * @throws AuthorizationException
      */
     public function destroy(PersonalInfoModel $personalInfo): Renderable|RedirectResponse
     {
+        $this->authorize('delete', $personalInfo);
+
         $this->personalInfo->delete($personalInfo);
         return redirect()
             ->back()

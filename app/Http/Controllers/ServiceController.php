@@ -8,6 +8,7 @@ use App\Repositories\Languages;
 use App\Repositories\Services;
 use App\Services\Translator;
 use DeepL\DeepLException;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Console\Application as ConsoleApplication;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Contracts\Support\Renderable;
@@ -81,10 +82,12 @@ class ServiceController extends AdminController
      * Returns the service modal stream view for create.
      *
      * @return RedirectResponse|Response|ResponseFactory
-     * @throws BindingResolutionException
+     * @throws BindingResolutionException|AuthorizationException
      */
     public function create(): RedirectResponse|Response|ResponseFactory
     {
+        $this->authorize('create', Service::class);
+
         if ($this->wantsTurboStream($this->request)) {
             $service = $this->services->build();
             if (($sess = $this->request->session()) && $sess->hasOldInput()) {
@@ -103,10 +106,12 @@ class ServiceController extends AdminController
      *
      * @param Service $service
      * @return RedirectResponse|Response|ResponseFactory
-     * @throws BindingResolutionException
+     * @throws BindingResolutionException|AuthorizationException
      */
     public function edit(Service $service): RedirectResponse|Response|ResponseFactory
     {
+        $this->authorize('edit', $service);
+
         if ($this->wantsTurboStream($this->request)) {
             if (($sess = $this->request->session()) && $sess->hasOldInput()) {
                 return $this->renderTurboStream('admin.services.form.modal_stream', compact('service'));
@@ -181,9 +186,12 @@ class ServiceController extends AdminController
      *
      * @param Service $service
      * @return Renderable|RedirectResponse
+     * @throws AuthorizationException
      */
     public function destroy(Service $service): Renderable|RedirectResponse
     {
+        $this->authorize('delete', $service);
+
         $this->services->delete($service);
 
         return redirect()

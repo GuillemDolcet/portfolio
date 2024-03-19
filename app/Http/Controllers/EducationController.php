@@ -9,6 +9,7 @@ use App\Repositories\Languages;
 use App\Repositories\Skills;
 use App\Services\Translator;
 use DeepL\DeepLException;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Console\Application as ConsoleApplication;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Contracts\Support\Renderable;
@@ -93,10 +94,12 @@ class EducationController extends AdminController
      * Returns the education modal stream view for create.
      *
      * @return RedirectResponse|Response|ResponseFactory
-     * @throws BindingResolutionException
+     * @throws BindingResolutionException|AuthorizationException
      */
     public function create(): RedirectResponse|Response|ResponseFactory
     {
+        $this->authorize('create', Education::class);
+
         if ($this->wantsTurboStream($this->request)) {
             $education = $this->education->build();
             $skills = $this->skills->newQuery()->orderBy('order')->get();
@@ -116,10 +119,12 @@ class EducationController extends AdminController
      *
      * @param EducationModel $education
      * @return RedirectResponse|Response|ResponseFactory
-     * @throws BindingResolutionException
+     * @throws BindingResolutionException|AuthorizationException
      */
     public function edit(EducationModel $education): RedirectResponse|Response|ResponseFactory
     {
+        $this->authorize('edit', $education);
+
         if ($this->wantsTurboStream($this->request)) {
             $skills = $this->skills->newQuery()->orderBy('order')->get();
             if (($sess = $this->request->session()) && $sess->hasOldInput()) {
@@ -195,10 +200,14 @@ class EducationController extends AdminController
      *
      * @param EducationModel $education
      * @return Renderable|RedirectResponse
+     * @throws AuthorizationException
      */
     public function destroy(EducationModel $education): Renderable|RedirectResponse
     {
+        $this->authorize('delete', $education);
+
         $education->delete();
+
         return redirect()
             ->back()
             ->with([
