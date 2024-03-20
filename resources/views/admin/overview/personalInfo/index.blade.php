@@ -48,7 +48,7 @@
                                 <div class="d-flex flex-column text-muted mt-2 ms-4">
                                     <div class="me-2 mb-2">
                                         <a href="{{ route('personalInfo.downloadCv', $personalInfo) }}">
-                                            <x-icon class="me-1" icon="cv"/> Download CV
+                                            <x-icon class="me-1" icon="cv"/> @lang('admin.download_cv')
                                         </a>
                                     </div>
                                 </div>

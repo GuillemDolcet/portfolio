@@ -31,6 +31,8 @@
                 </div>
             @endforeach
         </div>
-        <p class="text-center mt-5 wow fadeInUp"><a href="#" class="btn btn-outline-dark shadow-none rounded-0">@lang('admin.download_cv')</a></p>
+        <p class="text-center mt-5 wow fadeInUp">
+            <a href="{{ route('personalInfo.downloadCv', $personalInfo) }}" class="btn btn-outline-dark shadow-none rounded-0">@lang('admin.download_cv')</a>
+        </p>
     </div>
 </section>

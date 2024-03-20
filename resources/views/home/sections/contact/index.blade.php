@@ -43,20 +43,26 @@
             </div>
             <div class="col-lg-6 ms-auto mt-5 mt-lg-0 wow fadeInUp" data-wow-delay="0.3s">
                 <h2 class="text-10 fw-600 text-center text-lg-start mb-5">@lang('admin.estimate-project')</h2>
-                <form id="contact-form" class="form-border" action="php/mail.php" method="post">
+                <form id="contact-form" class="form-border" action="{{ route('contact', $personalInfo) }}" method="post">
+                    @csrf
                     <div class="row g-4">
                         <div class="col-12">
-                            <label class="form-label" for="name">@lang('admin.contact.name')</label>
-                            <input id="name" name="name" type="text" class="form-control py-1" required >
+                            <label class="form-label" for="name">@lang('admin.contact.name') *</label>
+                            <input id="name" name="name" type="text" class="form-control py-1" maxlength="255" placeholder="{{ $personalInfo->firstName }} {{ $personalInfo->lastName }}" required>
                         </div>
                         <div class="col-12">
-                            <label class="form-label" for="email">@lang('admin.contact.email')</label>
-                            <input id="email" name="email" type="email" class="form-control py-1" required >
+                            <label class="form-label" for="email">@lang('admin.contact.email') *</label>
+                            <input id="email" name="email" type="email" class="form-control py-1" placeholder="{{ $personalInfo->email }}" required>
                         </div>
                         <div class="col-12">
-                            <label class="form-label" for="form-message">@lang('admin.contact.help')</label>
-                            <textarea id="form-message" name="form-message" class="form-control py-1" rows="4" required ></textarea>
+                            <label class="form-label" for="phone">@lang('admin.contact.phone') (@lang('admin.include.prefix'))</label>
+                            <input id="phone" name="phone" type="text" class="form-control py-1" placeholder="{{ $personalInfo->phone }}">
                         </div>
+                        <div class="col-12">
+                            <label class="form-label" for="text">@lang('admin.contact.help') *</label>
+                            <textarea id="text" name="text" class="form-control py-1" rows="4" required></textarea>
+                        </div>
+                        <div class="col-12 text-white d-none" id="response-box"></div>
                         <div class="col-12 text-center text-lg-start">
                             <button id="submit-btn" class="btn btn-dark rounded-0" type="submit">@lang('admin.send') <span class="ms-3"><i class="fas fa-arrow-right"></i></span></button>
                         </div>

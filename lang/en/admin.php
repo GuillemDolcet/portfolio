@@ -36,6 +36,7 @@ return [
     ],
     'contact' => [
         'name' => 'What is Your Name',
+        'phone' => 'Your Phone',
         'email' => 'Your Email Address',
         'help' => 'How can I Help you?'
     ],
@@ -45,6 +46,7 @@ return [
     'currently-project' => 'Working',
     'cv' => 'CV',
     'date_of_birth' => 'Date of birth',
+    'dear' => 'Dear',
     'degree' => 'Degree',
     'delete' => 'Delete',
     'description' => 'Description',
@@ -68,11 +70,15 @@ return [
     'faqs' => 'FAQs',
     'finish_date' => 'Finish date',
     'first_name' => 'First name',
+    'hello' => 'Hello',
     'hire' => 'Hire Me!',
     'hobbies' => 'Hobbies',
     'hobby' => 'Hobby',
     'home' => 'Home',
     'icon' => 'Icon',
+    'include' => [
+        'prefix' => 'Include the phone prefix !!'
+    ],
     'image' => 'Image',
     'job' => 'Job',
     'language' => 'Language',
@@ -173,13 +179,16 @@ return [
         'error-create-faq' => 'Error on create FAQ',
         'success-update-faq' => 'FAQ updated',
         'error-update-faq' => 'Error on update FAQ',
-        'delete-faq' => 'FAQ deleted'
+        'delete-faq' => 'FAQ deleted',
+
+        'success-contact' => 'Thank you for contacting me, I will get in touch with you very soon.'
     ],
     'role' => 'Role',
     'school' => 'School',
     'sections' => 'Sections',
     'section' => 'Section',
     'send' => 'Send',
+    'sends-message' => 'has sent you a message',
     'services' => 'Services',
     'service' => 'Service',
     'show' => [

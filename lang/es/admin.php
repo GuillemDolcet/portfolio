@@ -37,6 +37,7 @@ return [
     'contact' => [
         'name' => '¿Cuál es tu nombre?',
         'email' => '¿Cuál es tu email?',
+        'phone' => '¿Cuál es tu telefono?',
         'help' => '¿En qué puedo ayudarle?'
     ],
     'created' => 'Creado',
@@ -45,6 +46,7 @@ return [
     'currently-project' => 'Trabajando',
     'cv' => 'Currículum',
     'date_of_birth' => 'Cumpleaños',
+    'dear' => 'Estimado',
     'degree' => 'Título',
     'delete' => 'Eliminar',
     'description' => 'Descripción',
@@ -68,12 +70,16 @@ return [
     'faqs' => 'Preguntas frecuentes',
     'finish_date' => 'Fecha de finalización',
     'first_name' => 'Nombre',
+    'hello' => 'Hola',
     'hire' => '¡Contrátame!',
     'hobbies' => 'Hobbies',
     'hobby' => 'Hobby',
     'home' => 'Inicio',
     'image' => 'Imagen',
     'icon' => 'Icono',
+    'include' => [
+        'prefix' => 'Incluye el prefijo del telefono !!'
+    ],
     'job' => 'Trabajo',
     'language' => 'Idioma',
     'languages' => 'Idiomas',
@@ -173,13 +179,16 @@ return [
         'error-create-faq' => 'No se pudo crear la pregunta frecuente',
         'success-update-faq' => 'Pregunta frecuente actualizada',
         'error-update-faq' => 'No se pudo actualizar la pregunta frecuente',
-        'delete-faq' => 'Pregunta frecuente eliminada'
+        'delete-faq' => 'Pregunta frecuente eliminada',
+
+        'success-contact' => 'Gracias por ponerse en contacto , me pondre en contacto con usted muy pronto.'
     ],
     'role' => 'Rol',
     'school' => 'Escuela',
     'sections' => 'Secciones',
     'section' => 'Seccion',
     'send' => 'Enviar',
+    'sends-message' => 'te ha enviado un mensaje',
     'services' => 'Servicios',
     'service' => 'Servicio',
     'show' => [

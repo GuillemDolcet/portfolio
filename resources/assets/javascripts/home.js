@@ -267,6 +267,50 @@ class Category{
             $('html, body').animate({scrollTop:0}, 'slow');
             return false;
         });
+
+        $('#contact-form').on('submit', function (e) {
+            e.preventDefault(); // prevent default form submit
+
+            $.ajax({
+                url: $('#contact-form').attr('action'), // form action url
+                type: 'POST', // form submit method get/post
+                dataType: 'json', // request type html/json/xml
+                data: $('#contact-form').serialize(), // serialize form data
+                beforeSend: function () {
+                    $('#response-box').addClass('d-none');
+                    $('#submit-btn').attr("disabled", "disabled");
+                    var loadingText = '<span role="status" aria-hidden="true" class="spinner-border spinner-border-sm align-self-center me-2"></span>Sending.....'; // change submit button text
+                    if ($('#submit-btn').html() !== loadingText) {
+                        $('#submit-btn').data('original-text', $('#submit-btn').html());
+                        $('#submit-btn').html(loadingText);
+                    }},
+                success: function (data) {
+                    $('#response-box').removeClass('d-none');
+                    $('#response-box').html(data.message).fadeIn("slow");
+                    $('#submit-btn').html($('#submit-btn').data('original-text'));// reset submit button text
+                    $('#submit-btn').removeAttr("disabled", "disabled");
+                    if (data.success) {
+                        $('#contact-form').trigger('reset'); // reset form
+                    }
+                    setTimeout(function () {
+                        $('.alert-dismissible').fadeOut('slow', function(){
+                            $(this).remove();
+                        });
+                        }, 3500);
+                    },
+                error: function (data) {
+                    $('#response-box').removeClass('d-none');
+                    $('#response-box').html(data.responseJSON.message).fadeIn("slow");
+                    $('#submit-btn').html($('#submit-btn').data('original-text'));// reset submit button text
+                    $('#submit-btn').removeAttr("disabled", "disabled");
+                    setTimeout(function () {
+                        $('.alert-dismissible').fadeOut('slow', function(){
+                            $(this).remove();
+                        });
+                    }, 3500);
+                }
+            });
+        });
     }
 }
 

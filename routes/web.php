@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\Auth\SessionsController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\EducationController;
 use App\Http\Controllers\ExperienceController;
 use App\Http\Controllers\FaqController;
@@ -38,6 +39,8 @@ Route::prefix('auth')->group(function () {
     Route::get('google/callback', [GoogleController::class, 'handleGoogleCallback']);
 });
 
+Route::post('/contact/{personalInfo}', [ContactController::class, 'contact'])->name('contact');
+Route::get('/personalInfo/{personalInfo}/downloadCv', [PersonalInfoController::class, 'downloadCv'])->name('personalInfo.downloadCv');
 Route::post('/change-language/{language}', [LanguageController::class, 'changeLanguage'])->name('change-language');
 
 Route::middleware('auth')->group(function () {
@@ -118,5 +121,3 @@ Route::middleware('auth')->group(function () {
         Route::delete('/faqs/{faq}', [FaqController::class, 'destroy'])->name('admin.faqs.destroy');
     });
 });
-
-Route::get('/personalInfo/{personalInfo}/downloadCv', [PersonalInfoController::class, 'downloadCv'])->name('personalInfo.downloadCv');
