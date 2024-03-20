@@ -6,14 +6,12 @@ use App\Concerns\MemoizesAttributes;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\Access\Authorizable;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
-use Spatie\Translatable\HasTranslations;
 
 class User extends Model implements AuthenticatableContract, AuthorizableContract
 {
@@ -24,7 +22,6 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     use MemoizesAttributes;
     use Notifiable;
     use HasRoles;
-    use HasTranslations;
 
     /**
      * The table associated with the model.
@@ -39,8 +36,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      * @var array<int, string>
      */
     protected $fillable = [
-        'name', 'email', 'password', 'date_of_birth', 'phone', 'location', 'linkedin', 'x', 'instagram', 'github',
-        'active', 'avatar'
+        'name', 'email', 'password', 'active', 'avatar'
     ];
 
     /**

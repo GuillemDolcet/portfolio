@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ProjectStoreRequest;
-use App\Http\Requests\ProjectUpdateRequest;
+use App\Http\Requests\ProjectRequest;
 use App\Models\Project;
+use App\Repositories\Languages;
 use App\Repositories\Projects;
 use App\Repositories\Skills;
 use App\Services\Translator;
 use DeepL\DeepLException;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Console\Application as ConsoleApplication;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Contracts\Support\Renderable;
@@ -38,6 +39,13 @@ class ProjectController extends AdminController
     protected Skills $skills;
 
     /**
+     * Languages repository instance.
+     *
+     * @param Languages $languages
+     */
+    protected Languages $languages;
+
+    /**
      * Translator service instance.
      *
      * @param Translator $translator
@@ -49,13 +57,15 @@ class ProjectController extends AdminController
      *
      * @return void
      */
-    public function __construct(Request $request, Projects $projects, Skills $skills, Translator $translator)
+    public function __construct(Request $request, Projects $projects, Skills $skills, Translator $translator, Languages $languages)
     {
         parent::__construct($request);
 
         $this->projects = $projects;
 
         $this->skills = $skills;
+
+        $this->languages = $languages;
 
         $this->translator = $translator;
     }
@@ -70,9 +80,11 @@ class ProjectController extends AdminController
      */
     public function index(): ConsoleApplication|FoundationApplication|View|Factory
     {
-        $projects = $this->projects->listing($this->projects->newQuery()->orderBy('start_date'));
+        $projects = $this->projects->listing($this->projects->newQuery()->orderBy('order'));
 
-        return view('admin.projects.index', compact('projects'));
+        $languages = $this->languages->newQuery()->orderByLocale()->get();
+
+        return view('admin.projects.index', compact('projects', 'languages'));
     }
 
     /**
@@ -82,18 +94,22 @@ class ProjectController extends AdminController
      * Returns the project modal stream view for create.
      *
      * @return RedirectResponse|Response|ResponseFactory
-     * @throws BindingResolutionException
+     * @throws BindingResolutionException|AuthorizationException
      */
     public function create(): RedirectResponse|Response|ResponseFactory
     {
+        $this->authorize('create', Project::class);
+
         if ($this->wantsTurboStream($this->request)) {
             $project = $this->projects->build();
             $skills = $this->skills->newQuery()->orderBy('order')->get();
+            $languages = $this->languages->newQuery()->orderByLocale()->get();
             if (($sess = $this->request->session()) && $sess->hasOldInput()) {
-                return $this->renderTurboStream('admin.projects.form.modal_stream', compact('project','skills'));
+                return $this->renderTurboStream('admin.projects.form.modal_stream', compact('project','skills','languages'));
             }
-            return $this->renderTurboStream('admin.projects.form.modal_stream', compact('project','skills'));
+            return $this->renderTurboStream('admin.projects.form.modal_stream', compact('project','skills','languages'));
         }
+
         return redirect()->back();
     }
 
@@ -105,16 +121,19 @@ class ProjectController extends AdminController
      *
      * @param Project $project
      * @return RedirectResponse|Response|ResponseFactory
-     * @throws BindingResolutionException
+     * @throws BindingResolutionException|AuthorizationException
      */
     public function edit(Project $project): RedirectResponse|Response|ResponseFactory
     {
+        $this->authorize('edit', $project);
+
         if ($this->wantsTurboStream($this->request)) {
             $skills = $this->skills->newQuery()->orderBy('order')->get();
+            $languages = $this->languages->newQuery()->orderByLocale()->get();
             if (($sess = $this->request->session()) && $sess->hasOldInput()) {
-                return $this->renderTurboStream('admin.projects.form.modal_stream', compact('project','skills'));
+                return $this->renderTurboStream('admin.projects.form.modal_stream', compact('project','skills','languages'));
             }
-            return $this->renderTurboStream('admin.projects.form.modal_stream', compact('project','skills'));
+            return $this->renderTurboStream('admin.projects.form.modal_stream', compact('project','skills','languages'));
         }
         return redirect()->back();
     }
@@ -125,11 +144,11 @@ class ProjectController extends AdminController
      *
      * Validate project form and create project, then redirect to projects index.
      *
-     * @param ProjectStoreRequest $request
+     * @param ProjectRequest $request
      * @return RedirectResponse
      * @throws DeepLException
      */
-    public function store(ProjectStoreRequest $request): RedirectResponse
+    public function store(ProjectRequest $request): RedirectResponse
     {
         if ($attributes = $request->validated()) {
             $attributes = $this->translator->translate($attributes, $this->projects->build()->getTranslatableAttributes());
@@ -153,12 +172,12 @@ class ProjectController extends AdminController
      *
      * Validate project form and update project, then redirect to projects index.
      *
-     * @param ProjectUpdateRequest $request
+     * @param ProjectRequest $request
      * @param Project $project
      * @return RedirectResponse
      * @throws DeepLException
      */
-    public function update(ProjectUpdateRequest $request, Project $project): RedirectResponse
+    public function update(ProjectRequest $request, Project $project): RedirectResponse
     {
         if ($attributes = $request->validated()) {
             $attributes = $this->translator->translate($attributes, $this->projects->build()->getTranslatableAttributes());
@@ -184,10 +203,14 @@ class ProjectController extends AdminController
      *
      * @param Project $project
      * @return Renderable|RedirectResponse
+     * @throws AuthorizationException
      */
     public function destroy(Project $project): Renderable|RedirectResponse
     {
+        $this->authorize('delete', $project);
+
         $this->projects->delete($project);
+
         return redirect()
             ->back()
             ->with([

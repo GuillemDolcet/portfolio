@@ -11,16 +11,18 @@
                             @lang('admin.users')
                         </h2>
                     </div>
-                    <div class="btn-list">
-                        <a href="#" class="btn btn-primary d-none d-sm-inline-block"
-                           data-controller="remote-modal"
-                           data-action="remote-modal#toggle"
-                           data-remote-modal-url-value="{{ route('admin.users.create') }}"
-                           data-remote-modal-target-value="#user-form-modal">
-                            <x-icon icon="user-plus"/>
-                            @lang('admin.add') @lang('admin.user')
-                        </a>
-                    </div>
+                    @can('create', \App\Models\User::class)
+                        <div class="btn-list">
+                            <a href="#" class="btn btn-primary d-none d-sm-inline-block"
+                               data-controller="remote-modal"
+                               data-action="remote-modal#toggle"
+                               data-remote-modal-url-value="{{ route('admin.users.create') }}"
+                               data-remote-modal-target-value="#user-form-modal">
+                                <x-icon icon="user-plus"/>
+                                @lang('admin.add') @lang('admin.user')
+                            </a>
+                        </div>
+                    @endcan
                 </div>
             </div>
         </div>

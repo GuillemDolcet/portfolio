@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\EducationStoreRequest;
-use App\Http\Requests\EducationUpdateRequest;
+use App\Http\Requests\EducationRequest;
 use App\Models\Education as EducationModel;
 use App\Repositories\Education;
+use App\Repositories\Languages;
 use App\Repositories\Skills;
 use App\Services\Translator;
 use DeepL\DeepLException;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Console\Application as ConsoleApplication;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Contracts\Support\Renderable;
@@ -38,6 +39,14 @@ class EducationController extends AdminController
     protected Skills $skills;
 
     /**
+     * Languages repository instance.
+     *
+     * @param Languages $languages
+     */
+    protected Languages $languages;
+
+
+    /**
      * Translator service instance.
      *
      * @param Translator $translator
@@ -49,13 +58,16 @@ class EducationController extends AdminController
      *
      * @return void
      */
-    public function __construct(Request $request, Education $education, Skills $skills, Translator $translator)
+    public function __construct(Request $request, Education $education, Skills $skills, Translator $translator,
+                                Languages $languages)
     {
         parent::__construct($request);
 
         $this->education = $education;
 
         $this->skills = $skills;
+
+        $this->languages = $languages;
 
         $this->translator = $translator;
     }
@@ -72,7 +84,9 @@ class EducationController extends AdminController
     {
         $education = $this->education->listing($this->education->newQuery()->orderBy('start_date'));
 
-        return view('admin.education.index', compact('education'));
+        $languages = $this->languages->newQuery()->orderByLocale()->get();
+
+        return view('admin.education.index', compact('education', 'languages'));
     }
 
     /**
@@ -82,17 +96,20 @@ class EducationController extends AdminController
      * Returns the education modal stream view for create.
      *
      * @return RedirectResponse|Response|ResponseFactory
-     * @throws BindingResolutionException
+     * @throws BindingResolutionException|AuthorizationException
      */
     public function create(): RedirectResponse|Response|ResponseFactory
     {
+        $this->authorize('create', Education::class);
+
         if ($this->wantsTurboStream($this->request)) {
             $education = $this->education->build();
             $skills = $this->skills->newQuery()->orderBy('order')->get();
+            $languages = $this->languages->newQuery()->orderByLocale()->get();
             if (($sess = $this->request->session()) && $sess->hasOldInput()) {
-                return $this->renderTurboStream('admin.education.form.modal_stream', compact('education','skills'));
+                return $this->renderTurboStream('admin.education.form.modal_stream', compact('education','skills', 'languages'));
             }
-            return $this->renderTurboStream('admin.education.form.modal_stream', compact('education','skills'));
+            return $this->renderTurboStream('admin.education.form.modal_stream', compact('education','skills', 'languages'));
         }
         return redirect()->back();
     }
@@ -105,31 +122,34 @@ class EducationController extends AdminController
      *
      * @param EducationModel $education
      * @return RedirectResponse|Response|ResponseFactory
-     * @throws BindingResolutionException
+     * @throws BindingResolutionException|AuthorizationException
      */
     public function edit(EducationModel $education): RedirectResponse|Response|ResponseFactory
     {
+        $this->authorize('edit', $education);
+
         if ($this->wantsTurboStream($this->request)) {
             $skills = $this->skills->newQuery()->orderBy('order')->get();
+            $languages = $this->languages->newQuery()->orderByLocale()->get();
             if (($sess = $this->request->session()) && $sess->hasOldInput()) {
-                return $this->renderTurboStream('admin.education.form.modal_stream', compact('education','skills'));
+                return $this->renderTurboStream('admin.education.form.modal_stream', compact('education','skills', 'languages'));
             }
-            return $this->renderTurboStream('admin.education.form.modal_stream', compact('education','skills'));
+            return $this->renderTurboStream('admin.education.form.modal_stream', compact('education','skills', 'languages'));
         }
         return redirect()->back();
     }
 
     /**
-     * [POST] /admin/experiences
-     * admin.experiences.store
+     * [POST] /admin/education
+     * admin.education.store
      *
-     * Validate experience form and create experience, then redirect to experiences index.
+     * Validate education form and create education, then redirect to education index.
      *
-     * @param EducationStoreRequest $request
+     * @param EducationRequest $request
      * @return RedirectResponse
      * @throws DeepLException
      */
-    public function store(EducationStoreRequest $request): RedirectResponse
+    public function store(EducationRequest $request): RedirectResponse
     {
         if ($attributes = $request->validated()) {
             $attributes = $this->translator->translate($attributes, $this->education->build()->getTranslatableAttributes());
@@ -153,12 +173,12 @@ class EducationController extends AdminController
      *
      * Validate education form and update education, then redirect to education index.
      *
-     * @param EducationUpdateRequest $request
+     * @param EducationRequest $request
      * @param EducationModel $education
      * @return RedirectResponse
      * @throws DeepLException
      */
-    public function update(EducationUpdateRequest $request, EducationModel $education): RedirectResponse
+    public function update(EducationRequest $request, EducationModel $education): RedirectResponse
     {
         if ($attributes = $request->validated()) {
             $attributes = $this->translator->translate($attributes, $this->education->build()->getTranslatableAttributes());
@@ -184,10 +204,14 @@ class EducationController extends AdminController
      *
      * @param EducationModel $education
      * @return Renderable|RedirectResponse
+     * @throws AuthorizationException
      */
     public function destroy(EducationModel $education): Renderable|RedirectResponse
     {
+        $this->authorize('delete', $education);
+
         $education->delete();
+
         return redirect()
             ->back()
             ->with([

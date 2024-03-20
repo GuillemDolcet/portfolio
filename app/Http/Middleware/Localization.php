@@ -8,13 +8,14 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Session;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class Localization
 {
     /**
      * Set the default language
      */
-    public function handle($request, Closure $next): Response|RedirectResponse
+    public function handle($request, Closure $next): Response|RedirectResponse|BinaryFileResponse
     {
         if (Session::has('locale')) {
             App::setLocale(Session::get('locale'));

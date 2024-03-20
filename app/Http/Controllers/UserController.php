@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UserStoreRequest;
-use App\Http\Requests\UserUpdateRequest;
+use App\Http\Requests\UserRequest;
 use App\Models\User;
+use App\Repositories\Languages;
 use App\Repositories\Users;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Console\Application as ConsoleApplication;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Contracts\Support\Renderable;
@@ -29,15 +30,24 @@ class UserController extends AdminController
     protected Users $users;
 
     /**
+     * Languages repository instance.
+     *
+     * @param Languages $languages
+     */
+    protected Languages $languages;
+
+    /**
      * Class constructor.
      *
      * @return void
      */
-    public function __construct(Request $request, Users $users)
+    public function __construct(Request $request, Users $users, Languages $languages)
     {
         parent::__construct($request);
 
         $this->users = $users;
+
+        $this->languages = $languages;
     }
 
     /**
@@ -51,7 +61,10 @@ class UserController extends AdminController
     public function index(): ConsoleApplication|FoundationApplication|View|Factory
     {
         $users = $this->users->listing($this->users->newQuery());
-        return view('admin.users.index', compact('users'));
+
+        $languages = $this->languages->newQuery()->orderByLocale()->get();
+
+        return view('admin.users.index', compact('users','languages'));
     }
 
     /**
@@ -61,10 +74,12 @@ class UserController extends AdminController
      * Returns the user modal stream view for create.
      *
      * @return RedirectResponse|Response|ResponseFactory
-     * @throws BindingResolutionException
+     * @throws BindingResolutionException|AuthorizationException
      */
     public function create(): RedirectResponse|Response|ResponseFactory
     {
+        $this->authorize('create', User::class);
+
         if ($this->wantsTurboStream($this->request)) {
             $user = $this->users->build();
             $roles = Role::all();
@@ -84,10 +99,12 @@ class UserController extends AdminController
      *
      * @param User $user
      * @return RedirectResponse|Response|ResponseFactory
-     * @throws BindingResolutionException
+     * @throws BindingResolutionException|AuthorizationException
      */
     public function edit(User $user): RedirectResponse|Response|ResponseFactory
     {
+        $this->authorize('edit', $user);
+
         if ($this->wantsTurboStream($this->request)) {
             $roles = Role::all();
             if (($sess = $this->request->session()) && $sess->hasOldInput()) {
@@ -104,10 +121,10 @@ class UserController extends AdminController
      *
      * Validate user form and create user, then redirect to users index.
      *
-     * @param UserStoreRequest $request
+     * @param UserRequest $request
      * @return RedirectResponse
      */
-    public function store(UserStoreRequest $request): RedirectResponse
+    public function store(UserRequest $request): RedirectResponse
     {
         if ($this->users->create($request->validated())) {
             return redirect()
@@ -129,11 +146,11 @@ class UserController extends AdminController
      *
      * Validate user form and update user, then redirect to users index.
      *
-     * @param UserUpdateRequest $request
+     * @param UserRequest $request
      * @param User $user
      * @return RedirectResponse
      */
-    public function update(UserUpdateRequest $request, User $user): RedirectResponse
+    public function update(UserRequest $request, User $user): RedirectResponse
     {
         if ($this->users->update($user, $request->validated())) {
             return redirect()
@@ -157,9 +174,12 @@ class UserController extends AdminController
      *
      * @param User $user
      * @return Renderable|RedirectResponse
+     * @throws AuthorizationException
      */
     public function destroy(User $user): Renderable|RedirectResponse
     {
+        $this->authorize('delete', $user);
+
         $user->delete();
         return redirect()
             ->back()

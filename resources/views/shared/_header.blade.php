@@ -40,7 +40,7 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow text-end">
                     <div class="p-2 d-flex justify-content-around">
-                        @foreach(\App\Models\Language::orderByLocale()->get() as $language)
+                        @foreach($languages as $language)
                             <form method="post" action="{{ route('change-language',$language) }}" data-controller="form">
                                 @csrf
                                 <label class="form-selectgroup-item">

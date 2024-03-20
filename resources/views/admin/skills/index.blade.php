@@ -11,16 +11,18 @@
                             @lang('admin.skills')
                         </h2>
                     </div>
-                    <div class="btn-list">
-                        <a href="#" class="btn btn-primary d-none d-sm-inline-block"
-                           data-controller="remote-modal"
-                           data-action="remote-modal#toggle"
-                           data-remote-modal-url-value="{{ route('admin.skills.create') }}"
-                           data-remote-modal-target-value="#skill-form-modal">
-                            <x-icon icon="plus"/>
-                            @lang('admin.add') @lang('admin.skill')
-                        </a>
-                    </div>
+                    @can('create', \App\Models\Skill::class)
+                        <div class="btn-list">
+                            <a href="#" class="btn btn-primary d-none d-sm-inline-block"
+                               data-controller="remote-modal"
+                               data-action="remote-modal#toggle"
+                               data-remote-modal-url-value="{{ route('admin.skills.create') }}"
+                               data-remote-modal-target-value="#skill-form-modal">
+                                <x-icon icon="plus"/>
+                                @lang('admin.add') @lang('admin.skill')
+                            </a>
+                        </div>
+                    @endcan
                 </div>
             </div>
         </div>
@@ -39,8 +41,6 @@
                             <th>@lang('admin.name')</th>
                             <th>@lang('admin.level')</th>
                             <th>@lang('admin.order')</th>
-                            <th>@lang('admin.created_at')</th>
-                            <th>@lang('admin.updated_at')</th>
                             <th></th>
                         </tr>
                         </thead>

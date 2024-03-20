@@ -91,7 +91,7 @@ class EducationSeeder extends Seeder
         $education->skills()->attach($this->skills->newQuery()->name('PHP')->first());
         $education->skills()->attach($this->skills->newQuery()->name('Docker')->first());
         $education->skills()->attach($this->skills->newQuery()->name('Html')->first());
-        $education->skills()->attach($this->skills->newQuery()->name('Mysql')->first());
+        $education->skills()->attach($this->skills->newQuery()->name('SQL')->first());
         $education->skills()->attach($this->skills->newQuery()->name('Css')->first());
     }
 }

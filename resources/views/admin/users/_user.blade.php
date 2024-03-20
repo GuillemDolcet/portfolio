@@ -5,13 +5,21 @@
     <td nowrap>{{ ucfirst($user->roles()->first()->name) }}</td>
     <td class="text-end cursor-pointer ali">
         <div class="d-flex text-end justify-content-end">
-            <a href="#" class="me-1" title="@lang('admin.edit')"
-               data-controller="remote-modal"
-               data-action="remote-modal#toggle"
-               data-remote-modal-url-value="{{ route('admin.users.edit', $user) }}"
-               data-remote-modal-target-value="#user-form-modal">
-                <x-icon icon="edit"/>
-            </a>
+            @can('edit', $user)
+                <a href="#" class="me-1" title="@lang('admin.edit')"
+                   data-controller="remote-modal"
+                   data-action="remote-modal#toggle"
+                   data-remote-modal-url-value="{{ route('admin.users.edit', $user) }}"
+                   data-remote-modal-target-value="#user-form-modal">
+                    @can('update', $user)
+                        <x-icon icon="edit"/>
+                    @else
+                        <x-icon icon="view"/>
+                    @endcan
+                </a>
+            @else
+                <span class="text-muted"><x-icon icon="view"/></span>
+            @endcan
             @can('delete', $user)
                 <form method="post" action="{{ route('admin.users.destroy', $user) }}" data-controller="form"
                       data-confirm="@lang('admin.confirms.delete-user')">

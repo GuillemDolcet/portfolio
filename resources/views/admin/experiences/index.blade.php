@@ -11,16 +11,18 @@
                             @lang('admin.experiences')
                         </h2>
                     </div>
-                    <div class="btn-list">
-                        <a href="#" class="btn btn-primary d-none d-sm-inline-block"
-                           data-controller="remote-modal"
-                           data-action="remote-modal#toggle"
-                           data-remote-modal-url-value="{{ route('admin.experiences.create') }}"
-                           data-remote-modal-target-value="#experience-form-modal">
-                            <x-icon icon="plus"/>
-                            @lang('admin.add') @lang('admin.experience')
-                        </a>
-                    </div>
+                    @can('create', \App\Models\Experience::class)
+                        <div class="btn-list">
+                            <a href="#" class="btn btn-primary d-none d-sm-inline-block"
+                               data-controller="remote-modal"
+                               data-action="remote-modal#toggle"
+                               data-remote-modal-url-value="{{ route('admin.experiences.create') }}"
+                               data-remote-modal-target-value="#experience-form-modal">
+                                <x-icon icon="plus"/>
+                                @lang('admin.add') @lang('admin.experience')
+                            </a>
+                        </div>
+                    @endcan
                 </div>
             </div>
         </div>

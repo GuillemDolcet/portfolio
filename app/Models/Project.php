@@ -25,17 +25,7 @@ class Project extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'name', 'description', 'url', 'image', 'start_date', 'finish_date'
-    ];
-
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'start_date' => 'date',
-        'finish_date' => 'date'
+        'name', 'description', 'url', 'image', 'order'
     ];
 
     /**

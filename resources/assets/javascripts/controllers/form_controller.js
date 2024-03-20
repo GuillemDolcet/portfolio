@@ -8,6 +8,12 @@ import { xr } from "../xr";
 export default class extends Controller {
 
     static targets = [ "select2" ];
+
+    connect(){
+        if ($(this.element).data('disabled')){
+            $("select,textarea,input:not([name='language'])").prop("disabled", true);
+        }
+    }
     submit(e) {
         e.preventDefault();
 

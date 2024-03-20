@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ExperienceStoreRequest;
-use App\Http\Requests\ExperienceUpdateRequest;
+use App\Http\Requests\ExperienceRequest;
 use App\Models\Experience;
 use App\Repositories\Experiences;
+use App\Repositories\Languages;
 use App\Repositories\Skills;
 use App\Services\Translator;
 use DeepL\DeepLException;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Console\Application as ConsoleApplication;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Contracts\Support\Renderable;
@@ -45,11 +46,19 @@ class ExperienceController extends AdminController
     protected Translator $translator;
 
     /**
+     * Languages repository instance.
+     *
+     * @param Languages $languages
+     */
+    protected Languages $languages;
+
+    /**
      * Class constructor.
      *
      * @return void
      */
-    public function __construct(Request $request, Experiences $experiences, Skills $skills, Translator $translator)
+    public function __construct(Request $request, Experiences $experiences, Skills $skills, Translator $translator,
+                                Languages $languages)
     {
         parent::__construct($request);
 
@@ -58,6 +67,8 @@ class ExperienceController extends AdminController
         $this->skills = $skills;
 
         $this->translator = $translator;
+
+        $this->languages = $languages;
     }
 
     /**
@@ -72,7 +83,9 @@ class ExperienceController extends AdminController
     {
         $experiences = $this->experiences->listing($this->experiences->newQuery()->orderBy('start_date'));
 
-        return view('admin.experiences.index', compact('experiences'));
+        $languages = $this->languages->newQuery()->orderByLocale()->get();
+
+        return view('admin.experiences.index', compact('experiences', 'languages'));
     }
 
     /**
@@ -82,17 +95,20 @@ class ExperienceController extends AdminController
      * Returns the experience modal stream view for create.
      *
      * @return RedirectResponse|Response|ResponseFactory
-     * @throws BindingResolutionException
+     * @throws BindingResolutionException|AuthorizationException
      */
     public function create(): RedirectResponse|Response|ResponseFactory
     {
+        $this->authorize('create', Experience::class);
+        $languages = $this->languages->newQuery()->orderByLocale()->get();
+
         if ($this->wantsTurboStream($this->request)) {
             $experience = $this->experiences->build();
             $skills = $this->skills->newQuery()->orderBy('order')->get();
             if (($sess = $this->request->session()) && $sess->hasOldInput()) {
-                return $this->renderTurboStream('admin.experiences.form.modal_stream', compact('experience','skills'));
+                return $this->renderTurboStream('admin.experiences.form.modal_stream', compact('experience','skills','languages'));
             }
-            return $this->renderTurboStream('admin.experiences.form.modal_stream', compact('experience','skills'));
+            return $this->renderTurboStream('admin.experiences.form.modal_stream', compact('experience','skills','languages'));
         }
         return redirect()->back();
     }
@@ -105,16 +121,19 @@ class ExperienceController extends AdminController
      *
      * @param Experience $experience
      * @return RedirectResponse|Response|ResponseFactory
-     * @throws BindingResolutionException
+     * @throws BindingResolutionException|AuthorizationException
      */
     public function edit(Experience $experience): RedirectResponse|Response|ResponseFactory
     {
+        $this->authorize('edit', $experience);
+
         if ($this->wantsTurboStream($this->request)) {
             $skills = $this->skills->newQuery()->orderBy('order')->get();
+            $languages = $this->languages->newQuery()->orderByLocale()->get();
             if (($sess = $this->request->session()) && $sess->hasOldInput()) {
-                return $this->renderTurboStream('admin.experiences.form.modal_stream', compact('experience','skills'));
+                return $this->renderTurboStream('admin.experiences.form.modal_stream', compact('experience','skills','languages'));
             }
-            return $this->renderTurboStream('admin.experiences.form.modal_stream', compact('experience','skills'));
+            return $this->renderTurboStream('admin.experiences.form.modal_stream', compact('experience','skills','languages'));
         }
         return redirect()->back();
     }
@@ -125,11 +144,11 @@ class ExperienceController extends AdminController
      *
      * Validate experience form and create experience, then redirect to experiences index.
      *
-     * @param ExperienceStoreRequest $request
+     * @param ExperienceRequest $request
      * @return RedirectResponse
      * @throws DeepLException
      */
-    public function store(ExperienceStoreRequest $request): RedirectResponse
+    public function store(ExperienceRequest $request): RedirectResponse
     {
         if ($attributes = $request->validated()) {
             $attributes = $this->translator->translate($attributes, $this->experiences->build()->getTranslatableAttributes());
@@ -153,12 +172,12 @@ class ExperienceController extends AdminController
      *
      * Validate experience form and update experience, then redirect to experiences index.
      *
-     * @param ExperienceUpdateRequest $request
+     * @param ExperienceRequest $request
      * @param Experience $experience
      * @return RedirectResponse
      * @throws DeepLException
      */
-    public function update(ExperienceUpdateRequest $request, Experience $experience): RedirectResponse
+    public function update(ExperienceRequest $request, Experience $experience): RedirectResponse
     {
         if ($attributes = $request->validated()) {
             $attributes = $this->translator->translate($attributes, $this->experiences->build()->getTranslatableAttributes());
@@ -184,9 +203,12 @@ class ExperienceController extends AdminController
      *
      * @param Experience $experience
      * @return Renderable|RedirectResponse
+     * @throws AuthorizationException
      */
     public function destroy(Experience $experience): Renderable|RedirectResponse
     {
+        $this->authorize('delete', $experience);
+
         $experience->delete();
         return redirect()
             ->back()
