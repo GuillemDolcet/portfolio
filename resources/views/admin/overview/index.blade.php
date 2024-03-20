@@ -2,10 +2,10 @@
 
 @section('content')
 
-    @include('admin.overview.users.index')
-
     <div class="container-lg">
         <div class="d-flex flex-column">
+
+            @include('admin.overview.personalInfo.index')
 
             @include('admin.overview.sections.index')
 

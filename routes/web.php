@@ -118,3 +118,5 @@ Route::middleware('auth')->group(function () {
         Route::delete('/faqs/{faq}', [FaqController::class, 'destroy'])->name('admin.faqs.destroy');
     });
 });
+
+Route::get('/personalInfo/{personalInfo}/downloadCv', [PersonalInfoController::class, 'downloadCv'])->name('personalInfo.downloadCv');

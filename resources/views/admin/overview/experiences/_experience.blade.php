@@ -4,9 +4,8 @@
         <div>{{$experience->company}}</div>
         <div class="text-muted">{{ ucfirst($experience->start_date->translatedFormat('F Y')) }} - {{ !is_null($experience->finish_date) ? ucfirst($experience->finish_date->translatedFormat('F Y')) : Lang::get('admin.currently') }}</div>
         <div class="mt-3">
-            @lang('admin.skills'):
             @foreach($experience->skills as $skill)
-                <img class="ms-3" src="{{\Storage::url($skill->image)}}" alt="{{$skill->name}}" height="30">
+                <img class="me-3" src="{{\Storage::url($skill->image)}}" alt="{{$skill->name}}" height="30">
             @endforeach
         </div>
     </div>

@@ -6,6 +6,7 @@ use App\Http\Requests\PersonalInfoRequest;
 use App\Repositories\Languages;
 use App\Repositories\PersonalInfo;
 use App\Services\Translator;
+use App\Support\Storage;
 use DeepL\DeepLException;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\Console\Application as ConsoleApplication;
@@ -20,6 +21,7 @@ use Illuminate\Http\Response;
 use Illuminate\Routing\ResponseFactory;
 use Illuminate\Support\Facades\Lang;
 use App\Models\PersonalInfo as PersonalInfoModel;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class PersonalInfoController extends AdminController
 {
@@ -205,5 +207,21 @@ class PersonalInfoController extends AdminController
                     'message' => Lang::get('admin.responses.delete-personal-info')
                 ]
             ]);
+    }
+
+    /**
+     * [GET] /personalInfo/{personalInfo}/downloadCv
+     * personalInfo.downloadCv
+     *
+     * Download CV
+     *
+     * @param PersonalInfoModel $personalInfo
+     * @return BinaryFileResponse
+     */
+    public function downloadCv(PersonalInfoModel $personalInfo): BinaryFileResponse
+    {
+        return response()->download(public_path(Storage::url($personalInfo->cv)), 'cv.pdf', [
+            'Content-Type' => 'application/pdf'
+        ]);
     }
 }

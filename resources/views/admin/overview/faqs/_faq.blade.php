@@ -1,9 +1,9 @@
 <div class="d-flex align-items-center justify-content-between p-3 border-end border-bottom">
-    <div class="d-flex flex-column col-6">
+    <div class="d-flex flex-column col-11">
         <div class="mb-2"><b>{{ $faq->question }}</b></div>
-        <div class="mb-2">{{ $faq->answer }}</div>
+        <div class="mb-2">{{ Str::limit($faq->answer, 250, ' ...') }}</div>
     </div>
-    <div class="col-3 d-flex text-end justify-content-end">
+    <div class="col-1 d-flex text-end justify-content-end">
         @can('edit', $faq)
             <a href="#" class="me-1" title="@lang('admin.faq')"
                data-controller="remote-modal"
