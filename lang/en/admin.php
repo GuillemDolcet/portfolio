@@ -204,5 +204,6 @@ return [
     'url' => 'Url',
     'user' => 'User',
     'users' => 'Users',
-    'with' => 'with'
+    'with' => 'with',
+    'years-of' => 'Years of'
 ];

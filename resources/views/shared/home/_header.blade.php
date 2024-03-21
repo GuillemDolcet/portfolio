@@ -1,5 +1,5 @@
 <header id="header" class="sticky-top-slide">
-    <nav class="primary-menu navbar navbar-expand-lg overlay navbar-overlay-dark nav-bar-text-uppercase navbar-line-under-text fw-600">
+    <nav class="primary-menu navbar navbar-expand-lg overlay navbar-overlay-dark bg-transparent nav-bar-text-uppercase navbar-line-under-text border-bottom-0 text-black fw-600">
         <div class="container position-relative">
             <div class="col-auto col-lg-1 d-inline-flex ps-lg-0">
                 <a class="logo" title="{{ config('app.name') }}">

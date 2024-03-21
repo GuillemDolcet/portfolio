@@ -11,8 +11,12 @@
             </div>
             <div class="col-lg-4 mt-4 mt-lg-0 wow fadeInUp" data-wow-delay="0.2s">
                 <div class="featured-box style-4">
-                    <div class="featured-box-icon text-25 fw-500 bg-primary text-dark rounded-circle"><span class="wow heartBeat" data-wow-delay="1.3s">22</span></div>
-                    <h3 class="text-7 wow rubberBand" data-wow-delay="2s">Years of <span class="fw-700">Experiance</span></h3>
+                    <div class="featured-box-icon text-25 fw-500 bg-primary text-black rounded-circle">
+                        <span class="wow heartBeat" data-wow-delay="1.3s">
+                            {{ round(\Carbon\Carbon::now()->diffInMonths($experiences->sortBy('start_date')->first()->start_date) / 12) }}
+                        </span>
+                    </div>
+                    <h3 class="text-7 wow rubberBand" data-wow-delay="2s">@lang('admin.years-of') <span class="fw-700">@lang('admin.experience')</span></h3>
                 </div>
             </div>
         </div>
