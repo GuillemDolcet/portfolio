@@ -153,11 +153,11 @@ class HomeController
 
         $skills = $this->skills->newQuery()->orderBy('order')->get();
 
-        $experiences = $this->experiences->newQuery()->orderBy('start_date')->get();
+        $experiences = $this->experiences->newQuery()->orderBy('start_date', 'DESC')->get();
 
         $projects = $this->projects->newQuery()->orderBy('order')->get();
 
-        $education = $this->education->newQuery()->orderBy('start_date')->get();
+        $education = $this->education->newQuery()->orderBy('start_date', 'DESC')->get();
 
         $personalInfo = $this->personalInfo->newQuery()->first();
 

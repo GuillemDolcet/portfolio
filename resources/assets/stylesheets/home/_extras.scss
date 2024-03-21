@@ -294,7 +294,7 @@ a.bg-primary:focus, a.bg-primary:hover, button.bg-primary:focus, button.bg-prima
 .btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active{
   background-color: $primary-color-hover;
   border-color: $primary-color-hover;
-  
+
 }
 
 .btn-primary.focus, .btn-primary:focus{
@@ -441,7 +441,7 @@ a.bg-primary:focus, a.bg-primary:hover, button.bg-primary:focus, button.bg-prima
 	  &.violet {
         background: #ff91fb;
       }
-      
+
       &.active {
         transform: scale(0.7);
 		cursor:default;
@@ -468,3 +468,125 @@ input:-internal-autofill-selected {
 
 #styles-switcher.right{left:auto; right: -202px;}
 #styles-switcher.right .switcher-toggle{right: auto; left: -40px; border-radius: 4px 0px 0px 4px;}
+
+.portfolio-box {
+    transition: all 0.2s ease;
+}
+
+.portfolio-box .portfolio-box-img {
+    height: 115px;
+}
+
+.portfolio-box .portfolio-box-img img {
+    transition: all 0.5s ease;
+}
+
+.portfolio-box .portfolio-box-img .overlay-work {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    transition: all 0.5s ease;
+    background-color: rgba(60, 72, 88, 0.65);
+}
+
+.portfolio-box .portfolio-box-img .overlay-work .work-content {
+    position: absolute;
+    bottom: 50%;
+    transform: translateY(50%);
+    right: 0;
+    left: 0;
+}
+
+.portfolio-box .portfolio-box-img .overlay-work .work-content .work-icon {
+    height: 45px;
+    width: 45px;
+    line-height: 43px;
+    transform: translateY(40px);
+    transition: all 0.5s ease;
+}
+
+.portfolio-box .portfolio-box-img .overlay-work .work-content .work-icon .image-icon {
+    stroke-width: 2 !important;
+}
+
+.portfolio-box .portfolio-box-img .overlay-work .work-content .work-icon:hover {
+    color: #e54b4b !important;
+}
+
+.portfolio-box .portfolio-box-img .overlay-work .work-content a:hover {
+    background: #ffffff !important;
+}
+
+.portfolio-box .gallary-title {
+    background: white;
+}
+
+.portfolio-box .gallary-title .title {
+    transition: all 0.5s ease;
+    font-weight: 500;
+}
+
+.portfolio-box .gallary-title .title:hover {
+    color: #e54b4b !important;
+}
+
+.portfolio-box:hover {
+    box-shadow: 0 10px 25px rgba(60, 72, 88, 0.15) !important;
+    transform: translateY(-5px);
+}
+
+.portfolio-box:hover .portfolio-box-img img {
+    transform: rotate(2deg) scale(1.15);
+    opacity: 0.5;
+}
+
+.portfolio-box:hover .portfolio-box-img .overlay-work {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.portfolio-box:hover .portfolio-box-img .overlay-work .work-content .work-icon {
+    transform: translateY(0px);
+}
+
+
+.text-justify {
+    text-align: justify;
+}
+
+.overlay {
+    .navbar-toggler{
+        z-index: 1001;
+    }
+    .navbar-collapse {
+        &.show,&.collapsing{
+            font-size: 21px;
+            position: fixed;
+            display: block;
+            left: 0;
+            top: 0;
+            width: 100%;
+            pointer-events: auto;
+            height: 100% !important;
+            visibility: visible;
+            ul {
+                min-width: 400px;
+                max-height: 80vh;
+                li {
+                    display: flex;
+                    justify-content: center;
+                    text-align: center;
+                    max-width: 400px;
+                    border: 0 none;
+                }
+            }
+        }
+    }
+}
+
+.overlay ul.navbar-nav li:hover>a:not(.btn),.overlay ul.navbar-nav li>a.active:not(.btn) {
+    color: #0b6623
+}

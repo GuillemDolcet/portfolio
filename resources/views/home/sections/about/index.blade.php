@@ -11,23 +11,23 @@
             </div>
             <div class="col-lg-4 mt-4 mt-lg-0 wow fadeInUp" data-wow-delay="0.2s">
                 <div class="featured-box style-4">
-                    <div class="featured-box-icon text-25 fw-500 bg-primary text-black rounded-circle">
+                    <div class="text-25 fw-500 text-black">
                         <span class="wow heartBeat" data-wow-delay="1.3s">
                             {{ round(\Carbon\Carbon::now()->diffInMonths($experiences->sortBy('start_date')->first()->start_date) / 12) }}
                         </span>
                     </div>
-                    <h3 class="text-7 wow rubberBand" data-wow-delay="2s">@lang('admin.years-of') <span class="fw-700">@lang('admin.experience')</span></h3>
+                    <h3>@lang('admin.years-of') <span class="fw-700">@lang('admin.experience')</span></h3>
                 </div>
             </div>
         </div>
         <div class="row gy-3 mt-4">
             <div class="col-4 wow fadeInUp" data-wow-delay="0.2s">
                 <p class="text-muted fw-500 mb-0">@lang('admin.email')</p>
-                <p class="text-4 fw-600 mb-0"><a class="link-dark" href="">{{ $personalInfo->email }}</a></p>
+                <p class="text-4 fw-600 mb-0"><a class="link-dark" href="mailto:{{ $personalInfo->email }}">{{ $personalInfo->email }}</a></p>
             </div>
             <div class="col-3 wow fadeInUp" data-wow-delay="0.2s">
                 <p class="text-muted fw-500 mb-0">@lang('admin.phone')</p>
-                <p class="text-4 fw-600 mb-0"><a class="link-dark" href="">{{ $personalInfo->phone }}</a></p>
+                <p class="text-4 fw-600 mb-0">{{ $personalInfo->phone }}</p>
             </div>
             <div class="col-5 wow fadeInUp" data-wow-delay="0.4s">
                 <p class="text-muted fw-500 mb-0">@lang('admin.location')</p>
