@@ -40,8 +40,8 @@ class PersonalInfoSeeder extends Seeder
             'date_of_birth' => Carbon::parse('18-09-2001'),
             'phone' => '+34 634 490 171',
             'location' => [
-                'en' => 'Os de Balaguer, Cataluña, Spain',
-                'es' => 'Os de Balaguer, Cataluña, España',
+                'en' => 'Lleida, Cataluña, Spain',
+                'es' => 'Lleida, Cataluña, España',
             ],
             'linkedin' => 'guillem-dolcet',
             'github' => 'GuillemDolcet',

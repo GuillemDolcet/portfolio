@@ -19,6 +19,7 @@ return new class extends Migration
             $table->json('tag');
             $table->json('title');
             $table->json('description')->nullable();
+            $table->boolean('show_header')->default(true);
         });
     }
 

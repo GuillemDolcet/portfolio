@@ -3,16 +3,16 @@
         <div class="row gy-5">
             <div class="col-lg-8 order-1 order-lg-0 wow fadeInUp">
                 <!-- Heading -->
-                <p class="text-center text-lg-start mb-2"><span class="bg-primary text-dark px-2">{{ $section->tag }}</span></p>
+                <p class="text-center text-lg-start mb-2"><span class="bg-primary text-black px-2">{{ $section->tag }}</span></p>
                 <h2 class="text-10 fw-600 text-center text-lg-start mb-5 text-justify">{{ $section->title }}</h2>
                 <!-- Heading end-->
                 <div class="accordion accordion-flush" id="faqTopics">
                     @foreach($faqs as $key => $faq)
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="flush-heading-{{ $key }}">
-                                <button class="accordion-button {{ $key != 0 ? 'collapsed' : '' }} text-justify" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse-{{ $key }}" aria-expanded="{{ $key == 0 ? 'true' : 'false' }}" aria-controls="flush-collapse-{{ $key }}">{{ $faq->question }}</button>
+                                <button class="accordion-button collapsed text-justify" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse-{{ $key }}" aria-expanded="false" aria-controls="flush-collapse-{{ $key }}">{{ $faq->question }}</button>
                             </h2>
-                            <div id="flush-collapse-{{ $key }}" class="accordion-collapse collapse {{ $key == 0 ? 'show' : '' }} text-justify" aria-labelledby="flush-heading-{{ $key }}" data-bs-parent="#faqTopics">
+                            <div id="flush-collapse-{{ $key }}" class="accordion-collapse collapse text-justify" aria-labelledby="flush-heading-{{ $key }}" data-bs-parent="#faqTopics">
                                 <div class="accordion-body">{{ $faq->answer }}</div>
                             </div>
                         </div>

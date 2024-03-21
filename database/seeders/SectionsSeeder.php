@@ -46,7 +46,8 @@ class SectionsSeeder extends Seeder
             'description' => [
                 'es' => "<h2 class='text-8 fw-400 mb-3'>Hola, soy <span class='fw-700 border-bottom border-3 border-primary '>Guillem Dolcet</span></h2><p class='text-5 text-justify'>Soy un diseñador y desarrollador apasionado por el diseño web. Disfruto desarrollando sitios web sencillos, limpios y elegantes que aporten un valor real al usuario final. Miles de clientes han conseguido resultados excepcionales trabajando conmigo. Entregar el trabajo a tiempo y dentro del presupuesto que cumpla con los requisitos del cliente es nuestra moto.</p>",
                 'en' => "<h2 class='text-8 fw-400 mb-3'>Hi, I'm <span class='fw-700 border-bottom border-3 border-primary'>Guillem Dolcet</span></h2><p class='text-5 text-justify'>I'm a designer & developer with a passion for web design. I enjoy developing simple, clean and slick websites that provide real value to the end user. Thousands of clients have procured exceptional results while working with me. Delivering work within time and budget which meets client’s requirements is our moto.</p>"
-            ]
+            ],
+            'show_header' => true
         ]);
 
         $this->sections->create([
@@ -58,19 +59,21 @@ class SectionsSeeder extends Seeder
             'title' => [
                 'es' => 'Cómo puedo ayudarle en su próximo proyecto',
                 'en' => 'How I can help your next project'
-            ]
+            ],
+            'show_header' => true
         ]);
 
         $this->sections->create([
             'name' => 'resume',
             'tag' => [
-                'es' => 'Resume',
-                'en' => 'Currículum'
+                'es' => 'Currículum',
+                'en' => 'Resume'
             ],
             'title' => [
                 'es' => 'Resumen de mi currículum',
                 'en' => 'A summary of My Resume'
-            ]
+            ],
+            'show_header' => true
         ]);
 
         $this->sections->create([
@@ -82,7 +85,8 @@ class SectionsSeeder extends Seeder
             'title' => [
                 'es' => '¿Le interesa trabajar conmigo?',
                 'en' => 'Interested in working with me?'
-            ]
+            ],
+            'show_header' => false
         ]);
 
 
@@ -95,7 +99,8 @@ class SectionsSeeder extends Seeder
             'title' => [
                 'es' => 'Algunos de mis proyectos más recientes',
                 'en' => 'Some of my most recent projects'
-            ]
+            ],
+            'show_header' => true
         ]);
 
         $this->sections->create([
@@ -107,14 +112,15 @@ class SectionsSeeder extends Seeder
             'title' => [
                 'es' => 'Preguntas frecuentes',
                 'en' => 'Have any questions?'
-            ]
+            ],
+            'show_header' => true
         ]);
 
         $this->sections->create([
             'name' => 'contact',
             'tag' => [
                 'es' => 'Contáctame',
-                'en' => 'Contacty'
+                'en' => 'Contact'
             ],
             'title' => [
                 'es' => 'Pongámonos en contacto',
@@ -123,7 +129,8 @@ class SectionsSeeder extends Seeder
             'description' => [
                 'es' => "Me encanta hablar de nuevos proyectos y retos de diseño. Por favor, comparte toda la información posible para que podamos sacar el máximo partido de nuestra primera puesta al día.",
                 'en' => "I enjoy discussing new projects and design challenges. Please share as much info, as possible so we can get the most out of our first catch-up."
-            ]
+            ],
+            'show_header' => true
         ]);
     }
 }
