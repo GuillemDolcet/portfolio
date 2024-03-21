@@ -590,3 +590,13 @@ input:-internal-autofill-selected {
 .overlay ul.navbar-nav li:hover>a:not(.btn),.overlay ul.navbar-nav li>a.active:not(.btn) {
     color: #0b6623
 }
+
+#flush-languages {
+    &.show,&.collapsing{
+        position: absolute;
+        background: white;
+        padding: 4px;
+        display: flex;
+        flex-direction: column;
+    }
+}

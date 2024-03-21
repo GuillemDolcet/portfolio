@@ -39,7 +39,6 @@ class Category{
             $('body').delay(333);
         });
 
-
         // Header Sticky
         $(window).on('scroll',function() {
             if ($(this).scrollTop() > 1){

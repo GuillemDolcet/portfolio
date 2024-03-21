@@ -6,7 +6,7 @@
                     <img src="{{ image_url('logo.svg') }}" alt="{{ config('app.name') }}" width="32" height="32"/>
                 </a>
             </div>
-            <div class="col col-lg-10 navbar-accordion px-0">
+            <div class="col col-lg-9 navbar-accordion px-0">
                 <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#header-nav"><span></span><span></span><span></span></button>
                 <div id="header-nav" class="collapse navbar-collapse justify-content-center">
                     <div class="d-flex flex-column h-100 align-items-center justify-content-center">
@@ -47,6 +47,26 @@
                         </li>
                     @endif
                 </ul>
+            </div>
+            <div class="col-auto col-lg-1 d-flex justify-content-end ps-0">
+                <div class="accordion accordion-flush" id="languagesTopics">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-languages-header">
+                            <button class="accordion-button collapsed text-justify" type="button" data-bs-toggle="collapse" data-bs-target="#flush-languages" aria-expanded="false" aria-controls="flush-languages"><x-icon icon="settings"/></button>
+                        </h2>
+                        <div id="flush-languages" class="accordion-collapse collapse text-justify" aria-labelledby="flush-languages-header" data-bs-parent="#languagesTopics">
+                            @foreach($languages as $language)
+                                <form method="post" action="{{ route('change-language', $language) }}" data-turbo="false" data-controller="form">
+                                    @csrf
+                                    <label class="form-selectgroup-item">
+                                        <input type="radio" name="language" value="{{$language->name}}" class="form-selectgroup-input" {{app()->getLocale() == $language->name ? 'checked' : ''}}/>
+                                        <button type="submit" class="form-selectgroup-label"><img src="{{image_url($language->image)}}" alt="{{$language->name}}" width="24" height="24"/></button>
+                                    </label>
+                                </form>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
