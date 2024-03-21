@@ -34,7 +34,7 @@ class ServicesSeeder extends Seeder
     {
         $this->services->create([
             'title' => [
-                'es' => 'Desarrollo de Aplicaciones Web Personalizadas',
+                'es' => 'Aplicaciones Web Personalizadas',
                 'en' => 'Web Development'
             ],
             'description' => [

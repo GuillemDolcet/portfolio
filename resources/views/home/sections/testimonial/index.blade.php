@@ -1,4 +1,4 @@
-<section id="testimonial" class="section bg-secondary">
+<section id="{{ $section->name }}" class="section bg-secondary">
     <div class="container">
         <!-- Heading -->
         <p class=" text-center mb-2 wow fadeIn"><span class="bg-primary text-dark px-2">{{ $section->tag }}</span></p>

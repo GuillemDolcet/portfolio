@@ -1,11 +1,13 @@
-<section id="contact" class="section bg-primary">
+<section id="{{ $section->name }}" class="section bg-primary">
     <div class="container">
         <div class="row">
             <div class="col-lg-5 text-center text-lg-start wow fadeInUp">
-                <h2 class="text-10 fw-600 mb-5">{{ $section->title }}</h2>
-                <p class="text-5 mb-5">{!! $section->description !!}</p>
-                <h3 class="text-5 fw-600">Call:</h3>
+                <h2 class="text-10 fw-600 mb-5 text-justify">{{ $section->title }}</h2>
+                <p class="text-5 mb-5 text-justify">{{ $section->description }}</p>
+                <h3 class="text-5 fw-600">@lang('admin.phone'):</h3>
                 <p class="text-4">{{ $personalInfo->phone }}</p>
+                <h3 class="text-5 fw-600">@lang('admin.email'):</h3>
+                <p class="text-4">{{ $personalInfo->email }}</p>
                 <ul class="social-icons social-icons-lg justify-content-center justify-content-lg-start mt-5">
                     @if(isset($personalInfo->linkedin))
                         <li class="social-icons-linkedin">

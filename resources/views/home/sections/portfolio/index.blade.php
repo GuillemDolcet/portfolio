@@ -1,4 +1,4 @@
-<section id="portfolio" class="section bg-light">
+<section id="{{ $section->name }}" class="section bg-light">
     <div class="container">
 
         <p class="text-center mb-2 wow fadeInUp"><span class="bg-primary text-dark px-2">{{ $section->tag }}</span></p>

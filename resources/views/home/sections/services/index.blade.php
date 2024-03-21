@@ -1,4 +1,4 @@
-<section id="services" class="section bg-light">
+<section id="{{ $section->name }}" class="section bg-light">
     <div class="container">
         <!-- Heading -->
         <p class=" text-center mb-2 wow fadeInUp"><span class="bg-primary text-dark px-2">{{ $section->tag }}</span></p>
@@ -12,8 +12,8 @@
                         <div class="featured-box-icon text-primary text-13">
                             <img src="{{\Storage::url($service->image)}}" width="50" alt="{{ $service->title}} ">
                         </div>
-                        <h3 class="text-6 fw-600 mb-3">{{ $service->title }}</h3>
-                        <p class="text-muted mb-0">{{ $service->description }}</p>
+                        <h3 class="text-6 fw-600 mb-3 text-justify">{{ $service->title }}</h3>
+                        <p class="text-muted mb-0 text-justify">{{ $service->description }}</p>
                     </div>
                 </div>
             @endforeach
