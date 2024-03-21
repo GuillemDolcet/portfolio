@@ -14,18 +14,15 @@ import "jquery-ui";
 import "jquery.appear";
 import "jquery.easing";
 
-/*
-================================================================
-* Template:  	 Callum - Personal Portfolio HTML Template
-* Written by: 	 Harnish Design - (http://www.harnishdesign.net)
-* Description:   Main Custom Script File
-================================================================
-*/
-
 class Category{
 
     constructor() {
         this.$smothScroll = $('.smooth-scroll');
+        this.$stickyTop = $('#header.sticky-top .bg-transparent');
+        this.$stickyTopSlide = $('#header.sticky-top-slide');
+        this.$contactForm = $('#contact-form');
+        this.$submitBtn = $('#submit-btn');
+        this.$responseBox = $('#response-box');
     }
 
     init() {
@@ -45,25 +42,22 @@ class Category{
 
         // Header Sticky
         $(window).on('scroll',function() {
-            let stickytop = $('#header.sticky-top .bg-transparent');
-            let stickytopslide = $('#header.sticky-top-slide');
-
             if ($(this).scrollTop() > 1){
-                stickytop.addClass("sticky-on-top");
-                stickytop.find(".logo img").attr('src',stickytop.find('.logo img').data('sticky-logo'));
+                that.$stickyTop.addClass("sticky-on-top");
+                that.$stickyTop.find(".logo img").attr('src',that.$stickyTop.find('.logo img').data('sticky-logo'));
             }
             else {
-                stickytop.removeClass("sticky-on-top");
-                stickytop.find(".logo img").attr('src',stickytop.find('.logo img').data('default-logo'));
+                that.$stickyTop.removeClass("sticky-on-top");
+                that.$stickyTop.find(".logo img").attr('src',that.$stickyTop.find('.logo img').data('default-logo'));
             }
 
             if ($(this).scrollTop() > 180){
-                stickytopslide.find(".primary-menu").addClass("sticky-on");
-                stickytopslide.find(".logo img").attr('src',stickytopslide.find('.logo img').data('sticky-logo'));
+                that.$stickyTopSlide.find(".primary-menu").addClass("sticky-on");
+                that.$stickyTopSlide.find(".logo img").attr('src',that.$stickyTopSlide.find('.logo img').data('sticky-logo'));
             }
             else{
-                stickytopslide.find(".primary-menu").removeClass("sticky-on");
-                stickytopslide.find(".logo img").attr('src',stickytopslide.find('.logo img').data('default-logo'));
+                that.$stickyTopSlide.find(".primary-menu").removeClass("sticky-on");
+                that.$stickyTopSlide.find(".logo img").attr('src',that.$stickyTopSlide.find('.logo img').data('default-logo'));
             }
         });
 
@@ -104,7 +98,7 @@ class Category{
         })
 
         // Carousel
-        $(".owl-carousel").each(function (index) {
+        $(".owl-carousel").each(function () {
             let a = $(this);
             let rtlVal = false;
             if ($("html").attr("dir") === 'rtl') {
@@ -170,7 +164,7 @@ class Category{
                 },
                 callbacks: {
                     ajaxContentAdded: function() {
-                        $(".owl-carousel").each(function (index) {
+                        $(".owl-carousel").each(function () {
                             let a = $(this);
                             let rtlVal = false;
                             if ($("html").attr("dir") === 'rtl') {
@@ -219,7 +213,7 @@ class Category{
 
         // Typed
         $(".typed").each(function() {
-            var typed = new Typed('.typed', {
+            new Typed('.typed', {
                 stringsElement: '.typed-strings',
                 loop: true,
                 typeSpeed: 100,
@@ -268,29 +262,29 @@ class Category{
             return false;
         });
 
-        $('#contact-form').on('submit', function (e) {
+        that.$contactForm.on('submit', function (e) {
             e.preventDefault(); // prevent default form submit
 
             $.ajax({
-                url: $('#contact-form').attr('action'), // form action url
+                url: that.$contactForm.attr('action'), // form action url
                 type: 'POST', // form submit method get/post
                 dataType: 'json', // request type html/json/xml
-                data: $('#contact-form').serialize(), // serialize form data
+                data: that.$contactForm.serialize(), // serialize form data
                 beforeSend: function () {
-                    $('#response-box').addClass('d-none');
-                    $('#submit-btn').attr("disabled", "disabled");
-                    var loadingText = '<span role="status" aria-hidden="true" class="spinner-border spinner-border-sm align-self-center me-2"></span>Sending.....'; // change submit button text
-                    if ($('#submit-btn').html() !== loadingText) {
-                        $('#submit-btn').data('original-text', $('#submit-btn').html());
-                        $('#submit-btn').html(loadingText);
+                    that.$responseBox.addClass('d-none');
+                    that.$submitBtn.attr("disabled", "disabled");
+                    let loadingText = '<span role="status" aria-hidden="true" class="spinner-border spinner-border-sm align-self-center me-2"></span>' + that.$submitBtn.data('sending');
+                    if (that.$submitBtn.html() !== loadingText) {
+                        that.$submitBtn.data('original-text', that.$submitBtn.html());
+                        that.$submitBtn.html(loadingText);
                     }},
                 success: function (data) {
-                    $('#response-box').removeClass('d-none');
-                    $('#response-box').html(data.message).fadeIn("slow");
-                    $('#submit-btn').html($('#submit-btn').data('original-text'));// reset submit button text
-                    $('#submit-btn').removeAttr("disabled", "disabled");
+                    that.$responseBox.removeClass('d-none');
+                    that.$responseBox.html(data.message).fadeIn("slow");
+                    that.$submitBtn.html(that.$submitBtn.data('original-text'));// reset submit button text
+                    that.$submitBtn.removeAttr("disabled", "disabled");
                     if (data.success) {
-                        $('#contact-form').trigger('reset'); // reset form
+                        that.$contactForm.trigger('reset'); // reset form
                     }
                     setTimeout(function () {
                         $('.alert-dismissible').fadeOut('slow', function(){
@@ -299,10 +293,10 @@ class Category{
                         }, 3500);
                     },
                 error: function (data) {
-                    $('#response-box').removeClass('d-none');
-                    $('#response-box').html(data.responseJSON.message).fadeIn("slow");
-                    $('#submit-btn').html($('#submit-btn').data('original-text'));// reset submit button text
-                    $('#submit-btn').removeAttr("disabled", "disabled");
+                    that.$responseBox.removeClass('d-none');
+                    that.$responseBox.html(data.responseJSON.message).fadeIn("slow");
+                    that.$submitBtn.html(that.$submitBtn.data('original-text'));// reset submit button text
+                    that.$submitBtn.removeAttr("disabled", "disabled");
                     setTimeout(function () {
                         $('.alert-dismissible').fadeOut('slow', function(){
                             $(this).remove();

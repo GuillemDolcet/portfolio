@@ -188,6 +188,7 @@ return [
     'sections' => 'Sections',
     'section' => 'Section',
     'send' => 'Send',
+    'sending' => 'Sending...',
     'sends-message' => 'has sent you a message',
     'services' => 'Services',
     'service' => 'Service',

@@ -188,6 +188,7 @@ return [
     'sections' => 'Secciones',
     'section' => 'Seccion',
     'send' => 'Enviar',
+    'sending' => 'Enviando...',
     'sends-message' => 'te ha enviado un mensaje',
     'services' => 'Servicios',
     'service' => 'Servicio',

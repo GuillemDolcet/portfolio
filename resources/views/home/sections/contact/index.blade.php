@@ -66,7 +66,7 @@
                         </div>
                         <div class="col-12 text-white d-none" id="response-box"></div>
                         <div class="col-12 text-center text-lg-start">
-                            <button id="submit-btn" class="btn btn-dark rounded-0" type="submit">@lang('admin.send') <span class="ms-3"><i class="fas fa-arrow-right"></i></span></button>
+                            <button id="submit-btn" data-sending="@lang('admin.sending')" class="btn btn-dark rounded-0" type="submit">@lang('admin.send') <span class="ms-3"><i class="fas fa-arrow-right"></i></span></button>
                         </div>
                     </div>
                 </form>
