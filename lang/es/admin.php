@@ -63,7 +63,8 @@ return [
     'email' => 'Email',
     'errors' => [
         'login' => 'Ocurrió un error con la comprobación de su cuenta de usuario. Reintente en unos minutos.',
-        'account-suspended' => 'Tu cuenta de usuario ha sido suspendida.'
+        'account-suspended' => 'Tu cuenta de usuario ha sido suspendida.',
+        'account-not-found' => 'Esta cuenta no existe.'
     ],
     'estimate-project' => 'Estime su proyecto',
     'experience' => 'Experiencia',

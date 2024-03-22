@@ -63,7 +63,8 @@ return [
     'email' => 'Email',
     'errors' => [
         'login' => 'An error occurred with the verification of your user account. Please try again in a few minutes.',
-        'account-suspended' => 'Your user account has been suspended.'
+        'account-suspended' => 'Your user account has been suspended.',
+        'account-not-found' => 'This account is not valid.'
     ],
     'estimate-project' => 'Estimate your Project',
     'experience' => 'Experience',
