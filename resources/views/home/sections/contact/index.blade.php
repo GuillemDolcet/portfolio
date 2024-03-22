@@ -44,7 +44,6 @@
                 </ul>
             </div>
             <div class="col-lg-6 ms-auto mt-5 mt-lg-0 wow fadeInUp" data-wow-delay="0.3s">
-                <h2 class="text-10 fw-600 text-center text-lg-start mb-5">@lang('admin.estimate-project')</h2>
                 <form id="contact-form" class="form-border" action="{{ route('contact', $personalInfo) }}" method="post">
                     @csrf
                     <div class="row g-4">

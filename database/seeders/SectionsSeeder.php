@@ -61,8 +61,8 @@ class SectionsSeeder extends Seeder
                 'en' => 'Know Me More'
             ],
             'description' => [
-                'es' => "<h2 class='text-8 fw-400 mb-3'>Hola, soy <span class='fw-700 border-bottom border-3 border-primary '>Guillem Dolcet</span></h2><p class='text-5 text-justify'>Soy un diseñador y desarrollador apasionado por el diseño web. Disfruto desarrollando sitios web sencillos, limpios y elegantes que aporten un valor real al usuario final. Miles de clientes han conseguido resultados excepcionales trabajando conmigo. Entregar el trabajo a tiempo y dentro del presupuesto que cumpla con los requisitos del cliente es nuestra moto.</p>",
-                'en' => "<h2 class='text-8 fw-400 mb-3'>Hi, I'm <span class='fw-700 border-bottom border-3 border-primary'>Guillem Dolcet</span></h2><p class='text-5 text-justify'>I'm a designer & developer with a passion for web design. I enjoy developing simple, clean and slick websites that provide real value to the end user. Thousands of clients have procured exceptional results while working with me. Delivering work within time and budget which meets client’s requirements is our moto.</p>"
+                'es' => "<h2 class='text-8 fw-400 mb-3'>Hola, soy <span class='fw-700 border-bottom border-3 border-primary '>Guillem Dolcet</span></h2><p class='text-5 text-justify'>Soy un desarrollador backend especializado en PHP/Laravel, con una sólida base en la construcción de APIs y una experiencia amplia que se extiende a tecnologías full stack. A lo largo de mi carrera, he dedicado mi enfoque a dominar PHP/Laravel, permitiéndome diseñar y desarrollar soluciones backend complejas con eficiencia y precisión. También poseo competencias en tecnologías front-end, lo que me capacita para contribuir en todo el espectro del desarrollo de aplicaciones web.</p>",
+                'en' => "<h2 class='text-8 fw-400 mb-3'>Hi, I'm <span class='fw-700 border-bottom border-3 border-primary'>Guillem Dolcet</span></h2><p class='text-5 text-justify'>I am a backend developer specialized in PHP/Laravel, with a solid foundation in building APIs and extensive experience that extends to full stack technologies. Throughout my career, I have dedicated my focus to mastering PHP/Laravel, allowing me to design and develop complex backend solutions with efficiency and precision. I also possess skills in front-end technologies, which enables me to contribute across the entire spectrum of web application development.</p>"
             ],
             'show_header' => true
         ]);
@@ -140,12 +140,12 @@ class SectionsSeeder extends Seeder
                 'en' => 'Contact'
             ],
             'title' => [
-                'es' => 'Pongámonos en contacto',
-                'en' => "Let's get in touch"
+                'es' => 'Contácteme',
+                'en' => "Contact me"
             ],
             'description' => [
-                'es' => "Me encanta hablar de nuevos proyectos y retos de diseño. Por favor, comparte toda la información posible para que podamos sacar el máximo partido de nuestra primera puesta al día.",
-                'en' => "I enjoy discussing new projects and design challenges. Please share as much info, as possible so we can get the most out of our first catch-up."
+                'es' => "¡Gracias por visitar mi portfolio! Si tienes proyectos en mente o necesitas un desarrollador web experto, me encantaría saber de ti. Completa el formulario para ponerte en contacto.",
+                'en' => "Thanks for visiting my portfolio! If you have projects in mind or need an expert web developer, I'd love to hear from you. Fill out the form to get in touch."
             ],
             'show_header' => true
         ]);
