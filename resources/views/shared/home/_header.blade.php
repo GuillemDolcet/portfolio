@@ -54,13 +54,13 @@
                         <h2 class="accordion-header" id="flush-languages-header">
                             <button class="accordion-button collapsed text-justify" type="button" data-bs-toggle="collapse" data-bs-target="#flush-languages" aria-expanded="false" aria-controls="flush-languages"><x-icon icon="settings"/></button>
                         </h2>
-                        <div id="flush-languages" class="accordion-collapse collapse text-justify" aria-labelledby="flush-languages-header" data-bs-parent="#languagesTopics">
+                        <div id="flush-languages" class="accordion-collapse collapse text-justify align-items-center" aria-labelledby="flush-languages-header" data-bs-parent="#languagesTopics">
                             @foreach($languages as $language)
-                                <form method="post" action="{{ route('change-language', $language) }}" data-turbo="false" data-controller="form">
+                                <form method="post" class="mt-2" action="{{ route('change-language', $language) }}" data-turbo="false" data-controller="form">
                                     @csrf
                                     <label class="form-selectgroup-item">
                                         <input type="radio" name="language" value="{{$language->name}}" class="form-selectgroup-input" {{app()->getLocale() == $language->name ? 'checked' : ''}}/>
-                                        <button type="submit" class="form-selectgroup-label"><img src="{{image_url($language->image)}}" alt="{{$language->name}}" width="24" height="24"/></button>
+                                        <button type="submit" class="form-selectgroup-label {{app()->getLocale() == $language->name ? 'active' : ''}}"><img src="{{image_url($language->image)}}" alt="{{$language->name}}" width="24" height="24"/></button>
                                     </label>
                                 </form>
                             @endforeach
