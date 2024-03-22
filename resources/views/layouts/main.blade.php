@@ -17,10 +17,6 @@
                 @yield('content')
             </div>
         @show
-
-        @section('footer')
-            @include('shared._footer')
-        @show
     </div>
 </div>
 @endsection

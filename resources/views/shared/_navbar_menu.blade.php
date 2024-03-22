@@ -48,5 +48,19 @@
                 <span class="nav-link-title">@lang('admin.skills')</span>
             </a>
         </li>
+
+        <li class="nav-item {{ request()->is('*testimonials*') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('admin.testimonials.index') }}">
+                <span class="nav-link-icon d-md-none d-lg-inline-block"><x-icon icon="testimonial" /></span>
+                <span class="nav-link-title">@lang('admin.testimonials')</span>
+            </a>
+        </li>
+
+        <li class="nav-item {{ request()->is('*faqs*') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('admin.faqs.index') }}">
+                <span class="nav-link-icon d-md-none d-lg-inline-block"><x-icon icon="faq" /></span>
+                <span class="nav-link-title">@lang('admin.faqs')</span>
+            </a>
+        </li>
     </ul>
 </div>
