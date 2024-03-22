@@ -15,8 +15,8 @@
 
     @stack('dns-prefetch')
 
-    <link rel="icon" href="/favicon.ico" type="image/x-icon"/>
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
+    <link rel="icon" href="{{ image_url('logo.svg') }}" type="image/x-icon"/>
+    <link rel="shortcut icon" href="{{ image_url('logo.svg') }}" type="image/x-icon"/>
 
     @stack('top-stylesheets')
 

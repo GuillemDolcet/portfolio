@@ -19,6 +19,7 @@ return [
     'advice-translations' => 'Es necesario rellenar todos los campos 1 vez independientemente del idioma, los campos no traducidos se traducirán automáticamente !!!',
     'all' => 'todas',
     'answer' => 'Respuesta',
+    'based-in' => 'Establecido en',
     'comment' => 'Comentario',
     'company' => 'Empresa',
     'confirm' => 'Confirmar',
@@ -35,6 +36,7 @@ return [
         'delete-faq' => '¿Realmente desea eliminar esta pregunta frecuente? Esta acción no se puede deshacer'
     ],
     'contact' => [
+        'me' => 'Contactame',
         'name' => '¿Cuál es tu nombre?',
         'email' => '¿Cuál es tu email?',
         'phone' => '¿Cuál es tu telefono?',
@@ -205,6 +207,7 @@ return [
     'url' => 'Url',
     'user' => 'Usuario',
     'users' => 'Usuarios',
+    'view-works' => 'Mira mis trabajos',
     'with' => 'con',
     'years-of' => 'Años de'
 ];

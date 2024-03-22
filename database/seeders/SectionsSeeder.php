@@ -34,6 +34,23 @@ class SectionsSeeder extends Seeder
     public function run(): void
     {
         $this->sections->create([
+            'name' => 'home',
+            'tag' => [
+                'es' => 'Inicio',
+                'en' => 'Home'
+            ],
+            'title' => [
+                'es' => "Hola, soy un",
+                'en' => "Hi, I'm a"
+            ],
+            'description' => [
+                'es' => '<div class="typed-strings"><p>Backend</p><p>Developer</p></div><h2 class="text-21 fw-600 text-uppercase mb-0 ms-n1"><span class="typed"></span></h2>',
+                'en' => '<div class="typed-strings"><p>Backend</p><p>Developer</p></div><h2 class="text-21 fw-600 text-uppercase mb-0 ms-n1"><span class="typed"></span></h2>',
+            ],
+            'show_header' => true
+        ]);
+
+        $this->sections->create([
             'name' => 'about',
             'tag' => [
                 'es' => 'Sobre Mi',

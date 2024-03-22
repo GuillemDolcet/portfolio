@@ -8,7 +8,7 @@
                     <div class="col-sm-6 col-lg-4 detailed">
                         <div class="item-box portfolio-box rounded shadow bg-white overflow-hidden">
                             <div class="portfolio-box-img position-relative overflow-hidden">
-                                <img class="item-container img-fluid mx-auto" src="{{\Storage::url($project->image)}}" alt="1">
+                                <img class="item-container img-fluid" src="{{\Storage::url($project->image)}}" alt="1">
                                 <div class="overlay-work">
                                     <div class="work-content text-center">
                                         <a href="{{ $project->url }}" target="_blank" class="lightbox text-light work-icon bg-dark d-inline-block rounded-pill">
@@ -17,7 +17,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="p-4 text-center border-top">
+                            <div class="p-4 text-center">
                                 <h5><a href="{{ $project->url }}" target="_blank" class="title text-black">{{ $project->name }}</a></h5>
                                 <div class="text-justify">{{ $project->description }}</div>
                             </div>

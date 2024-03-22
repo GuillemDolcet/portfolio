@@ -19,6 +19,7 @@ return [
     'advice-translations' => 'All fields must be filled in once regardless of language, untranslated fields will be translated automatically !!!',
     'all' => 'all',
     'answer' => 'Answer',
+    'based-in' => 'Based in',
     'comment' => 'Comment',
     'company' => 'Company',
     'confirm' => 'Confirm',
@@ -35,6 +36,7 @@ return [
         'delete-faq' => 'Do you really want to delete this FAQ? This action cannot be undone'
     ],
     'contact' => [
+        'me' => 'Contact me',
         'name' => 'What is Your Name',
         'phone' => 'Your Phone',
         'email' => 'Your Email Address',
@@ -205,6 +207,7 @@ return [
     'url' => 'Url',
     'user' => 'User',
     'users' => 'Users',
+    'view-works' => 'View My Works',
     'with' => 'with',
     'years-of' => 'Years of'
 ];
