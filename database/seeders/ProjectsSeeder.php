@@ -50,8 +50,8 @@ class ProjectsSeeder extends Seeder
                 'es' => 'Ielectro',
             ],
             'description' => [
-                'en' => 'Developing web application using PHP/Laravel, integrating APIs like Amazon or Miravia. Additionally, I oversaw ongoing website maintenance.',
-                'es' => 'Desarrollando aplicación con PHP/Laravel, integrando APIs como Amazon y Miravia. Además, gestioné el mantenimiento continuo del sitio web.',
+                'en' => 'Implementation of marketplaces through APIs, web maintenance and new functionalities in PHP/Laravel.',
+                'es' => 'Implementación de marketplaces a través  de APIs, mantenimiento web y nuevas funcionalidades en PHP/Laravel.',
             ],
             'url' => 'https://www.ielectro.es/',
             'image' => new File('resources/assets/images/projects/ielectro.png'),
@@ -73,8 +73,8 @@ class ProjectsSeeder extends Seeder
                 'es' => 'MAYOR2010',
             ],
             'description' => [
-                'en' => 'Web development and maintenance with PHP/Laravel.',
-                'es' => 'Desarrollando y manteniendo web con PHP/Laravel.',
+                'en' => 'Maintenance and expansion of PHP/Laravel website, incorporating new functionalities to optimize the user experience.',
+                'es' => 'Mantenimiento y expansión de sitio web en PHP/Laravel, incorporando nuevas funcionalidades para optimizar la experiencia del usuario.',
             ],
             'url' => 'https://www.mayor2010.com/',
             'image' => new File('resources/assets/images/projects/mayor2010.png'),
@@ -92,16 +92,38 @@ class ProjectsSeeder extends Seeder
 
         $project = $this->projects->create([
             'name' => [
+                'en' => 'Ferreteria.es',
+                'es' => 'Ferreteria.es',
+            ],
+            'description' => [
+                'en' => 'Development of an application in PHP/Laravel for stock and order management for both the website and Amazon.',
+                'es' => 'Desarrollo de una aplicación en PHP/Laravel para la gestión de stock y pedidos tanto de la página web como de Amazon.',
+            ],
+            'url' => 'https://ferreteria.es/',
+            'image' => new File('resources/assets/images/projects/ferreteriaes.png'),
+            'order' => 3
+        ]);
+
+        $project->skills()->attach($this->skills->newQuery()->name('PHP')->first());
+        $project->skills()->attach($this->skills->newQuery()->name('Laravel')->first());
+        $project->skills()->attach($this->skills->newQuery()->name('JS')->first());
+        $project->skills()->attach($this->skills->newQuery()->name('SQL')->first());
+        $project->skills()->attach($this->skills->newQuery()->name('Html')->first());
+        $project->skills()->attach($this->skills->newQuery()->name('Css')->first());
+
+
+        $project = $this->projects->create([
+            'name' => [
                 'en' => 'Tourism Àger',
                 'es' => 'Turismo Àger',
             ],
             'description' => [
-                'en' => 'New website made in HTML and CSS with WordPress.',
-                'es' => 'Nueva página web echa en HTML y CSS junto a WordPress.',
+                'en' => 'Tourism website creation with HTML, CSS and WordPress.',
+                'es' => 'Creación de web de turismo con HTML, CSS y WordPress.',
             ],
             'url' => 'https://turismeager.cat/',
             'image' => new File('resources/assets/images/projects/turismeager.png'),
-            'order' => 3
+            'order' => 4
         ]);
 
         $project->skills()->attach($this->skills->newQuery()->name('Wordpress')->first());
@@ -115,12 +137,12 @@ class ProjectsSeeder extends Seeder
                 'es' => 'Runedia',
             ],
             'description' => [
-                'en' => 'Modifications and new page functions in PHP and JS.',
-                'es' => 'Modificaciones y nuevas funciones de la página en PHP y JS.',
+                'en' => 'Modification and new functionalities with PHP and JS.',
+                'es' => 'Modificación y nuevas funcionalidades con PHP y JS.',
             ],
             'url' => 'https://runedia.mundodeportivo.com/',
             'image' => new File('resources/assets/images/projects/runedia.png'),
-            'order' => 4
+            'order' => 5
         ]);
 
         $project->skills()->attach($this->skills->newQuery()->name('PHP')->first());
@@ -131,16 +153,16 @@ class ProjectsSeeder extends Seeder
 
         $project = $this->projects->create([
             'name' => [
-                'en' => 'Ferreteria.es',
-                'es' => 'Ferreteria.es',
+                'en' => 'Gili Group',
+                'es' => 'Gili Group',
             ],
             'description' => [
-                'en' => 'Assistant for the development of an application for stock and order management for both the website and Amazon.',
-                'es' => 'Ayudante de desarrollo de una aplicación para la gestión de stock y pedidos tanto de la página web como de Amazon.',
+                'en' => 'Site modifications and programming of your new ERP.',
+                'es' => 'Modificaciones de la página y programación de su nuevo ERP.',
             ],
-            'url' => 'https://ferreteria.es/',
-            'image' => new File('resources/assets/images/projects/ferreteriaes.png'),
-            'order' => 5
+            'url' => 'https://giligroup.com/',
+            'image' => new File('resources/assets/images/projects/giligroup.png'),
+            'order' => 6
         ]);
 
         $project->skills()->attach($this->skills->newQuery()->name('PHP')->first());

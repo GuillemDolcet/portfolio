@@ -22,7 +22,7 @@ class Language implements ValidationRule
         foreach (array_keys($value) as $language){
             $languageModel = LanguageModel::name($language)->first();
             if (is_null($languageModel)){
-                $fail("Language {$language} does not exists.");
+                $fail("Language $language does not exists.");
             }
         }
     }

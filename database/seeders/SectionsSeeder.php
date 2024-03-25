@@ -114,8 +114,8 @@ class SectionsSeeder extends Seeder
                 'en' => 'Portfolio'
             ],
             'title' => [
-                'es' => 'Algunos de mis proyectos más recientes',
-                'en' => 'Some of my most recent projects'
+                'es' => 'Algunos de los proyectos en los que he trabajado',
+                'en' => 'Some of the projects I have worked on'
             ],
             'show_header' => true
         ]);
@@ -144,7 +144,7 @@ class SectionsSeeder extends Seeder
                 'en' => "Contact me"
             ],
             'description' => [
-                'es' => "¡Gracias por visitar mi portfolio! Si tienes proyectos en mente o necesitas un desarrollador web experto, me encantaría saber de ti. Completa el formulario para ponerte en contacto.",
+                'es' => "¡Gracias por visitar mi porfolio! Si tienes proyectos en mente o necesitas un desarrollador web experto, me encantaría saber de ti. Completa el formulario para ponerte en contacto.",
                 'en' => "Thanks for visiting my portfolio! If you have projects in mind or need an expert web developer, I'd love to hear from you. Fill out the form to get in touch."
             ],
             'show_header' => true

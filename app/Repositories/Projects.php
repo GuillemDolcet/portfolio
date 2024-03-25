@@ -3,9 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Project;
-use App\Models\User;
 use App\Support\Arr;
-use App\Support\Str;
 use App\Support\Storage;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Builder;

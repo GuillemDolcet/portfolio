@@ -1,4 +1,4 @@
-<form id="users-form" action="{{ $user->exists ? route('admin.users.update', $user) : route('admin.users.store') }}"
+<form id="user-form" action="{{ $user->exists ? route('admin.users.update', $user) : route('admin.users.store') }}"
       @if(($user->exists && !Auth::user()->can('update', $user)) || (!$user->exists && !Auth::user()->can('store', $user))) {{ "data-disabled=true" }} @endif
       method="post" accept-charset="utf-8" data-controller="form">
     @csrf

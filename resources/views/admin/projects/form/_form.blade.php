@@ -1,4 +1,4 @@
-<form id="skill-form" action="{{ $project->exists ? route('admin.projects.update', $project) : route('admin.projects.store') }}"
+<form id="project-form" action="{{ $project->exists ? route('admin.projects.update', $project) : route('admin.projects.store') }}"
       @if(($project->exists && !Auth::user()->can('update', $project)) || (!$project->exists && !Auth::user()->can('store', $project))) {{ "data-disabled=true" }} @endif
       method="post" accept-charset="utf-8" data-controller="form" enctype="multipart/form-data">
     @csrf

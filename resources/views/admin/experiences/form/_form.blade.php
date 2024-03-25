@@ -1,4 +1,4 @@
-<form id="skill-form" action="{{ $experience->exists ? route('admin.experiences.update', $experience) : route('admin.experiences.store') }}"
+<form id="experience-form" action="{{ $experience->exists ? route('admin.experiences.update', $experience) : route('admin.experiences.store') }}"
       @if(($experience->exists && !Auth::user()->can('update', $experience)) || (!$experience->exists && !Auth::user()->can('store', $experience))) {{ "data-disabled=true" }} @endif
       method="post" accept-charset="utf-8" data-controller="form" enctype="multipart/form-data">
     @csrf

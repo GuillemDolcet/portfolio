@@ -59,16 +59,7 @@ class GoogleController extends Controller
                 return $user->isActive()
                     ? $this->success($user, $oauth)
                     : $this->failure(Lang::get('admin.errors.account-suspended'));
-            } /* else {
-                $user = $this->users->create([
-                    'email' => $oauth->getEmail(),
-                    'name' => $oauth->getName(),
-                    'google_auth_id' => $oauth->getId(),
-                    'avatar' => $oauth->getAvatar()
-                ]);
-                $user->assignRole('user');
-                return $this->success($user, $oauth);
-            } */
+            }
 
             return $this->failure(Lang::get('admin.errors.account-not-found'));
         } catch (Exception $e) {

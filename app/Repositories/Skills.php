@@ -3,14 +3,11 @@
 namespace App\Repositories;
 
 use App\Models\Skill;
-use App\Models\User;
 use App\Support\Arr;
 use App\Support\Storage;
-use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Http\UploadedFile;
 
 class Skills extends Repository
 {

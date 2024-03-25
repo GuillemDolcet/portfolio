@@ -17,7 +17,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="p-4 text-center">
+                            <div class="p-4 text-center portfolio-text">
                                 <h5><a href="{{ $project->url }}" target="_blank" class="title text-black">{{ $project->name }}</a></h5>
                                 <div class="text-justify">{{ $project->description }}</div>
                             </div>

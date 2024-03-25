@@ -63,8 +63,8 @@ class FaqsSeeder extends Seeder
                 'es' => '¿Has utilizado Laravel para desarrollar APIs RESTful? ¿Cuáles son tus mejores prácticas para su diseño?'
             ],
             'answer' => [
-                'en' => 'Yes, I have developed multiple RESTful APIs with Laravel. My best practices include following REST principles, such as the correct use of HTTP methods and status codes, and implementing HATEOAS where applicable. I also emphasize the importance of clear and complete documentation, using tools such as Swagger or Postman.',
-                'es' => 'Sí, he desarrollado múltiples APIs RESTful con Laravel. Mis mejores prácticas incluyen seguir los principios REST, como el uso correcto de los métodos HTTP y códigos de estado, y la implementación de HATEOAS donde es aplicable. También enfatizo la importancia de una documentación clara y completa, utilizando herramientas como Swagger o Postman.'
+                'en' => 'Yes, I have developed multiple RESTful APIs with Laravel. My best practices include following REST principles, such as the correct use of HTTP methods and status codes. I also emphasize the importance of clear and complete documentation, using tools such as Swagger or Postman.',
+                'es' => 'Sí, he desarrollado múltiples APIs RESTful con Laravel. Mis mejores prácticas incluyen seguir los principios REST, como el uso correcto de los métodos HTTP y códigos de estado. También enfatizo la importancia de una documentación clara y completa, utilizando herramientas como Swagger o Postman.'
             ],
             'order' => 3
         ]);

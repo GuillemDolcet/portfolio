@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Skill extends Model
@@ -45,14 +44,6 @@ class Skill extends Model
     }
 
     ///// Scopes //////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    /**
-     * Scope by language name.
-     */
-    public function scopeUser(Builder $query, User $user): void
-    {
-        $query->where('user_id', '=', $user->getKey());
-    }
 
     /**
      * Scope by name.

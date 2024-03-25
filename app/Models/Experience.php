@@ -2,9 +2,7 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Spatie\Translatable\HasTranslations;
 
@@ -64,19 +62,5 @@ class Experience extends Model
     public function skills(): MorphToMany
     {
         return $this->morphToMany(Skill::class, 'skillable');
-    }
-
-    ///// Scopes //////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    /**
-     * Scope by language name.
-     *
-     * @param Builder $query
-     * @param User $user
-     * @return void
-     */
-    public function scopeUser(Builder $query, User $user): void
-    {
-        $query->where('user_id', '=', $user->getKey());
     }
 }
