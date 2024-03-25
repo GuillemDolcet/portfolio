@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('name', 2)->unique();
             $table->string('image');
         });
-        Artisan::call('db:seed', array('--class' => 'LanguagesSeeder'));
     }
 
     /**

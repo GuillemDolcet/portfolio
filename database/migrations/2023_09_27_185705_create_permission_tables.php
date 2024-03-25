@@ -12,8 +12,9 @@ class CreatePermissionTables extends Migration
      * Run the migrations.
      *
      * @return void
+     * @throws Exception
      */
-    public function up()
+    public function up(): void
     {
         $tableNames = config('permission.table_names');
         $columnNames = config('permission.column_names');
@@ -118,16 +119,15 @@ class CreatePermissionTables extends Migration
         app('cache')
             ->store(config('permission.cache.store') != 'default' ? config('permission.cache.store') : null)
             ->forget(config('permission.cache.key'));
-
-        Artisan::call('db:seed', array('--class' => 'RoleAndPermissionSeeder'));
     }
 
     /**
      * Reverse the migrations.
      *
      * @return void
+     * @throws Exception
      */
-    public function down()
+    public function down(): void
     {
         $tableNames = config('permission.table_names');
 

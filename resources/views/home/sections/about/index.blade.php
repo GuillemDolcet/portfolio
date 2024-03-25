@@ -21,15 +21,19 @@
             </div>
         </div>
         <div class="row gy-3 mt-4">
-            <div class="col-4 wow fadeInUp" data-wow-delay="0.2s">
+            <div class="col-12 col-lg-6 col-sm-6 wow fadeInUp" data-wow-delay="0.2s">
                 <p class="text-muted fw-500 mb-0">@lang('admin.email')</p>
                 <p class="text-4 fw-600 mb-0"><a class="link-dark" href="mailto:{{ $personalInfo->email }}">{{ $personalInfo->email }}</a></p>
             </div>
-            <div class="col-3 wow fadeInUp" data-wow-delay="0.2s">
+            <div class="col-12 col-lg-6 col-sm-6 wow fadeInUp" data-wow-delay="0.2s">
                 <p class="text-muted fw-500 mb-0">@lang('admin.phone')</p>
                 <p class="text-4 fw-600 mb-0">{{ $personalInfo->phone }}</p>
             </div>
-            <div class="col-5 wow fadeInUp" data-wow-delay="0.4s">
+            <div class="col-12 col-lg-6 col-sm-6 wow fadeInUp" data-wow-delay="0.2s">
+                <p class="text-muted fw-500 mb-0">@lang('admin.date_of_birth')</p>
+                <p class="text-4 fw-600 mb-0">{{ $personalInfo->date_of_birth->format('d/m/Y') }}</p>
+            </div>
+            <div class="col-12 col-lg-6 col-sm-6 wow fadeInUp" data-wow-delay="0.4s">
                 <p class="text-muted fw-500 mb-0">@lang('admin.location')</p>
                 <p class="text-4 text-dark fw-600 mb-0">{{ $personalInfo->location }}</p>
             </div>

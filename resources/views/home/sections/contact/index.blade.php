@@ -7,7 +7,7 @@
                 <h3 class="text-5 fw-600">@lang('admin.phone'):</h3>
                 <p class="text-4">{{ $personalInfo->phone }}</p>
                 <h3 class="text-5 fw-600">@lang('admin.email'):</h3>
-                <p class="text-4">{{ $personalInfo->email }}</p>
+                <p class="text-4"><a class="text-black" href="mailto:{{ $personalInfo->email }}">{{ $personalInfo->email }}</a></p>
                 <ul class="social-icons social-icons-lg justify-content-center justify-content-lg-start mt-5">
                     @if(isset($personalInfo->linkedin))
                         <li class="social-icons-linkedin">
