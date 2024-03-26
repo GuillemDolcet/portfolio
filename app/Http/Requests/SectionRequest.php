@@ -58,6 +58,8 @@ class SectionRequest extends FormRequest
             'title.*' => ['required', 'string', 'max:100'],
             'description' => ['nullable', 'array', new Language()],
             'description.*' => ['required', 'string'],
+            'show' => ['nullable'],
+            'show_header' => ['nullable'],
         ];
 
         if ($this->section && $this->section->exists){

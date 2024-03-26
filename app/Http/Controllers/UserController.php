@@ -78,7 +78,7 @@ class UserController extends AdminController
      */
     public function create(): RedirectResponse|Response|ResponseFactory
     {
-        $this->authorize('create', User::class);
+        $this->authorize('manage', User::class);
 
         if ($this->wantsTurboStream($this->request)) {
             $user = $this->users->build();
@@ -103,7 +103,7 @@ class UserController extends AdminController
      */
     public function edit(User $user): RedirectResponse|Response|ResponseFactory
     {
-        $this->authorize('edit', $user);
+        $this->authorize('manage', $user);
 
         if ($this->wantsTurboStream($this->request)) {
             $roles = Role::all();

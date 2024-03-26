@@ -149,7 +149,7 @@ class HomeController
      */
     public function index(): ConsoleApplication|FoundationApplication|View|Factory
     {
-        $sections = $this->sections->newQuery()->get();
+        $sections = $this->sections->newQuery()->where('show','=', true)->get();
 
         $skills = $this->skills->newQuery()->orderBy('order')->get();
 

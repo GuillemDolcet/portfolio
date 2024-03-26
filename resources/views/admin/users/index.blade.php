@@ -11,7 +11,7 @@
                             @lang('admin.users')
                         </h2>
                     </div>
-                    @can('create', \App\Models\User::class)
+                    @can('manage', \App\Models\User::class)
                         <div class="btn-list">
                             <a href="#" class="btn btn-primary d-none d-sm-inline-block"
                                data-controller="remote-modal"

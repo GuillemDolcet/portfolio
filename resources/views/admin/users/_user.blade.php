@@ -5,13 +5,13 @@
     <td nowrap>{{ ucfirst($user->roles()->first()->name) }}</td>
     <td class="text-end cursor-pointer ali">
         <div class="d-flex text-end justify-content-end">
-            @can('edit', $user)
+            @can('manage', $user)
                 <a href="#" class="me-1" title="@lang('admin.edit')"
                    data-controller="remote-modal"
                    data-action="remote-modal#toggle"
                    data-remote-modal-url-value="{{ route('admin.users.edit', $user) }}"
                    data-remote-modal-target-value="#user-form-modal">
-                    @can('update', $user)
+                    @can('manage', $user)
                         <x-icon icon="edit"/>
                     @else
                         <x-icon icon="view"/>

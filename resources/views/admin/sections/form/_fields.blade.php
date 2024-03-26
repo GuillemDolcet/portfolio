@@ -71,5 +71,27 @@
                 </div>
             </div>
         @endforeach
+        <div class="col-12">
+            <label class="form-check form-switch">
+                <input type="checkbox" id="show" name="show" value="1"
+                           class="form-check-input @error('show') is-invalid @enderror"
+                       @if($section->show) checked @endif>
+                <span class="form-check-label">@lang('admin.show.show')</span>
+            </label>
+            @error('show')
+            <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
+        <div class="col-12">
+            <label class="form-check form-switch">
+                <input type="checkbox" id="show_header" name="show_header" value="1"
+                       class="form-check-input @error('show_header') is-invalid @enderror"
+                       @if($section->show_header) checked @endif>
+                <span class="form-check-label">@lang('admin.show.header')</span>
+            </label>
+            @error('show_header')
+            <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
     </div>
 </div>

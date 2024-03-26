@@ -196,6 +196,8 @@ return [
     'services' => 'Servicios',
     'service' => 'Servicio',
     'show' => [
+        'show' => 'Mostrar',
+        'header' => 'Mostrar en el encabezado',
         'skills' => 'Mostrar todas las habilidades',
         'experiences' => 'Mostrar todas las experiencias',
         'projects' => 'Mostrar todos los proyectos'

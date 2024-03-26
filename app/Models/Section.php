@@ -22,7 +22,7 @@ class Section extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'name', 'tag', 'title', 'description', 'show_header'
+        'name', 'tag', 'title', 'description', 'show', 'show_header'
     ];
 
     /**

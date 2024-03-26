@@ -22,11 +22,7 @@ class UserRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        if ($this->user && $this->user->exists) {
-            return current_user()->can('update', $this->user);
-        }
-
-        return current_user()->can('store', User::class);
+        return current_user()->can('manage', User::class);
     }
 
     /**
@@ -44,6 +40,7 @@ class UserRequest extends FormRequest
         ];
 
         if ($this->user && $this->user->exists) {
+            unset($rules['email']);
             $rules['password'] = ['nullable', 'confirmed', Password::defaults()];
         }
 

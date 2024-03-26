@@ -90,6 +90,14 @@ class Sections extends Repository
     {
         $instance->fill(Arr::except($attributes, ['image']));
 
+        if (!isset($attributes['show'])) {
+            $instance->show = false;
+        }
+
+        if (!isset($attributes['show_header'])) {
+            $instance->show_header = false;
+        }
+
         $result = $instance->save();
 
         if (! $result) {

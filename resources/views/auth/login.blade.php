@@ -24,7 +24,6 @@
                         <label for="password" class="form-label">@lang('admin.password')</label>
                         <div class="input-group input-group-flat">
                             <input id="password" type="password" name="password" class="form-control" placeholder="@lang('admin.placeholders.password')" required>
-                            <span class="input-group-text"><x-icon icon="eye" class="cursor-pointer"/></span>
                         </div>
                     </div>
                     <div class="form-footer">

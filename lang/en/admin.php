@@ -196,6 +196,8 @@ return [
     'services' => 'Services',
     'service' => 'Service',
     'show' => [
+        'show' => 'Show',
+        'header' => 'Show on header',
         'skills' => 'Show all skills',
         'experiences' => 'Show all experience',
         'projects' => 'Show all projects'

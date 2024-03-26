@@ -3,7 +3,9 @@
 namespace Database\Seeders;
 
 use App\Repositories\Users;
+use App\Support\Str;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class UsersSeeder extends Seeder
 {
@@ -33,7 +35,9 @@ class UsersSeeder extends Seeder
     {
         $user = $this->users->create([
             'name' => 'Guillem Dolcet Jové',
-            'email' => 'g.dolcet.jove@gmail.com',
+            'email' => 'demo@demo.com',
+            'password' => 'demo',
+            'remember_token' => Str::random(10),
             'active' => true
         ]);
 
