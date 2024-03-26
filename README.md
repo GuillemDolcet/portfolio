@@ -2,7 +2,7 @@
 
 Hi, this is my personal portfolio :D
 
-![External Image](https://imgur.com/fJejxW3)
+![External Image](https://imgur.com/fJejxW3.png)
 
 ## Requirements
 
