@@ -1,10 +1,12 @@
 # Guillem Dolcet Portfolio
 
-Hi, this is my persoanl portfolio :D
+Hi, this is my personal portfolio :D
 
-<img src="https://static01.bbi.io/2Wt9Tk.gif"/>
+![External Image](https://imgur.com/fJejxW3)
 
-# Getting started
+## Requirements
+
+- PHP >= 8.1
 
 ## Installation
 
@@ -23,6 +25,14 @@ Switch to the repo folder
 Install all the dependencies using composer
 
     composer install
+
+Install node module using npm
+
+    npm install
+
+Build node module dependencies using npm
+
+    npm run build
 
 Copy the example env file and make the required configuration changes in the .env file
 
