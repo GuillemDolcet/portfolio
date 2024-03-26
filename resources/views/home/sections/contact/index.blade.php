@@ -11,7 +11,7 @@
                 <ul class="social-icons social-icons-lg justify-content-center justify-content-lg-start mt-5">
                     @if(isset($personalInfo->linkedin))
                         <li class="social-icons-linkedin">
-                            <a data-bs-toggle="tooltip" href="https://linkedin.com//{{ $personalInfo->linkedin }}"
+                            <a data-bs-toggle="tooltip" href="https://linkedin.com/in/{{ $personalInfo->linkedin }}"
                                target="_blank" title="" data-bs-original-title="Linkedin">
                                 <i class="fab fa-linkedin"></i>
                             </a>
