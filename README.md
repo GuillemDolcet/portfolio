@@ -1,8 +1,20 @@
 # Guillem Dolcet Portfolio
 
-Hi, this is my personal portfolio :D
+I developed a personal portfolio app using PHP/Laravel for robust server-side logic and seamless data handling. For the front end, JavaScript and jQuery were chosen to ensure interactivity and dynamic user experiences. Additionally, the backend incorporates Stimulus, a JavaScript framework, enhancing HTML with interactive behaviors efficiently. This tech stack guarantees a smooth, responsive, and user-friendly application, merging functionality with modern web practices.
 
-![External Image](https://imgur.com/fJejxW3.png)
+![External Image](https://imgur.com/39z3L9F.png)
+
+You can access backend via google (you need to configure the .env) or email and password
+
+Default user:
+
+Email: demo@demo.com
+
+Password: demo
+
+![External Image](https://imgur.com/phRDS00.png)
+
+![External Image](https://imgur.com/zQU98jy.png)
 
 ## Requirements
 
@@ -51,14 +63,6 @@ Start the local development server
     php artisan serve
 
 You can now access the server at http://localhost:8000
-
-**TL;DR command list**
-
-    git clone git@github.com:GuillemDolcet/portfolio.git
-    cd laravel-realworld-example-app
-    composer install
-    cp .env.example .env
-    php artisan key:generate
     
 **Make sure you set the correct database connection information before running the migrations** [Environment variables](#environment-variables)
 
@@ -76,24 +80,6 @@ Run the database seeder and you're done
 ***Note*** : It's recommended to have a clean database before seeding. You can refresh your migrations at any point to clean the database by running the following command
 
     php artisan migrate:refresh
-    
-## Docker
-
-To install with [Docker](https://www.docker.com), run following commands:
-
-```
-git clone git@github.com:GuillemDolcet/portfolio.git
-cd laravel-realworld-example-app
-cp .env.example.docker .env
-docker run -v $(pwd):/app composer install
-cd ./docker
-docker-compose up -d
-docker-compose exec php php artisan key:generate
-docker-compose exec php php artisan jwt:generate
-docker-compose exec php php artisan migrate
-docker-compose exec php php artisan db:seed
-docker-compose exec php php artisan serve --host=0.0.0.0
-```
 
 ----------
 
