@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
     <meta name="description" content="This is Guillem Dolcet Portfolio">
-    <meta name="author" content="harnishdesign.net">
+    <meta name="format-detection" content="telephone=no">
 
 
     <title>@yield('title', config('app.name'))</title>
