@@ -1,0 +1,64 @@
+volumes:
+    postgres:
+        name: 'postgres14'
+        driver: local
+
+    redis:
+        driver: local
+
+networks:
+    nw:
+        driver: bridge
+
+services:
+    db:
+        image: postgresql:14
+        environment:
+            POSTGRES_USER: ${DB_USERNAME}
+            POSTGRES_PASSWORD: ${DB_PASSWORD}
+        ports:
+            - ${DOCKER_DB_PORT}:5432
+        volumes:
+            - postgres:/var/lib/postgresql/data
+        networks:
+            - nw
+
+    redis:
+        image: redis:latest
+        ports:
+            - 6379:6379
+        volumes:
+            - redis:/data
+        networks:
+            - nw
+
+    mailer:
+        image: mailhog/mailhog:latest
+        ports:
+            - 1025:1025
+            - 8025:8025
+        networks:
+            - nw
+
+    assets:
+        image: laravel-assets:1.3
+        ports:
+            - 5173:5173
+        user: node
+        volumes:
+            - .:/srv/www/app
+        networks:
+            - nw
+
+    app:
+        image: laravel:10
+        depends_on:
+            - db
+            - redis
+            - mailer
+        ports:
+            - 5000:5000
+        volumes:
+            - .:/srv/www/app
+        networks:
+            - nw

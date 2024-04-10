@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+set -e
+
+# Run a command or default server
+if [ $# -gt 0 ]; then
+    "$@"
+else
+    cd /srv/www/app; npm install && npm run-script watch
+fi

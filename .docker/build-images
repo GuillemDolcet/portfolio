@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+echo "Building 'ubuntu' base images"
+docker image build --pull --force-rm --no-cache -t 'ubuntu:22.04' ubuntu:22.04/
+
+echo "Building 'php' base images"
+docker image build --force-rm --no-cache -t 'php:8.2' php:8.2/
+
+echo "Building 'node' base images"
+docker image build --pull --force-rm --no-cache -t 'node:20' node:20/
+
+echo "Building 'postgresql' base images"
+docker image build --pull --force-rm --no-cache -t 'postgresql:14' postgresql:14/
+
+echo "Building 'laravel' images"
+docker image build --force-rm --no-cache -t 'laravel:10' laravel:10/
+
+echo "Building 'assets' images"
+docker image build --force-rm --no-cache -t 'laravel-assets:1.3' laravel:10/assets:1.3/

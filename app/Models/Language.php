@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Language extends Model
 {
@@ -57,6 +58,6 @@ class Language extends Model
     public function scopeOrderByLocale(Builder $query): void
     {
         $lang = app()->getLocale();
-        $query->orderByRaw("FIELD(name, '$lang') DESC");
+        $query->orderby(DB::raw("case when name = '$lang' then 2 end"));
     }
 }

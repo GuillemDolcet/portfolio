@@ -17,6 +17,7 @@ return [
     'actual-image' => 'Imagen actual',
     'add' => 'Añadir',
     'advice-translations' => 'Es necesario rellenar todos los campos 1 vez independientemente del idioma, los campos no traducidos se traducirán automáticamente !!!',
+    'age' => 'Edad',
     'all' => 'todas',
     'answer' => 'Respuesta',
     'based-in' => 'Establecido en',
@@ -212,5 +213,6 @@ return [
     'users' => 'Usuarios',
     'view-works' => 'Mira mis trabajos',
     'with' => 'con',
+    'years-old' => 'años',
     'years-of' => 'Años de'
 ];

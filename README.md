@@ -34,40 +34,35 @@ Switch to the repo folder
 
     cd portfolio
 
-Install all the dependencies using composer
+Install Docker Images
 
-    composer install
-
-Install node module using npm
-
-    npm install
-
-Build node module dependencies using npm
-
-    npm run build
+    cd .docker
+    ./build-images
+    cd ..
 
 Copy the example env file and make the required configuration changes in the .env file
 
     cp .env.example .env
 
+Up docker containers
+
+    docker compose up
+
+***Note*** : php console is the equivalent of: docker compose exec app php artisan
+
 Generate a new application key
 
-    php artisan key:generate
+    php console key:generate
 
-Run the database migrations (**Set the database connection in .env before migrating**)
+Generate storage link
 
-    php artisan migrate
+    php console storage:link
 
-Start the local development server
-
-    php artisan serve
-
-You can now access the server at http://localhost:8000
+You can now access the server at http://localhost:
     
 **Make sure you set the correct database connection information before running the migrations** [Environment variables](#environment-variables)
 
-    php artisan migrate
-    php artisan serve
+    php console migrate
 
 ## Database seeding
 
@@ -75,11 +70,11 @@ You can now access the server at http://localhost:8000
 
 Run the database seeder and you're done
 
-    php artisan db:seed
+    php console db:seed
 
 ***Note*** : It's recommended to have a clean database before seeding. You can refresh your migrations at any point to clean the database by running the following command
 
-    php artisan migrate:refresh
+    php console migrate:refresh
 
 ----------
 

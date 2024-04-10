@@ -40,13 +40,13 @@ class PersonalInfoSeeder extends Seeder
             'date_of_birth' => Carbon::parse('18-09-2001'),
             'phone' => '+34 634 490 171',
             'location' => [
-                'en' => 'Lleida, Cataluña, Spain',
-                'es' => 'Lleida, Cataluña, España',
+                'en' => 'Barcelona, Cataluña, Spain',
+                'es' => 'Barcelona, Cataluña, España',
             ],
             'linkedin' => 'guillem-dolcet',
             'github' => 'GuillemDolcet',
             'image' => new File('resources/assets/images/personalInfo/main-image.png'),
-            'cv' => new File('resources/assets/files/personalInfo/cv.pdf'),
+            'cv' => new File('resources/assets/files/personalInfo/cv_es.pdf'),
         ]);
     }
 }

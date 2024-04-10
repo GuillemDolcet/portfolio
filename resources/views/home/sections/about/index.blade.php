@@ -9,16 +9,18 @@
             <div class="col-lg-8 text-center text-lg-start wow fadeInUp">
                 {!! $section->description !!}
             </div>
-            <div class="col-lg-4 mt-4 mt-lg-0 wow fadeInUp" data-wow-delay="0.2s">
-                <div class="featured-box style-4">
-                    <div class="text-25 fw-500 text-black">
-                        <span class="wow heartBeat" data-wow-delay="1.3s">
-                            {{ round(\Carbon\Carbon::now()->diffInMonths($experiences->sortBy('start_date')->first()->start_date) / 12) }}
-                        </span>
+            @if(count($experiences) > 0)
+                <div class="col-lg-4 mt-4 mt-lg-0 wow fadeInUp" data-wow-delay="0.2s">
+                    <div class="featured-box style-4">
+                        <div class="text-25 fw-500 text-black">
+                            <span class="wow heartBeat" data-wow-delay="1.3s">
+                                {{ round(\Carbon\Carbon::now()->diffInMonths($experiences->sortBy('start_date')->first()->start_date) / 12) }}
+                            </span>
+                        </div>
+                        <h3>@lang('admin.years-of') <span class="fw-700">@lang('admin.experience')</span></h3>
                     </div>
-                    <h3>@lang('admin.years-of') <span class="fw-700">@lang('admin.experience')</span></h3>
-                </div>
             </div>
+            @endif
         </div>
         <div class="row gy-3 mt-4">
             <div class="col-12 col-lg-6 col-sm-6 wow fadeInUp" data-wow-delay="0.2s">
@@ -30,8 +32,8 @@
                 <p class="text-4 fw-600 mb-0">{{ $personalInfo->phone }}</p>
             </div>
             <div class="col-12 col-lg-6 col-sm-6 wow fadeInUp" data-wow-delay="0.2s">
-                <p class="text-muted fw-500 mb-0">@lang('admin.date_of_birth')</p>
-                <p class="text-4 fw-600 mb-0">{{ $personalInfo->date_of_birth->format('d/m/Y') }}</p>
+                <p class="text-muted fw-500 mb-0">@lang('admin.age')</p>
+                <p class="text-4 fw-600 mb-0">{{ $personalInfo->date_of_birth->age }} @lang('admin.years-old')</p>
             </div>
             <div class="col-12 col-lg-6 col-sm-6 wow fadeInUp" data-wow-delay="0.4s">
                 <p class="text-muted fw-500 mb-0">@lang('admin.location')</p>
