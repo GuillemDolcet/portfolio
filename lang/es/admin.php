@@ -54,7 +54,7 @@ return [
     'delete' => 'Eliminar',
     'description' => 'Descripción',
     'discipline' => 'Disciplina académica',
-    'download_cv' => 'Descargar CV',
+    'show_cv' => 'Ver CV',
     'tag' => 'Tag',
     'testimonial' => 'Testimonio',
     'testimonials' => 'Testimonios',

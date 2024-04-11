@@ -58,14 +58,16 @@ class PersonalInfoRequest extends FormRequest
             'twitter' => ['nullable', 'string'],
             'github' => ['nullable', 'string'],
             'image' =>  ['required', 'image', 'max:10000'],
-            'cv' =>  ['required', 'mimes:pdf', 'max:10000'],
+            'cv' => ['required', 'array', new Language()],
+            'cv.*' => ['required', 'mimes:pdf', 'max:10000'],
             'location' => ['required', 'array', new Language()],
             'location.*' => ['required', 'string', 'max:100']
         ];
 
         if ($this->personalInfo && $this->personalInfo->exists){
             $rules['image'] = ['nullable', 'image', 'max:10000'];
-            $rules['cv'] = ['nullable', 'mimes:pdf', 'max:10000'];
+            $rules['cv'] = ['nullable', 'array', new Language()];
+            $rules['cv.*'] = ['nullable', 'mimes:pdf', 'max:10000'];
         }
 
         return $rules;

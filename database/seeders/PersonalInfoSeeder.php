@@ -46,7 +46,10 @@ class PersonalInfoSeeder extends Seeder
             'linkedin' => 'guillem-dolcet',
             'github' => 'GuillemDolcet',
             'image' => new File('resources/assets/images/personalInfo/main-image.png'),
-            'cv' => new File('resources/assets/files/personalInfo/cv_es.pdf'),
+            'cv' => [
+                'en' => new File('resources/assets/files/personalInfo/cv_en.pdf'),
+                'es' => new File('resources/assets/files/personalInfo/cv_es.pdf')
+            ],
         ]);
     }
 }

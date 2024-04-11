@@ -31,7 +31,7 @@ class PersonalInfo extends Model
      * @var array
      */
     protected array $translatable = [
-        'location'
+        'location', 'cv'
     ];
 
     /**

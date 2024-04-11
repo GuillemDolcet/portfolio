@@ -6,6 +6,7 @@ use App\Http\Requests\PersonalInfoRequest;
 use App\Repositories\Languages;
 use App\Repositories\PersonalInfo;
 use App\Services\Translator;
+use App\Support\Arr;
 use App\Support\Storage;
 use DeepL\DeepLException;
 use Illuminate\Auth\Access\AuthorizationException;
@@ -140,7 +141,7 @@ class PersonalInfoController extends AdminController
     public function store(PersonalInfoRequest $request): RedirectResponse
     {
         if ($attributes = $request->validated()) {
-            $attributes = $this->translator->translate($attributes, $this->personalInfo->build()->getTranslatableAttributes());
+            $attributes = $this->translator->translate($attributes, Arr::except($this->personalInfo->build()->getTranslatableAttributes(), ['cv']));
             $this->personalInfo->create($attributes);
             return redirect()
                 ->back()
@@ -169,7 +170,8 @@ class PersonalInfoController extends AdminController
     public function update(PersonalInfoRequest $request, PersonalInfoModel $personalInfo): RedirectResponse
     {
         if ($attributes = $request->validated()) {
-            $attributes = $this->translator->translate($attributes, $this->personalInfo->build()->getTranslatableAttributes());
+            $translatableAttributes = array_diff($this->personalInfo->build()->getTranslatableAttributes(), ['cv']);
+            $attributes = $this->translator->translate($attributes, $translatableAttributes);
             $this->personalInfo->update($personalInfo, $attributes);
             return redirect()
                 ->back()
@@ -210,18 +212,19 @@ class PersonalInfoController extends AdminController
     }
 
     /**
-     * [GET] /personalInfo/{personalInfo}/downloadCv
-     * personalInfo.downloadCv
+     * [GET] /personalInfo/{personalInfo}/showCv
+     * personalInfo.showCv
      *
      * Download CV
      *
      * @param PersonalInfoModel $personalInfo
      * @return BinaryFileResponse
      */
-    public function downloadCv(PersonalInfoModel $personalInfo): BinaryFileResponse
+    public function showCv(PersonalInfoModel $personalInfo): BinaryFileResponse
     {
-        return response()->download(public_path(Storage::url($personalInfo->cv)), 'cv.pdf', [
-            'Content-Type' => 'application/pdf'
+        return response()->file(public_path(Storage::url($personalInfo->getTranslation('cv', app()->getLocale()))), [
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'inline; filename="cv_'. app()->getLocale() .'.pdf"'
         ]);
     }
 }

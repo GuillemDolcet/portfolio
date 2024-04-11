@@ -54,7 +54,7 @@ return [
     'delete' => 'Delete',
     'description' => 'Description',
     'discipline' => 'Discipline',
-    'download_cv' => 'Download CV',
+    'show_cv' => 'Show CV',
     'tag' => 'tag',
     'testimonial' => 'Testimonial',
     'testimonials' => 'Testimonials',

@@ -99,12 +99,13 @@ class PersonalInfo extends Repository
         }
 
         if (isset($attributes['cv'])){
-            if ($instance->exists){
-                Storage::disk('public')->delete($instance->cv);
+            foreach ($attributes['cv'] as $language => $cv){
+                if ($instance->exists){
+                    Storage::disk('public')->delete($instance->getTranslation('cv', $language));
+                }
+                $path = Storage::disk('public')->putFile('personalInfo', $cv);
+                $instance->setTranslation('cv', $language, $path);
             }
-
-            $path = Storage::disk('public')->putFile('personalInfo', $attributes['cv']);
-            $instance->cv = $path;
         }
 
         $result = $instance->save();

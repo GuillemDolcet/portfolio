@@ -117,14 +117,20 @@
             </div>
         @endif
     </div>
-    <div class="col-12 mb-3">
-        <label class="form-label fw-bold" for="cv">@lang('admin.cv') <sup
-                class="text-danger fs-xs">*</sup></label>
-        <input id="cv" name="cv" type="file" class="form-control @error('cv') is-invalid @enderror"
-               autocomplete="off" accept="application/pdf"
-               {{$personalInfo->exists ? '' : 'required'}} value="{{ old('cv', $personalInfo->cv) }}">
-        @error('cv')
-        <div class="invalid-feedback">{{ $message }}</div>
-        @enderror
-    </div>
+    @foreach($languages as $language)
+        <div class="col-12 mb-3">
+            <label class="form-label fw-bold" for="cv[{{$language->name}}]">
+                <img src="{{image_url($language->image)}}" alt="{{$language->name}}" width="24" height="24"/> @lang('admin.cv') <sup class="text-danger fs-xs">*</sup>
+            </label>
+            <input id="cv[{{$language->name}}]" name="cv[{{$language->name}}]" type="file"
+                   class="form-control @if($errors->has('cv') || $errors->has('cv.*')) is-invalid @endif" accept="application/pdf"
+                   autocomplete="off" maxlength="100" {{$personalInfo->exists ? '' : 'required'}}>
+            @error('cv')
+            <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+            @error('cv.*')
+            <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
+    @endforeach
 </div>

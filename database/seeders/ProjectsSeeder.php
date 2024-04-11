@@ -157,7 +157,7 @@ class ProjectsSeeder extends Seeder
                 'es' => 'Gili Group',
             ],
             'description' => [
-                'en' => 'Site modifications and programming of your new ERP.',
+                'en' => 'Site modifications and programming of new ERP.',
                 'es' => 'Modificaciones de la página y programación de su nuevo ERP.',
             ],
             'url' => 'https://giligroup.com/',
