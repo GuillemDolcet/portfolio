@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PersonalInfoRequest;
+use App\Models\Language;
 use App\Repositories\Languages;
 use App\Repositories\PersonalInfo;
 use App\Services\Translator;
@@ -212,19 +213,24 @@ class PersonalInfoController extends AdminController
     }
 
     /**
-     * [GET] /personalInfo/{personalInfo}/showCv
+     * [GET] /personalInfo/{personalInfo}/showCv/{locale}
      * personalInfo.showCv
      *
-     * Download CV
+     * Show CV
      *
      * @param PersonalInfoModel $personalInfo
-     * @return BinaryFileResponse
+     * @param string $locale
+     * @return BinaryFileResponse|RedirectResponse
      */
-    public function showCv(PersonalInfoModel $personalInfo): BinaryFileResponse
+    public function showCv(PersonalInfoModel $personalInfo, string $locale): BinaryFileResponse|RedirectResponse
     {
-        return response()->file(public_path(Storage::url($personalInfo->getTranslation('cv', app()->getLocale()))), [
-            'Content-Type' => 'application/pdf',
-            'Content-Disposition' => 'inline; filename="cv_'. app()->getLocale() .'.pdf"'
-        ]);
+        if (Language::name($locale)->exists()){
+            return response()->file(public_path(Storage::url($personalInfo->getTranslation('cv', $locale))), [
+                'Content-Type' => 'application/pdf',
+                'Content-Disposition' => 'inline; filename="cv_'. $locale .'.pdf"'
+            ]);
+        }
+
+        return redirect()->back();
     }
 }

@@ -40,7 +40,7 @@ Route::prefix('auth')->group(function () {
 });
 
 Route::post('/contact/{personalInfo}', [ContactController::class, 'contact'])->name('contact');
-Route::get('/personalInfo/{personalInfo}/showCv', [PersonalInfoController::class, 'showCv'])->name('personalInfo.showCv');
+Route::get('/personalInfo/{personalInfo}/showCv/{locale}', [PersonalInfoController::class, 'showCv'])->name('personalInfo.showCv');
 Route::post('/change-language/{language}', [LanguageController::class, 'changeLanguage'])->name('change-language');
 
 Route::middleware('auth')->group(function () {

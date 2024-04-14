@@ -47,7 +47,7 @@
                                 </div>
                                 <div class="d-flex flex-column text-muted mt-2 ms-4">
                                     <div class="me-2 mb-2">
-                                        <a href="{{ route('personalInfo.showCv', $personalInfo) }}" target="_blank">
+                                        <a href="{{ route('personalInfo.showCv', ['personalInfo' => $personalInfo, 'locale' => app()->getLocale()]) }}" target="_blank">
                                             <x-icon class="me-1" icon="cv"/> @lang('admin.show_cv')
                                         </a>
                                     </div>
