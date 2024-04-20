@@ -13,7 +13,7 @@ const inProduction = process.env.NODE_ENV === 'production';
 
 const assetCleanup = function (dirs = []) {
     return {
-        name: "vite-plugin-ielectro-asset-cleanup",
+        name: "vite-plugin-guillem-dolcet-asset-cleanup",
         apply: "build",
         enforce: "post",
         async writeBundle() {
