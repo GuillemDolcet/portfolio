@@ -15,9 +15,6 @@
 
     @stack('dns-prefetch')
 
-    <link rel="icon" href="{{ image_url('logo.svg') }}" type="image/x-icon"/>
-    <link rel="shortcut icon" href="{{ image_url('logo.svg') }}" type="image/x-icon"/>
-
     @stack('top-stylesheets')
 
     @vite(['resources/assets/stylesheets/home/style.scss', 'resources/assets/javascripts/home.js'], 'assets')

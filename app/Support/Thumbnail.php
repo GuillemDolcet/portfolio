@@ -13,7 +13,7 @@ class Thumbnail
      */
     public static function host(): string
     {
-        return config('services.thumbnail_host', 'thumbs.ielectro.es');
+        return config('services.thumbnail_host', 'thumbs');
     }
 
     /**

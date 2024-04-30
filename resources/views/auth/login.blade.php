@@ -2,11 +2,8 @@
 
 @section('content')
     <div class="text-center mb-4">
-        <a href="{{ route('home') }}" class="navbar-brand navbar-brand-autodark">
-            <img src="{{ image_url('logo.svg') }}" height="36" alt="{{ config('app.name') }}">
-            <span class="h1 m-0 ms-2 text-black">
-            {{ config('app.name') }}
-        </span>
+        <a href="{{ route('home') }}" class="navbar-brand navbar-brand-autodark" data-turbo="false">
+            <img src="{{ image_url('logo.png') }}" height="57" alt="{{ config('app.name') }}">
         </a>
     </div>
 

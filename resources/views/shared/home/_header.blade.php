@@ -3,7 +3,7 @@
         <div class="container position-relative">
             <div class="col-auto col-lg-1 d-inline-flex ps-lg-0">
                 <a class="logo" title="{{ config('app.name') }}">
-                    <img src="{{ image_url('logo.svg') }}" alt="{{ config('app.name') }}" width="32" height="32"/>
+                    <img src="{{ image_url('logo.png') }}" alt="{{ config('app.name') }}" width="120" height="57"/>
                 </a>
             </div>
             <div class="col col-lg-9 navbar-accordion px-0">

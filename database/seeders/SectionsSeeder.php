@@ -44,8 +44,8 @@ class SectionsSeeder extends Seeder
                 'en' => "Hi, I'm a"
             ],
             'description' => [
-                'es' => '<div class="typed-strings"><p>Backend</p><p>Developer</p></div><h2 class="text-21 fw-600 text-uppercase mb-0 ms-n1"><span class="typed"></span></h2>',
-                'en' => '<div class="typed-strings"><p>Backend</p><p>Developer</p></div><h2 class="text-21 fw-600 text-uppercase mb-0 ms-n1"><span class="typed"></span></h2>',
+                'es' => '<div class="typed-strings"><p>Fullstack</p><p>Developer</p></div><h2 class="text-21 fw-600 text-uppercase mb-0 ms-n1"><span class="typed"></span></h2>',
+                'en' => '<div class="typed-strings"><p>Fullstack</p><p>Developer</p></div><h2 class="text-21 fw-600 text-uppercase mb-0 ms-n1"><span class="typed"></span></h2>',
             ],
             'show' => true,
             'show_header' => true
