@@ -44,8 +44,8 @@ class ExperiencesSeeder extends Seeder
     {
         $experience = $this->experiences->create([
             'position' => [
-                'en' => 'Middle Backend Developer',
-                'es' => 'Middle Backend Developer',
+                'en' => 'Backend Developer',
+                'es' => 'Backend Developer',
             ],
             'company' => [
                 'en' => 'INSON S.A.',
@@ -74,8 +74,8 @@ class ExperiencesSeeder extends Seeder
 
         $experience = $this->experiences->create([
             'position' => [
-                'en' => 'Junior Fullstack Developer',
-                'es' => 'Junior Fullstack Developer',
+                'en' => 'Fullstack Developer',
+                'es' => 'Fullstack Developer',
             ],
             'company' => [
                 'en' => 'CompsaOnline S.L.',
