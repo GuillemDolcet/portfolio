@@ -1,9 +1,10 @@
 volumes:
-    postgres:
-        name: 'postgres14'
+    portfolio-postgres:
+        name: 'portfolio-postgres'
         driver: local
 
-    redis:
+    portfolio-redis:
+        name: 'portfolio-redis'
         driver: local
 
 networks:
@@ -12,23 +13,23 @@ networks:
 
 services:
     db:
-        image: postgresql:14
+        image: portfolio-postgresql
         environment:
             POSTGRES_USER: ${DB_USERNAME}
             POSTGRES_PASSWORD: ${DB_PASSWORD}
         ports:
-            - ${DOCKER_DB_PORT}:5432
+            - ${DB_PORT}:5432
         volumes:
-            - postgres:/var/lib/postgresql/data
+            - portfolio-postgres:/var/lib/postgresql/data
         networks:
             - nw
 
     redis:
-        image: redis:latest
+        image: portfolio-redis
         ports:
             - 6379:6379
         volumes:
-            - redis:/data
+            - portfolio-redis:/data
         networks:
             - nw
 
@@ -41,7 +42,7 @@ services:
             - nw
 
     assets:
-        image: laravel-assets:1.3
+        image: portfolio-assets
         ports:
             - 5173:5173
         user: node
@@ -51,7 +52,7 @@ services:
             - nw
 
     app:
-        image: laravel:10
+        image: portfolio-laravel
         depends_on:
             - db
             - redis

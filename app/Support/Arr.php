@@ -25,7 +25,7 @@ class Arr extends LaravelArr
      * @param string|null $value
      * @return array
      */
-    public static function without(array $ary, string $key, string $value = null): array
+    public static function without(array $ary, string $key, ?string $value = null): array
     {
         if (!array_key_exists($key, $ary)) {
             return $ary;

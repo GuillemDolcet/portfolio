@@ -1,7 +1,9 @@
-FROM node:20
+FROM node:24
 
-ARG uid=1000
+ARG uid=9999
 
 RUN usermod -u $uid node
 
-RUN npm install -g npm@10.3.0
+RUN npm install -g npm@11.5.2
+
+

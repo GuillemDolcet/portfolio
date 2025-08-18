@@ -1,19 +1,22 @@
 #!/usr/bin/env bash
 
 echo "Building 'ubuntu' base images"
-docker image build --pull --force-rm --no-cache -t 'ubuntu:22.04' ubuntu/
+docker image build --build-arg uid=$(id -u) --build-arg gid=$(id -g) --pull --force-rm --no-cache -t 'portfolio-ubuntu' ubuntu/
 
 echo "Building 'php' base images"
-docker image build --force-rm --no-cache -t 'php:8.2' php/
+docker image build --force-rm --no-cache -t 'portfolio-php' php/
 
 echo "Building 'node' base images"
-docker image build --pull --force-rm --no-cache -t 'node:20' node/
+docker image build --build-arg uid=$(id -u) --build-arg gid=$(id -g) --pull --force-rm --no-cache -t 'portfolio-node' node/
 
 echo "Building 'postgresql' base images"
-docker image build --pull --force-rm --no-cache -t 'postgresql:14' postgresql/
+docker image build --pull --force-rm --no-cache -t 'portfolio-postgresql' postgresql/
 
 echo "Building 'laravel' images"
-docker image build --force-rm --no-cache -t 'laravel:10' laravel/
+docker image build --force-rm --no-cache -t 'portfolio-laravel' laravel/
 
 echo "Building 'assets' images"
-docker image build --force-rm --no-cache -t 'laravel-assets:1.3' laravel/assets/
+docker image build --force-rm --no-cache -t 'portfolio-assets' laravel/assets/
+
+echo "Building 'redis' images"
+docker image build --force-rm --no-cache -t 'portfolio-redis' redis/

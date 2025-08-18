@@ -1,12 +1,12 @@
-FROM postgres:14
+FROM postgres:17
 
 ARG debian_frontend=noninteractive
-ENV DEBIAN_FRONTEND ${debian_frontend}
+ENV DEBIAN_FRONTEND=${debian_frontend}
 
 # locale settings: language & timezone
-ENV LANG es_ES.UTF-8
-ENV LANGUAGE es_ES.UTF-8
-ENV LC_ALL es_ES.UTF-8
+ENV LANG=es_ES.UTF-8
+ENV LANGUAGE=es_ES.UTF-8
+ENV LC_ALL=es_ES.UTF-8
 
 RUN sed -i '/es_ES.UTF-8/s/^# //g' /etc/locale.gen \
     && localedef -i es_ES -c -f UTF-8 -A /usr/share/locale/locale.alias es_ES.UTF-8 \

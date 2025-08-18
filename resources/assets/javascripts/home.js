@@ -1,5 +1,4 @@
 import "./application";
-
 import "wowjs";
 import "imagesloaded";
 import 'owl.carousel';
