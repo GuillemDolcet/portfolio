@@ -1,5 +1,5 @@
 import "./application";
-import "wowjs";
+import ScrollReveal from 'scrollreveal';
 import "imagesloaded";
 import 'owl.carousel';
 import "magnific-popup";
@@ -220,29 +220,38 @@ class Category{
             });
         });
 
-        // WOW animation
-        $(window).on('load', function () {
-            $(".wow").each(function() {
-                if ($(window).width() > 767) {
-                    let wow = new WOW({
-                        boxClass: 'wow',
-                        animateClass: 'animated',
-                        offset: 0,
-                        mobile: false,
-                        live: true
-                    });
-                    wow.init();
+        const sr = ScrollReveal();
+
+        const animationConfig = {
+            // Animaciones de "fadeIn"
+            'fadeIn': { duration: 2500, opacity: 0, distance: '60px', origin: 'bottom' },
+            'fadeInUp': { duration: 2500, opacity: 0, distance: '60px', origin: 'bottom' },
+            'fadeInDown': { duration: 2500, opacity: 0, distance: '60px', origin: 'top' },
+            'fadeInLeft': { duration: 2500, opacity: 0, distance: '60px', origin: 'left' },
+            'fadeInRight': { duration: 2500, opacity: 0, distance: '60px', origin: 'right' },
+
+            'zoomIn': { duration: 2500, scale: 0.5, opacity: 0, distance: '0' }
+        };
+
+        document.querySelectorAll('.wow').forEach(element => {
+            const animationType = element.getAttribute('data-animation');
+            const delay = element.getAttribute('data-delay') || '0s';
+
+            if (animationConfig[animationType]) {
+                const config = { ...animationConfig[animationType] };
+
+                if (delay) {
+                    config.delay = parseFloat(delay) * 1000;
                 }
-            });
+
+                sr.reveal(element, config);
+            }
         });
 
         /*------------------------
            tooltips
         -------------------------- */
-        let tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-        let tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-            return new bootstrap.Tooltip(tooltipTriggerEl)
-        })
+
 
         // Scroll to top
         $(function () {

@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Log;
 use Laravel\Socialite\Facades\Socialite;
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use App\Providers\RouteServiceProvider;
 use App\Repositories\Users;
 use App\Support\Arr;
 
@@ -89,7 +88,7 @@ class GoogleController extends Controller
 
         Auth::guard()->login($user, true);
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        return redirect()->intended();
     }
 
     /**

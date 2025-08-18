@@ -1,11 +1,11 @@
 <section id="{{ $section->name }}" class="section bg-secondary">
     <div class="container">
         <!-- Heading -->
-        <p class=" text-center mb-2 wow fadeIn"><span class="bg-primary text-black px-2">{{ $section->tag }}</span></p>
-        <h2 class="text-10 fw-600 text-white text-center mb-5 wow fadeIn">{{ $section->title }}</h2>
+        <p class=" text-center mb-2 wow" data-animation="fadeIn" data-delay="0,3"><span class="bg-primary text-black px-2">{{ $section->tag }}</span></p>
+        <h2 class="text-10 fw-600 text-white text-center mb-5 wow" data-animation="fadeIn" data-delay="0,3">{{ $section->title }}</h2>
         <!-- Heading end-->
         <div class="row">
-            <div class="col-lg-9 mx-auto wow fadeInUp">
+            <div class="col-lg-9 mx-auto wow" data-animation="fadeInUp" data-delay="0,3">
                 <div class="owl-carousel owl-theme owl-light" data-autoplay="true" data-loop="true" data-nav="true" data-margin="30" data-slideby="1" data-stagepadding="5"  data-items-xs="1" data-items-sm="1" data-items-md="1" data-items-lg="1">
                     @foreach($testimonials as $testimonial)
                         <div class="item text-center px-5">

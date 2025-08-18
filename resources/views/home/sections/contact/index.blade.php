@@ -1,7 +1,7 @@
 <section id="{{ $section->name }}" class="section bg-primary">
     <div class="container">
         <div class="row">
-            <div class="col-lg-5 text-center text-lg-start wow fadeInUp">
+            <div class="col-lg-5 text-center text-lg-start wow" data-animation="fadeInUp" data-delay="0,3">
                 <h2 class="text-10 fw-600 mb-5 text-justify">{{ $section->title }}</h2>
                 <p class="text-5 mb-5 text-justify">{{ $section->description }}</p>
                 <h3 class="text-5 fw-600">@lang('admin.phone'):</h3>
@@ -43,7 +43,7 @@
                     @endif
                 </ul>
             </div>
-            <div class="col-lg-6 ms-auto mt-5 mt-lg-0 wow fadeInUp" data-wow-delay="0.3s">
+            <div class="col-lg-6 ms-auto mt-5 mt-lg-0 wow" data-animation="fadeInUp" data-delay="0,3">
                 <form id="contact-form" class="form-border" action="{{ route('contact', $personalInfo) }}" method="post">
                     @csrf
                     <div class="row g-4">

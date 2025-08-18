@@ -5,7 +5,7 @@ import.meta.glob(["../images/**"])
 
 // Turbo
 import * as Turbo from "@hotwired/turbo"
-Turbo.setProgressBarDelay(100)
+Turbo.config.drive.progressBarDelay = 100
 window.Turbo = Turbo
 
 // jQuery
