@@ -3,34 +3,27 @@
 namespace App\Providers;
 
 use Illuminate\Contracts\Container\BindingResolutionException;
-use Illuminate\Foundation\Vite;
 use Illuminate\Support\ServiceProvider;
-use App\Support\Parameters;
+use Illuminate\Foundation\Vite;
 
 class AppServiceProvider extends ServiceProvider
 {
     /**
      * Register any application services.
-     *
-     * @return void
-     */
-    public function register(): void
-    {}
-
-    /**
-     * Bootstrap any application services.
-     *
-     * @return void
      * @throws BindingResolutionException
      */
-    public function boot(): void
+    public function register(): void
     {
-        // Vite.js config
         $this->app->make(Vite::class)->useHotFile(
             app('env') !== 'production' ? storage_path('app/vite.hot') : false
         );
+    }
 
-        // Register query params helper class
-        $this->app->singleton(Parameters::class);
+    /**
+     * Bootstrap any application services.
+     */
+    public function boot(): void
+    {
+        //
     }
 }

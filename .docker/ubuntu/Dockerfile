@@ -1,13 +1,20 @@
-FROM ubuntu:22.04
+FROM ubuntu:24.04
 
-ARG uid=1000
-ARG gid=1000
+ARG uid=9999
+ARG gid=9999
 
 ARG debian_frontend=noninteractive
-ENV DEBIAN_FRONTEND ${debian_frontend}
+ENV DEBIAN_FRONTEND=noninteractive
 
-RUN groupadd -g ${gid} www-admin \
-    && useradd -u ${uid} -g www-admin -m -s /bin/bash www-admin
+RUN groupadd -o -g ${gid} www-data 2>/dev/null || true
+
+# Si el usuario www-data no existe, lo crea con el UID y GID correctos
+RUN if ! getent passwd www-data >/dev/null; then \
+        useradd -o -u ${uid} -g www-data -m -s /bin/bash www-data; \
+    else \
+        usermod -o -u ${uid} www-data; \
+        groupmod -o -g ${gid} www-data; \
+    fi
 
 RUN apt-get update \
     && apt-get upgrade -y \
@@ -16,7 +23,7 @@ RUN apt-get update \
 
 RUN localedef -i es_ES -c -f UTF-8 -A /usr/share/locale/locale.alias es_ES.UTF-8
 
-ENV LANG es_ES.utf8
+ENV LANG=es_ES.utf8
 
 RUN echo "Europe/Madrid" > /etc/timezone \
     && ln -fs /usr/share/zoneinfo/Europe/Madrid /etc/localtime \
@@ -36,6 +43,3 @@ RUN apt-get update \
     && apt-get clean \
     && apt-get autoclean \
     && apt-get autoremove -y --purge
-
-RUN echo "alias ls='ls -lFh --color=auto'" > /home/www-admin/.bash_aliases \
-    && chown www-admin:www-admin /home/www-admin/.bash_aliases

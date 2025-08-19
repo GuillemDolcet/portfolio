@@ -5,11 +5,16 @@ import { existsSync, readFileSync } from 'fs';
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
 import manifestSRI from 'vite-plugin-manifest-sri';
-import del from 'del';
+import { deleteAsync } from 'del';
 
 const inProduction = process.env.NODE_ENV === 'production';
 
 // -- Custom inline plugin definitions
+
+manifestSRI({
+    // Esto hace que sobreescriba el manifest original, en lugar de ponerlo en .vite
+    manifestPath: 'public/assets/manifest.json',
+})
 
 const assetCleanup = function (dirs = []) {
     return {
@@ -46,7 +51,7 @@ const assetCleanup = function (dirs = []) {
             ];
 
             // Prune all supplied files/folders except those present in the manifest
-            del.sync([...deletes, ...exceptions]);
+            await deleteAsync([...deletes, ...exceptions]);
         }
     }
 }
@@ -83,15 +88,14 @@ export default defineConfig({
     },
     build: {
         sourcemap: !inProduction,
-        manifest: true,
+        manifest: 'manifest.json',
+        outDir: 'public/assets',
         reportCompressedSize: true,
         emptyOutDir: false,
         rollupOptions: {
             output: {
                 chunkFileNames: 'javascripts/[name].[hash].js',
                 entryFileNames: 'javascripts/[name].[hash].js',
-                // Add some folder structure to bundled assets.
-                // TODO: Try to respect original folder structure...
                 assetFileNames: ({ name }) => {
                     if (/\.(gif|jpe?g|png|svg)$/.test(name ?? '')) {
                         return 'images/[name].[hash][extname]'
@@ -109,10 +113,7 @@ export default defineConfig({
             }
         }
     },
-    // FIXME: It seems there's some issue w/high resource utilization via chokidar
-    // and/or some of its dependencies which interact w/node open file
-    // descriptors badly.
-    // See: https://github.com/vitejs/vite/issues/10835
+
     server: {
         hmr: {
             host: 'localhost',

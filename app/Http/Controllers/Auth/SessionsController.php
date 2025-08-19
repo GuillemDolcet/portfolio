@@ -10,7 +10,6 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
 
 class SessionsController extends Controller
 {
@@ -57,7 +56,7 @@ class SessionsController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect()->intended(RouteServiceProvider::HOME);
+            return redirect()->intended();
         }
 
         return redirect()
@@ -84,6 +83,6 @@ class SessionsController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect()->to(RouteServiceProvider::HOME);
+        return redirect()->route('auth.login');
     }
 }

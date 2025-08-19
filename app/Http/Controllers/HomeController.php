@@ -167,7 +167,7 @@ class HomeController
 
         $services = $this->services->newQuery()->get();
 
-        $languages = $this->languages->newQuery()->orderByLocale()->get();
+        $languages = $this->languages->newQuery()->whereNot('name', app()->getLocale())->orderByLocale()->get();
 
         return view('home.index', compact('skills','experiences','projects', 'education',
             'sections','personalInfo', 'services', 'testimonials', 'faqs', 'languages'));

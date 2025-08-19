@@ -42,6 +42,7 @@ class PersonalInfoSeeder extends Seeder
             'location' => [
                 'en' => 'Barcelona, Cataluña, Spain',
                 'es' => 'Barcelona, Cataluña, España',
+                'ca' => 'Barcelona, Catalunya, Espanya',
             ],
             'linkedin' => 'guillem-dolcet',
             'github' => 'GuillemDolcet',

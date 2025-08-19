@@ -1,4 +1,4 @@
-FROM node:20
+FROM portfolio-node
 
 COPY start-container /usr/local/bin/start-container
 

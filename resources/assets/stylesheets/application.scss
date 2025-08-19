@@ -1,6 +1,6 @@
-@import '~@tabler/core/src/scss/tabler';
-@import '~@tabler/core/src/scss/tabler-vendors';
-@import 'select2/src/scss/core';
+@use '~@tabler/core/scss/tabler';
+@use '~@tabler/core/scss/tabler-vendors';
+@use 'select2/src/scss/core';
 
 .container-lg{
     width: 80%;

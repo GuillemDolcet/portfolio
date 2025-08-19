@@ -45,7 +45,7 @@ return [
     ],
     'created' => 'Created',
     'created_at' => 'Created At',
-    'currently' => 'Still working here',
+    'currently' => 'Currently',
     'currently-project' => 'Working',
     'cv' => 'CV',
     'date_of_birth' => 'Date of birth',

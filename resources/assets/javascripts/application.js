@@ -5,7 +5,7 @@ import.meta.glob(["../images/**"])
 
 // Turbo
 import * as Turbo from "@hotwired/turbo"
-Turbo.setProgressBarDelay(100)
+Turbo.config.drive.progressBarDelay = 100
 window.Turbo = Turbo
 
 // jQuery
@@ -19,7 +19,7 @@ select2(window.$)
 import Swal from 'sweetalert2/dist/sweetalert2.min'
 
 // Tabler
-import "@tabler/core/src/js/tabler"
+import "@tabler/core/js/tabler"
 // ApexCharts
 import ApexCharts from 'apexcharts'
 window.ApexCharts = ApexCharts;

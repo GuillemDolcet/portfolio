@@ -1,8 +1,8 @@
 <section id="{{ $section->name }}" class="section bg-light">
     <div class="container">
-        <p class="text-center mb-2 wow fadeInUp"><span class="bg-primary text-black px-2">{{ $section->tag }}</span></p>
-        <h2 class="text-10 fw-600 text-center mb-5 wow fadeInUp">{{ $section->title }}</h2>
-        <div class="portfolio wow fadeInUp">
+        <p class="text-center mb-2 wow" data-animation="fadeInUp" data-delay="0,3"><span class="bg-primary text-black px-2">{{ $section->tag }}</span></p>
+        <h2 class="text-10 fw-600 text-center mb-5 wow" data-animation="fadeInUp" data-delay="0,3">{{ $section->title }}</h2>
+        <div class="portfolio wow" data-animation="fadeInUp" data-delay="0,3">
             <div class="row g-4 mt-3 portfolio-filter detailed">
                 @foreach($projects as $project)
                     <div class="col-sm-6 col-lg-4 detailed">

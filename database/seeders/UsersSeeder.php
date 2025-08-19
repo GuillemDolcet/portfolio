@@ -33,14 +33,16 @@ class UsersSeeder extends Seeder
      */
     public function run(): void
     {
-        $user = $this->users->create([
-            'name' => 'Guillem Dolcet Jové',
-            'email' => 'demo@demo.com',
-            'password' => 'demo',
-            'remember_token' => Str::random(10),
-            'active' => true
-        ]);
+        if (app()->environment() === 'local') {
+            $user = $this->users->create([
+                'name' => 'Guillem Dolcet Jové',
+                'email' => 'demo@demo.com',
+                'password' => 'demo',
+                'remember_token' => Str::random(10),
+                'active' => true
+            ]);
 
-        $user->assignRole('admin');
+            $user->assignRole('admin');
+        }
     }
 }

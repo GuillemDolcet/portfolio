@@ -1,7 +1,7 @@
 /* =================================== */
 /*  5. Elements
 /* =================================== */
-  
+
 /*=== 5.1 Featured Box ===*/
 .featured-box {
   box-sizing: border-box;
@@ -77,7 +77,7 @@
 	  @include box-shadow(0px 0px 50px rgba(0, 0, 0, 0.03));
     }
   }
-  
+
   &.style-5 {
   text-align: center;
   background: #fff;
@@ -174,7 +174,7 @@
 
 /* Testimonial */
 .testimonial{
-	background:#fff; border:1px solid #f1f5f6; 
+	background:#fff; border:1px solid #f1f5f6;
 	@include box-shadow(0px 5px 10px rgba(0, 0, 0, 0.05));
 	@include transition(all 0.3s ease-in-out);
 }
@@ -240,10 +240,10 @@
   }
   &:not(.accordion-flush) .accordion-header .accordion-button {
     background-color: $primary-color;
-    color:#212529;
+    color: black;
     &.collapsed {
       background-color: rgba(0, 0, 0, 0.06);
-      color: #4c4d4d;
+      color: black;
     }
   }
   .accordion-header .accordion-button {
@@ -286,7 +286,7 @@
 		padding-left:1.25rem;
 	}
   }
-  
+
   &.accordion-flush  {
     .accordion-item {
       margin: 0;
@@ -295,7 +295,7 @@
       border-top: 1px solid rgba(0, 0, 0, 0.1);
       border-radius: 0px;
 	  background: transparent;
-	  color: #212529;
+	  color: black;
     }
     .accordion-item:first-of-type .accordion-header .accordion-button {
       border-top: 0px;
@@ -305,7 +305,7 @@
         left: 18px;
       }
       &.collapsed {
-        color: rgba(0, 0, 0, 0.4);
+        color: rgba(0, 0, 0);
       }
     }
     .accordion-body {
@@ -319,7 +319,7 @@
 	}
   }
 
-  } 
+  }
 }
 
 .rtl .accordion {
@@ -542,7 +542,7 @@ background-color: rgba(250,250,250,0.2);
 }
 
 /*  CSS hack for Firfox */
-@-moz-document url-prefix() {       
+@-moz-document url-prefix() {
 	.search-input-2 {
     .custom-select:not(.custom-select-sm) {
       height: calc(3.05rem);
@@ -610,7 +610,7 @@ background-color: rgba(250,250,250,0.2);
 
 /*=== 5.7 Owl Carousel ===*/
 
-.owl-theme {  
+.owl-theme {
   &.single-slideshow {
     .owl-nav button {
       &.owl-prev, &.owl-next {
@@ -728,7 +728,7 @@ background-color: rgba(250,250,250,0.2);
 	border-left: 1px dotted rgba(250,250,250,0.15);
 	}
   }
-  
+
 }
 
 /*=== 5.9 Portfolio ===*/

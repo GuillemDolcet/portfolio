@@ -24,7 +24,7 @@
 
 .navbar-light .navbar-nav {
   .active > .nav-link {
-    color: #0c2f55;
+    color: bla;
   }
   .nav-link {
     &.active, &.show {
@@ -68,7 +68,7 @@
 	@-webkit-keyframes slide-down { 0% { opacity:0; transform:translateY(-100%);}100% { opacity:1; transform:translateY(0);}}
 	@-moz-keyframes slide-down { 0% { opacity:0; transform:translateY(-100%);}100% { opacity:1; transform:translateY(0);}}
 	@keyframes slide-down { 0% { opacity:0; transform:translateY(-100%);}100% { opacity:1; transform:translateY(0);}}
-	 
+
 	 .none-on-sticky{
 		display:none!important;
 	 }
@@ -79,7 +79,7 @@
     display: -ms-flexbox;
     display: flex;
     height: 100%;
-	
+
 	+ li {
     margin-left: 2px;
 	}
@@ -91,16 +91,16 @@
       -ms-flex-align: center;
       align-items: center;
     }
-	
+
     > a:not(.btn) {
       height: 70px;
       padding:0px 0.85em;
-      color: #252b33;
+      color: black;
 	  @include transition(all .2s ease);
       position: relative;
 	  position:relative;
     }
-	
+
     &:hover > a:not(.btn), & > a.active:not(.btn) {
 	  @include transition(all .2s ease);
     }
@@ -137,7 +137,7 @@
   .dropdown-toggle:after {
     content: none;
   }
-  
+
   &.navbar-line-under-text ul.navbar-nav > li {
 	> a:not(.btn):after {
 		position: absolute;
@@ -160,7 +160,7 @@
 		width:calc(100% - 1.7em);
 		}
 	}
-  
+
 }
 
 /*== Side Header ==*/
@@ -301,7 +301,7 @@
     position: absolute;
     height: 2px;
     width: 100%;
-    background: #3c3636;
+    background: black;
     opacity: 1;
     left: 0;
 	@include rotate(0deg);
@@ -326,7 +326,7 @@
       -moz-transform-origin: left center;
       -o-transform-origin: left center;
       transform-origin: left center;
-	  
+
     }
   }
   &.show span {
@@ -348,7 +348,7 @@
   &:focus{
 	box-shadow:none;
   }
-  
+
 }
 
 .navbar-accordion{position:initial;}
@@ -430,7 +430,7 @@ ul.navbar-nav {
       }
     }
   }
-  
+
 }
 
 &.navbar-text-light .navbar-collapse{background:rgba(0,0,0,0.95);}
@@ -596,7 +596,7 @@ background:rgba(255,255,250,.95);
   .nav-item .nav-link.active {
     background: rgba(0, 0, 0, 0.10);
     color: #fff;
-   
+
   }
   &.alternate {
     .nav-link {
