@@ -17,5 +17,9 @@ class LanguagesSeeder extends Seeder
             'name' => 'en',
             'image' => 'uk.png'
         ]);
+        Language::create([
+            'name' => 'ca',
+            'image' => 'ca.png'
+        ]);
     }
 }

@@ -55,38 +55,80 @@ class SkillsSeeder extends Seeder
         ]);
 
         $this->skills->create([
-            'name' => 'JS',
+            'name' => 'Html',
             'order' => 4,
+            'level' => '90',
+            'image' => new File('resources/assets/images/skills/html.svg')
+        ]);
+
+        $this->skills->create([
+            'name' => 'JS',
+            'order' => 5,
             'level' => '85',
             'image' => new File('resources/assets/images/skills/js.svg')
         ]);
 
         $this->skills->create([
-            'name' => 'SQL',
-            'order' => 5,
+            'name' => 'Postgresql',
+            'order' => 6,
             'level' => '80',
-            'image' => new File('resources/assets/images/skills/sql.svg')
+            'image' => new File('resources/assets/images/skills/postgresql.svg')
         ]);
 
         $this->skills->create([
-            'name' => 'Html',
-            'order' => 6,
-            'level' => '85',
-            'image' => new File('resources/assets/images/skills/html.svg')
+            'name' => 'Mysql',
+            'order' => 7,
+            'level' => '80',
+            'image' => new File('resources/assets/images/skills/mysql.svg')
+        ]);
+
+        $this->skills->create([
+            'name' => 'SQL Server',
+            'order' => 8,
+            'level' => '80',
+            'image' => new File('resources/assets/images/skills/sqlsrv.svg')
+        ]);
+
+        $this->skills->create([
+            'name' => 'Git',
+            'order' => 9,
+            'level' => '80',
+            'image' => new File('resources/assets/images/skills/git.svg')
+        ]);
+
+        $this->skills->create([
+            'name' => 'React',
+            'order' => 10,
+            'level' => '80',
+            'image' => new File('resources/assets/images/skills/react.svg')
         ]);
 
         $this->skills->create([
             'name' => 'Css',
-            'order' => 7,
+            'order' => 11,
             'level' => '75',
             'image' => new File('resources/assets/images/skills/css.svg')
         ]);
 
         $this->skills->create([
-            'name' => 'Wordpress',
-            'order' => 8,
-            'level' => '65',
-            'image' => new File('resources/assets/images/skills/wordpress.svg')
+            'name' => 'Docker',
+            'order' => 12,
+            'level' => '70',
+            'image' => new File('resources/assets/images/skills/docker.svg')
+        ]);
+
+        $this->skills->create([
+            'name' => 'Tailwind',
+            'order' => 13,
+            'level' => '60',
+            'image' => new File('resources/assets/images/skills/tailwind.svg')
+        ]);
+
+        $this->skills->create([
+            'name' => 'CI/CD',
+            'order' => 14,
+            'level' => '50',
+            'image' => new File('resources/assets/images/skills/ci-cd.svg')
         ]);
     }
 }

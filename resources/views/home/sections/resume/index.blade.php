@@ -24,12 +24,17 @@
 
         <!-- My Skills -->
         <h2 class="text-7 fw-600 mb-4 pb-2 mt-5 wow" data-animation="fadeInUp" data-delay="0,3">@lang('admin.my-skills')</h2>
+        @php
+            $skillsLeft = $skills->nth(2, 0);
+            $skillsRight = $skills->nth(2, 1);
+        @endphp
         <div class="row gx-5">
-            @foreach($skills->chunk($skills->count() / 2) as $skills)
-                <div class="col-md-6 wow" data-animation="fadeInUp" data-delay="0,3">
-                    @each('home.sections.resume._skill', $skills, 'skill')
-                </div>
-            @endforeach
+            <div class="col-md-6 wow" data-animation="fadeInUp" data-delay="0,3">
+                @each('home.sections.resume._skill', $skillsLeft, 'skill')
+            </div>
+            <div class="col-md-6 wow" data-animation="fadeInUp" data-delay="0,3">
+                @each('home.sections.resume._skill', $skillsRight, 'skill')
+            </div>
         </div>
         <p class="text-center mt-5 wow" data-animation="fadeInUp" data-delay="0,3">
             <a href="{{ route('personalInfo.showCv', ['personalInfo' => $personalInfo, 'locale' => app()->getLocale()]) }}" target="_blank" class="btn btn-outline-dark shadow-none rounded-0">@lang('admin.show_cv')</a>

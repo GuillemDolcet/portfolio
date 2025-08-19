@@ -45,7 +45,7 @@ return [
     ],
     'created' => 'Creado',
     'created_at' => 'Creado en',
-    'currently' => 'Actualmente tengo este cargo',
+    'currently' => 'Actualmente ',
     'currently-project' => 'Trabajando',
     'cv' => 'Currículum',
     'date_of_birth' => 'Cumpleaños',
