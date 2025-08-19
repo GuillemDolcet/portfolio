@@ -49,7 +49,8 @@ class PersonalInfoSeeder extends Seeder
             'image' => new File('resources/assets/images/personalInfo/main-image.png'),
             'cv' => [
                 'en' => new File('resources/assets/files/personalInfo/cv_en.pdf'),
-                'es' => new File('resources/assets/files/personalInfo/cv_es.pdf')
+                'es' => new File('resources/assets/files/personalInfo/cv_es.pdf'),
+                'ca' => new File('resources/assets/files/personalInfo/cv_ca.pdf')
             ],
         ]);
     }
