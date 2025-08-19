@@ -2,7 +2,7 @@
     <div class="d-flex flex-column col-9">
         <div><b>{{$educationModel->school}}</b></div>
         <div>{{$educationModel->degree}}, {{$educationModel->discipline}}</div>
-        <div class="text-muted">{{ ucfirst($educationModel->start_date->translatedFormat('F Y')) }} - {{ ucfirst($educationModel->finish_date->translatedFormat('F Y')) }}</div>
+        <div class="text-muted">{{ ucfirst($educationModel->start_date->translatedFormat('F Y')) }} - {{ !is_null($educationModel->finish_date) ? ucfirst($educationModel->finish_date->translatedFormat('F Y')) : Lang::get('admin.currently') }}</div>
         <div class="mt-3">
             @foreach($educationModel->skills as $skill)
                 <img class="me-3" src="{{\Storage::url($skill->image)}}" alt="{{$skill->name}}" height="30">
